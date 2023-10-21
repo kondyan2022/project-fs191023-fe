@@ -1,17 +1,14 @@
-body {
-  background-color: #000;
-  /* background-image: url('./assets/background.png'); */
-  background-size: auto 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #111111;
-  width: 100%;
-  height: 100vh;
-  margin: 0;
+@import url('/node_modules/modern-normalize/modern-normalize.css');
+@import url('./css/font.css');
+
+:root {
+  --color-black: #040404;
+  --color-orange: #e6533c;
+  --color-orange-one: #ef8964;
+  --color-beige: #efa082;
+  --color-white: #efede8;
 }
+
 h1,
 h2,
 h3,
@@ -29,9 +26,31 @@ ul {
   padding: 0;
   margin: 0;
 }
+
 img {
   display: block;
+  max-width: 100%;
+  height: auto;
 }
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
 button {
   cursor: pointer;
+  border: none;
+}
+body {
+  background-color: var(--color-black);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-white);
+  width: 100%;
+  height: 100vh;
+  margin: 0;
 }
