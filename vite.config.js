@@ -10,5 +10,5 @@ export default defineConfig({
       components: '/src/components',
     },
   },
-  base: '/project-fs191023-fe/',
+  base: '/project-fs191023-fe',
 });
