@@ -8,7 +8,7 @@ import image2x from '../../images/side-gym-mob-2x.jpg'
 export const MainWrapper = styled.div`
     /* width: 406px; // 446px; */
     width: 100%;
-    height: 873px;  // +header 61px
+    height: 812px;  // header 61px
     background-image: url(${image1x});
     background-size: auto;
     background-repeat: no-repeat;
@@ -24,7 +24,7 @@ export const MainWrapper = styled.div`
 
     @media (min-width: 768px) {
     /* width: 704px;// 768px; */
-    height: 1108px;  // +header 84px
+    height: 1024px;  // header 84px
     background-image: url(${imageLarge1x});
     }
 
@@ -37,7 +37,7 @@ export const MainWrapper = styled.div`
 
     @media (min-width: 1440px) {
     /* width: 1248px;// 1440px; */
-    height: 884px; // +header 84px
+    height: 800px; // header 84px
     }
 `
 
