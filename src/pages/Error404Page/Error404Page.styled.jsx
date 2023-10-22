@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 import imageLarge1x from '../../images/side-gym-desktop-tab-1x.jpg'
 import imageLarge2x from '../../images/side-gym-desktop-tab-2x.jpg'
 import image1x from '../../images/side-gym-mob-1x.jpg'
