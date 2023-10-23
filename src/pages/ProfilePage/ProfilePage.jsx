@@ -5,13 +5,16 @@ import { Title, WrapperContent } from './ProfilePage.styled';
 const ProfilePage = () => {
   return (
     <Container>
+
       <Title>Profile Settings</Title>
       <WrapperContent>
         <UserCard />
       </WrapperContent>
       {/* <Nottice /> */}
       {/* <Logout /> */}
+
     </Container>
+   
   );
 };
 

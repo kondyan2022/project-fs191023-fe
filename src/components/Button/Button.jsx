@@ -1,8 +1,11 @@
-const Button = ({ onClick, children, style }) => {
+import React from 'react';
+import { StyledButton } from '../Button/Button.styled'
+
+const Button = ({ onClick, children, style, primary }) => {
   return (
-    <button style={style} onClick={onClick}>
+    <StyledButton onClick={onClick} primary={primary} style={style}>
       {children}
-    </button>
+    </StyledButton>
   );
 };
 
