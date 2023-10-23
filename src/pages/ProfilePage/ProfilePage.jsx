@@ -1,11 +1,19 @@
-import Container from '../../components/Container/Container';
 
+import { Container } from '../../components/Container/Container';
+import UserCard from '../../components/UserCard/UserCard';
+import { Title, WrapperContent } from './ProfilePage.styled';
 import UserForm from '../../components/UserForm/UserForm';
+
 const ProfilePage = () => {
   return (
     <Container>
-      <div>Profile Page</div>
-      <UserForm />
+      <Title>Profile Settings</Title>
+    <UserForm />
+      <WrapperContent>
+        <UserCard />
+      </WrapperContent>
+      {/* <Nottice /> */}
+      {/* <Logout /> */}
     </Container>
   );
 };
