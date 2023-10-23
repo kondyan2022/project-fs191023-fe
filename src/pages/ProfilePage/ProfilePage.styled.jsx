@@ -21,3 +21,10 @@ export const WrapperContent = styled.div`
     justify-content: space-between;
   }
 `;
+
+export const WrapperForm = styled.div`
+  @media screen and (min-width: 1440px) {
+    border-right: 1px solid rgba(239, 237, 232, 0.2);
+    padding-right: 100px;
+  }
+`;
