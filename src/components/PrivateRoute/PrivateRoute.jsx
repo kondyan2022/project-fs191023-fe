@@ -2,7 +2,7 @@
 import { Navigate } from 'react-router-dom';
 // import { getIsLoggedIn } from 'redux/authSlice';
 
-const PROFILE_FILLED = false;
+const PROFILE_FILLED = true;
 
 export const PrivateRoute = ({
   isLoggedIn = false,
