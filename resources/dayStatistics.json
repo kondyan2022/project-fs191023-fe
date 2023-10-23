@@ -1,0 +1,38 @@
+[
+    {
+      "svg": "https://cdn-icons-png.flaticon.com/512/1998/1998592.png",
+      "name": "Daily calorie intake",
+      "isNorm": true,
+      "id": 1812
+    },
+    {
+      "svg": "https://cdn-icons-png.flaticon.com/512/616/616438.png",
+      "name": "Daily norm of sports",
+      "isNorm": true,
+      "id": 1137
+    },
+    {
+      "svg": "https://cdn-icons-png.flaticon.com/512/1623/1623681.png",
+      "name": "Сalories consumed",
+      "isNorm": false,
+      "id": 1213
+    },
+    {
+      "svg": "https://cdn-icons-png.flaticon.com/512/2977/2977285.png",
+      "name": "Сalories burned",
+      "isNorm": false,
+      "id": 1714
+    },
+    {
+      "svg": "https://cdn-icons-png.flaticon.com/512/1998/1998749.png",
+      "name": "The rest of the calories",
+      "isNorm": false,
+      "id": 1284
+    },
+    {
+        "svg": "https://cdn-icons-png.flaticon.com/512/1998/1998749.png",
+        "name": "The rest of sports",
+        "isNorm": false,
+        "id": 1286
+      }
+  ]
