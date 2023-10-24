@@ -1,23 +1,24 @@
 import { ExercisesCard } from "../ExercisesCard/ExercisesCard";
 import { Pagination } from "../Pagination/Pagination"
 import cards from '../../../../resources/filters.json'
+import { ExBoardItem, ExBoardList } from "./ExercisesBoards.styled";
 
 export const MusclesBoard = ({ handleBoardClick, handleExNameClick }) => {
     const musclesCards = cards.filter(card => card.filter === "Muscles");
     return (
         <>
-            <ul>
+            <ExBoardList>
                 {musclesCards.map(card => (
-                    <li
+                    <ExBoardItem
                         key={card._id}>
                         <ExercisesCard
                             exercisesCard={card}
                             handleBoardClick={handleBoardClick}
                             handleExNameClick={handleExNameClick}
                         />
-                    </li>
+                    </ExBoardItem>
                 ))}
-            </ul>
+            </ExBoardList>
             <Pagination />
         </>
     )
