@@ -1,88 +1,79 @@
 import styled from '@emotion/styled';
-// import css from '@emotion/styled';
+
 
 export const DayStatisticsComponent = styled.ul`
     display:flex;
     gap: 20px 13px;
     width: 355px;
     flex-wrap: wrap;
+    margin-bottom:20px;
+
+    @media screen and (min-width: 768px){
+   
+    width:593px;
+    gap: 16px;
+    margin-bottom:32px;
+}
+
+@media screen and (min-width: 1440px){
+    width:390px;
+    margin-bottom:48px;
+}
+`
+
+export const Masseg = styled.div`
+    width:335px;
+    display:flex;
+    margin-bottom:40px;
+
+    @media screen and (min-width: 768px){
+        width:561px;
+    }
+
+    @media screen and (min-width: 1440px){
+        width:390px;
+        margin:0;
+    }
+
+    svg{
+        width:24;
+        height:24;
+        margin-right:8px;
+    }
+    p{
+    width:300px;
+    margin:0;
+    font-size: 14px;
+    line-height: 1.3;
+    color:rgba(239, 237, 232, 0.3);
+
+    @media screen and (min-width: 768px){
+        font-size: 16px;
+        line-height: 1.5;
+        width:561px;
+    }
+
+    @media screen and (min-width: 1440px){
+     text-align: left;
+    }
+}
+` 
+
+export const DescktopStyle = styled.div`
     
+    @media screen and (min-width: 768px){
+   display:flex;
+   flex-direction: column;
+    align-items: flex-start;
+}
+     
     
 `
 
-export const DailyCalorie = styled.li`
-width: 157px;
-height: 96px;
-padding: 14px;
-background-color:var(--color-orange);
-
-border-radius: 12px;
-border: 1px solid;
-border-color:rgba(239, 237, 232, 0.2);
-padding:14px;
-
-font-size: 12px;
-line-height: 1.3;
-color:#EFEDE8CC;
-text-align: right;
-
-
-`
-
-export const DailyNormSport = styled.li`
-width: 157px;
-height: 96px;
-padding: 14px;
-background-color:var(--color-orange);
-
-border-radius: 12px;
-border: 1px solid;
-border-color:rgba(239, 237, 232, 0.2);
-padding:14px;
-
-font-size: 12px;
-line-height: 1.3;
-color:#EFEDE8CC;
-text-align: right;
-`
-
-export const СaloriesConsumed = styled.li`
-width: 157px;
-height: 96px;
-padding: 14px;
-background-color:var(--color-white 20%);
-
-border-radius: 12px;
-border: 1px solid;
-border-color:var(--color-white 20%);
-padding:14px;
-
-font-size: 12px;
-line-height: 1.3;
-color:#EFEDE8CC;
-text-align: right;
-`
-
-
-
-// export const DayStatisticsComponent = css`
-  
-//   display:flex;
     
-//    & div {
-// width: 157px;
-// height: 96px;
-// padding: 14px;
-// background-color:var(--color-orange);
-
-// border-radius: 12px;
-// border: 1px solid;
-// border-color:var(--color-white);
-
-// gap: 32px
 
 
 
-//    }
-// `
+
+
 

@@ -22,7 +22,7 @@ min-height: 234px;
 padding: 19px 16px;
 
 position: relative;
-margin-bottom:32px;
+margin-bottom:64px;
 }
 
 @media screen and (min-width: 1440px){
@@ -36,17 +36,8 @@ padding: 16px;
 
 export const Header = styled.div`
   display:flex;
-  gap:145px;
+  justify-content: space-between;
 
-@media screen and (min-width: 768px){
-
-  gap:503px;
-}
-
-@media screen and (min-width: 1440px){
-  
-  gap:625px
-}
 `
 
 export const Exercises = styled.p`
@@ -57,14 +48,23 @@ line-height: 1.3;
 `
 
 export const BtnAdd = styled(Link)`
+display:flex;
+
 font-family: Roboto;
 font-size: 14px;
 font-weight: 500;
 line-height: 1.2;
 color:var(--color-orange);
 
+svg{
+  width:16px;
+  height:16px;
+  margin-left:8px;
+}
+
 
 @media screen and (min-width: 768px){
+align-items: center;
 font-family: Roboto;
 font-size: 16px;
 line-height: 1.5;

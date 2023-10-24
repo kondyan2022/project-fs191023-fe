@@ -4,7 +4,11 @@ import {DayProductsComponent,Products,Header,BtnAdd,NotFound} from './DayProduct
   return  <DayProductsComponent>
     <Header>
     <Products>Products</Products>
-    <BtnAdd to="/products">Add product</BtnAdd>
+    <BtnAdd to="/products">Add product
+    <svg>
+    <use href="../src/images/sprite.svg#icon-arrow"></use>
+   </svg>
+    </BtnAdd>
     </Header>
     <NotFound>Not found products</NotFound> 
 

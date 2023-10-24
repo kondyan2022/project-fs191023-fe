@@ -11,7 +11,7 @@ import Error404Page from './pages/Error404Page/Error404Page';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { PublicRoute } from './components/PublicRoute/PublicRoute';
 
-import dayStatistics from '../resources/dayStatistics.json';
+
 
 const test = import.meta.env.VITE_API_TEST;
 
@@ -27,7 +27,7 @@ function App() {
           index
           element={
             <PrivateRoute redirectTo="/welcome" isLoggedIn={USER_IS_LOGINING}>
-              <DiaryPage dayStatistics={dayStatistics}/>
+              <DiaryPage/>
             </PrivateRoute>
           }
         />
