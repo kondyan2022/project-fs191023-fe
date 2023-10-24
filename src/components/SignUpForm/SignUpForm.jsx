@@ -1,13 +1,41 @@
 import { ErrorMessage, Form, Formik } from 'formik'
 import Button from '../Button/Button'
-// import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Grid } from '@mui/material'
 import { validationSchemaRegister } from '../../utils/validateSchemes'
 import { TextFields } from './SignUpForm.styled'
+import {
+    useUserRegisterMutation,
+    useGetRegUserProfileQuery
+} from '../../redux/features/endpoints'
+import { setToken } from '../../redux/features/userToken'
+import { useEffect } from 'react'
 
 
 const SignUpForm = () => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const isLogin = useSelector((state) => state.token.isLogin);
+
+    const [
+        registerUser,
+        {
+            data: singUpResult,
+            // isFetching: loader,
+            isSuccess: successResponse,
+            error: singUpError,
+            // isError: controlError
+        },
+    ] = useUserRegisterMutation();
+
+    const { data,
+        // isFetching,
+        // isSuccess,
+        // error,
+        // isError
+    } = useGetRegUserProfileQuery(isLogin, {
+        skip: !isLogin,
+        refetchOnReconnect: true,
+    });
 
     const initialValues = {
         name: '',
@@ -15,10 +43,22 @@ const SignUpForm = () => {
         password: '',
     };
 
-    const handleSubmit = (values, { resetForm }) => {
-        // dispatch(signUpUser(values));
+    const handleSubmit = async (values, { resetForm }, event) => {
+        event.preventDefault();
+        const { name, email, password } = event.currentTarget;
+        registerUser({ name: name.value, email: email.value, password: password.value })
         resetForm();
     };
+
+    useEffect(() => {
+        if (successResponse) {
+            dispatch(setToken(singUpResult.token))
+            console.log('isSuccess :', data);
+        } else {
+            console.log('Error: ', singUpError);
+        }
+
+    }, [successResponse, singUpResult, data, dispatch, singUpError])
 
     return (
         <div>
@@ -70,7 +110,7 @@ const SignUpForm = () => {
                                 component="div"
                             />
                         </Grid>
-                        <Button primary={true}>Sign Up</Button>
+                        <Button primary={true} type='submit'>Sign Up</Button>
                     </Form>
                 )}
             </Formik>

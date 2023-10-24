@@ -1,18 +1,23 @@
-import { Link } from 'react-router-dom';
-import Container from '../../components/Container/Container';
-import SignUpForm from '../../components/SignUpForm/SignUpForm';
+import { Link } from 'react-router-dom'
+import Container from '../../components/Container/Container'
+import SignUpForm from '../../components/SignUpForm/SignUpForm'
+import { Section } from '../../components/Section/Section.styled'
+import { Text, Title, Redirect } from './SignUpPage.styled'
+
 
 const SignUpPage = () => {
   return (
-    <Container>
-      <div>
-        <h2>Create account</h2>
-        <p>Thank you for your interest in our platform.
-          To complete the registration process, please provide us with the following information.</p>
-        <SignUpForm />
-        <p>Already have account? <Link to='/signin'> Sign In</Link></p>
-      </div>
-    </Container>
+    <Section>
+      <Container>
+        <div>
+          <Title>Create account</Title>
+          <Text>Thank you for your interest in our platform.
+            To complete the registration process, please provide us with the following information.</Text>
+          <SignUpForm />
+          <Redirect>Already have account? <Link to='/signin'> Sign In</Link></Redirect>
+        </div>
+      </Container>
+    </Section>
   );
 };
 

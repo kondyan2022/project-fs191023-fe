@@ -1,28 +1,69 @@
 import { ErrorMessage, Form, Formik } from 'formik'
 import Button from '../Button/Button'
-// import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Grid } from '@mui/material'
-import { validationSchemaRegister } from '../../utils/validateSchemes'
+import { validationSchemaLogin } from '../../utils/validateSchemes'
 import { TextFields } from './SignInForm.styled'
+import {
+    useUserSignInMutation,
+    useGetRegUserProfileQuery
+} from '../../redux/features/endpoints'
+import { setToken } from '../../redux/features/userToken'
+import { useEffect } from 'react'
 
 const SignInForm = () => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const isLogin = useSelector((state) => state.token.isLogin);
+
+    const [
+        loginUser,
+        {
+            data: singInResult,
+            // isFetching: loader,
+            isSuccess: successResponse,
+            error: singInError,
+            // isError: controlError
+        },
+    ] = useUserSignInMutation();
+
+    const {
+        data,
+        // isFetching,
+        // isSuccess,
+        // error,
+        // isError
+    } = useGetRegUserProfileQuery(isLogin, {
+        skip: !isLogin,
+        refetchOnReconnect: true,
+    });
 
     const initialValues = {
         email: '',
         password: '',
     };
 
-    const handleSubmit = (values, { resetForm }) => {
-        // dispatch(signinUser(values));
+    const handleSubmit = async (values, { resetForm }, event) => {
+        event.preventDefault();
+        const { email, password } = event.currentTarget;
+        await loginUser({ email: email.value, password: password.value })
         resetForm();
     };
 
+    useEffect(() => {
+        if (successResponse) {
+            dispatch(setToken(singInResult.token))
+            console.log('isSuccess :', data);
+        } else {
+            console.log('Error: ', singInError);
+        }
+
+    }, [successResponse, singInResult, data, dispatch, singInError])
+
     return (
-        <div>        <div>
+        <div>
             <Formik
                 initialValues={initialValues}
-                validationSchema={validationSchemaRegister}
+                validationSchema={validationSchemaLogin}
                 onSubmit={handleSubmit}
             >
                 {props => (
@@ -57,11 +98,11 @@ const SignInForm = () => {
                                 component="div"
                             />
                         </Grid>
-                        <Button primary={true}>Sign Up</Button>
+                        <Button primary={true} type='submit'>Sign in</Button>
                     </Form>
                 )}
             </Formik>
-        </div></div>
+        </div>
     )
 }
 

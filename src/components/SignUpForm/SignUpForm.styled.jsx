@@ -3,7 +3,7 @@ import { TextField } from '@mui/material'
 
 
 export const TextFields = styled(TextField)`
-width: 300px;
+/* width: 300px; */
     background-color: grey;
     display: flex;
     padding: 14px 307px 14px 14px;
