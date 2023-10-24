@@ -58,23 +58,32 @@ export const Button = styled.button`
   background-color: inherit;
   font-size: 14px;
   line-height: 18px;
-  /* line-height: 24px; desk */
   display: flex;
   align-items: center;
   padding: 0 2px;
-
+  transition: all 0.1s linear;
+  
   svg {
     width: 16px;
     height: 16px;
     margin-left: 8px;
+    stroke: var(--color-orange);
+    transition: all 0.1s linear;
   }
 
+  &:hover {
+    color: var(--color-orange-one);
+
+    svg {
+      stroke: var(--color-orange-one);
+      /* fill: var(--color-beige); */
+      /* color: var(--color-beige); */
+    }
+  }
+  /* style="stroke: var(--color2, #e6533c)"  */
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 24px;
-  }
-
-  @media screen and (min-width: 1440px) {
   }
 `;
 
@@ -111,9 +120,6 @@ export const Title = styled.div`
       line-height: 32px;
     }
   }
-
-  @media screen and (min-width: 1440px) {
-  }
 `;
 
 export const DetailsList = styled.ul`
@@ -131,4 +137,3 @@ export const DetailsList = styled.ul`
   }
 `;
 
-// hover
