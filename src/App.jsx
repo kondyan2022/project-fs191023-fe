@@ -18,6 +18,7 @@ const test = import.meta.env.VITE_API_TEST;
 const USER_IS_LOGINING = false;
 
 function App() {
+
   console.log(test);
 
   return (
