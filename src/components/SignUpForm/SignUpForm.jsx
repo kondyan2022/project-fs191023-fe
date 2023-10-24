@@ -1,8 +1,9 @@
 import { ErrorMessage, Form, Formik } from 'formik'
 import Button from '../Button/Button'
 // import { useDispatch } from 'react-redux'
-import { Grid, TextField } from '@mui/material'
-import { validationSchemaRegister } from '../../layouts/validateSchemes'
+import { Grid } from '@mui/material'
+import { validationSchemaRegister } from '../../utils/validateSchemes'
+import { TextFields } from './SignUpForm.styled'
 
 
 const SignUpForm = () => {
@@ -34,7 +35,7 @@ const SignUpForm = () => {
                             justifyContent="flex-start"
                             alignItems="flex-start"
                         >
-                            <TextField
+                            <TextFields
                                 type="text"
                                 id="name"
                                 name="name"
@@ -45,7 +46,7 @@ const SignUpForm = () => {
                                 name="name"
                                 component="div"
                             />
-                            <TextField
+                            <TextFields
 
                                 type="email"
                                 id="email"
@@ -57,7 +58,7 @@ const SignUpForm = () => {
                                 name="email"
                                 component="div"
                             />
-                            <TextField
+                            <TextFields
                                 type="password"
                                 id="password"
                                 name="password"
