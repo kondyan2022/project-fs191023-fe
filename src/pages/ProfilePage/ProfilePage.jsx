@@ -7,13 +7,13 @@ import UserForm from '../../components/UserForm/UserForm';
 const ProfilePage = () => {
   return (
     <Container>
-      <Title>Profile Settings</Title>
+      <Title>Profile Settings</Title>      
     <UserForm />
       <WrapperContent>
         <UserCard />
       </WrapperContent>
       {/* <Nottice /> */}
-      {/* <Logout /> */}
+      {/* <Logout /> */}      
     </Container>
   );
 };
