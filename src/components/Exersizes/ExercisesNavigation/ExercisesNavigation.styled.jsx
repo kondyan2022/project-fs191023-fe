@@ -13,9 +13,10 @@ export const ExercisesNavList = styled.ul`
 
 export const ExercisesNavItem = styled.li`
   color: rgba(239, 237, 232, 0.4);
-  /* font-size: 14px;
-  font-weight: 400; */
+  font-size: 14px;
+  /* font-weight: 400; */
   line-height: 1.28;
+  cursor: pointer;
   position: relative;
 
 
