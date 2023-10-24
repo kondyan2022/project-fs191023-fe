@@ -6,26 +6,57 @@ import {
   Button,
   Title,
   DetailsList,
+  Wrap,
 } from './ProductsItem.styled';
 // icon-search icon-run-man
 const ProductsItem = ({ weight, calories, category, title }) => {
-  const isRecommended = true;
+  const isRecommended = false;
+  const wdt = window.innerWidth;
+
+  const updatedCategory = () => {
+    if (wdt < 375 && category.length > 6) {
+      return category.slice(0, 3) + '...';
+    }
+    if (wdt < 768 && wdt >= 375 && category.length > 11) {
+      return category.slice(0, 10) + '...';
+    }
+    if (wdt >= 768 && category.length > 11) {
+      return category.slice(0, 10) + '...';
+    }
+    return category;
+  };
+
+  const updatedTitle = () => {
+    if (wdt < 375 && title.length > 17) {
+      return title.slice(0, 18) + '...';
+    }
+    if (wdt < 768 && wdt >= 375 && title.length > 24) {
+      return title.slice(0, 25) + '...';
+    }
+    if (wdt >= 768 && title.length > 22) {
+      return title.slice(0, 20) + '...';
+    }
+    return title;
+  };
+
   return (
     <>
       <ActionBlock>
         <Diet>
           <p>Diet</p>
         </Diet>
-        <Recommended isRecomm={isRecommended}>
-          <div></div>
-          <p>{isRecommended ? 'Recommended' : 'Not recommended'}</p>
-        </Recommended>
-        <Button type="button">
-          Add
-          <svg>
-            <use href={`${sprite}#icon-arrow`}></use>
-          </svg>
-        </Button>
+        <Wrap>
+          <Recommended isRecomm={isRecommended}>
+            <div></div>
+            <p>{isRecommended ? 'Recommended' : 'Not recommended'}</p>
+          </Recommended>
+          <Button type="button">
+            Add
+            <svg>
+              <use href={`${sprite}#icon-arrow`}></use>
+            </svg>
+          </Button>
+        </Wrap>
       </ActionBlock>
       <div>
         <Title>
@@ -34,7 +65,8 @@ const ProductsItem = ({ weight, calories, category, title }) => {
               <use href={`${sprite}#icon-run-man`}></use>
             </svg>
           </div>
-          <p>{title.length > 24 ? title.slice(0, 25) + '...' : title}</p>
+          <p>{updatedTitle()}</p>
+          {/* <p>{title.length > 24 ? title.slice(0, 25) + '...' : title}</p>  desktop*/}
         </Title>
         <DetailsList>
           <li>
@@ -44,7 +76,8 @@ const ProductsItem = ({ weight, calories, category, title }) => {
           </li>
           <li>
             <p>
-              Category:<span>{category}</span>
+              Category:
+              <span>{updatedCategory()}</span>
             </p>
           </li>
           <li>
