@@ -15,11 +15,12 @@ import { PublicRoute } from './components/PublicRoute/PublicRoute';
 
 const test = import.meta.env.VITE_API_TEST;
 
-const USER_IS_LOGINING = true;
+const USER_IS_LOGINING = false;
 
 function App() {
+
   console.log(test);
-  
+
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
