@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledButton } from '../Button/Button.styled'
 
-const Button = ({ onClick, children, style, primary }) => {
+const Button = ({ onClick, children, style, primary, type}) => {
   return (
     <StyledButton onClick={onClick} primary={primary} style={style} type="submit">
       {children}
