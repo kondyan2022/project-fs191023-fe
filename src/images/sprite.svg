@@ -90,7 +90,10 @@
 <symbol id="pagination-btn" viewBox="0 0 32 32">
 <path fill="none" stroke="#e6533c" style="stroke: var(--color1, #e6533c)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.2857" d="M30.857 16c0 8.205-6.652 14.857-14.857 14.857s-14.857-6.652-14.857-14.857c0-8.205 6.652-14.857 14.857-14.857s14.857 6.652 14.857 14.857z"></path>
 <path fill="#e6533c" style="fill: var(--color1, #e6533c)" d="M25.143 16c0 5.049-4.093 9.143-9.143 9.143s-9.143-4.093-9.143-9.143c0-5.049 4.093-9.143 9.143-9.143s9.143 4.093 9.143 9.143z"></path>
+</symbol>
 
+<symbol id="icon-Line" viewBox="0 0 87 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="0.9275" d="M61.051 0.464c-20.416 0.3-65 3.913-60.233 22.304 4.284 12.985 65.327 10.195 80.388 0.425s-5.623-19.937-34.455-16.338"></path>
 </symbol>
 </defs>
 </svg>
