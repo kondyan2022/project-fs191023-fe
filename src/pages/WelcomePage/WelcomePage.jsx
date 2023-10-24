@@ -3,9 +3,10 @@ import Button from '../../components/Button/Button'
 import Container from '../../components/Container/Container'
 import WelcomeInfoCalories from '../../components/WelcomeInfoCalories/WelcomeInfoCalories'
 import WelcomeInfoVideo from '../../components/WelcomeInfoVideo/WelcomeInfoVideo'
-import { Section, Title, WrappTitle, WrapperFlex } from './WelcomePage.styled'
+import { Title, WrappTitle, WrapperFlex } from './WelcomePage.styled'
 import { IconCircleDecorationStyled, IconPlayVideoStyled, IconRunMenStyled } from './WelcomeIcons.styled'
 import { buttonStyles } from '../../components/Button/Button.styled'
+import { Section } from '../../components/Section/Section.styled'
 
 
 const WelcomePage = () => {
