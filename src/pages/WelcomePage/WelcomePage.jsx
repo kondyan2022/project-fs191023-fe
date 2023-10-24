@@ -5,7 +5,7 @@ import WelcomeInfoCalories from '../../components/WelcomeInfoCalories/WelcomeInf
 import WelcomeInfoVideo from '../../components/WelcomeInfoVideo/WelcomeInfoVideo';
 import { Title, WrappTitle, WrapperFlex } from './WelcomePage.styled';
 import {
-  IconCircleDecorationStyled,
+  // IconCircleDecorationStyled,
   // IconPlayVideoStyled,
   IconRunMenStyled,
 } from './WelcomeIcons.styled';
@@ -24,7 +24,7 @@ const WelcomePage = () => {
         <div>
           <WrappTitle>
             <Title>Transforming your body shape with Power Pulse</Title>
-            <IconCircleDecorationStyled />
+            {/* <IconCircleDecorationStyled /> */}
           </WrappTitle>
           <WrapperFlex>
             <Button
