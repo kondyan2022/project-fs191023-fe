@@ -1,8 +1,8 @@
 import Button from '../../components/Button/Button';
 import Container from '../../components/Container/Container';
 import StatisticsInfoCard from '../../components/StatisticsInfoCard/StatisticsInfoCard';
-import { ReactComponent as IconAthlete } from '../../icons/symbol-defs.svg#icon-athlete'
-import { ReactComponent as IconPlayVideo } from '../../icons/symbol-defs.svg#icon-play_video'
+import { ReactComponent as IconRunMen } from '../../images/sprite.svg#icon-run-man'
+import { ReactComponent as IconPlayVideo } from '../../images/sprite.svg#icon-play'
 
 const WelcomePage = () => {
   return (
@@ -15,7 +15,7 @@ const WelcomePage = () => {
         </div>
         <div>
           <StatisticsInfoCard icon={IconPlayVideo} number={'350+'} value={'Video tutorial'} />
-          <StatisticsInfoCard icon={IconAthlete} number={500} value={'cal'} />
+          <StatisticsInfoCard icon={IconRunMen} number={500} value={'cal'} />
         </div>
       </div>
     </Container>
