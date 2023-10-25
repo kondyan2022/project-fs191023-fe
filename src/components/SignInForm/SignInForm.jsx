@@ -1,9 +1,7 @@
-import { ErrorMessage, Form, Formik } from 'formik'
 import Button from '../Button/Button'
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux'
-import { Grid } from '@mui/material'
 import { validationSchemaLogin } from '../../utils/validateSchemes'
-import { TextFields } from './SignInForm.styled'
 import {
     useUserSignInMutation,
     useGetRegUserProfileQuery
@@ -42,10 +40,10 @@ const SignInForm = () => {
         password: '',
     };
 
-    const handleSubmit = async (values, { resetForm }, event) => {
-        event.preventDefault();
-        const { email, password } = event.currentTarget;
-        await loginUser({ email: email.value, password: password.value })
+    const handleSubmit = async (values, { resetForm }) => {
+        // event.preventDefault();
+        await loginUser({ ...values })
+        // console.log({ ...values })
         resetForm();
     };
 
@@ -59,6 +57,7 @@ const SignInForm = () => {
 
     }, [successResponse, singInResult, data, dispatch, singInError])
 
+
     return (
         <div>
             <Formik
@@ -66,38 +65,29 @@ const SignInForm = () => {
                 validationSchema={validationSchemaLogin}
                 onSubmit={handleSubmit}
             >
-                {props => (
+                {formikProps => (
                     <Form>
-                        <Grid
-                            container
-                            direction="column"
-                            justifyContent="flex-start"
-                            alignItems="flex-start"
-                        >
-                            <TextFields
+                        <Field
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="foobar@example.com"
+                        />
+                        <ErrorMessage
+                            name="email"
+                            component="div"
+                        />
 
-                                type="email"
-                                id="email"
-                                name="email"
-                                variant="outlined"
-                                label="Email"
-                            />
-                            <ErrorMessage
-                                name="email"
-                                component="div"
-                            />
-                            <TextFields
-                                type="password"
-                                id="password"
-                                name="password"
-                                variant="outlined"
-                                label="Password"
-                            />
-                            <ErrorMessage
-                                name="password"
-                                component="div"
-                            />
-                        </Grid>
+                        <Field
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="foobar15"
+                        />
+                        <ErrorMessage
+                            name="password"
+                            component="div"
+                        />
                         <Button primary={true} type='submit'>Sign in</Button>
                     </Form>
                 )}
@@ -105,5 +95,53 @@ const SignInForm = () => {
         </div>
     )
 }
+
+// ---------------------------------------------------------
+//     return (
+//         <div>
+//             <Formik
+//                 initialValues={initialValues}
+//                 validationSchema={validationSchemaLogin}
+//                 onSubmit={handleSubmit}
+//             >
+//                 {props => (
+//                     <Form>
+//                         <Grid
+//                             container
+//                             direction="column"
+//                             justifyContent="flex-start"
+//                             alignItems="flex-start"
+//                         >
+//                             <TextFields
+
+//                                 type="email"
+//                                 id="email"
+//                                 name="email"
+//                                 variant="outlined"
+//                                 label="Email"
+//                             />
+//                             <ErrorMessage
+//                                 name="email"
+//                                 component="div"
+//                             />
+//                             <TextFields
+//                                 type="password"
+//                                 id="password"
+//                                 name="password"
+//                                 variant="outlined"
+//                                 label="Password"
+//                             />
+//                             <ErrorMessage
+//                                 name="password"
+//                                 component="div"
+//                             />
+//                         </Grid>
+//                         <Button primary={true} type='submit'>Sign in</Button>
+//                     </Form>
+//                 )}
+//             </Formik>
+//         </div>
+//     )
+// }
 
 export default SignInForm

@@ -1,33 +1,32 @@
-import { ErrorMessage, Form, Formik } from 'formik'
 import Button from '../Button/Button'
-import { useDispatch, useSelector } from 'react-redux'
-import { Grid } from '@mui/material'
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import { validationSchemaRegister } from '../../utils/validateSchemes'
-import { TextFields } from './SignUpForm.styled'
 import {
     useUserRegisterMutation,
     useGetRegUserProfileQuery
 } from '../../redux/features/endpoints'
 import { setToken } from '../../redux/features/userToken'
-import { useEffect } from 'react'
-
+import { useEffect, useState } from 'react'
 
 const SignUpForm = () => {
     const dispatch = useDispatch();
     const isLogin = useSelector((state) => state.token.isLogin);
+    const [status, setStatus] = useState('');
 
     const [
         registerUser,
         {
             data: singUpResult,
             // isFetching: loader,
-            isSuccess: successResponse,
-            error: singUpError,
+            // isSuccess: successResponse,
+            // error: singUpError,
             // isError: controlError
         },
     ] = useUserRegisterMutation();
 
-    const { data,
+    const {
+        data,
         // isFetching,
         // isSuccess,
         // error,
@@ -37,28 +36,33 @@ const SignUpForm = () => {
         refetchOnReconnect: true,
     });
 
+
     const initialValues = {
         name: '',
         email: '',
         password: '',
     };
 
-    const handleSubmit = async (values, { resetForm }, event) => {
-        event.preventDefault();
-        const { name, email, password } = event.currentTarget;
-        registerUser({ name: name.value, email: email.value, password: password.value })
-        resetForm();
+    const handleSubmit = async (values, { resetForm }) => {
+        try {
+            const response = await registerUser({ ...values });
+            if (response.error) {
+                setStatus(response.error);
+            } else {
+                setStatus('');
+                resetForm();
+            }
+        } catch (error) {
+            console.error('Error :', error);
+            setStatus('Error sending a request');
+        }
     };
 
     useEffect(() => {
-        if (successResponse) {
-            dispatch(setToken(singUpResult.token))
-            console.log('isSuccess :', data);
-        } else {
-            console.log('Error: ', singUpError);
+        if (singUpResult) {
+            dispatch(setToken(singUpResult.token));
         }
-
-    }, [successResponse, singUpResult, data, dispatch, singUpError])
+    }, [singUpResult, dispatch]);
 
     return (
         <div>
@@ -67,50 +71,43 @@ const SignUpForm = () => {
                 validationSchema={validationSchemaRegister}
                 onSubmit={handleSubmit}
             >
-                {props => (
+                {formikProps => (
                     <Form>
-                        <Grid
-                            container
-                            direction="column"
-                            justifyContent="flex-start"
-                            alignItems="flex-start"
-                        >
-                            <TextFields
-                                type="text"
-                                id="name"
-                                name="name"
-                                variant="outlined"
-                                label="Name"
-                            />
-                            <ErrorMessage
-                                name="name"
-                                component="div"
-                            />
-                            <TextFields
+                        <Field
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Name"
+                        />
+                        <ErrorMessage
+                            name="name"
+                            component="div"
+                        />
 
-                                type="email"
-                                id="email"
-                                name="email"
-                                variant="outlined"
-                                label="Email"
-                            />
-                            <ErrorMessage
-                                name="email"
-                                component="div"
-                            />
-                            <TextFields
-                                type="password"
-                                id="password"
-                                name="password"
-                                variant="outlined"
-                                label="Password"
-                            />
-                            <ErrorMessage
-                                name="password"
-                                component="div"
-                            />
-                        </Grid>
+                        <Field
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Email"
+                        />
+                        <ErrorMessage
+                            name="email"
+                            component="div"
+                        />
+
+                        <Field
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Password"
+                        />
+                        <ErrorMessage
+                            name="password"
+                            component="div"
+                        />
+
                         <Button primary={true} type='submit'>Sign Up</Button>
+                        {status && <div>{status}</div>}
                     </Form>
                 )}
             </Formik>
@@ -118,4 +115,66 @@ const SignUpForm = () => {
     )
 }
 
-export default SignUpForm
+export default SignUpForm;
+
+
+// ----------------------------------------------------
+//     return (
+//         <div>
+//             <Formik
+//                 initialValues={initialValues}
+//                 validationSchema={validationSchemaRegister}
+//                 onSubmit={handleSubmit}
+//             >
+//                 {props => (
+//                     <Form>
+//                         <Grid
+//                             container
+//                             direction="column"
+//                             justifyContent="flex-start"
+//                             alignItems="flex-start"
+//                         >
+//                             <TextFields
+//                                 type="text"
+//                                 id="name"
+//                                 name="name"
+//                                 variant="outlined"
+//                                 label="Name"
+//                             />
+//                             <ErrorMessage
+//                                 name="name"
+//                                 component="div"
+//                             />
+//                             <TextFields
+
+//                                 type="email"
+//                                 id="email"
+//                                 name="email"
+//                                 variant="outlined"
+//                                 label="Email"
+//                             />
+//                             <ErrorMessage
+//                                 name="email"
+//                                 component="div"
+//                             />
+//                             <TextFields
+//                                 type="password"
+//                                 id="password"
+//                                 name="password"
+//                                 variant="outlined"
+//                                 label="Password"
+//                             />
+//                             <ErrorMessage
+//                                 name="password"
+//                                 component="div"
+//                             />
+//                         </Grid>
+//                         <Button primary={true} type='submit'>Sign Up</Button>
+//                     </Form>
+//                 )}
+//             </Formik>
+//         </div>
+//     )
+// }
+
+// export default SignUpForm
