@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 40px;
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     margin-top: 64px;
