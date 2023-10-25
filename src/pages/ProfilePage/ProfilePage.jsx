@@ -5,16 +5,25 @@ import UserForm from '../../components/UserForm/UserForm';
 import Logout from '../../components/Logout/Logout';
 import Nottice from '../../components/Nottice/Nottice';
 
+
 const ProfilePage = () => {
   return (
     <Container>
-      <Title>Profile Settings</Title>
+
+      
+        <Title>Profile Settings</Title> 
+      <UserForm />
+
       <WrapperContent>
         <UserCard />
         {/* <Nottice /> */}
         {/* <Logout /> */}
         <UserForm />
       </WrapperContent>
+
+      {/* <Nottice /> */}
+      {/* <Logout /> */}            
+
     </Container>
   );
 };

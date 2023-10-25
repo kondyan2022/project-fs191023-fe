@@ -1,32 +1,75 @@
-import { forwardRef, useState } from "react";
-import { format } from "date-fns";
+import React, { useState } from "react";
+import { format, addDays, subDays } from "date-fns";
 import DatePicker from "react-datepicker";
 import { CalendarGlobalStyles, TitleWrapper } from "./StyledDatepicker.styled";
-import "react-datepicker/dist/react-datepicker-cssmodules.css";
+import "react-datepicker/dist/react-datepicker.css";
+import sprite from '../../images/sprite.svg';
 
 
-const StyledDatepicker = () => {
+
+const StyledDatepicker = ({ minDate, maxDate, disabledDates }) => {
   const [selectedDate, setSelectedDate] = useState(Date.now());
 
-  const CustomInput = forwardRef(({ value, onClick }, ref) => {
+  const CustomInput = ({ onClick }) => {
     return (
-      <TitleWrapper onClick={onClick} ref={ref}>       
-        {format(selectedDate, "dd/MM/yyyy")}                
+      <TitleWrapper>        
+        <div onClick={onClick}>
+          {format(selectedDate, "dd/MM/yyyy")}   
+          <svg width="24" height="24"
+            className="react-datepicker__calendar-icon"
+            style={{
+                fill:'#ef8964',
+                zIndex: 10,
+              }}>
+              <use href={sprite + '#icon-calendar'} ></use>
+        </svg>      
+        </div>
+        
+        <div className="react-datepicker__navigation-title-day">
+          <span onClick={handlePrevDay} className="react-datepicker__navigation-title-day--previous">&lt;</span>
+          <span onClick={handleNextDay} className="react-datepicker__navigation-title-day--next">&gt;</span>
+        </div>
+        
       </TitleWrapper>
+
+      
     );
-  });
+  };
+
+  const handlePrevDay = () => {
+    const prevDay = subDays(selectedDate, 1);
+    if (minDate && prevDay < minDate) {
+      return;
+    }
+    setSelectedDate(prevDay);
+  };
+
+  const handleNextDay = () => {
+    const nextDay = addDays(selectedDate, 1);
+    if (maxDate && nextDay > maxDate) {
+      return;
+    }
+    setSelectedDate(nextDay);
+  };
 
   return (
     <>
       <DatePicker
         selected={selectedDate}
         onChange={(date) => {
+          if (minDate && date < minDate) {
+            return;
+          }
+          if (maxDate && date > maxDate) {
+            return;
+          }
           setSelectedDate(date);
         }}
         customInput={<CustomInput />}
         dateFormat={"dd MM yyyy"}
         calendarStartDay={1}
         formatWeekDay={(day) => day.substr(0, 1)}
+        excludeDates={disabledDates}
       />
       <CalendarGlobalStyles />
     </>
