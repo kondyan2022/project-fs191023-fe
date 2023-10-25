@@ -9,11 +9,9 @@ import {
 import { setToken } from '../../redux/features/userToken'
 import { useEffect } from 'react'
 import { FormBox, Input } from './SignUpForm.styled';
-import { useNavigate } from 'react-router';
 
 const SignUpForm = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const isLogin = useSelector((state) => state.token.isLogin);
     // const [status, setStatus] = useState('');
 
@@ -46,19 +44,13 @@ const SignUpForm = () => {
         password: '',
     };
 
-    const handleSubmit = async (values, { resetForm }) => {
-        if (values) {
-            await createUser({ ...values });
-            resetForm();
-        } else {
-            console.log('Error')
-        }
+    const handleSubmit = async (values) => {
+        await createUser({ ...values });
     };
 
     useEffect(() => {
         if (isCreateSuccess) {
             dispatch(setToken(createdUser.token));
-            navigate('/')
             console.log(createdUser);
         }
         // if (isCreateError) {
@@ -67,7 +59,7 @@ const SignUpForm = () => {
     }, [createdUser,
         dispatch,
         isCreateSuccess,
-        navigate,
+        // navigate,
         // createError,
         // isCreateError
     ]);
@@ -124,65 +116,3 @@ const SignUpForm = () => {
 }
 
 export default SignUpForm;
-
-
-// ----------------------------------------------------
-//     return (
-//         <div>
-//             <Formik
-//                 initialValues={initialValues}
-//                 validationSchema={validationSchemaRegister}
-//                 onSubmit={handleSubmit}
-//             >
-//                 {props => (
-//                     <Form>
-//                         <Grid
-//                             container
-//                             direction="column"
-//                             justifyContent="flex-start"
-//                             alignItems="flex-start"
-//                         >
-//                             <TextFields
-//                                 type="text"
-//                                 id="name"
-//                                 name="name"
-//                                 variant="outlined"
-//                                 label="Name"
-//                             />
-//                             <ErrorMessage
-//                                 name="name"
-//                                 component="div"
-//                             />
-//                             <TextFields
-
-//                                 type="email"
-//                                 id="email"
-//                                 name="email"
-//                                 variant="outlined"
-//                                 label="Email"
-//                             />
-//                             <ErrorMessage
-//                                 name="email"
-//                                 component="div"
-//                             />
-//                             <TextFields
-//                                 type="password"
-//                                 id="password"
-//                                 name="password"
-//                                 variant="outlined"
-//                                 label="Password"
-//                             />
-//                             <ErrorMessage
-//                                 name="password"
-//                                 component="div"
-//                             />
-//                         </Grid>
-//                         <Button primary={true} type='submit'>Sign Up</Button>
-//                     </Form>
-//                 )}
-//             </Formik>
-//         </div>
-//     )
-// }
-
-// export default SignUpForm
