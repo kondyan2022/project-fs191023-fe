@@ -18,8 +18,7 @@ const StyledDatepicker = ({ minDate, maxDate, disabledDates }) => {
           <svg width="24" height="24"
             className="react-datepicker__calendar-icon"
             style={{
-                stroke: 'var(--color1)' ,
-                zIndex: 10,
+                stroke: 'var(--color1)'                
               }}>
               <use href={sprite + '#icon-calendar'} ></use>
         </svg>      
