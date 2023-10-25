@@ -1,9 +1,8 @@
 import Container from '../../components/Container/Container';
-import StyledDatepicker from '../../components/Calendar/StyledDatepicker';
+
 const SignInPage = () => {
   return (
-    <Container>
-      <StyledDatepicker /> 
+    <Container>      
       <div>SignIn Page</div>
     </Container>
   );
