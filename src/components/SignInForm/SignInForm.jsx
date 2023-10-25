@@ -7,7 +7,7 @@ import { validationSchemaLogin } from '../../utils/validateSchemes'
 import {
     useUserSignInMutation,
     // useGetRegUserProfileQuery
-} from '../../redux/features/endpoints'
+} from '../../redux/features/authEndpoints'
 import { setToken } from '../../redux/features/userToken'
 import { useEffect } from 'react'
 

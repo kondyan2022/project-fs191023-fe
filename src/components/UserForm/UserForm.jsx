@@ -31,12 +31,16 @@ const validationSchema = yup.object({
   height: yup.number().min(150, 'Min 150!').required('Height is required'),
   currentWeight: yup
     .number()
-    .min(35, 'Min 35!')
+    .min(35, 'Min 35kg!')
     .required('Current weight is required'),
   desiredWeight: yup
     .number()
-    .min(35, 'Min 35!')
+    .min(35, 'Min 35kg!')
     .required('Desired weight is required'),
+  // birthday - date; must be older than 18 years;  required
+  // blood: yup.number().allowedValues([1, 2, 3, 4]).required()
+  // sex - string; allowed values "male", "female"; required
+  // levelActivity - number; allowed values 1, 2, 3, 4, 5; required
 });
 
 const bloodOptions = [

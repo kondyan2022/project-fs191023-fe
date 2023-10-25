@@ -5,7 +5,7 @@ import { validationSchemaRegister } from '../../utils/validateSchemes'
 import {
     useUserRegisterMutation,
     // useGetRegUserProfileQuery
-} from '../../redux/features/endpoints'
+} from '../../redux/features/authEndpoints'
 import { setToken } from '../../redux/features/userToken'
 import { useEffect } from 'react'
 import { FormBox, Input } from './SignUpForm.styled';

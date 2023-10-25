@@ -185,4 +185,18 @@ export const TitleWrapper = styled.button`
   .icon-calendar {
     color: 'var(--color-orange)',
   }
+
+
+  .react-datepicker__navigation-title-day--next{
+    width: 16px;
+    height:16px;
+    margin-left:8px
+    
+  }
+  .react-datepicker__navigation-title-day--previous{
+    width: 16px;
+    height:16px;
+    
+  }  
+
 `;
