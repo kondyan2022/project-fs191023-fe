@@ -12,6 +12,7 @@ export const List = styled.ul`
     height: 660px;
     width: 704px;
     overflow: auto;
+
     &::-webkit-scrollbar {
       width: 8px;
     }

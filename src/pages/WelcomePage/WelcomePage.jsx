@@ -4,7 +4,7 @@ import Container from '../../components/Container/Container';
 import WelcomeInfoCalories from '../../components/WelcomeInfoCalories/WelcomeInfoCalories';
 import WelcomeInfoVideo from '../../components/WelcomeInfoVideo/WelcomeInfoVideo';
 import { Title, WrappTitle, WrapperFlex } from './WelcomePage.styled';
-// import {
+// import {npm 
 //   // IconCircleDecorationStyled,
 //   // IconPlayVideoStyled,
 //   IconRunMenStyled,
@@ -41,12 +41,12 @@ const WelcomePage = () => {
           <div>
             <WelcomeInfoVideo
               // icon={<IconPlayVideoStyled />}
-              icon={<IconRunMenStyled />}
+              // icon={<IconRunMenStyled />}
               number={'350+'}
               value={'Video tutorial'}
             />
             <WelcomeInfoCalories
-              icon={<IconRunMenStyled />}
+              // icon={<IconRunMenStyled />}
               number={'500'}
               value={'cal'}
             />
