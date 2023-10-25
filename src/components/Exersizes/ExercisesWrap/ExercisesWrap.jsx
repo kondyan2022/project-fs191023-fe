@@ -7,6 +7,7 @@ import {
   ExercisesBox,
   ExercisesPageWrap,
   ExercisesTitle,
+  BackgroundImage,
 } from './ExercisesWrap.styled';
 import { ExerciseList } from '../ExerciseList/ExerciseList';
 
@@ -45,31 +46,28 @@ export const ExersizeWrap = () => {
           handleBoardClick={handleBoardClick}
         />
       </ExercisesBox>
-
       {activeBoard === 'Body parts' && (
         <BodyPartsBoard
           handleBoardClick={handleBoardClick}
           handleExNameClick={handleExNameClick}
         />
       )}
-
       {activeBoard === 'Muscles' && (
         <MusclesBoard
           handleBoardClick={handleBoardClick}
           handleExNameClick={handleExNameClick}
         />
       )}
-
       {activeBoard === 'Equipment' && (
         <EquipmentBoard
           handleBoardClick={handleBoardClick}
           handleExNameClick={handleExNameClick}
         />
       )}
-
       {activeBoard === exerciseName && (
         <ExerciseList exerciseName={exerciseName} />
       )}
+      <BackgroundImage />
     </ExercisesPageWrap>
   );
 };
