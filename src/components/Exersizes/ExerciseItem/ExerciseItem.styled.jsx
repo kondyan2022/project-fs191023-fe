@@ -3,13 +3,11 @@ export const ListItem = styled.li`
   border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
   padding: 16px;
-  position: relative;
   @media screen and (min-width: 768px) {
     flex-basis: calc((100% - 16px) / 2);
   }
   @media screen and (min-width: 1440px) {
-    width: 405px;
-    height: 141px;
+    max-width: 405px;
   }
 `;
 export const Workout = styled.strong`
@@ -69,6 +67,7 @@ export const Button = styled.button`
   background-color: transparent;
   color: #e6533c;
   border: none;
+  padding: 0;
   position: absolute;
   top: 16px;
   right: 16px;
@@ -78,12 +77,6 @@ export const Button = styled.button`
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 'calc(24px / 16px)';
-  }
-  &:hover {
-    color: var(--white-color);
-  }
-  &:focus {
-    color: var(--white-color);
   }
 `;
 export const Span = styled.span`

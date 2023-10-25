@@ -1,17 +1,16 @@
-import React, { useState } from "react";
-import { format, addDays, subDays } from "date-fns";
+import { forwardRef, useState } from "react";
+import { format } from "date-fns";
 import DatePicker from "react-datepicker";
 import { CalendarGlobalStyles, TitleWrapper } from "./StyledDatepicker.styled";
-import "react-datepicker/dist/react-datepicker.css";
-import sprite from '../../images/sprite.svg';
+import "react-datepicker/dist/react-datepicker-cssmodules.css";
 
 
-
-const StyledDatepicker = ({ minDate, maxDate, disabledDates }) => {
+const StyledDatepicker = () => {
   const [selectedDate, setSelectedDate] = useState(Date.now());
 
-  const CustomInput = ({ onClick }) => {
+  const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (
+
       <TitleWrapper>        
         <div onClick={onClick}>
           {format(selectedDate, "dd/MM/yyyy")}   
@@ -30,45 +29,20 @@ const StyledDatepicker = ({ minDate, maxDate, disabledDates }) => {
         </div>
         
       </TitleWrapper>
-
-      
     );
-  };
-
-  const handlePrevDay = () => {
-    const prevDay = subDays(selectedDate, 1);
-    if (minDate && prevDay < minDate) {
-      return;
-    }
-    setSelectedDate(prevDay);
-  };
-
-  const handleNextDay = () => {
-    const nextDay = addDays(selectedDate, 1);
-    if (maxDate && nextDay > maxDate) {
-      return;
-    }
-    setSelectedDate(nextDay);
-  };
+  });
 
   return (
     <>
       <DatePicker
         selected={selectedDate}
         onChange={(date) => {
-          if (minDate && date < minDate) {
-            return;
-          }
-          if (maxDate && date > maxDate) {
-            return;
-          }
           setSelectedDate(date);
         }}
         customInput={<CustomInput />}
         dateFormat={"dd MM yyyy"}
         calendarStartDay={1}
         formatWeekDay={(day) => day.substr(0, 1)}
-        excludeDates={disabledDates}
       />
       <CalendarGlobalStyles />
     </>

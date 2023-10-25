@@ -9,18 +9,21 @@ import Nottice from '../../components/Nottice/Nottice';
 import { useUserLogOutMutation } from '../../redux/features/authEndpoints';
 
 
+
 const ProfilePage = () => {
-  const [handleFunction, { data, isF }] = useUserLogOutMutation();
   return (
     <Container>
       <Title>Profile Settings</Title>
+
       <UserForm />
+
       <WrapperContent>
         <UserCard />
         {/* <Nottice /> */}
         {/* <Logout /> */}
         <UserForm />
       </WrapperContent>
+
       {/* <Nottice /> */}
       {/* <Logout /> */}
     </Container>

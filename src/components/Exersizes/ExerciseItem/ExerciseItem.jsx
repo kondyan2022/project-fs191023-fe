@@ -17,16 +17,6 @@ export const ExerciseItem = ({ exerciseCard }) => {
     <>
       <ListItem>
         <Workout>WORKOUT</Workout>
-        <Button type="button">
-          Start
-          <svg
-            width={16}
-            height={16}
-            style={{ verticalAlign: 'top', stroke: '#E6533C' }}
-          >
-            <use href={sprite + '#icon-arrow'} />
-          </svg>
-        </Button>
         <TitleBlock>
           <IconWraper>
             <svg
@@ -54,6 +44,16 @@ export const ExerciseItem = ({ exerciseCard }) => {
             Target: <Span>{target}</Span>
           </StatData>
         </Statistics>
+        <Button type="button">
+          Start
+          <svg
+            width={16}
+            height={16}
+            style={{ verticalAlign: 'top', stroke: '#E6533C' }}
+          >
+            <use href={sprite + '#icon-arrow'} />
+          </svg>
+        </Button>
       </ListItem>
     </>
   );
