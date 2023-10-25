@@ -13,7 +13,7 @@
 <path fill="none" stroke="#efede8" style="stroke: var(--color1, #efede8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.3" d="M13.166 20v-8M19.833 20v-8"></path>
 </symbol>
 <symbol id="icon-arrow" viewBox="0 0 32 32">
-<path fill="none" stroke="#e6533c" style="stroke: var(--color2, #e6533c)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.7733" d="M16 29.867l13.867-13.867M29.867 16l-13.867-13.867M29.867 16h-27.733"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.7733" d="M16 29.867l13.867-13.867M29.867 16l-13.867-13.867M29.867 16h-27.733"></path>
 </symbol>
 <symbol id="icon-trash" viewBox="0 0 32 32">
 <path fill="none" stroke="#ef8964" style="stroke: var(--color1, #ef8964)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.4" d="M12 4h8M13.333 14v6.667M18.667 14v6.667">
@@ -94,6 +94,9 @@
 
 <symbol id="icon-Line" viewBox="0 0 87 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="0.9275" d="M61.051 0.464c-20.416 0.3-65 3.913-60.233 22.304 4.284 12.985 65.327 10.195 80.388 0.425s-5.623-19.937-34.455-16.338"></path>
+</symbol>
+<symbol id="icon-menu" viewBox="0 0 46 32">
+<path fill="none" stroke="#e6533c" style="stroke: var(--color1, #e6533c)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.5556" d="M1.778 16h28.444M1.778 1.778h42.667M1.778 30.222h42.667"></path>
 </symbol>
 </defs>
 </svg>

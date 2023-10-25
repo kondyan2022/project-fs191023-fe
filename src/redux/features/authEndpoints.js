@@ -2,14 +2,18 @@ import { userSplitApi } from './userApi/fitnesApi';
 
 const authApiSlice = userSplitApi.injectEndpoints({
   endpoints: (builder) => ({
-    getRegUserProfile: builder.query({
+    getCurrentUser: builder.query({
       query: () => `users/current`, // /api/v1/auth/profile
       keepUnusedDataFor: 10,
       providesTags: ['userAuth'],
     }),
-    userRegister: builder.mutation({
+    getUserDiary: builder.query({
+      query: (id) => `users/diary/${id}`,
+      providesTags: ['userAuth'],
+    }),
+    userSignUp: builder.mutation({
       query: (newCredential) => ({
-        url: `users/signup/`,
+        url: `users/register`,
         method: 'POST',
         body: newCredential,
       }),
@@ -17,7 +21,7 @@ const authApiSlice = userSplitApi.injectEndpoints({
     }),
     userSignIn: builder.mutation({
       query: (credential) => ({
-        url: `users/login/`,
+        url: `users/login`,
         method: 'POST',
         body: credential,
       }),
@@ -34,8 +38,8 @@ const authApiSlice = userSplitApi.injectEndpoints({
 });
 
 export const {
-  useGetRegUserProfileQuery,
-  useUserRegisterMutation,
+  useGetCurrentUserQuery,
+  useUserSignUpMutation,
   useUserSignInMutation,
   useUserLogOutMutation,
 } = authApiSlice;
