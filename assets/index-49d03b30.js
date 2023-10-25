@@ -632,7 +632,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   .react-datepicker__navigation-title-day--next{
     width: 16px;
     height:16px;
-    margin-left:5px
+    margin-left:8px
     
   }
   .react-datepicker__navigation-title-day--previous{
@@ -641,7 +641,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     
   }  
 
-`,Ci="/project-fs191023-fe/assets/sprite-1552de7b.svg",Qx=({minDate:e,maxDate:t,disabledDates:r})=>{const[i,o]=x.useState(Date.now()),a=({onClick:n})=>$.jsxs(Vx,{children:[$.jsxs("div",{onClick:n,children:[qp(i,"dd/MM/yyyy"),$.jsx("svg",{width:"24",height:"24",className:"react-datepicker__calendar-icon",style:{stroke:"var(--color1)",zIndex:10},children:$.jsx("use",{href:Ci+"#icon-calendar"})})]}),$.jsxs("div",{className:"react-datepicker__navigation-title-day",children:[$.jsx("span",{onClick:l,className:"react-datepicker__navigation-title-day--previous",children:"<"}),$.jsx("span",{onClick:s,className:"react-datepicker__navigation-title-day--next",children:">"})]})]}),l=()=>{const n=my(i,1);e&&n<e||o(n)},s=()=>{const n=oa(i,1);t&&n>t||o(n)};return $.jsxs($.Fragment,{children:[$.jsx(Wx,{selected:i,onChange:n=>{e&&n<e||t&&n>t||o(n)},customInput:$.jsx(a,{}),dateFormat:"dd MM yyyy",calendarStartDay:1,formatWeekDay:n=>n.substr(0,1),excludeDates:r}),$.jsx(Yx,{})]})},Kx=()=>$.jsxs(oi,{children:[$.jsx(Qx,{}),$.jsx("div",{children:"SignIn Page"})]}),Gx=le.div`
+`,Ci="/project-fs191023-fe/assets/sprite-1552de7b.svg",Qx=({minDate:e,maxDate:t,disabledDates:r})=>{const[i,o]=x.useState(Date.now()),a=({onClick:n})=>$.jsxs(Vx,{children:[$.jsxs("div",{onClick:n,children:[qp(i,"dd/MM/yyyy"),$.jsx("svg",{width:"24",height:"24",className:"react-datepicker__calendar-icon",style:{stroke:"var(--color1)"},children:$.jsx("use",{href:Ci+"#icon-calendar"})})]}),$.jsxs("div",{className:"react-datepicker__navigation-title-day",children:[$.jsx("span",{onClick:l,className:"react-datepicker__navigation-title-day--previous",children:"<"}),$.jsx("span",{onClick:s,className:"react-datepicker__navigation-title-day--next",children:">"})]})]}),l=()=>{const n=my(i,1);e&&n<e||o(n)},s=()=>{const n=oa(i,1);t&&n>t||o(n)};return $.jsxs($.Fragment,{children:[$.jsx(Wx,{selected:i,onChange:n=>{e&&n<e||t&&n>t||o(n)},customInput:$.jsx(a,{}),dateFormat:"dd MM yyyy",calendarStartDay:1,formatWeekDay:n=>n.substr(0,1),excludeDates:r}),$.jsx(Yx,{})]})},Kx=()=>$.jsxs(oi,{children:[$.jsx(Qx,{}),$.jsx("div",{children:"SignIn Page"})]}),Gx=le.div`
   display: flex;
   justify-content: center;
   align-items: center;
