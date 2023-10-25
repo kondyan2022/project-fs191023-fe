@@ -232,7 +232,7 @@ export const TitleWrapper = styled.button`
   .react-datepicker__navigation-title-day--next{
     width: 16px;
     height:16px;
-    margin-left:5px
+    margin-left:8px
     
   }
   .react-datepicker__navigation-title-day--previous{
