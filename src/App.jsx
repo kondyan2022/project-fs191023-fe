@@ -11,14 +11,11 @@ import Error404Page from './pages/Error404Page/Error404Page';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { PublicRoute } from './components/PublicRoute/PublicRoute';
 
-
-
 const test = import.meta.env.VITE_API_TEST;
 
-const USER_IS_LOGINING = false;
+const USER_IS_LOGINING = true;
 
 function App() {
-
   console.log(test);
 
   return (
@@ -28,7 +25,7 @@ function App() {
           index
           element={
             <PrivateRoute redirectTo="/welcome" isLoggedIn={USER_IS_LOGINING}>
-              <DiaryPage/>
+              <DiaryPage />
             </PrivateRoute>
           }
         />

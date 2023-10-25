@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "4527dbde-54fd-4dcd-bd2e-34c3bb71fe17",
+		"name": "powerPlus-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27669464"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGFiNWVhMmI5ZGIyMjU3NDU1OGJiNSIsImlhdCI6MTY5NTIwMTc1OSwiZXhwIjoxNjk1Mjg0NTU5fQ.gTd4nNovq9qihPL3sTm21-C4QkpruUpmhcqKcpzwjkU"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"One\",\r\n    \"email\": \"one@one.com\",\r\n    \"password\": \"123456\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://power-plus-service.onrender.com/users/register"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"one0@one.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://power-plus-service.onrender.com/users/login"
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzM3NTg5NmI3NWM0MjM2NWI3N2EyMCIsImlhdCI6MTY5Nzg3MTQyNSwiZXhwIjoxNjk3OTU0MjI1fQ.T6zvlPSEZtjpvTEJqi5hoLco1c_GsnR1ZBUgm1edMWo"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://power-plus-service.onrender.com/users/logout"
+			},
+			"response": []
+		},
+		{
+			"name": "getCurrent",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzZhNGIwNTM2ZTQ4YThjYWYxYjI4MSIsImlhdCI6MTY5ODE0NjgyMiwiZXhwIjoxNjk4MjI5NjIyfQ.9aCm8erqo7LfV_CzaNVNj6YGtJWMDxoVvPdQ6iAALUU"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://power-plus-service.onrender.com/users/current"
+			},
+			"response": []
+		},
+		{
+			"name": "отправить файл avatar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzdmNjkyZjg1ZDdmNTM4MmFlOWYxOSIsImlhdCI6MTY5ODIyMTQ5MCwiZXhwIjoxNjk4MzA0MjkwfQ.sDMPFlj_mmwhryEr3FnbqjrcjKAkqMLS79zO3Yn0zr0"
+					}
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "content-type",
+							"value": "multipart/form-data",
+							"type": "text"
+						},
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/C:/Users/Admin/Pictures/nophoto.jpg"
+						}
+					]
+				},
+				"url": "https://power-plus-service.onrender.com/users/avatars"
+			},
+			"response": []
+		},
+		{
+			"name": "avatar get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MGFiNWVhMmI5ZGIyMjU3NDU1OGJiNSIsImlhdCI6MTY5NTIwMTc1OSwiZXhwIjoxNjk1Mjg0NTU5fQ.gTd4nNovq9qihPL3sTm21-C4QkpruUpmhcqKcpzwjkU"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subscription\": \"business\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://power-plus-service.onrender.com/avatars/6537f692f85d7f5382ae9f19_nophoto.jpg"
+			},
+			"response": []
+		},
+		{
+			"name": "get Exercises",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzZiNmEzNTM2ZTQ4YThjYWYxYjI4YiIsImlhdCI6MTY5ODA4NDUxNSwiZXhwIjoxNjk4MTY3MzE1fQ.lUeZU-5xiSr89Hh0-2fs8HnDFdcnWGNtweQ_e2Pr1G4"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "localhost:3000/exercises"
+			},
+			"response": []
+		},
+		{
+			"name": "get Products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzdkNGU3ZjU0NzE1YTZlYjZhZWMwYSIsImlhdCI6MTY5ODE1NzgyOSwiZXhwIjoxNjk4MjQwNjI5fQ.RwXStybR9-g-Mp0N6XfOpnlNuksAv8LSt7bB273NT44"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://power-plus-service.onrender.com/products"
+			},
+			"response": []
+		},
+		{
+			"name": "get ExerciseGroups",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzZiNmEzNTM2ZTQ4YThjYWYxYjI4YiIsImlhdCI6MTY5ODA4NDUxNSwiZXhwIjoxNjk4MTY3MzE1fQ.lUeZU-5xiSr89Hh0-2fs8HnDFdcnWGNtweQ_e2Pr1G4"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://power-plus-service.onrender.com/exercises/exercisegroups"
+			},
+			"response": []
+		},
+		{
+			"name": "get ProductsGroup",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzZiNmEzNTM2ZTQ4YThjYWYxYjI4YiIsImlhdCI6MTY5ODA4NDUxNSwiZXhwIjoxNjk4MTY3MzE1fQ.lUeZU-5xiSr89Hh0-2fs8HnDFdcnWGNtweQ_e2Pr1G4"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://power-plus-service.onrender.com/products/categories"
+			},
+			"response": []
+		},
+		{
+			"name": "Put profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzdmNjkyZjg1ZDdmNTM4MmFlOWYxOSIsImlhdCI6MTY5ODE2NjQxOCwiZXhwIjoxNjk4MjQ5MjE4fQ.rvyCoY0h0elKseb2GRjQcAN8tBMNW7OBjKOsz96pF0s"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"name\": \"www\",\r\n    \"profile\": {\r\n    \"height\": 170,\r\n  \"currentWeight\":65,\r\n  \"desiredWeight\": 70,\r\n  \"birthday\": \"12/20/2000\",\r\n      \"blood\": 4,\r\n  \"sex\": \"male\", \r\n  \"levelActivity\": 3    \r\n}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://power-plus-service.onrender.com/users/profile"
+			},
+			"response": []
+		},
+		{
+			"name": "Add exercise",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzdmNjkyZjg1ZDdmNTM4MmFlOWYxOSIsImlhdCI6MTY5ODE2NjQxOCwiZXhwIjoxNjk4MjQ5MjE4fQ.rvyCoY0h0elKseb2GRjQcAN8tBMNW7OBjKOsz96pF0s"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"exercise\": \"64f2458d6f67bc34bae4f7f7\",\r\n    \"date\": \"10/24/2023\",\r\n    \"time\": \"180\",\r\n    \"calories\": \"100\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://power-plus-service.onrender.com/diary/exercise"
+			},
+			"response": []
+		},
+		{
+			"name": "Add product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzdmNjkyZjg1ZDdmNTM4MmFlOWYxOSIsImlhdCI6MTY5ODIyMTQ5MCwiZXhwIjoxNjk4MzA0MjkwfQ.sDMPFlj_mmwhryEr3FnbqjrcjKAkqMLS79zO3Yn0zr0"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product\": \"5d51694902b2373622ff5773\",\r\n    \"date\": \"20231024\",\r\n    \"amount\": \"100\",\r\n    \"calories\": \"150\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://power-plus-service.onrender.com/diary/product"
+			},
+			"response": []
+		},
+		{
+			"name": "get diary",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzdmNjkyZjg1ZDdmNTM4MmFlOWYxOSIsImlhdCI6MTY5ODIyMTQ5MCwiZXhwIjoxNjk4MzA0MjkwfQ.sDMPFlj_mmwhryEr3FnbqjrcjKAkqMLS79zO3Yn0zr0"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"exercise\": \"64f2458d6f67bc34bae4f7f7\",\r\n    \"date\": \"20231024\",\r\n    \"time\": \"3\",\r\n    \"calories\": \"100\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://power-plus-service.onrender.com/diary/20231025"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
