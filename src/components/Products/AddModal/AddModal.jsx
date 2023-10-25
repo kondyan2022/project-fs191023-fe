@@ -1,17 +1,24 @@
-import { useState } from 'react';
 import {
   Backdrop,
-  Form,
+  FormBlock,
   Modal,
-  Grams,
   Calories,
+  ErrorMessage,
   ButtonsList,
   CloseButton,
+  Input,
+  GramsText,
 } from './AddModal.styled';
 import Button from '../../Button/Button';
+import { Form, Formik } from 'formik';
+import { inputSchema } from './AddModalSchema';
+import { useState } from 'react';
 
 const AddModal = ({ closeModal, title, calories }) => {
-  const [grams, setGrams] = useState(null);
+  const [countedCalories, setCalories] = useState(0);
+  const initialValues = {
+    grams: '',
+  };
 
   const addBtnStyles = {
     display: 'flex',
@@ -44,42 +51,72 @@ const AddModal = ({ closeModal, title, calories }) => {
     fontWeight: '500',
     lineHeight: '24px',
   };
+
+  const errorText = (e) => {
+    if (e.includes('grams must be a `number` type')) {
+      return 'grams must be a number';
+    }
+    if (e.includes('required')) {
+      return 'grams are required';
+    }
+    if (e.includes('positive')) {
+      return 'grams must be a positive number';
+    }
+  };
+
+  const onFormSubmit = (value) => {
+    setCalories(Math.round((calories / 100) * Number(value.grams)));
+    console.log({ ...value, calories: countedCalories });
+    closeModal();
+  };
+
   return (
     <Backdrop>
       <Modal>
         <CloseButton type="button" onClick={closeModal}>
           X
         </CloseButton>
-        <Form>
+        <FormBlock>
           <div>
             <p>{title.length > 25 ? title.slice(0, 24) + '...' : title}</p>
           </div>
-          <Grams>
-            <input
-              type="text"
-              value={grams}
-              onChange={(e) => {
-                setGrams(e.target.value);
-              }}
-            />
-            <p>grams</p>
-          </Grams>
-        </Form>
-        <Calories>
-          Calories: <span>{Math.round((calories / 100) * grams)}</span>
-        </Calories>
-        <ButtonsList>
-          <li>
-            <Button onClick={() => {}} type="submit" style={addBtnStyles}>
-              Add to diary
-            </Button>
-          </li>
-          <li>
-            <Button onClick={closeModal} style={cancelBtnStyles}>
-              Cancel
-            </Button>
-          </li>
-        </ButtonsList>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={inputSchema}
+            onSubmit={onFormSubmit}
+          >
+            {(formik) => (
+              <Form>
+                <Input name="grams" />
+                <ErrorMessage>
+                  {formik.errors.grams && errorText(formik.errors.grams)}
+                </ErrorMessage>
+                <ButtonsList>
+                  <li>
+                    <Button type="submit" style={addBtnStyles}>
+                      Add to diary
+                    </Button>
+                  </li>
+                  <li>
+                    <Button onClick={closeModal} style={cancelBtnStyles}>
+                      Cancel
+                    </Button>
+                  </li>
+                </ButtonsList>
+                <GramsText>grams</GramsText>
+                <Calories>
+                  Calories:
+                  <span>
+                    {formik.errors.grams
+                      ? ' -'
+                      : ' ' +
+                        Math.round((calories / 100) * formik.values.grams)}
+                  </span>
+                </Calories>
+              </Form>
+            )}
+          </Formik>
+        </FormBlock>
       </Modal>
     </Backdrop>
   );
