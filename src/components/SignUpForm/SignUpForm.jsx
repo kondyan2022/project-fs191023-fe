@@ -7,21 +7,24 @@ import {
     useGetRegUserProfileQuery
 } from '../../redux/features/endpoints'
 import { setToken } from '../../redux/features/userToken'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { FormBox, Input } from './SignUpForm.styled';
+import { useNavigate } from 'react-router';
 
 const SignUpForm = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const isLogin = useSelector((state) => state.token.isLogin);
-    const [status, setStatus] = useState('');
+    // const [status, setStatus] = useState('');
 
     const [
-        registerUser,
+        createUser,
         {
-            data: singUpResult,
+            data: createdUser,
             // isFetching: loader,
-            // isSuccess: successResponse,
-            // error: singUpError,
-            // isError: controlError
+            isSuccess: isCreateSuccess,
+            error: createError,
+            isError: isCreateError,
         },
     ] = useUserRegisterMutation();
 
@@ -44,25 +47,30 @@ const SignUpForm = () => {
     };
 
     const handleSubmit = async (values, { resetForm }) => {
-        try {
-            const response = await registerUser({ ...values });
-            if (response.error.message) {
-                setStatus(response.error.messaage);
-            } else {
-                setStatus('');
-                resetForm();
-            }
-        } catch (error) {
-            console.error('Error :', error);
-            setStatus('Error sending a request');
+        if (values) {
+            await createUser({ ...values });
+            resetForm();
+        } else {
+            console.log('Error')
         }
     };
 
     useEffect(() => {
-        if (singUpResult) {
-            dispatch(setToken(singUpResult.token));
+        if (isCreateSuccess) {
+            dispatch(setToken(createdUser.token));
+            navigate('/')
+            console.log(createdUser);
         }
-    }, [singUpResult, dispatch]);
+        // if (isCreateError) {
+        // setStatus(createError)
+        // }
+    }, [createdUser,
+        dispatch,
+        isCreateSuccess,
+        navigate,
+        // createError,
+        // isCreateError
+    ]);
 
     return (
         <div>
@@ -72,8 +80,8 @@ const SignUpForm = () => {
                 onSubmit={handleSubmit}
             >
                 {formikProps => (
-                    <Form>
-                        <Field
+                    <FormBox>
+                        <Input
                             type="text"
                             id="name"
                             name="name"
@@ -84,7 +92,7 @@ const SignUpForm = () => {
                             component="div"
                         />
 
-                        <Field
+                        <Input
                             type="email"
                             id="email"
                             name="email"
@@ -95,7 +103,7 @@ const SignUpForm = () => {
                             component="div"
                         />
 
-                        <Field
+                        <Input
                             type="password"
                             id="password"
                             name="password"
@@ -107,8 +115,8 @@ const SignUpForm = () => {
                         />
 
                         <Button primary={true} type='submit'>Sign Up</Button>
-                        {status && <div>{status}</div>}
-                    </Form>
+                        {isCreateError && <div>{createError.message}</div>}
+                    </FormBox>
                 )}
             </Formik>
         </div>

@@ -84,7 +84,7 @@ const SignInForm = () => {
                             type="email"
                             id="email"
                             name="email"
-                            placeholder="foobar@example.com"
+                            placeholder="Email"
                         />
                         <ErrorMessage
                             name="email"
@@ -95,7 +95,7 @@ const SignInForm = () => {
                             type="password"
                             id="password"
                             name="password"
-                            placeholder="foobar15"
+                            placeholder="Password"
                         />
                         <ErrorMessage
                             name="password"
