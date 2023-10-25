@@ -4,7 +4,7 @@ export const userSplitApi = createApi({
   reducerPath: 'fitnesApi',
   baseQuery: fetchBaseQuery({
     // базовий урл нашого бекенду
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://power-plus-service.onrender.com',
     prepareHeaders: (headers, { getState }) => {
       // збираємо хедер, додаємо токен якщо токен існує у стейті, інакше повертаємо хедер без токена
       const token = getState().token.token; // тягнемо токен зі стору
