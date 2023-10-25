@@ -7,10 +7,11 @@ import {
     useGetRegUserProfileQuery
 } from '../../redux/features/endpoints'
 import { setToken } from '../../redux/features/userToken'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const SignInForm = () => {
     const dispatch = useDispatch();
+    const [status, setStatus] = useState('');
     const isLogin = useSelector((state) => state.token.isLogin);
 
     const [
@@ -41,10 +42,22 @@ const SignInForm = () => {
     };
 
     const handleSubmit = async (values, { resetForm }) => {
-        // event.preventDefault();
-        await loginUser({ ...values })
-        // console.log({ ...values })
-        resetForm();
+        try {
+            const response = await loginUser({ ...values });
+            if (response.error) {
+                setStatus(response.error);
+            } else {
+                setStatus('');
+                resetForm();
+
+                if (successResponse) {
+                    dispatch(setToken(singInResult.token));
+                }
+            }
+        } catch (error) {
+            console.error('Error :', error);
+            setStatus('Error sending a request');
+        }
     };
 
     useEffect(() => {
@@ -89,6 +102,7 @@ const SignInForm = () => {
                             component="div"
                         />
                         <Button primary={true} type='submit'>Sign in</Button>
+                        {status && <div>{status}</div>}
                     </Form>
                 )}
             </Formik>
