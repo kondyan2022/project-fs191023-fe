@@ -1,33 +1,23 @@
 import styled from '@emotion/styled';
-
-export const List = styled.ul`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-
-  @media screen and (min-width: 768px) {
+ @media screen and (min-width: 768px) {
+    margin-bottom: 34px;
     flex-direction: row;
     flex-wrap: wrap;
+    row-gap: 32px;
+    column-gap: 16px;
+    max-height: calc(100vh - 364px);
     gap: 32px 16px;
-    height: 660px;
-    width: 704px;
-    overflow: auto;
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--color-orange-one);
-      border-radius: 12px;
-    }
-    &::-webkit-scrollbar-track {
-      background-color: rgba(239, 237, 232, 0.1);
-      border-radius: 12px;
-    }
+    max-width: 100%;
+    max-height: 726px;
   }
-
   @media screen and (min-width: 1440px) {
+    max-height: calc(100vh - 325px);
     width: 850px;
-    height: 487px;
+    max-width: 100%;
   }
 `;
 
