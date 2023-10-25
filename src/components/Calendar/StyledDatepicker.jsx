@@ -3,7 +3,7 @@ import { format, addDays, subDays } from "date-fns";
 import DatePicker from "react-datepicker";
 import { CalendarGlobalStyles, TitleWrapper } from "./StyledDatepicker.styled";
 import "react-datepicker/dist/react-datepicker.css";
-import calendarIcon from '../../images/sprite.svg#icon-calendar';
+import sprite from '../../images/sprite.svg';
 
 
 
@@ -15,8 +15,13 @@ const StyledDatepicker = ({ minDate, maxDate, disabledDates }) => {
       <TitleWrapper>        
         <div onClick={onClick}>
           {format(selectedDate, "dd/MM/yyyy")}   
-          <svg width="24" height="24" className="react-datepicker__calendar-icon">
-              <use xlinkHref={calendarIcon}></use>
+          <svg width="24" height="24"
+            className="react-datepicker__calendar-icon"
+            style={{
+                fill:'#ef8964',
+                zIndex: 10,
+              }}>
+              <use href={sprite + '#icon-calendar'} ></use>
         </svg>      
         </div>
         

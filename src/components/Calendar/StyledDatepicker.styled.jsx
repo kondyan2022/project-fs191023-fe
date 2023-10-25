@@ -201,8 +201,7 @@ export const TitleWrapper = styled.button`
   }
 
   .react-datepicker__calendar-icon{
-    fill: var(--color-orange) !important;
-    z-index: 9999;
+    fill: var(--color-orange)!important;   
     margin-left: 8px;
     margin-right: 40px;
     width: 24px;
