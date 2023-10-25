@@ -46,8 +46,8 @@ const SignUpForm = () => {
     const handleSubmit = async (values, { resetForm }) => {
         try {
             const response = await registerUser({ ...values });
-            if (response.error) {
-                setStatus(response.error);
+            if (response.error.message) {
+                setStatus(response.error.messaage);
             } else {
                 setStatus('');
                 resetForm();
