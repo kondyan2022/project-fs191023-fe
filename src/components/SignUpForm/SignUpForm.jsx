@@ -1,10 +1,10 @@
 import Button from '../Button/Button'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { validationSchemaRegister } from '../../utils/validateSchemes'
 import {
     useUserRegisterMutation,
-    useGetRegUserProfileQuery
+    // useGetRegUserProfileQuery
 } from '../../redux/features/endpoints'
 import { setToken } from '../../redux/features/userToken'
 import { useEffect } from 'react'
@@ -12,30 +12,29 @@ import { FormBox, Input } from './SignUpForm.styled';
 
 const SignUpForm = () => {
     const dispatch = useDispatch();
-    const isLogin = useSelector((state) => state.token.isLogin);
-    // const [status, setStatus] = useState('');
+    // const isLogin = useSelector((state) => state.token.isLogin);
 
     const [
         createUser,
         {
             data: createdUser,
             // isFetching: loader,
-            isSuccess: isCreateSuccess,
+            // isSuccess: isCreateSuccess,
             error: createError,
             isError: isCreateError,
         },
     ] = useUserRegisterMutation();
 
-    const {
-        data,
-        // isFetching,
-        // isSuccess,
-        // error,
-        // isError
-    } = useGetRegUserProfileQuery(isLogin, {
-        skip: !isLogin,
-        refetchOnReconnect: true,
-    });
+    // const {
+    //     data,
+    //     // isFetching,
+    //     // isSuccess,
+    //     // error,
+    //     // isError
+    // } = useGetRegUserProfileQuery(isLogin, {
+    //     skip: !isLogin,
+    //     refetchOnReconnect: true,
+    // });
 
 
     const initialValues = {
@@ -44,24 +43,17 @@ const SignUpForm = () => {
         password: '',
     };
 
-    const handleSubmit = async (values) => {
-        await createUser({ ...values });
+    const handleSubmit = (values) => {
+        createUser({ ...values });
     };
 
     useEffect(() => {
-        if (isCreateSuccess) {
+        if (createdUser && createdUser.token) {
             dispatch(setToken(createdUser.token));
             console.log(createdUser);
         }
-        // if (isCreateError) {
-        // setStatus(createError)
-        // }
     }, [createdUser,
         dispatch,
-        isCreateSuccess,
-        // navigate,
-        // createError,
-        // isCreateError
     ]);
 
     return (

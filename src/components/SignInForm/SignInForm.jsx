@@ -1,74 +1,55 @@
 import Button from '../Button/Button'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { validationSchemaLogin } from '../../utils/validateSchemes'
 import {
     useUserSignInMutation,
-    useGetRegUserProfileQuery
+    // useGetRegUserProfileQuery
 } from '../../redux/features/endpoints'
 import { setToken } from '../../redux/features/userToken'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 const SignInForm = () => {
     const dispatch = useDispatch();
-    const [status, setStatus] = useState('');
-    const isLogin = useSelector((state) => state.token.isLogin);
+    // const isLogin = useSelector((state) => state.token.isLogin);
 
     const [
         loginUser,
         {
             data: singInResult,
             // isFetching: loader,
-            isSuccess: successResponse,
-            error: singInError,
-            // isError: controlError
+            // isSuccess: successResponse,
+            // error: singInError,
+            isError: controlError
         },
     ] = useUserSignInMutation();
 
-    const {
-        data,
-        // isFetching,
-        // isSuccess,
-        // error,
-        // isError
-    } = useGetRegUserProfileQuery(isLogin, {
-        skip: !isLogin,
-        refetchOnReconnect: true,
-    });
+    // const {
+    //     data,
+    //     // isFetching,
+    //     // isSuccess,
+    //     // error,
+    //     // isError
+    // } = useGetRegUserProfileQuery(isLogin, {
+    //     skip: !isLogin,
+    //     refetchOnReconnect: true,
+    // });
 
     const initialValues = {
         email: '',
         password: '',
     };
 
-    const handleSubmit = async (values, { resetForm }) => {
-        try {
-            const response = await loginUser({ ...values });
-            if (response.error) {
-                setStatus(response.error);
-            } else {
-                setStatus('');
-                resetForm();
-
-                if (successResponse) {
-                    dispatch(setToken(singInResult.token));
-                }
-            }
-        } catch (error) {
-            console.error('Error :', error);
-            setStatus('Error sending a request');
-        }
+    const handleSubmit = async (values) => {
+        await loginUser({ ...values });
     };
 
     useEffect(() => {
-        if (successResponse) {
+        if (singInResult && singInResult.token) {
             dispatch(setToken(singInResult.token))
-            console.log('isSuccess :', data);
-        } else {
-            console.log('Error: ', singInError);
+            console.log(singInResult);
         }
-
-    }, [successResponse, singInResult, data, dispatch, singInError])
+    }, [singInResult, dispatch])
 
 
     return (
@@ -102,7 +83,7 @@ const SignInForm = () => {
                             component="div"
                         />
                         <Button primary={true} type='submit'>Sign in</Button>
-                        {status && <div>{status}</div>}
+                        {controlError && <div>{controlError.message}</div>}
                     </Form>
                 )}
             </Formik>
