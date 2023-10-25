@@ -10,13 +10,19 @@ import ExercisesPage from './pages/ExercisesPage/ExercisePage';
 import Error404Page from './pages/Error404Page/Error404Page';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { PublicRoute } from './components/PublicRoute/PublicRoute';
+import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
+import { useSelector } from 'react-redux';
+import { selectToken } from './redux/selectors';
 
-const test = import.meta.env.VITE_API_TEST;
+// const test = import.meta.env.VITE_API_TEST;
 
-const USER_IS_LOGINING = false;
+// const USER_IS_LOGINING = true;
 
 function App() {
-  console.log(test);
+  const isLoggedIn = useSelector(selectToken);
+  console.log(isLoggedIn);
+
+  useGetCurrentUserQuery();
 
   return (
     <Routes>
@@ -24,7 +30,7 @@ function App() {
         <Route
           index
           element={
-            <PrivateRoute redirectTo="/welcome" isLoggedIn={USER_IS_LOGINING}>
+            <PrivateRoute redirectTo="/welcome" isLoggedIn={isLoggedIn}>
               <DiaryPage />
             </PrivateRoute>
           }
@@ -32,7 +38,7 @@ function App() {
         <Route
           path="/welcome"
           element={
-            <PublicRoute restricted isLoggedIn={USER_IS_LOGINING}>
+            <PublicRoute restricted isLoggedIn={isLoggedIn}>
               <WelcomePage />
             </PublicRoute>
           }
@@ -40,7 +46,7 @@ function App() {
         <Route
           path="/signup"
           element={
-            <PublicRoute restricted isLoggedIn={USER_IS_LOGINING}>
+            <PublicRoute restricted isLoggedIn={isLoggedIn}>
               <SignUpPage />
             </PublicRoute>
           }
@@ -48,7 +54,7 @@ function App() {
         <Route
           path="/signin"
           element={
-            <PublicRoute restricted isLoggedIn={USER_IS_LOGINING}>
+            <PublicRoute restricted isLoggedIn={isLoggedIn}>
               <SignInPage />
             </PublicRoute>
           }
@@ -56,11 +62,7 @@ function App() {
         <Route
           path="/profile"
           element={
-            <PrivateRoute
-              redirectTo="/signin"
-              selfCall
-              isLoggedIn={USER_IS_LOGINING}
-            >
+            <PrivateRoute redirectTo="/signin" selfCall isLoggedIn={isLoggedIn}>
               <ProfilePage />
             </PrivateRoute>
           }
@@ -69,7 +71,7 @@ function App() {
         <Route
           path="/products"
           element={
-            <PrivateRoute redirectTo="/signin" isLoggedIn={USER_IS_LOGINING}>
+            <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
               <ProductsPage />
             </PrivateRoute>
           }
@@ -77,7 +79,7 @@ function App() {
         <Route
           path="/exercises"
           element={
-            <PrivateRoute redirectTo="/signin" isLoggedIn={USER_IS_LOGINING}>
+            <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
               <ExercisesPage />
             </PrivateRoute>
           }
