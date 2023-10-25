@@ -1,12 +1,17 @@
 import styled from 'styled-components'
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import {
+    // Formik,
+    Field,
+    Form,
+    // ErrorMessage
+} from 'formik';
 
 export const Input = styled(Field)`
-    /* background-color: transparent;
-    padding: 14px 310px 14px 14px;
+    background-color: transparent;
+    padding: 14px 31px 14px 14px;
     border-radius: 12px;
-    border: 1px solid rgba(239, 237, 232, 0.30);
-    outline: none;
+    outline: 1px solid rgba(239, 237, 232, 0.30);
+    /* outline: none; */
     color: var(--color-white);
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
@@ -23,7 +28,28 @@ export const Input = styled(Field)`
       font-size: 16px;
       line-height: 1.5;
     }
-    } */
+    }
+
+     &:hover,
+  &:focus {
+    outline: 1px solid #e6533c;
+
+    outline: 0;
+  }
+  &.default {
+    outline: 1px solid rgba(239, 237, 232, 0.3);
+  }
+  &.success {
+    outline: 1px solid #3cbf61;
+  }
+  &.error {
+    outline: 1px solid rgba(248, 5, 5, 0.973);
+  }
+
+  @media screen and (min-width: 375px) {
+    width: 335px;
+    height: 46px;
+  }
 `
 
 export const FormBox = styled(Form)`

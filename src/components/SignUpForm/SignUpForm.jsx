@@ -44,6 +44,7 @@ const SignUpForm = () => {
     };
 
     const handleSubmit = (values) => {
+        console.log(values)
         createUser({ ...values });
     };
 
@@ -63,13 +64,16 @@ const SignUpForm = () => {
                 validationSchema={validationSchemaRegister}
                 onSubmit={handleSubmit}
             >
-                {formikProps => (
+                {({ errors, touched }) => (
                     <FormBox>
                         <Input
                             type="text"
                             id="name"
                             name="name"
                             placeholder="Name"
+                            className={`${'defoult'}
+                    ${touched.name && !errors.name && 'success'}
+                    ${touched.name && errors.name && 'error'}`}
                         />
                         <ErrorMessage
                             name="name"
@@ -81,6 +85,9 @@ const SignUpForm = () => {
                             id="email"
                             name="email"
                             placeholder="Email"
+                            className={`${'defoult'}
+                    ${touched.email && !errors.email && 'success'}
+                    ${touched.email && errors.email && 'error'}`}
                         />
                         <ErrorMessage
                             name="email"
@@ -92,6 +99,9 @@ const SignUpForm = () => {
                             id="password"
                             name="password"
                             placeholder="Password"
+                            className={`${'defoult'}
+                    ${touched.email && !errors.email && 'success'}
+                    ${touched.email && errors.email && 'error'}`}
                         />
                         <ErrorMessage
                             name="password"
