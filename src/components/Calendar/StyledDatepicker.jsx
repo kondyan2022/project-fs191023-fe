@@ -10,8 +10,24 @@ const StyledDatepicker = () => {
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (
-      <TitleWrapper onClick={onClick} ref={ref}>       
-        {format(selectedDate, "dd/MM/yyyy")}                
+
+      <TitleWrapper>        
+        <div onClick={onClick}>
+          {format(selectedDate, "dd/MM/yyyy")}   
+          <svg width="24" height="24"
+            className="react-datepicker__calendar-icon"
+            style={{
+                stroke: 'var(--color1)'                
+              }}>
+              <use href={sprite + '#icon-calendar'} ></use>
+        </svg>      
+        </div>
+        
+        <div className="react-datepicker__navigation-title-day">
+          <span onClick={handlePrevDay} className="react-datepicker__navigation-title-day--previous">&lt;</span>
+          <span onClick={handleNextDay} className="react-datepicker__navigation-title-day--next">&gt;</span>
+        </div>
+        
       </TitleWrapper>
     );
   });

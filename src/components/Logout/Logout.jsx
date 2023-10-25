@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import sprite from '../../images/sprite.svg';
 import { LogoutLink, Text, Wrapper } from './Logout.styled';
-import { useUserLogOutMutation } from '../../redux/features/endpoints';
+import { useUserLogOutMutation } from '../../redux/features/authEndpoints';
 
 const Logout = () => {
   const dispatch = useDispatch();
