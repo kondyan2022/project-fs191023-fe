@@ -271,7 +271,7 @@ letter-spacing: 0.7px;
     padding-top: 200px;
     padding-bottom: 246px;
     }
-`,Y7=()=>{const e=Pd(),t=()=>e("/signup"),i=()=>e("/signin");return _.jsx(G7,{children:_.jsx(ni,{children:_.jsxs("div",{children:[_.jsx(W7,{children:_.jsx(K7,{children:"Transforming your body shape with Power Pulse"})}),_.jsxs(Q7,{children:[_.jsx(ia,{onClick:t,style:$o,primary:!0,children:"Sign Up"}),_.jsx(ia,{onClick:i,style:$o,children:"Sign In"})]}),_.jsxs("div",{children:[_.jsx(H7,{icon:_.jsx(IconRunMenStyled,{}),number:"350+",value:"Video tutorial"}),_.jsx(L7,{icon:_.jsx(IconRunMenStyled,{}),number:"500",value:"cal"})]})]})})})},Z7=()=>_.jsx(ni,{children:_.jsx("div",{children:"SignUp Page"})}),J7=()=>_.jsx(ni,{children:_.jsx("div",{children:"SignIn Page"})}),X7=Z.div`
+`,Y7=()=>{const e=Pd(),t=()=>e("/signup"),i=()=>e("/signin");return _.jsx(G7,{children:_.jsx(ni,{children:_.jsxs("div",{children:[_.jsx(W7,{children:_.jsx(K7,{children:"Transforming your body shape with Power Pulse"})}),_.jsxs(Q7,{children:[_.jsx(ia,{onClick:t,style:$o,primary:!0,children:"Sign Up"}),_.jsx(ia,{onClick:i,style:$o,children:"Sign In"})]}),_.jsxs("div",{children:[_.jsx(H7,{number:"350+",value:"Video tutorial"}),_.jsx(L7,{number:"500",value:"cal"})]})]})})})},Z7=()=>_.jsx(ni,{children:_.jsx("div",{children:"SignUp Page"})}),J7=()=>_.jsx(ni,{children:_.jsx("div",{children:"SignIn Page"})}),X7=Z.div`
   display: flex;
   justify-content: center;
   align-items: center;
