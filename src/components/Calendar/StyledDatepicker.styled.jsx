@@ -1,6 +1,7 @@
 import { createGlobalStyle, styled } from "styled-components";
 
 
+
 export const DataBtn = styled.div`
   padding: 6px 12px;
   color: #ffffff;
@@ -183,31 +184,48 @@ export const CalendarGlobalStyles = createGlobalStyle`
 `;
 
 export const TitleWrapper = styled.button`
-    height: 32px;
-    width: 239px;
+    height: 20px;
+    width: 183px;
     color: var(--color-white);
     background:transparent ; 
     font-weight: 700;
-    line-height: 32px;
+    line-height: 20px;
     text-align: center;
     text-transform: uppercase;
     padding: 0px 0px;
-    font-size: 24px;  
+    font-size: 18px;  
     align-items: left;
     display: inline-flex;  
+    justify-content:space-between;
+    align-content:center;
+    @media screen and (min-width: 768px) {
+      height: 32px;
+      width: 239px;
+      line-height: 32px;
+      font-size: 24px;
+    }
+
 
   .react-datepicker__containet-bottom{
     width: 161px;
+    @media screen and (min-width: 768px) {
+      
+    }
   }
 
   .react-datepicker__calendar-icon{
-    fill: var(--color-orange)!important;   
+    fill: var(--color-orange);   
     margin-left: 8px;
-    margin-right: 40px;
-    width: 24px;
-    height:24px;
+    margin-right: auto;
+    width: 20px;
+    height:20px;
     padding:0px;
     position: initial; 
+
+    @media screen and (min-width: 768px) {
+      width: 24px;
+      height:24px;
+    }
 
   }
 
