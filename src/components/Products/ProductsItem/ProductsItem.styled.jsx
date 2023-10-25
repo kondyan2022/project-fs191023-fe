@@ -1,14 +1,27 @@
 import styled from '@emotion/styled';
 
 export const ActionBlock = styled.div`
-  margin-bottom: 27px;
+  margin-bottom: 35px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 27px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 30px;
+  }
+`;
+
+export const Wrap = styled.div`
+  display: flex;
+  gap: 12px;
 `;
 
 export const Recommended = styled.div`
   display: flex;
-  margin-left: ${(props) => (props.isRecomm ? '160px' : '140px')};
 
   p {
     margin: auto 0;
@@ -43,17 +56,34 @@ export const Diet = styled.div`
 export const Button = styled.button`
   color: var(--color-orange);
   background-color: inherit;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 18px;
   display: flex;
   align-items: center;
   padding: 0 2px;
-  margin-left: 12px;
-  /* padding: 0; */
-
+  transition: all 0.1s linear;
+  
   svg {
     width: 16px;
     height: 16px;
     margin-left: 8px;
+    stroke: var(--color-orange);
+    transition: all 0.1s linear;
+  }
+
+  &:hover {
+    color: var(--color-orange-one);
+
+    svg {
+      stroke: var(--color-orange-one);
+      /* fill: var(--color-beige); */
+      /* color: var(--color-beige); */
+    }
+  }
+  /* style="stroke: var(--color2, #e6533c)"  */
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 24px;
   }
 `;
 
@@ -79,19 +109,26 @@ export const Title = styled.div`
   }
 
   p {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 20px;
+    line-height: 24px;
     margin: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    p {
+      font-size: 24px;
+      line-height: 32px;
+    }
   }
 `;
 
 export const DetailsList = styled.ul`
   display: flex;
   gap: 16px;
-  font-size: 12px;
-  line-height: 18px;
-
+  
   li p {
+    font-size: 12px;
+    line-height: 18px;
     color: rgba(239, 237, 232, 0.4);
     span {
       margin-left: 4px;
@@ -99,3 +136,4 @@ export const DetailsList = styled.ul`
     }
   }
 `;
+

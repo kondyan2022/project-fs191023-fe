@@ -5,6 +5,7 @@ const ProductsList = () => {
   const partOfProducts = products.slice(1, 16);
   return (
     <Container>
+
       <List>
         {partOfProducts.map(({ _id, weight, calories, category, title }) => (
           <Card key={_id.$oid}>
