@@ -1,9 +1,28 @@
 import Container from '../../components/Container/Container';
+import UserCard from '../../components/UserCard/UserCard';
+import { Title, WrapperContent } from './ProfilePage.styled';
+import UserForm from '../../components/UserForm/UserForm';
+import Logout from '../../components/Logout/Logout';
+import Nottice from '../../components/Nottice/Nottice';
+
+
+import { useUserLogOutMutation } from '../../redux/features/authEndpoints';
+
 
 const ProfilePage = () => {
+  const [handleFunction, { data, isF }] = useUserLogOutMutation();
   return (
     <Container>
-      <div>Profile Page</div>
+      <Title>Profile Settings</Title>
+      <UserForm />
+      <WrapperContent>
+        <UserCard />
+        {/* <Nottice /> */}
+        {/* <Logout /> */}
+        <UserForm />
+      </WrapperContent>
+      {/* <Nottice /> */}
+      {/* <Logout /> */}
     </Container>
   );
 };

@@ -8,6 +8,7 @@ export const Header = () => {
 
   return (
     <Container>
+
       <HeaderContainer
         style={
           USER_IS_LOGINING
@@ -22,6 +23,7 @@ export const Header = () => {
         </Link>
         {USER_IS_LOGINING && <UserMenu />}
       </HeaderContainer>
+
     </Container>
   );
 };
