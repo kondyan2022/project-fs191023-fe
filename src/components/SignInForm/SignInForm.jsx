@@ -1,19 +1,21 @@
 import Button from '../Button/Button'
 import { Formik, ErrorMessage } from 'formik';
 import { FormBox, Input } from './SignInForm.styled';
-
 import { useDispatch } from 'react-redux'
 import { validationSchemaLogin } from '../../utils/validateSchemes'
 import {
     useUserSignInMutation,
-    // useGetRegUserProfileQuery
 } from '../../redux/features/authEndpoints'
 import { setToken } from '../../redux/features/userToken'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import spriteSvG from '../../images/sprite.svg'
 
 const SignInForm = () => {
     const dispatch = useDispatch();
-    // const isLogin = useSelector((state) => state.token.isLogin);
+
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePasswordVisibility = () => setShowPassword(!showPassword);
+
 
     const [
         loginUser,
@@ -25,17 +27,6 @@ const SignInForm = () => {
             isError: controlError
         },
     ] = useUserSignInMutation();
-
-    // const {
-    //     data,
-    //     // isFetching,
-    //     // isSuccess,
-    //     // error,
-    //     // isError
-    // } = useGetRegUserProfileQuery(isLogin, {
-    //     skip: !isLogin,
-    //     refetchOnReconnect: true,
-    // });
 
     const initialValues = {
         email: '',
@@ -78,7 +69,7 @@ const SignInForm = () => {
                         />
 
                         <Input
-                            type="password"
+                            type={showPassword ? 'text' : 'password'}
                             id="password"
                             name="password"
                             placeholder="Password"
@@ -86,10 +77,24 @@ const SignInForm = () => {
                     ${touched.name && !errors.name && 'success'}
                     ${touched.name && errors.name && 'error'}`}
                         />
-                        <ErrorMessage
-                            name="password"
-                            component="div"
-                        />
+                        <ErrorMessage name="password" component="div" />
+                        {showPassword ? (
+                            <button
+                                type="button"
+                                onClick={togglePasswordVisibility}
+                            >
+                                <svg>
+                                    <use href={`${spriteSvG}#icon-pasword-visible`} />
+                                </svg>
+                            </button>
+                        ) : (<button
+                            type="button"
+                            onClick={togglePasswordVisibility}
+                        >
+                            <svg>
+                                <use href={`${spriteSvG}#icon-password-hidden`} />
+                            </svg>
+                        </button>)}
                         <Button primary={true} type='submit'>Sign in</Button>
                         {controlError && <div>{controlError.message}</div>}
                     </FormBox>
