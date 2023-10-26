@@ -13,6 +13,10 @@ import { PublicRoute } from './components/PublicRoute/PublicRoute';
 import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
 import { useSelector } from 'react-redux';
 import { selectToken } from './redux/selectors';
+import { ExersizeWrap } from './components/Exersizes/ExercisesWrap/ExercisesWrap';
+import { BodyPartsBoard } from './components/Exersizes/ExercisesBoard/BodyPartsBoard';
+import { MusclesBoard } from './components/Exersizes/ExercisesBoard/MusclesBoard';
+import { EquipmentBoard } from './components/Exersizes/ExercisesBoard/EquipmentBoard';
 
 // const test = import.meta.env.VITE_API_TEST;
 
@@ -84,6 +88,11 @@ function App() {
             </PrivateRoute>
           }
         >
+
+             <Route index element={<ExersizeWrap />}/>
+          <Route path="bodyparts" element={<BodyPartsBoard/>} />
+          <Route path="muscles" element={<MusclesBoard/>} />
+          <Route path="equipment" element={<EquipmentBoard />} />
           {/* може роути тут */}
         </Route>
         <Route path="*" element={<Error404Page />} />
