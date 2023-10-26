@@ -1,26 +1,26 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+// import axios from 'axios';
+// import { useEffect, useState } from 'react';
 import ProductsItem from '../ProductsItem/ProductsItem';
 // import products from '../../../../resources/products.json';
 import { Card, List } from './ProductsList.styled';
 import { useGetAllProductsQuery } from '../../../redux/features/prodEndpoints';
 const ProductsList = () => {
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
 
-  const getAllProducts = async (skip = 0) => {
-    const res = await axios.get(
-      `https://power-plus-service.onrender.com/products`,
-    );
-    return res;
-  };
+  // const getAllProducts = async (skip = 0) => {
+  //   const res = await axios.get(
+  //     `https://power-plus-service.onrender.com/products`,
+  //   ); Без токена 204
+  //   return res;
+  // };
 
-  const { data, isLoading, isError } = useGetAllProductsQuery(
-    ['products', page],
-    () => getAllProducts(page), {
-      keepPreviousData: true,
-    }
-  );
-  // console.log(data);
+  const { data, isLoading, isError } =
+    useGetAllProductsQuery();
+    // ['products', page],
+    // () => getAllProducts(page), {
+    //   keepPreviousData: true,
+    // }
+  console.log(data);
   const products = data?.slice(0, 20);
 
   return (
