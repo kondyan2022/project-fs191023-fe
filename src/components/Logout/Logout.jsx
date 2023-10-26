@@ -8,9 +8,9 @@ const Logout = () => {
   const dispatch = useDispatch();
   const [userLogOut] = useUserLogOutMutation();
 
-  const handleLogOut = async () => {
+  const handleLogOut = () => {
     // console.log(userLogOut);
-    await userLogOut();
+    userLogOut();
     dispatch(logOut());
   };
 
