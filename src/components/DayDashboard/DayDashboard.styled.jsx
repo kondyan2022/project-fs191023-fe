@@ -4,9 +4,15 @@ import styled from '@emotion/styled';
 export const DayStatisticsComponent = styled.ul`
     display:flex;
     gap: 20px 13px;
-    width: 355px;
     flex-wrap: wrap;
     margin-bottom:20px;
+    width:100%;
+
+@media screen and (min-width: 375px){
+    width: 335px;
+    justify-content:center;
+}
+ 
 
     @media screen and (min-width: 768px){
    
@@ -22,9 +28,13 @@ export const DayStatisticsComponent = styled.ul`
 `
 
 export const Masseg = styled.div`
-    width:335px;
+    max-width:335px;
     display:flex;
     margin-bottom:40px;
+
+    @media screen and (min-width: 375px){
+      width:335px;
+    }
 
     @media screen and (min-width: 768px){
         width:561px;
