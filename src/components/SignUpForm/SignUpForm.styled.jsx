@@ -32,6 +32,8 @@ export const Input = styled(Field)`
 
      &:hover,
   &:focus {
+    background-color: transparent;
+
     outline: 1px solid #e6533c;
 
     outline: 0;
@@ -46,10 +48,10 @@ export const Input = styled(Field)`
     outline: 1px solid rgba(248, 5, 5, 0.973);
   }
 
-  @media screen and (min-width: 375px) {
+  /* @media screen and (min-width: 375px) {
     width: 335px;
     height: 46px;
-  }
+  } */
 `
 
 export const FormBox = styled(Form)`

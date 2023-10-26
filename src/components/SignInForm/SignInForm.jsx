@@ -1,5 +1,7 @@
 import Button from '../Button/Button'
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
+import { FormBox, Input } from './SignInForm.styled';
+
 import { useDispatch } from 'react-redux'
 import { validationSchemaLogin } from '../../utils/validateSchemes'
 import {
@@ -59,24 +61,30 @@ const SignInForm = () => {
                 validationSchema={validationSchemaLogin}
                 onSubmit={handleSubmit}
             >
-                {formikProps => (
-                    <Form>
-                        <Field
+                {({ errors, touched }) => (
+                    <FormBox>
+                        <Input
                             type="email"
                             id="email"
                             name="email"
                             placeholder="Email"
+                            className={`${'defoult'}
+                    ${touched.name && !errors.name && 'success'}
+                    ${touched.name && errors.name && 'error'}`}
                         />
                         <ErrorMessage
                             name="email"
                             component="div"
                         />
 
-                        <Field
+                        <Input
                             type="password"
                             id="password"
                             name="password"
                             placeholder="Password"
+                            className={`${'defoult'}
+                    ${touched.name && !errors.name && 'success'}
+                    ${touched.name && errors.name && 'error'}`}
                         />
                         <ErrorMessage
                             name="password"
@@ -84,7 +92,7 @@ const SignInForm = () => {
                         />
                         <Button primary={true} type='submit'>Sign in</Button>
                         {controlError && <div>{controlError.message}</div>}
-                    </Form>
+                    </FormBox>
                 )}
             </Formik>
         </div>
