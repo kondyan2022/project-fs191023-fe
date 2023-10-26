@@ -7,15 +7,9 @@ import {
   SvgLogoUser,
   TitleName,
   Wrapper,
-  // WrapperDaily,
 } from './UserCard.styled';
 import { useState } from 'react';
 import sprite from '../../images/sprite.svg';
-// import dayStatistics from '../../../resources/dayStatistics.json';
-
-// import Nottice from './../Nottice/Nottice';
-// import Logout from '../Logout/Logout';
-// import { OrangCard } from './../OneStatistic/OneStatistic.styled';
 
 const UserCard = (user) => {
   const [avatar, setAvatar] = useState(user.avatarURL);
