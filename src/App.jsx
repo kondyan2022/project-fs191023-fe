@@ -26,8 +26,6 @@ function App() {
   const isLoggedIn = useSelector(isLogin);
   console.log(isLoggedIn);
 
-  useGetCurrentUserQuery();
-
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
