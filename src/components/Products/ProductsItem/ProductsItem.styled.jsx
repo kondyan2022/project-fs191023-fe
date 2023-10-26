@@ -80,7 +80,6 @@ export const Button = styled.button`
       /* color: var(--color-beige); */
     }
   }
-  /* style="stroke: var(--color2, #e6533c)"  */
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 24px;
