@@ -13,7 +13,7 @@ export const tokenReducer = createSlice({
       state.token = action.payload;
       state.isLogin = true;
     },
-    logOut: (state, action) => {
+    logOut: (state) => {
       state.token = null;
       state.isLogin = false;
     },

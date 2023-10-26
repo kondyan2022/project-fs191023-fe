@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import Container from '../../components/Container/Container';
 import ProductsList from '../../components/Products/ProductsList/ProductsList';
+
 import { useGetAllProductsQuery } from '../../redux/features/prodEndpoints';
 import { useSelector } from 'react-redux';
 import { isLogin } from '../../redux/selectors';
@@ -28,6 +30,7 @@ const ProductsPage = () => {
   //  isError - якщо була помилка запиту, повертає true або нічого, бо при false значить успішний запит і поверне 'isSuccess' = true
   // isSuccess - якщо запит успішний = true
   // Всі дані при першому запиту зберігаються у кеш, тому наступні запити вже не йдуть до бекенду а йдуть в кеш, якщо дані не змінювались
+
 
   return (
     <Container>
