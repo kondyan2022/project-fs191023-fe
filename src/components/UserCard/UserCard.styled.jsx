@@ -14,8 +14,9 @@ export const Wrapper = styled.div`
 export const Avatar = styled.div`
   width: 90px;
   height: 90px;
+  margin-top: 40px;
   border-radius: 100px;
-  border: 1px solid #e6533c;
+  border: 1px solid var(--color-orange);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,20 +57,21 @@ export const IconBtn = styled.svg`
 `;
 
 export const TitleName = styled.p`
-  color: #efede8;
+  color: var(--color-white);
 
   @media screen and (min-width: 768px) {
-    font-family: 'RobotoRegular';
+    font-family: 'Roboto';
     font-size: 24px;
     line-height: 28px;
   }
 `;
 
 export const Subtitle = styled.p`
-  font-family: 'RobotoRegular';
+  font-family: 'Roboto';
+  font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: var(--normal-color);
+  color: var(--accent-color-grey);
   margin-top: 4px;
 
   @media screen and (min-width: 768px) {
@@ -83,4 +85,10 @@ export const WrapperDaily = styled.div`
   align-items: center;
   gap: 14px;
   margin-top: 40px;
+
+  @media screen and (max-width: 320px) {
+    display: grid;
+    grid-template-columns: 157px 165px;
+    justify-content: flex-start;
+  }
 `;

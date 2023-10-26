@@ -7,16 +7,15 @@ import {
   SvgLogoUser,
   TitleName,
   Wrapper,
-  WrapperDaily,
+  // WrapperDaily,
 } from './UserCard.styled';
 import { useState } from 'react';
 import sprite from '../../images/sprite.svg';
 // import dayStatistics from '../../../resources/dayStatistics.json';
 
-import { OrangCard } from '../OneStatistic/OneStatistic.styled';
-// import { OneStatistic } from './../OneStatistic/OneStatistic';
-import Nottice from './../Nottice/Nottice';
-import Logout from '../Logout/Logout';
+// import Nottice from './../Nottice/Nottice';
+// import Logout from '../Logout/Logout';
+// import { OrangCard } from './../OneStatistic/OneStatistic.styled';
 
 const UserCard = (user) => {
   const [avatar, setAvatar] = useState(user.avatarURL);
@@ -42,26 +41,6 @@ const UserCard = (user) => {
       </Button>
       <TitleName>{user.name}</TitleName>
       <Subtitle>User</Subtitle>
-      <WrapperDaily>
-        <OrangCard
-          style={{
-            width: '214px',
-            height: '108px',
-          }}
-        >
-          <p>Daily calorie intake</p>
-        </OrangCard>
-        <OrangCard
-          style={{
-            width: '214px',
-            height: '108px',
-          }}
-        >
-          <p>Daily norm of sports</p>
-        </OrangCard>
-      </WrapperDaily>
-      <Nottice />
-      <Logout />
     </Wrapper>
   );
 };
