@@ -2,11 +2,17 @@ import { useDispatch } from 'react-redux';
 import sprite from '../../images/sprite.svg';
 import { LogoutLink, Text, Wrapper } from './Logout.styled';
 import { useUserLogOutMutation } from '../../redux/features/authEndpoints';
+import { logOut } from '../../redux/features/userToken';
 
 const Logout = () => {
   const dispatch = useDispatch();
-  const logout = useUserLogOutMutation();
-  const handleLogOut = () => dispatch(logout());
+  const [userLogOut] = useUserLogOutMutation();
+
+  const handleLogOut = async () => {
+    // console.log(userLogOut);
+    await userLogOut();
+    dispatch(logOut());
+  };
 
   return (
     <Wrapper>
