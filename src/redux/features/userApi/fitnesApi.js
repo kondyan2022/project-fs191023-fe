@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-const { VITE_API_TEST } = import.meta.env;
+const base_url = 'https://power-plus-service.onrender.com';
 
 export const userSplitApi = createApi({
   //
   reducerPath: 'fitnesApi',
   baseQuery: fetchBaseQuery({
     // базовий урл нашого бекенду
-    baseUrl: VITE_API_TEST,
+    baseUrl: base_url,
     prepareHeaders: (headers, { getState }) => {
       // збираємо хедер, додаємо токен якщо токен існує у стейті, інакше повертаємо хедер без токена
       const token = getState().token.token; // тягнемо токен зі стору
