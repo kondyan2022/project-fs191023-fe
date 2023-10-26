@@ -6,7 +6,7 @@ export const OrangCard = styled.li`
     justify-content: space-between;
 
 
-width: calc(50% - 7px);
+width: 100%;
 height: 96px;
 padding: 14px 8px;
 background-color:var(--color-orange);
@@ -51,7 +51,7 @@ export const GreyCard = styled.li`
     flex-direction: column;
     justify-content: space-between;
 
-width: calc(50% - 7px);
+width: 100%;
 height: 96px;
 padding: 14px 10px;
 background-color:rgba(239, 237, 232, 0.05);
@@ -59,13 +59,10 @@ background-color:rgba(239, 237, 232, 0.05);
 border-radius: 12px;
 border: 1px solid;
 border-color:rgba(239, 237, 232, 0.2);
-/* ${props => (props.normDone)}; */
+
 
 :last-child {
- border-color: ${props => props.normDone.sport }; 
-}
-:nth-last-child(2){
-border-color: ${props => props.normDone.calory }; 
+ border-color: ${props => props.isSport? props.normDone.sport :  props.normDone.calory}; 
 }
 
 
