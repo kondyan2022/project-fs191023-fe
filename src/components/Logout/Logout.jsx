@@ -6,13 +6,12 @@ import { logOut } from '../../redux/features/userToken';
 
 const Logout = () => {
   const dispatch = useDispatch();
-  const [userLogOut, data] = useUserLogOutMutation();
+  const [userLogOut] = useUserLogOutMutation();
 
   const handleLogOut = async () => {
     // console.log(userLogOut);
     await userLogOut();
     dispatch(logOut());
-    // dispatch(logOut());
   };
 
   return (

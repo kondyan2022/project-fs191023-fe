@@ -12,7 +12,7 @@ import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { PublicRoute } from './components/PublicRoute/PublicRoute';
 import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
 import { useSelector } from 'react-redux';
-import { selectToken } from './redux/selectors';
+import { isLogin } from './redux/selectors';
 import { ExersizeWrap } from './components/Exersizes/ExercisesWrap/ExercisesWrap';
 import { BodyPartsBoard } from './components/Exersizes/ExercisesBoard/BodyPartsBoard';
 import { MusclesBoard } from './components/Exersizes/ExercisesBoard/MusclesBoard';
@@ -23,7 +23,7 @@ import { EquipmentBoard } from './components/Exersizes/ExercisesBoard/EquipmentB
 // const USER_IS_LOGINING = true;
 
 function App() {
-  const isLoggedIn = useSelector(selectToken);
+  const isLoggedIn = useSelector(isLogin);
   console.log(isLoggedIn);
 
   useGetCurrentUserQuery();
@@ -88,10 +88,9 @@ function App() {
             </PrivateRoute>
           }
         >
-
-             <Route index element={<ExersizeWrap />}/>
-          <Route path="bodyparts" element={<BodyPartsBoard/>} />
-          <Route path="muscles" element={<MusclesBoard/>} />
+          <Route index element={<ExersizeWrap />} />
+          <Route path="bodyparts" element={<BodyPartsBoard />} />
+          <Route path="muscles" element={<MusclesBoard />} />
           <Route path="equipment" element={<EquipmentBoard />} />
           {/* може роути тут */}
         </Route>
