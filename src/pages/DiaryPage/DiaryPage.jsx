@@ -1,27 +1,24 @@
 import Container from '../../components/Container/Container';
 import { DayProducts } from '../../components/DayProducts/DayProducts';
-import {DayExercises} from '../../components/DayExercises/DayExercises';
-import {DayStatistics} from '../../components/DayStatistics/DayStatistics'
-import {PageName,DescktopStyle} from './DiaryPage.styled'
+import { DayExercises } from '../../components/DayExercises/DayExercises';
+import { DayStatistics } from '../../components/DayStatistics/DayStatistics';
+import { PageName, DescktopStyle } from './DiaryPage.styled';
 import dayStatistics from '../../../resources/dayStatistics.json';
+// import { useGetUserDiaryQuery } from '../../redux/features/authEndpoints';
 
 const DiaryPage = () => {
-
   return (
-  
     <Container>
-      <div> 
+      <div>
         <PageName>Diary</PageName>
         <DescktopStyle>
-        <DayStatistics dayStatistics={dayStatistics}></DayStatistics>
-        <div>
-        <DayProducts></DayProducts>
-        <DayExercises></DayExercises>
-        </div>
-        
+          <DayStatistics dayStatistics={dayStatistics}></DayStatistics>
+          <div>
+            <DayProducts></DayProducts>
+            <DayExercises></DayExercises>
+          </div>
         </DescktopStyle>
       </div>
-      
     </Container>
   );
 };
