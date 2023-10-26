@@ -22,11 +22,7 @@ const UserCard = (user) => {
 
   const avatarUser = <Photo src={avatar} width="100%" alt="Avatar" />;
   const avatarLogo = (
-    <SvgLogoUser
-      fill="background: rgba(239, 237, 232, 0.1);"
-      width="68"
-      height="68"
-    >
+    <SvgLogoUser fill="var( --accent-color-user-ava)" width="62" height="62">
       <use href={`${sprite}#icon-user`}></use>
     </SvgLogoUser>
   );

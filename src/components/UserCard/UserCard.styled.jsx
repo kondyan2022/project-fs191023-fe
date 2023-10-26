@@ -16,7 +16,7 @@ export const Avatar = styled.div`
   height: 90px;
   margin-top: 40px;
   border-radius: 100px;
-  border: 1px solid var(--color-orange);
+  border: 1px solid #e6533c;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +57,7 @@ export const IconBtn = styled.svg`
 `;
 
 export const TitleName = styled.p`
-  color: var(--color-white);
+  color: #efede8;
 
   @media screen and (min-width: 768px) {
     font-family: 'Roboto';
