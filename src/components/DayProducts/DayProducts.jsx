@@ -1,7 +1,9 @@
 import {DayProductsComponent,Products,Header,BtnAdd,NotFound} from './DayProducts.styled'
+import {ProductEaten} from '../DayDoneEaten/ProductEaten'
 
- export const DayProducts = ()=> {
-  return  <DayProductsComponent>
+ export const DayProducts = ({oneProductTest})=> {
+ 
+  return   <DayProductsComponent>
     <Header>
     <Products>Products</Products>
     <BtnAdd to="/products">Add product
@@ -10,7 +12,9 @@ import {DayProductsComponent,Products,Header,BtnAdd,NotFound} from './DayProduct
    </svg>
     </BtnAdd>
     </Header>
-    <NotFound>Not found products</NotFound> 
+    {oneProductTest.length > 0 ?   
+  (oneProductTest.map(oneProduct => (<ProductEaten key={oneProduct._id.$oid} {...oneProduct}/>)))
+    : (<NotFound>Not found products</NotFound>)}
 
   </DayProductsComponent>
 

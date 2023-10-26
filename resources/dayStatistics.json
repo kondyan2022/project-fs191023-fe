@@ -3,36 +3,48 @@
       "svg": "../src/images/sprite.svg#icon-fork-knife",
       "name": "Daily calorie intake",
       "isNorm": true,
-      "id": 1812
+      "id": 1812,
+      "isTime": false,
+      "onTheDay": "DSN"
     },
     {
       "svg": "../src/images/sprite.svg#icon-daily-dumbbell",
       "name": "Daily norm of sports",
       "isNorm": true,
-      "id": 1137
+      "id": 1137,
+      "isTime": true,
+      "onTheDay": "BMR"
     },
     {
       "svg": "../src/images/sprite.svg#icon-apple",
       "name": "Сalories consumed",
       "isNorm": false,
-      "id": 1213
+      "id": 1213,
+      "isTime": false,
+      "onTheDay": "burnedCalories"
     },
     {
       "svg": "../src/images/sprite.svg#icon-fire",
       "name": "Сalories burned",
       "isNorm": false,
-      "id": 1714
+      "id": 1714,
+      "onTheDay": "consumedCalories",
+      "isTime": false
     },
     {
       "svg": "../src/images/sprite.svg#icon-bubble",
       "name": "The rest of the calories",
       "isNorm": false,
-      "id": 1284
+      "id": 1284,
+      "isTime": false,
+      "onTheDay": "leftCalories"
     },
     {
         "svg": "../src/images/sprite.svg#icon-run-man",
         "name": "The rest of sports",
         "isNorm": false,
-        "id": 1286
+        "id": 1286,
+        "isTime": true,
+        "onTheDay": "leftExercisesTime"
       }
   ]
