@@ -19,7 +19,7 @@ export const Modal = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  padding: 16px;
+  padding: 32px;
 
   @media screen and (min-width: 768px) {
     max-width: 479px;
@@ -33,6 +33,7 @@ export const CloseButton = styled.button`
   color: white;
   margin-left: auto;
   padding: 0;
+  margin-bottom: 8px;
 `;
 
 export const FormBlock = styled.div`
@@ -109,7 +110,7 @@ export const GramsText = styled.p`
 
   @media screen and (min-width: 768px) {
     top: 11px;
-    right: 44px;
+    right: 14px;
   }
 `;
 
