@@ -6,6 +6,7 @@ export const FormContainer = styled.div`
 
   p {
     position: absolute;
+    font-family: Roboto;
     top: 66px;
     left: 0px;
     font-size: 12px;
@@ -57,8 +58,6 @@ export const Input = styled.input`
 
 export const WrapperInputField = styled.div`
   display: inline-flex;
-  align-items: flex-end;
-  /* margin-top: 20px; */
   gap: 14px;
 `;
 
@@ -120,7 +119,7 @@ export const WrapperRadio = styled.div`
   .radio-label {
     padding-left: 25px;
     cursor: pointer;
-    font-family: 'RobotoRegular';
+    font-family: Roboto;
     font-size: 14px;
     line-height: 1.71em;
     letter-spacing: -0.28px;
