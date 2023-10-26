@@ -9,8 +9,8 @@ import { isLogin } from '../../redux/selectors';
 const ProductsPage = () => {
   const isLoadedUser = useSelector(isLogin);
 
-  const { data, isLoading, isSuccess, isFetching, error, isError } =
-    useGetAllProductsQuery(); // НЕ потрібно викликати дані асинхронно, працюєте тільки із витягнутими, фіксованими, даними(data, error...)
+  const { data, isLoading, isFetching, error, isError } =
+    useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser }); // НЕ потрібно викликати дані асинхронно, працюєте тільки із витягнутими, фіксованими, даними(data, error...)
   // для спрацьовування хука по умові ви в хук першим параметном передаєте що відсліжувати а другим параметром об'єкт з ключами
   // один з ключів це "skip" йому передаєте анонімну функцію обробщика або якусь перемінну. наприклад результат сулуктора токена
   // Приклад:
@@ -31,6 +31,7 @@ const ProductsPage = () => {
   // isSuccess - якщо запит успішний = true
   // Всі дані при першому запиту зберігаються у кеш, тому наступні запити вже не йдуть до бекенду а йдуть в кеш, якщо дані не змінювались
 
+  console.log('DATA: ', data);
 
   return (
     <Container>
@@ -44,11 +45,12 @@ const ProductsPage = () => {
                 {error.data}
               </p>
             )}
-            {data.map((product) => (
-              <li key={product._id}>
-                <b>Category</b>: {product.category}
-              </li>
-            ))}
+            {data &&
+              data.map((product) => (
+                <li key={product._id}>
+                  <b>Category</b>: {product.category}
+                </li>
+              ))}
           </ul>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-const BASE_URL = 'https://power-plus-service.onrender.com'; // винести в файл .env
+const { BASE_URL } = import.meta.env;
 
 export const userSplitApi = createApi({
   //
