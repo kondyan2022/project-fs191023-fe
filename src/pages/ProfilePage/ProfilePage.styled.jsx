@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const Title = styled.h2`
   color: #efede8;
-  font-family: 'RobotoBold';
+  font-family: 'Roboto';
+  font-weight: 700;
   font-size: 24px;
   line-height: 28px;
   margin-top: 40px;
