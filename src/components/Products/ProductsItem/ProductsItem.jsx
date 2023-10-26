@@ -24,8 +24,6 @@ const ProductsItem = ({ weight, calories, category, title }) => {
     setIsAddModalOpen(false);
   };
 
-  // обрізає задовгі категорії, є маленький баг
-
   const updatedCategory = () => {
     if (wdt < 375 && category.length > 6) {
       return category.slice(0, 3) + '...';
@@ -48,10 +46,12 @@ const ProductsItem = ({ weight, calories, category, title }) => {
       return title.slice(0, 18) + '...';
     }
     if (wdt < 768 && wdt >= 375 && title.length > 24) {
-      return title.slice(0, 25) + '...';
+      // return title.slice(0, 25) + '...';
+      return title.slice(0, 18) + '...';
     }
     if (wdt >= 768 && title.length > 22) {
-      return title.slice(0, 20) + '...';
+      // return title.slice(0, 20) + '...';
+      return title.slice(0, 18) + '...';
     }
     return title;
   };

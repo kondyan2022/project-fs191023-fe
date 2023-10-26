@@ -4,8 +4,6 @@ import { Field } from 'formik';
 export const Backdrop = styled.div`
   width: 100vw;
   height: 100vh;
-  /* width: 100%;
-  height: 100%; */
   position: fixed;
   background: rgba(4, 4, 4, 0.4);
 `;
@@ -14,49 +12,76 @@ export const Modal = styled.div`
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: #10100f;
-  width: 479px;
-  height: 286px;
+  max-width: 335px;
+  width: calc(100% - 40px);
+  height: 280px;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  padding: 16px;
+  padding: 32px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 479px;
+    width: 479px;
+    height: 286px;
+  }
 `;
 
 export const CloseButton = styled.button`
   background-color: inherit;
   color: white;
-  margin-left: 432px;
+  margin-left: auto;
   padding: 0;
+  margin-bottom: 8px;
 `;
 
 export const FormBlock = styled.div`
   position: relative;
   display: flex;
+  flex-direction: column;
   gap: 16px;
-  margin-bottom: 16px;
+  width: 100%;
 
   div:first-of-type {
-    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 34px;
+    padding: 5px 0;
     padding-left: 14px;
     border-radius: 12px;
     border: 1px solid var(--color-orange);
-    width: 244px;
-    height: 40px;
+    font-size: 14px;
+    line-height: 18px;
 
     p {
       color: rgba(239, 237, 232, 0.3);
       line-height: 24px;
     }
   }
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+
+    div:first-of-type {
+      width: 244px;
+      height: 40px;
+
+      p {
+        font-size: 16px;
+      }
+    }
+  }
 `;
 
 export const Input = styled(Field)`
-  height: 40px;
-  width: 155px;
+  height: 34px;
+  width: 100%;
   padding: 8px 0;
   padding-left: 14px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 18px;
   border-radius: 12px;
   border: 1px solid var(--color-orange);
   color: var(--color-white);
@@ -66,15 +91,27 @@ export const Input = styled(Field)`
   &:focus {
     outline: none;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 155px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 24px;
+  }
 `;
 
 export const GramsText = styled.p`
   position: absolute;
-  top: 10px;
-  right: 44px;
+  top: 58px;
+  right: 16px;
   color: rgba(239, 237, 232, 0.4);
   font-size: 12px;
   line-height: 18px;
+
+  @media screen and (min-width: 768px) {
+    top: 11px;
+    right: 14px;
+  }
 `;
 
 export const ErrorMessage = styled.p`
@@ -86,23 +123,102 @@ export const ErrorMessage = styled.p`
 
 export const Calories = styled.p`
   position: absolute;
-  top: 56px;
+  top: 100px;
   left: 0;
   color: rgba(239, 237, 232, 0.4);
   font-size: 12px;
   line-height: 18px;
-  margin-bottom: 64px;
 
   span {
     color: var(--color-white);
+  }
+
+  @media screen and (min-width: 768px) {
+    top: 56px;
   }
 `;
 
 export const ButtonsList = styled.ul`
   position: absolute;
-  z-index: 44;
+  width: 100%;
   left: 0;
-  top: 138px;
+  top: 142px;
   display: flex;
-  gap: 16px;
+  gap: 14px;
+
+  li:first-of-type {
+    width: 55%;
+  }
+
+  li:last-of-type {
+    width: calc(45% - 14px);
+  }
+
+  @media screen and (min-width: 768px) {
+    gap: 16px;
+    justify-content: start;
+
+    li:first-of-type {
+      width: 151px;
+      height: 52px;
+    }
+    li:last-of-type {
+      width: 142px;
+      height: 52px;
+    }
+  }
+`;
+
+export const StyledAddButton = styled.button`
+  width: 100%;
+  height: 42px;
+  margin: 0;
+  text-align: center;
+  padding: 12px auto;
+  border-radius: 12px;
+  background: var(--color-orange);
+  border: none;
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  transition: all 0.1s linear;
+
+  @media screen and (min-width: 768px) {
+    width: 151px;
+    height: 52px;
+    line-height: 24px;
+  }
+
+  &:hover, &:focus {
+    background-color: var(--color-orange-one);
+  }
+`;
+
+export const StyledCancelButton = styled.button`
+  width: 100%;
+  height: 42px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 237, 232, 0.3);
+  background-color: transparent;
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  transition: all 0.1s linear;
+
+  @media screen and (min-width: 768px) {
+    width: 142px;
+    height: 52px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #1a1919;
+  }
 `;
