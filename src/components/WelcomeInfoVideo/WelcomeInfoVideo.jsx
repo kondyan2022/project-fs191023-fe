@@ -1,12 +1,12 @@
-import { CardVideo } from "./WelcomeInfoVideo.styled"
+import { CardVideo, Circle, Quantity, Text } from "./WelcomeInfoVideo.styled"
 
 const WelcomeInfoVideo = ({ icon, number, value }) => {
     return (
         <CardVideo>
-            <div>{icon}</div>
+            <Circle>{icon}</Circle>
             <div>
-                <span>{number}</span>
-                <p>{value}</p>
+                <Quantity>{number}</Quantity>
+                <Text>{value}</Text>
             </div>
         </CardVideo>
     )
