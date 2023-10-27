@@ -1,29 +1,25 @@
 import styled from 'styled-components'
-import {
-  // Formik,
-  Field,
-  // ErrorMessage
-} from 'formik';
+import { Field } from 'formik';
 
 export const FormBox = styled.div`
   max-width: 283px;
   display: flex;
   flex-direction: column;
   gap: 28px; // 18px +10 on status svg
-  margin-bottom: 64px;
+  margin-bottom: 28px;
   @media(min-width: 768px) {
     max-width: 307px;
-    margin-bottom: 28px;
+    margin-bottom: 64px;
     gap: 30px; // 20px +10 on status svg
   }
 `
 
 export const InputsParent = styled.div`
-position: relative;
+  position: relative;
 `
 
 export const BoxParent = styled.div`
-position: relative;
+  position: relative;
 `
 
 export const Input = styled(Field)`
@@ -69,23 +65,23 @@ export const Input = styled(Field)`
 `
 
 export const StatusWrapp = styled.div`
-display: flex;
-gap: 10px;
-align-items: center;
-position: absolute;
-bottom: -18px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  position: absolute;
+  bottom: -18px;
 `
 
 export const SvgStatus = styled.svg`
-display: inline-block;
-width: 16px;
-height: 16px;
-  &.success {
-    fill: #3CBF61;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+    &.success {
+      fill: #3CBF61;
+    }
+    &.error {
+      fill: var(--color-rad);
   }
-  &.error {
-    fill: var(--color-rad);
-}
 `
 
 export const BtnShowPassword = styled.button`
@@ -96,19 +92,23 @@ export const BtnShowPassword = styled.button`
 `
 
 export const SvgEye = styled.svg`
-stroke: var(--color-white);
+  stroke: var(--color-white);
+`
+
+export const SubmitParent = styled.div`
+  position: relative;
 `
 
 export const WrappErrorServer = styled.div`
-color: var(--color-rad);
-font-family: 'Roboto', sans-serif;
-font-size: 14px;
-font-weight: 400;
-line-height: 24px; 
+  color: var(--color-rad);
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px; 
 
-margin-top: 10px;
-/* position: absolute;?????
-bottom: 0; */
+  margin-top: 10px;
+  position: absolute;
+  top: -45px;
 
   @media(min-width: 768px) {
     font-size: 16px;

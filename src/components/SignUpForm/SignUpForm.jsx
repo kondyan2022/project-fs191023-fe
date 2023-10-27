@@ -5,7 +5,7 @@ import { validationSchemaRegister } from '../../utils/validateSchemes';
 import { useUserSignUpMutation } from '../../redux/features/authEndpoints';
 import { setToken } from '../../redux/features/userToken';
 import { useEffect, useState } from 'react';
-import { BtnShowPassword, FormBox, Input, WrappErrorServer, InputsParent, StatusWrapp, BoxParent, SvgEye, SvgStatus } from './SignUpForm.styled';
+import { BtnShowPassword, FormBox, Input, WrappErrorServer, InputsParent, StatusWrapp, BoxParent, SvgEye, SvgStatus, SubmitParent } from './SignUpForm.styled';
 import spriteSvG from '../../images/sprite.svg'
 
 const SignUpForm = () => {
@@ -143,10 +143,10 @@ const SignUpForm = () => {
                                 </StatusWrapp>)}
                             </BoxParent>
                         </FormBox>
-                        <Button primary={true} type="submit">
-                            Sign Up
-                        </Button>
-                        {isCreateError && <WrappErrorServer>{createError.data.message}</WrappErrorServer>}
+                        <SubmitParent>
+                            <Button primary={true} type="submit">Sign Up</Button>
+                            {isCreateError && <WrappErrorServer>{createError.data.message}</WrappErrorServer>}
+                        </SubmitParent>
                     </Form>
                 )}
             </Formik>

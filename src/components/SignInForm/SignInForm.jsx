@@ -1,6 +1,6 @@
 import Button from '../Button/Button'
 import { Formik, ErrorMessage, Form } from 'formik';
-import { BtnShowPassword, FormBox, WrappErrorServer, Input, InputsParent, StatusWrapp, BoxParent, SvgEye, SvgStatus } from './SignInForm.styled';
+import { BtnShowPassword, FormBox, WrappErrorServer, Input, InputsParent, StatusWrapp, BoxParent, SvgEye, SvgStatus, SubmitParent } from './SignInForm.styled';
 import { useDispatch } from 'react-redux'
 import { validationSchemaLogin } from '../../utils/validateSchemes'
 import { useUserSignInMutation } from '../../redux/features/authEndpoints'
@@ -117,8 +117,10 @@ const SignInForm = () => {
                                 </StatusWrapp>)}
                             </BoxParent>
                         </FormBox>
-                        <Button primary={true} type='submit'>Sign in</Button>
-                        {controlError && <WrappErrorServer>{signInError.data.message}</WrappErrorServer>}
+                        <SubmitParent>
+                            <Button primary={true} type='submit'>Sign in</Button>
+                            {controlError && <WrappErrorServer>{signInError.data.message}</WrappErrorServer>}
+                        </SubmitParent>
                     </Form>
                 )}
             </Formik>
