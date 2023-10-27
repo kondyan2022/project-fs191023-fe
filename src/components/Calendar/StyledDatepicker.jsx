@@ -21,12 +21,12 @@ const CustomInput = ({ onClick }) => {
     <div className="react-datepicker__navigation-title-day">
       <span onClick={handlePrevDay} className="react-datepicker__navigation-title-day--previous">
       <svg width="16" height="16" className="">
-        <use href={sprite + '#icon-calendar'} />
+        <use href={sprite + '#icon-chevron-left'} />
       </svg> 
       </span>
       <span onClick={handleNextDay} className="react-datepicker__navigation-title-day--next">
       <svg width="16" height="16" className="">
-        <use href={sprite + '#icon-calendar'} />
+        <use href={sprite + '#icon-chevron-right'} />
       </svg> 
       </span>
     </div>

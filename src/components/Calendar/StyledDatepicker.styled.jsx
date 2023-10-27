@@ -189,27 +189,28 @@ export const TitleWrapper = styled.button`
     color: var(--color-white);
     background:transparent ; 
     font-weight: 700;
-    line-height: 20px;
-    text-align: center;
+    line-height: 1,05;    
     text-transform: uppercase;
     padding: 0px 0px;
     font-size: 18px;  
     align-items: left;
-    display: inline-flex;  
+    display: inline-flex; 
+    flex-direction: row ; 
     justify-content:space-between;
     align-content:center;
+    text-align: center;
+
     @media screen and (min-width: 768px) {
       height: 32px;
       width: 239px;
       line-height: 32px;
       font-size: 24px;
-    }
-
+    }  
 
   .react-datepicker__containet-bottom{
-    width: 161px;
+    width: 125px;
     @media screen and (min-width: 768px) {
-      
+    width: 161px;
     }
   }
 
@@ -232,14 +233,13 @@ export const TitleWrapper = styled.button`
 
   .react-datepicker__navigation-title-day--next{
     width: 16px;
-    height:16px;
-    margin-left:5px
-    
+    height:16px;    
+    --color2:var(--color-white);
   }
   .react-datepicker__navigation-title-day--previous{
     width: 16px;
     height:16px;
-    
+    --color2:var(--color-white);
   }  
 
 `;
