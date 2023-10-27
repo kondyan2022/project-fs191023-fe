@@ -2,9 +2,21 @@ import styled from 'styled-components'
 import {
   // Formik,
   Field,
-  Form,
   // ErrorMessage
 } from 'formik';
+
+export const FormBox = styled.div`
+  max-width: 283px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px; // 18px +10 on status svg
+  margin-bottom: 64px;
+  @media(min-width: 768px) {
+    max-width: 307px;
+    margin-bottom: 28px;
+    gap: 30px; // 20px +10 on status svg
+  }
+`
 
 export const InputsParent = styled.div`
 position: relative;
@@ -16,19 +28,19 @@ position: relative;
 
 export const Input = styled(Field)`
   width: 100%;
-    background-color:  var(--color-black);
+    background-color: transparent;
     padding: 14px 31px 14px 14px;
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.30);
     outline: none;
     color: var(--color-white);
     font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
-    line-height: 24px;
-    margin-bottom: 22px;
+    line-height: 0.7;
+    /* margin-bottom: 22px; */
     &::placeholder {
-      background-color: var(--color-black);
+      background-color: transparent;
       color: var(--accent-color-grey);
       font-family:'Roboto', sans-serif;
       font-size: 14px;
@@ -51,20 +63,19 @@ export const Input = styled(Field)`
   &.error {
     border: 1px solid rgba(248, 5, 5, 0.973);
   }
-  /* @media screen and (min-width: 375px) {
-    width: 335px;
-    height: 46px;
-  } */
+  @media screen and (min-width: 768px) {
+    font-size: 17px;
+  }
 `
 
 export const StatusWrapp = styled.div`
 display: flex;
 gap: 10px;
 align-items: center;
-/* margin-top: 14px; */
 position: absolute;
-bottom: -5%;
+bottom: -18px;
 `
+
 export const SvgStatus = styled.svg`
 display: inline-block;
 width: 16px;
@@ -76,12 +87,7 @@ height: 16px;
     fill: var(--color-rad);
 }
 `
-export const FormBox = styled(Form)`
-width: 307px;
-display: flex;
-flex-direction: column;
-gap: 20px;
-`
+
 export const BtnShowPassword = styled.button`
   position: absolute;
   right: 16px;
@@ -92,3 +98,27 @@ export const BtnShowPassword = styled.button`
 export const SvgEye = styled.svg`
 stroke: var(--color-white);
 `
+
+export const WrappErrorServer = styled.div`
+color: var(--color-rad);
+font-family: 'Roboto', sans-serif;
+font-size: 14px;
+font-weight: 400;
+line-height: 24px; 
+
+margin-top: 10px;
+/* position: absolute;?????
+bottom: 0; */
+
+  @media(min-width: 768px) {
+    font-size: 16px;
+  }
+`
+
+// @media(min - width: 375px) {
+// }
+// @media(min - width: 768px) {
+
+// }
+// @media(min - width: 1440px) {
+// }
