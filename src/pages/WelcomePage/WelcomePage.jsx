@@ -4,9 +4,11 @@ import Container from '../../components/Container/Container';
 import WelcomeInfoCalories from '../../components/WelcomeInfoCalories/WelcomeInfoCalories';
 import WelcomeInfoVideo from '../../components/WelcomeInfoVideo/WelcomeInfoVideo';
 import { Title, WrappTitle, WrapperFlex } from './WelcomePage.styled';
-import iconSvg from '../../images/sprite.svg'
 import { buttonStyles } from '../../components/Button/Button.styled';
 import { Section } from '../../components/Section/Section.styled';
+import iconSvg from '../../images/sprite.svg'
+import { IconCircleDecorStyled, IconPlayVideoStyled, IconRunMenStyled } from './WelcomeIcons.styled';
+
 
 const WelcomePage = () => {
   const navigate = useNavigate();
@@ -20,9 +22,9 @@ const WelcomePage = () => {
         <div>
           <WrappTitle>
             <Title>Transforming your body shape with Power Pulse</Title>
-            <svg>
+            <IconCircleDecorStyled>
               <use href={`${iconSvg}#icon-Line`} />
-            </svg>
+            </IconCircleDecorStyled>
           </WrappTitle>
           <WrapperFlex>
             <Button
@@ -39,18 +41,18 @@ const WelcomePage = () => {
           <div>
             <WelcomeInfoVideo
               icon={
-                <svg>
+                <IconPlayVideoStyled>
                   <use href={`${iconSvg}#icon-play`} />
-                </svg>
+                </IconPlayVideoStyled>
               }
               number={'350+'}
               value={'Video tutorial'}
             />
             <WelcomeInfoCalories
               icon={
-                <svg>
+                <IconRunMenStyled>
                   <use href={`${iconSvg}#icon-run-man`} />
-                </svg>}
+                </IconRunMenStyled>}
               number={'500'}
               value={'cal'}
             />
