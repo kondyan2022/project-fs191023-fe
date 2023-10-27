@@ -3,7 +3,7 @@ import { format, addDays, subDays } from "date-fns";
 import DatePicker from "react-datepicker";
 import { CalendarGlobalStyles, TitleWrapper } from "./StyledDatepicker.styled";
 import "react-datepicker/dist/react-datepicker.css";
-import calendarIcon from '../../images/sprite.svg#icon-calendar';
+import sprite from '../../images/sprite.svg';
 
 const StyledDatepicker = ({ minDate, maxDate, disabledDates }) => {
 const [selectedDate, setSelectedDate] = useState(Date.now());
@@ -14,13 +14,21 @@ const CustomInput = ({ onClick }) => {
     <div onClick={onClick}>
       {format(selectedDate, "dd/MM/yyyy")}   
       <svg width="24" height="24" className="react-datepicker__calendar-icon">
-          <use xlinkHref={calendarIcon}></use>
-    </svg>      
+        <use href={sprite + '#icon-calendar'} />
+      </svg>      
     </div>
     
     <div className="react-datepicker__navigation-title-day">
-      <span onClick={handlePrevDay} className="react-datepicker__navigation-title-day--previous">&lt;</span>
-      <span onClick={handleNextDay} className="react-datepicker__navigation-title-day--next">&gt;</span>
+      <span onClick={handlePrevDay} className="react-datepicker__navigation-title-day--previous">
+      <svg width="16" height="16" className="">
+        <use href={sprite + '#icon-calendar'} />
+      </svg> 
+      </span>
+      <span onClick={handleNextDay} className="react-datepicker__navigation-title-day--next">
+      <svg width="16" height="16" className="">
+        <use href={sprite + '#icon-calendar'} />
+      </svg> 
+      </span>
     </div>
     
   </TitleWrapper>

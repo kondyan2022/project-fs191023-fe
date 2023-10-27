@@ -112,7 +112,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
   }
   .react-datepicker__navigation-icon::before:hover:focus {
     border-color: rgba(239, 237, 232, 0.6);
-    background-image: url('public/calendar-icon.svg#icon-arrow-left')
+    /*background-image: url('public/calendar-icon.svg#icon-arrow-left')*/
     fill:rgba(239, 237, 232, 0.6);
   } 
   .react-datepicker__week {
@@ -214,13 +214,14 @@ export const TitleWrapper = styled.button`
   }
 
   .react-datepicker__calendar-icon{
-    fill: var(--color-orange);   
+    --color1:var(--color-orange-one);
     margin-left: 8px;
     margin-right: auto;
     width: 20px;
     height:20px;
     padding:0px;
     position: initial; 
+    
 
     @media screen and (min-width: 768px) {
       width: 24px;
