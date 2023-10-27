@@ -24,9 +24,12 @@ import { EquipmentBoard } from './components/Exersizes/ExercisesBoard/EquipmentB
 
 function App() {
   const isLoggedIn = useSelector(isLogin);
-  console.log(isLoggedIn);
+  // console.log(isLoggedIn);
 
-  useGetCurrentUserQuery();
+  // const { data, isSuccess } = useGetCurrentUserQuery(isLoggedIn, {
+  //   skip: !isLoggedIn,
+  // });
+
 
   return (
     <Routes>

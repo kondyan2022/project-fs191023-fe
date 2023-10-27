@@ -18,4 +18,5 @@ export const LogoutLink = styled(Link)`
 
 export const Text = styled.span`
   margin-right: 8px;
+  color: rgba(239, 237, 232, 1);
 `;

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 export const DayExercisesComponent = styled.div`
-width: 335px;
+width: 100%;
 height: 335px;
 padding: 16px;
 
@@ -14,6 +14,10 @@ border: 1px solid;
 gap: 32px;
 color:rgba(239, 237, 232, 0.2);
 margin-bottom:40px;
+
+@media screen and (min-width: 375px){
+  width: 335px;
+}
 
 
 @media screen and (min-width: 768px) {

@@ -13,8 +13,9 @@
   --color1:var(--color-orange-one);
   
   --accent-color-grey: rgba(239, 237, 232, 0.3);
+  --accent-color-user-ava: rgba(239, 237, 232, 0.1);
 
-
+  --color-modal-window: rgba(04, 04, 04, 0.4);
 }
 
 h1,

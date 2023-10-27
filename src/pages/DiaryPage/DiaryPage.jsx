@@ -1,27 +1,31 @@
 import Container from '../../components/Container/Container';
 import { DayProducts } from '../../components/DayProducts/DayProducts';
+
 import {DayExercises} from '../../components/DayExercises/DayExercises';
-import {DayStatistics} from '../../components/DayStatistics/DayStatistics'
+import {DayDashboard} from '../../components/DayDashboard/DayDashboard'
 import {PageName,DescktopStyle} from './DiaryPage.styled'
 import dayStatistics from '../../../resources/dayStatistics.json';
+import oneProductTest from '../../../resources/oneProductTest.json'
+import DayInformation from '../../../resources/DayInformation.json'
+
+
 
 const DiaryPage = () => {
-
   return (
-  
     <Container>
-      <div> 
+      <div>
         <PageName>Diary</PageName>
         <DescktopStyle>
-        <DayStatistics dayStatistics={dayStatistics}></DayStatistics>
+
+        <DayDashboard dayStatistics={dayStatistics} dayInformation={DayInformation}></DayDashboard>
         <div>
-        <DayProducts></DayProducts>
+        <DayProducts oneProductTest={oneProductTest}></DayProducts>
         <DayExercises></DayExercises>
         </div>
         
+
         </DescktopStyle>
       </div>
-      
     </Container>
   );
 };

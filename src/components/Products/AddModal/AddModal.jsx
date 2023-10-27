@@ -8,48 +8,17 @@ import {
   CloseButton,
   Input,
   GramsText,
+  StyledAddButton,
+  StyledCancelButton,
 } from './AddModal.styled';
-import Button from '../../Button/Button';
 import { Form, Formik } from 'formik';
 import { inputSchema } from './AddModalSchema';
 import { useState } from 'react';
 
 const AddModal = ({ closeModal, title, calories }) => {
-  const [countedCalories, setCalories] = useState(0);
+  const [countedCalories, setCountedCalories] = useState(0);
   const initialValues = {
     grams: '',
-  };
-
-  const addBtnStyles = {
-    display: 'flex',
-    padding: '14px 32px',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '10px',
-    borderRadius: '12px',
-    background: 'var(--color-orange)',
-    width: '151px',
-    height: '52px',
-    border: 'none',
-    color: 'var(--color-white)',
-    fontSize: '16px',
-    fontWeight: '500',
-    lineHeight: '24px',
-  };
-  const cancelBtnStyles = {
-    display: 'flex',
-    padding: '14px 40px',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '10px',
-    borderRadius: '12px',
-    border: '1px solid rgba(239, 237, 232, 0.30)',
-    width: '142px',
-    height: '52px',
-    color: 'var(--color-white)',
-    fontSize: '20px',
-    fontWeight: '500',
-    lineHeight: '24px',
   };
 
   const errorText = (e) => {
@@ -65,7 +34,7 @@ const AddModal = ({ closeModal, title, calories }) => {
   };
 
   const onFormSubmit = (value) => {
-    setCalories(Math.round((calories / 100) * Number(value.grams)));
+    setCountedCalories(Math.round((calories / 100) * Number(value.grams)));
     console.log({ ...value, calories: countedCalories });
     closeModal();
   };
@@ -93,14 +62,14 @@ const AddModal = ({ closeModal, title, calories }) => {
                 </ErrorMessage>
                 <ButtonsList>
                   <li>
-                    <Button type="submit" style={addBtnStyles}>
+                    <StyledAddButton type="submit" >
                       Add to diary
-                    </Button>
+                    </StyledAddButton>
                   </li>
                   <li>
-                    <Button onClick={closeModal} style={cancelBtnStyles}>
+                    <StyledCancelButton onClick={closeModal} type="button">
                       Cancel
-                    </Button>
+                    </StyledCancelButton>
                   </li>
                 </ButtonsList>
                 <GramsText>grams</GramsText>
