@@ -306,7 +306,7 @@ Error generating stack: `+a.message+`
     line-height: 24px;
     padding: '16px 60px';
   }
-`,os=({onClick:e,children:t,style:r,primary:i,type:n})=>{const a=n==="submit"?"submit":"button";return c.jsx(_7,{onClick:e,primary:i,style:r,type:a,children:t})},C7=V.div`
+`,os=({onClick:e,children:t,style:r,primary:i,type:n,isLoading:a})=>{const s=n==="submit"?"submit":"button";return c.jsx(_7,{onClick:e,primary:i,style:r,type:s,disabled:a,children:a?"Loading...":t})},C7=V.div`
     background: #ef8964;
     width: 119px;
     height: 76px;
