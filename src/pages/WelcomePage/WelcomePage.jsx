@@ -11,7 +11,7 @@ import { Title, WrappTitle, WrapperFlex } from './WelcomePage.styled';
 // } from './WelcomeIcons.styled';
 import { buttonStyles } from '../../components/Button/Button.styled';
 import { Section } from '../../components/Section/Section.styled';
-import StyledDatepicker from '../../components/Calendar/StyledDatepicker'
+
 
 const WelcomePage = () => {
   const navigate = useNavigate();
@@ -23,8 +23,7 @@ const WelcomePage = () => {
     <Section>
       <Container>
         <div>
-          <WrappTitle>
-            <StyledDatepicker />
+          <WrappTitle>            
             <Title>Transforming your body shape with Power Pulse</Title>
             {/* <IconCircleDecorationStyled /> */}
           </WrappTitle>
