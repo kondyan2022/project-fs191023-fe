@@ -13,12 +13,9 @@ import {
 } from './AddModal.styled';
 import { Form, Formik } from 'formik';
 import { inputSchema } from './AddModalSchema';
-import { useState } from 'react';
 // import BasicModalWindow from '../../BasicModalWindow/BasicModalWindow';
-// import Backdrop from '../../Backdrop/Backdrop';
 
-const AddModal = ({ closeModal, title, calories }) => {
-  const [countedCalories, setCountedCalories] = useState(0);
+const AddModal = ({ closeModal, title, calories, setExcessCalories }) => {
   const initialValues = {
     grams: '',
   };
@@ -36,7 +33,8 @@ const AddModal = ({ closeModal, title, calories }) => {
   };
 
   const onFormSubmit = (value) => {
-    setCountedCalories(Math.round((calories / 100) * Number(value.grams)));
+    const countedCalories = Math.round((calories / 100) * Number(value.grams));
+    setExcessCalories(countedCalories);
     console.log({ ...value, calories: countedCalories });
     closeModal();
   };
