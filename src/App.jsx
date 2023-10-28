@@ -30,7 +30,6 @@ function App() {
   //   skip: !isLoggedIn,
   // });
 
-
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
