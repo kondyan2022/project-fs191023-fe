@@ -100,6 +100,7 @@ export const Title = styled.div`
     margin-right: 16px;
 
     svg {
+      fill: var(--color-white);
       width: 16px;
       height: 16px;
     }
