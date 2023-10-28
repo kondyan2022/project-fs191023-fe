@@ -76,8 +76,6 @@ export const Button = styled.button`
 
     svg {
       stroke: var(--color-orange-one);
-      /* fill: var(--color-beige); */
-      /* color: var(--color-beige); */
     }
   }
   @media screen and (min-width: 768px) {

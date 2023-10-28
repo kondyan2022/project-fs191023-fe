@@ -1,6 +1,7 @@
 // import { useEffect } from 'react';
 import Container from '../../components/Container/Container';
-import ProductsList from '../../components/Products/ProductsList/ProductsList';
+import Filter from '../../components/Products/Filter/Filter';
+// import ProductsList from '../../components/Products/ProductsList/ProductsList';
 
 // import { useGetAllProductsQuery } from '../../redux/features/prodEndpoints';
 // import { useSelector } from 'react-redux';
@@ -36,7 +37,8 @@ const ProductsPage = () => {
   return (
     <Container>
       <div>
-        <ProductsList />
+        <Filter/>
+        {/* <ProductsList /> */}
         {/* <div>
           <ul>
             {isError && (
