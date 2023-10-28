@@ -4,13 +4,12 @@ import Container from '../../components/Container/Container';
 import WelcomeInfoCalories from '../../components/WelcomeInfoCalories/WelcomeInfoCalories';
 import WelcomeInfoVideo from '../../components/WelcomeInfoVideo/WelcomeInfoVideo';
 import { Title, WrappTitle, WrapperFlex } from './WelcomePage.styled';
-// import {npm 
-//   // IconCircleDecorationStyled,
-//   // IconPlayVideoStyled,
-//   IconRunMenStyled,
-// } from './WelcomeIcons.styled';
 import { buttonStyles } from '../../components/Button/Button.styled';
 import { Section } from '../../components/Section/Section.styled';
+import iconSvg from '../../images/sprite.svg'
+import { IconCircleDecorStyled, IconPlayVideoStyled, IconRunMenStyled } from './WelcomeIcons.styled';
+
+
 
 const WelcomePage = () => {
   const navigate = useNavigate();
@@ -22,9 +21,11 @@ const WelcomePage = () => {
     <Section>
       <Container>
         <div>
-          <WrappTitle>
+          <WrappTitle>            
             <Title>Transforming your body shape with Power Pulse</Title>
-            {/* <IconCircleDecorationStyled /> */}
+            <IconCircleDecorStyled>
+              <use href={`${iconSvg}#icon-Line`} />
+            </IconCircleDecorStyled>
           </WrappTitle>
           <WrapperFlex>
             <Button
@@ -40,13 +41,19 @@ const WelcomePage = () => {
           </WrapperFlex>
           <div>
             <WelcomeInfoVideo
-              // icon={<IconPlayVideoStyled />}
-              // icon={<IconRunMenStyled />}
+              icon={
+                <IconPlayVideoStyled>
+                  <use href={`${iconSvg}#icon-play`} />
+                </IconPlayVideoStyled>
+              }
               number={'350+'}
               value={'Video tutorial'}
             />
             <WelcomeInfoCalories
-              // icon={<IconRunMenStyled />}
+              icon={
+                <IconRunMenStyled>
+                  <use href={`${iconSvg}#icon-run-man`} />
+                </IconRunMenStyled>}
               number={'500'}
               value={'cal'}
             />

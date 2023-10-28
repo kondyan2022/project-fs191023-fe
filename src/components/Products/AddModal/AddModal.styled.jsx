@@ -2,10 +2,13 @@ import styled from '@emotion/styled';
 import { Field } from 'formik';
 
 export const Backdrop = styled.div`
-  width: 100vw;
-  height: 100vh;
   position: fixed;
-  background: rgba(4, 4, 4, 0.4);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
 `;
 
 export const Modal = styled.div`
@@ -190,7 +193,8 @@ export const StyledAddButton = styled.button`
     line-height: 24px;
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: var(--color-orange-one);
   }
 `;

@@ -4,7 +4,7 @@ export const buttonStyles = {
   common: {
     color: 'var(--color-white)',
     borderRadius: '12px',
-    height: '42px',
+    
     fontFamily: 'Roboto',
     fontWeight: 500,
     letterSpacing: '0em',
@@ -23,7 +23,7 @@ export const buttonStyles = {
   },
   secondaryButtonStyles: {
     background: 'transparent',
-    border: '1px solid var(--color-white)',
+    border: '1px solid var(--accent-color-grey)',
     '&:hover': {
       border: '1px solid var(--color-orange)',
     },

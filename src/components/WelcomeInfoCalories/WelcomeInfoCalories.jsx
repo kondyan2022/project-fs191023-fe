@@ -1,13 +1,13 @@
-import { CardCalories } from "./WelcomeInfoCalories.styled"
+import { CardCalories, Circle, FlexParent, Quantity, Text } from "./WelcomeInfoCalories.styled"
 
 const WelcomeInfoCalories = ({ icon, number, value }) => {
     return (
         <CardCalories>
-            <div>{icon}</div>
-            <div>
-                <span>{number}</span>
-                <p>{value}</p>
-            </div>
+            <Circle>{icon}</Circle>
+            <FlexParent>
+                <Quantity>{number}</Quantity>
+                <Text>{value}</Text>
+            </FlexParent>
         </CardCalories>
     )
 }
