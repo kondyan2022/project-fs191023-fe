@@ -8,7 +8,7 @@ const authApiSlice = userSplitApi.injectEndpoints({
       providesTags: ['userAuth'],
     }),
     getUserDiary: builder.query({
-      query: ({ id, data }) => `users/diary/${id}/${data}`,
+      query: (data) => `users/diary/${data}`,
       providesTags: ['userAuth'],
     }),
     userSignUp: builder.mutation({
