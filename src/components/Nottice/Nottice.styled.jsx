@@ -12,6 +12,7 @@ export const WrapperMark = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 440px;
+    padding-left: 20px;
   }
 `;
 export const Icon = styled.div`

@@ -22,9 +22,52 @@ export const CardCalories = styled.div`
     }
 `;
 
+export const Circle = styled.div`
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--color-beige);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    @media (min-width: 768px) {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 12px;
+    }
+`
+export const FlexParent = styled.div`
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+@media (min-width: 768px) {
+    gap: 11px;
 
-// @media(min - width: 768px) {
-// }
+}
+`
 
-// @media(min - width: 1440px) {
-// }
+export const Quantity = styled.div`
+    color: var(--color-white);
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -1px;
+    @media (min-width: 768px) {
+        font-size: 48px;
+        line-height: 0.9;
+    }
+`
+
+export const Text = styled.div`
+color: rgba(239, 237, 232, 0.65);
+font-family: 'Roboto', sans-serif;
+font-size: 12px;
+font-weight: 700;
+line-height: 0.75;
+    @media (min-width: 768px) {
+        font-size: 16px;
+        line-height: 0.66;
+    }
+`
