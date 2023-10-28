@@ -1,27 +1,44 @@
-// import styled from 'styled-components';
+import styled from 'styled-components'
 
-// import { ReactComponent as IconCircleDecoration } from '../../images/sprite.svg#icon-Line';
+export const IconPlayVideoStyled = styled.svg`
+position: absolute;
+    fill: var(--color-white);
+    width: 12px;
+    height: 12px;
+    bottom: 9px;
+    left: 10px;
+        @media(min-width: 768px) {
+            width: 20px;
+            height: 20px;
+            bottom: 9.5px;
+            left: 12px;
+    }
+`;
 
-// import { ReactComponent as IconRunMen } from '../../images/sprite.svg#icon-run-man';
-// import { ReactComponent as IconPlayVideo } from '../../images/sprite.svg#icon-play';
+export const IconRunMenStyled = styled.svg`
+    fill: var(--color-white);
+    width: 12px;
+    height: 12px;
+        @media(min-width: 768px) {
+            width: 16px;
+            height: 16px;
+        }
+`;
 
-// export const IconPlayVideoStyled = styled(IconPlayVideo)`
-//   fill: var(--color-white);
-//   width: 20px;
-//   height: 20px;
-//   transform: rotate(90deg);
-// `;
-
-// export const IconRunMenStyled = styled(IconRunMen)`
-//   fill: var(--color-white);
-//   width: 16px;
-//   height: 16px;
-// `;
-
-// export const IconCircleDecorationStyled = styled(IconCircleDecoration)`
-//   stroke-width: 2px;
-//   stroke: var(--color-orange-one);
-//   width: 185px;
-//   height: 67px;
-//   transform: rotate(90deg);
-// `;
+export const IconCircleDecorStyled = styled.svg`
+    z-index: -1;
+    stroke-width: 2px;
+    stroke: var(--color-orange-one);
+    fill: transparent;
+    width: 98px;
+    height: 35px;
+    position: absolute;
+    top: 43px;
+    left: -8px;
+    @media(min-width: 768px) {
+        width: 185px;
+        height: 67px;
+        top: 85px;
+        left: -15px;
+    }
+`;
