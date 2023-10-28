@@ -6,7 +6,13 @@ const productsApiEndpoints = userSplitApi.injectEndpoints({
       query: () => `products`,
       providesTags: ['products'],
     }),
+    getGroupProduct: builder.query({
+      query: () => `products/categories`,
+      providesTags: ['groups'],
+    }),
+    getProductByFilter: builder.query({}),
   }),
 });
 
-export const { useGetAllProductsQuery } = productsApiEndpoints;
+export const { useGetAllProductsQuery, useGetGroupProductQuery } =
+  productsApiEndpoints;
