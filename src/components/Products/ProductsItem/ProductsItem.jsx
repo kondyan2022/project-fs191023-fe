@@ -11,7 +11,13 @@ import {
 } from './ProductsItem.styled';
 import AddModal from '../AddModal/AddModal';
 // icon-search icon-run-man
-const ProductsItem = ({ weight, calories, category, title }) => {
+const ProductsItem = ({
+  weight,
+  calories,
+  category,
+  title,
+  setExcessCalories,
+}) => {
   const isRecommended = false;
   const wdt = window.innerWidth;
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -39,8 +45,6 @@ const ProductsItem = ({ weight, calories, category, title }) => {
     return category;
   };
 
-  // обрізає задовгі назви
-
   const updatedTitle = () => {
     if (wdt < 375 && title.length > 17) {
       return title.slice(0, 18) + '...';
@@ -59,7 +63,12 @@ const ProductsItem = ({ weight, calories, category, title }) => {
   return (
     <>
       {isAddModalOpen && (
-        <AddModal closeModal={closeModal} title={title} calories={calories} />
+        <AddModal
+          closeModal={closeModal}
+          title={title}
+          calories={calories}
+          setExcessCalories={setExcessCalories}
+        />
       )}
       <ActionBlock>
         <Diet>

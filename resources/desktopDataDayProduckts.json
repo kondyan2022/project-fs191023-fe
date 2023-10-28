@@ -1,0 +1,22 @@
+[
+    {"titel":"Title",
+    "marginTablet": "188px",
+    "marginDesktop": "196px"},
+    
+    {"titel":"Category",
+    "marginTablet": "87px",
+    "marginDesktop": "125px"},
+    
+    {"titel":"Calories",
+    "marginTablet": "54px",
+    "marginDesktop": "69px"},
+    
+    {"titel":"Weight",
+    "marginTablet": "60px",
+    "marginDesktop": "75px"},
+    
+    {"titel":"Recommend",
+    "marginTablet": "0px",
+    "marginDesktop": "0px"}
+   
+]

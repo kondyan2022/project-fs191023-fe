@@ -8,13 +8,17 @@ import {
   Input,
   WrapperInputField,
   InputField,
-  Button,
   WrapperRadio,
   Wrapper,
   WrapperLevel,
   WrappInput,
+  Status,
+  StatusWrapper,
+  Button,
 } from './UserForm.styled';
 import RadioOption from '../RadioOption/RadioOption';
+import spriteSvG from '../../images/sprite.svg';
+import StyledDatepicker from './../Calendar/StyledDatepicker';
 
 const initialValues = {
   name: '',
@@ -27,7 +31,14 @@ const initialValues = {
 };
 
 const validationSchema = yup.object({
-  name: yup.string().min(3).required('Name is required'),
+  name: yup
+    .string()
+    .min(3)
+    .matches(
+      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+      'Only letters, apostrophe, dash and spaces',
+    )
+    .required('Name is required'),
   height: yup.number().min(150, 'Min 150!').required('Height is required'),
   currentWeight: yup
     .number()
@@ -37,8 +48,8 @@ const validationSchema = yup.object({
     .number()
     .min(35, 'Min 35kg!')
     .required('Desired weight is required'),
-  // birthday - date; must be older than 18 years;  required
-  // blood: yup.number().allowedValues([1, 2, 3, 4]).required()
+  // // birthday - date; must be older than 18 years;  required
+  // blood: yup.number().allowedValues([1, 2, 3, 4]).required(),
   // sex - string; allowed values "male", "female"; required
   // levelActivity - number; allowed values 1, 2, 3, 4, 5; required
 });
@@ -98,7 +109,7 @@ const UserForm = () => {
         onSubmit={handleSubmit}
       >
         {(formik) => (
-          <Form>
+          <Form utoComplete="off">
             <FormContainer>
               <div>
                 <SectionTitle>Basic info</SectionTitle>
@@ -107,8 +118,33 @@ const UserForm = () => {
                   type="text"
                   placeholder="Your name"
                   as={Input}
+                  className={`${
+                    formik.touched.name && !formik.errors.name && 'success'
+                  }
+                                ${
+                                  formik.touched.name &&
+                                  formik.errors.name &&
+                                  'error'
+                                }`}
                 />
-                <ErrorMessage name="name" component="p" />
+                {formik.touched.name && (
+                  <Status>
+                    <svg
+                      className={
+                        formik.touched.name && !formik.errors.name
+                          ? `${'success'}`
+                          : `${'error'}`
+                      }
+                    >
+                      <use href={`${spriteSvG}#icon-circle-fill`} />
+                    </svg>
+                    {formik.errors.name ? (
+                      <ErrorMessage name="name" component="p" />
+                    ) : (
+                      <p>Success!</p>
+                    )}
+                  </Status>
+                )}
               </div>
               <div>
                 <Input
@@ -120,7 +156,6 @@ const UserForm = () => {
                 />
               </div>
             </FormContainer>
-
             <WrapperInputField>
               <WrappInput>
                 <label htmlFor="height">Height</label>
@@ -130,8 +165,34 @@ const UserForm = () => {
                   id="height"
                   placeholder="Enter height"
                   as={InputField}
+                  className={`${
+                    formik.touched.height && !formik.errors.height && 'success'
+                  }
+                                ${
+                                  formik.touched.height &&
+                                  formik.errors.height &&
+                                  'error'
+                                }`}
                 />
-                <ErrorMessage name="height" component="p" />
+
+                {formik.touched.height && (
+                  <StatusWrapper>
+                    <svg
+                      className={
+                        formik.touched.height && !formik.errors.height
+                          ? `${'success'}`
+                          : `${'error'}`
+                      }
+                    >
+                      <use href={`${spriteSvG}#icon-circle-fill`} />
+                    </svg>
+                    {formik.errors.height ? (
+                      <ErrorMessage name="height" component="p" />
+                    ) : (
+                      <p>Success!</p>
+                    )}
+                  </StatusWrapper>
+                )}
               </WrappInput>
               <Wrapper>
                 <WrappInput>
@@ -142,8 +203,36 @@ const UserForm = () => {
                     id="currentWeight"
                     placeholder="Enter weight"
                     as={InputField}
+                    className={`${
+                      formik.touched.currentWeight &&
+                      !formik.errors.currentWeight &&
+                      'success'
+                    }
+                                ${
+                                  formik.touched.currentWeight &&
+                                  formik.errors.currentWeight &&
+                                  'error'
+                                }`}
                   />
-                  <ErrorMessage name="currentWeight" component="p" />
+                  {formik.touched.currentWeight && (
+                    <StatusWrapper>
+                      <svg
+                        className={
+                          formik.touched.currentWeight &&
+                          !formik.errors.currentWeight
+                            ? `${'success'}`
+                            : `${'error'}`
+                        }
+                      >
+                        <use href={`${spriteSvG}#icon-circle-fill`} />
+                      </svg>
+                      {formik.errors.nacurrentWeightme ? (
+                        <ErrorMessage name="currentWeight" component="p" />
+                      ) : (
+                        <p>Success!</p>
+                      )}
+                    </StatusWrapper>
+                  )}
                 </WrappInput>
               </Wrapper>
             </WrapperInputField>
@@ -158,12 +247,39 @@ const UserForm = () => {
                   as={InputField}
                   required
                   pattern="[35]"
+                  className={`${
+                    formik.touched.desiredWeight &&
+                    !formik.errors.desiredWeight &&
+                    'success'
+                  }
+                                ${
+                                  formik.touched.desiredWeight &&
+                                  formik.errors.desiredWeight &&
+                                  'error'
+                                }`}
                 />
-                <ErrorMessage name="desiredWeight" component="p" />
+                {formik.touched.desiredWeight && (
+                  <StatusWrapper>
+                    <svg
+                      className={
+                        formik.touched.desiredWeight &&
+                        !formik.errors.desiredWeight
+                          ? `${'success'}`
+                          : `${'error'}`
+                      }
+                    >
+                      <use href={`${spriteSvG}#icon-circle-fill`} />
+                    </svg>
+                    {formik.errors.desiredWeight ? (
+                      <ErrorMessage name="desiredWeight" component="p" />
+                    ) : (
+                      <p>Success!</p>
+                    )}
+                  </StatusWrapper>
+                )}
               </WrappInput>
-              {/* birthday */}
+              {/* <StyledDatepicker /> */}
             </WrapperInputField>
-
             <SectionTitle>Blood</SectionTitle>
             <WrapperRadio>
               <div style={{ display: 'flex', marginRight: '20px' }}>
@@ -214,7 +330,6 @@ const UserForm = () => {
                 ))}
               </WrapperLevel>
             </WrapperRadio>
-
             <Button type="submit">Save</Button>
           </Form>
         )}
