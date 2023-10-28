@@ -11,12 +11,25 @@ import {
 } from './Filter.styled';
 import categories from '../../../../resources/productsCategories.json';
 import sprite from '../../../images/sprite.svg';
+import { useState } from 'react';
 
-const Filter = () => {
+const Filter = ({
+  currentCategory,
+  setCurrentCategory,
+  currentRecomm,
+  setCurrentRecomm,
+}) => {
+  const [isCatOpen, setIsCatOpen] = useState(false);
+  const [isRecommOpen, setIsRecommOpen] = useState(false);
 
   const updatedStr = (str) => {
     const firstLatter = str[0].toUpperCase();
     return firstLatter + str.slice(1);
+  };
+
+  const onSubmitRequest = (e) => {
+    e.preventDefault();
+    e.target.elements.search.value = "";
   }
 
   return (
@@ -24,12 +37,14 @@ const Filter = () => {
       <SupText>Filters</SupText>
       <List>
         <li>
-          <Input type="text" placeholder="Search" />
-          <SearchButton type="button">
-            <svg>
-              <use href={`${sprite}#icon-search`}></use>
-            </svg>
-          </SearchButton>
+          <form onSubmit={onSubmitRequest}>
+            <Input type="text" placeholder="Search" name='search'/>
+            <SearchButton type="submit">
+              <svg>
+                <use href={`${sprite}#icon-search`}></use>
+              </svg>
+            </SearchButton>
+          </form>
         </li>
         <li>
           <CategoriesSelect>
@@ -39,21 +54,36 @@ const Filter = () => {
               autoComplete="off"
               hidden
             ></select>
-            <Text>
-              <p>Categories</p>
+            <Text
+              onClick={() => {
+                setIsCatOpen(!isCatOpen);
+              }}
+            >
+              <p>{currentCategory || 'Categories'}</p>
               <svg>
                 <use href={`${sprite}#icon-filter-down`}></use>
               </svg>
             </Text>
-            <CategoriesList isVisible="false" height={["228px", "276px"]}>
-              <ul>
-                {categories.map((elem) => (
-                  <li key={elem}>
-                    <p>{updatedStr(elem)}</p>
-                  </li>
-                ))}
-              </ul>
-            </CategoriesList>
+            {isCatOpen && (
+              <CategoriesList height={['228px', '276px']}>
+                <ul>
+                  {categories.map((elem) => (
+                    <li
+                      key={elem}
+                      onClick={(e) => {
+                        const text = e.target.textContent;
+                        setIsCatOpen(!isCatOpen);
+                        setCurrentCategory(
+                          text.length > 16 ? text.slice(0, 10) + '...' : text,
+                        );
+                      }}
+                    >
+                      <p>{updatedStr(elem)}</p>
+                    </li>
+                  ))}
+                </ul>
+              </CategoriesList>
+            )}
           </CategoriesSelect>
         </li>
         <li>
@@ -64,25 +94,34 @@ const Filter = () => {
               autoComplete="off"
               hidden
             ></select>
-            <Text>
-              <p>All</p>
+            <Text
+              onClick={() => {
+                setIsRecommOpen(!isRecommOpen);
+              }}
+            >
+              <p>{currentRecomm || 'All'}</p>
               <svg>
                 <use href={`${sprite}#icon-filter-down`}></use>
               </svg>
             </Text>
-            <CategoriesList isVisible="false" height={["98px", "116px"]}> 
-              <ul>
-                <li>
-                  <p>All</p>
-                </li>
-                <li>
-                  <p>Recommended</p>
-                </li>
-                <li>
-                  <p>Not recommended</p>
-                </li>
-              </ul>
-            </CategoriesList>
+            {isRecommOpen && (
+              <CategoriesList height={['98px', '116px']}>
+                <ul>
+                  {['All', 'Recommended', 'Not recommended'].map((item) => (
+                    <li
+                      key={item}
+                      onClick={(e) => {
+                        const text = e.target.textContent;
+                        setIsRecommOpen(!isRecommOpen);
+                        setCurrentRecomm(text);
+                      }}
+                    >
+                      <p>{item}</p>
+                    </li>
+                  ))}
+                </ul>
+              </CategoriesList>
+            )}
           </RecommSelect>
         </li>
       </List>

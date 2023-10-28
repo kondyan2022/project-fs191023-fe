@@ -100,9 +100,7 @@ export const CategoriesSelect = styled.div`
 
 export const CategoriesList = styled.div`
   position: absolute;
-  display: ${({ isVisible }) => {
-    return isVisible === 'true' ? 'block' : 'none';
-  }};
+  display: block;
   width: 100%;
   height: ${({ height }) => {
     return height[0];
@@ -194,6 +192,11 @@ export const Text = styled.div`
   background-color: transparent;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
+  transition: all 100ms linear;
+
+  &:hover {
+    border-color: var(--color-orange);
+  }
 
   p {
     color: var(--color-white);
