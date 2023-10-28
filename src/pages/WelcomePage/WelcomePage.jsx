@@ -9,6 +9,7 @@ import { Section } from '../../components/Section/Section.styled';
 import iconSvg from '../../images/sprite.svg'
 import { IconCircleDecorStyled, IconPlayVideoStyled, IconRunMenStyled } from './WelcomeIcons.styled';
 import StyledDatepicker from '../../components/Calendar/StyledDatepicker'
+import BirthdayDatepicker from '../../components/Calendar/BirthdayDatepicker'
 
 
 const WelcomePage = () => {
@@ -25,10 +26,10 @@ const WelcomePage = () => {
 
           <div>
             <h2>Звичайний календар</h2>
-            <StyledDatepicker minDate={null} maxDate={null} disabledDates={[]} isBirthdayPicker={false} />
+            <StyledDatepicker />
 
             <h2>Календар для вибору дати народження</h2>
-            <StyledDatepicker minDate={null} maxDate={null} disabledDates={[]} isBirthdayPicker={true} />
+            <BirthdayDatepicker />
           </div>          
             <Title>Transforming your body shape with Power Pulse</Title>
             <IconCircleDecorStyled>
