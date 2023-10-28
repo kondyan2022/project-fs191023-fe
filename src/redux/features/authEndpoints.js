@@ -27,6 +27,13 @@ const authApiSlice = userSplitApi.injectEndpoints({
       }),
       invalidatesTags: ['userAuth'],
     }),
+    userDataUpdate: builder.mutation({
+      query: (updateData) => ({
+        url: `users`,
+        method: 'PUT',
+        body: updateData,
+      }),
+    }),
     userLogOut: builder.mutation({
       query: () => ({
         url: `users/logout/`,
@@ -42,5 +49,6 @@ export const {
   useGetUserDiaryQuery,
   useUserSignUpMutation,
   useUserSignInMutation,
+  useUserDataUpdateMutation,
   useUserLogOutMutation,
 } = authApiSlice;
