@@ -489,7 +489,7 @@ line-height: 0.75;
     padding-top: 200px;
     padding-bottom: 246px;
     }
-`,Ce="/project-fs191023-fe/assets/sprite-f3b820b2.svg",Z8=F.svg`
+`,Ce="/project-fs191023-fe/assets/sprite-a3b69dd9.svg",Z8=F.svg`
 position: absolute;
     fill: var(--color-white);
     width: 12px;
@@ -819,6 +819,7 @@ margin-top: 12px;
   position: relative;
   top: -13px;
   left: 0px;
+  /* z-index: 1; */
 
   @media screen and (min-width: 768px) {
     width: 32px;
