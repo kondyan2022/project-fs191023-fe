@@ -26,9 +26,14 @@ export const MenuWrapper = styled.div`
   background-color: var(--color-orange);
   z-index: 2;
 
-  nav {
+  div {
+    position: absolute;
+    bottom: 26px;
+    left: -220px;
   }
-
+  svg {
+    fill: rgba(239, 237, 232, 1);
+  }
   @media screen and (min-width: 768px) {
     width: 350px;
     padding: 26px 32px 32px 32px;
@@ -67,23 +72,23 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const Logout = styled.button`
-  position: absolute;
-  bottom: 26px;
-  left: 32px;
-  display: inline-flex;
-  align-items: center;
-  background-color: transparent;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.33;
-  color: rgba(239, 237, 232, 1);
+// export const Logout = styled.button`
+//   position: absolute;
+//   bottom: 26px;
+//   left: 32px;
+//   display: inline-flex;
+//   align-items: center;
+//   background-color: transparent;
+//   gap: 8px;
+//   font-size: 14px;
+//   font-weight: 400;
+//   line-height: 1.33;
+//   color: rgba(239, 237, 232, 1);
 
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-  }
-`;
+//   @media screen and (min-width: 768px) {
+//     font-size: 16px;
+//   }
+// `;
 
 export const NavList = styled.ul`
   display: flex;

@@ -1,6 +1,4 @@
-import { createGlobalStyle, styled } from "styled-components";
-
-
+import { createGlobalStyle, styled } from 'styled-components';
 
 export const DataBtn = styled.div`
   padding: 6px 12px;
@@ -184,62 +182,59 @@ export const CalendarGlobalStyles = createGlobalStyle`
 `;
 
 export const TitleWrapper = styled.button`
-    height: 20px;
-    width: 183px;
-    color: var(--color-white);
-    background:transparent ; 
-    font-weight: 700;
-    line-height: 1,05;    
-    text-transform: uppercase;
-    padding: 0px 0px;
-    font-size: 18px;  
-    align-items: left;
-    display: inline-flex; 
-    flex-direction: row ; 
-    justify-content:space-between;
-    align-content:center;
-    text-align: center;
+  height: 20px;
+  width: 183px;
+  color: var(--color-white);
+  background: transparent;
+  font-weight: 700;
+  line-height: 1, 05;
+  text-transform: uppercase;
+  padding: 0px 0px;
+  font-size: 18px;
+  align-items: left;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  text-align: center;
 
-    @media screen and (min-width: 768px) {
-      height: 32px;
-      width: 239px;
-      line-height: 32px;
-      font-size: 24px;
-    }  
+  @media screen and (min-width: 768px) {
+    height: 32px;
+    width: 239px;
+    line-height: 32px;
+    font-size: 24px;
+  }
 
-  .react-datepicker__containet-bottom{
+  .react-datepicker__containet-bottom {
     width: 125px;
     @media screen and (min-width: 768px) {
-    width: 161px;
+      width: 161px;
     }
   }
 
-  .react-datepicker__calendar-icon{
-    --color1:var(--color-orange-one);
+  .react-datepicker__calendar-icon {
+    --color1: var(--color-orange-one);
     margin-left: 8px;
     margin-right: auto;
     width: 20px;
-    height:20px;
-    padding:0px;
-    position: initial; 
-    
+    height: 20px;
+    padding: 0px;
+    position: initial;
 
     @media screen and (min-width: 768px) {
       width: 24px;
-      height:24px;
+      height: 24px;
     }
-
   }
 
-  .react-datepicker__navigation-title-day--next{
+  .react-datepicker__navigation-title-day--next {
     width: 16px;
-    height:16px;    
-    --color2:var(--color-white);
+    height: 16px;
+    --color2: var(--color-white);
   }
-  .react-datepicker__navigation-title-day--previous{
+  .react-datepicker__navigation-title-day--previous {
     width: 16px;
-    height:16px;
-    --color2:var(--color-white);
-  }  
-
+    height: 16px;
+    --color2: var(--color-white);
+  }
 `;
