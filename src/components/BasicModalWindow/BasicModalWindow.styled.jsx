@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const MainWindow = styled.div`
+  position: fixed;
   width: 100%;
   height: 100%;
   background: var(--color-modal-window);
-  position: fixed;
   top: 0;
   left: 0;
   display: flex;
@@ -13,10 +13,10 @@ export const MainWindow = styled.div`
 `;
 
 export const Modal = styled.div`
+  position: relative;
   border-radius: 12px;
   border: 1px solid var(--accent-color-border);
   background: #10100f;
-  position: relative;
 `;
 
 export const ButtonClose = styled.button`
