@@ -2,16 +2,24 @@ import { useState } from 'react';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import {
   Button,
-  LinkLogout,
   LinkMenu,
   LinkSvg,
   Navigat,
   Ul,
+  Wrapper,
   WrapperMenu,
 } from './UserMenu.styled';
+import spriteSvG from '../../images/sprite.svg';
+import Logout from '../Logout/Logout';
 
 const UserMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
+
+  const avatarLogo = (
+    <svg fill="var( --accent-color-user-ava)" width="21" height="21">
+      <use href={`${spriteSvG}#icon-user`}></use>
+    </svg>
+  );
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -42,19 +50,15 @@ const UserMenu = () => {
         </Navigat>
         <LinkSvg to="/profile">
           <svg width="24" height="24">
-            <use href="" />
+            <use href={`${spriteSvG}#icon-settings`} />
           </svg>
         </LinkSvg>
-        <img src="" alt="" />
-        <LinkLogout>
-          Logout
-          <svg width="24" height="24">
-            <use href="" />
-          </svg>
-        </LinkLogout>
+        <Wrapper>{avatarLogo}</Wrapper>
+        {/* <img src="" alt="" /> */}
+        <Logout />
         <Button type="button" onClick={openMenu}>
           <svg width="24" height="24">
-            <use href="" />
+            <use href={`${spriteSvG}#icon-menu`} />
           </svg>
         </Button>
       </WrapperMenu>
