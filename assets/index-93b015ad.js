@@ -489,7 +489,7 @@ line-height: 0.75;
     padding-top: 200px;
     padding-bottom: 246px;
     }
-`,je="/project-fs191023-fe/assets/sprite-5114eba0.svg",Hx=F.svg`
+`,je="/project-fs191023-fe/assets/sprite-bb0bcd93.svg",Hx=F.svg`
 position: absolute;
     fill: var(--color-white);
     width: 12px;
