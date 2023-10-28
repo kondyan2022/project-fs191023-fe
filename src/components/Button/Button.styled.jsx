@@ -3,8 +3,7 @@ import styled from '@emotion/styled';
 export const buttonStyles = {
   common: {
     color: 'var(--color-white)',
-    borderRadius: '12px',
-    
+    borderRadius: '12px',    
     fontFamily: 'Roboto',
     fontWeight: 500,
     letterSpacing: '0em',
