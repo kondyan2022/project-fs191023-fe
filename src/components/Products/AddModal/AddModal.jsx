@@ -14,6 +14,8 @@ import {
 import { Form, Formik } from 'formik';
 import { inputSchema } from './AddModalSchema';
 import { useState } from 'react';
+// import BasicModalWindow from '../../BasicModalWindow/BasicModalWindow';
+// import Backdrop from '../../Backdrop/Backdrop';
 
 const AddModal = ({ closeModal, title, calories }) => {
   const [countedCalories, setCountedCalories] = useState(0);
@@ -62,7 +64,7 @@ const AddModal = ({ closeModal, title, calories }) => {
                 </ErrorMessage>
                 <ButtonsList>
                   <li>
-                    <StyledAddButton type="submit" >
+                    <StyledAddButton type="submit">
                       Add to diary
                     </StyledAddButton>
                   </li>
