@@ -42,7 +42,7 @@ const Filter = () => {
             <Text>
               <p>Categories</p>
               <svg>
-                <use href={`${sprite}#icon-arrow`}></use>
+                <use href={`${sprite}#icon-filter-down`}></use>
               </svg>
             </Text>
             <CategoriesList isVisible="false" height={["228px", "276px"]}>
@@ -67,7 +67,7 @@ const Filter = () => {
             <Text>
               <p>All</p>
               <svg>
-                <use href={`${sprite}#icon-arrow`}></use>
+                <use href={`${sprite}#icon-filter-down`}></use>
               </svg>
             </Text>
             <CategoriesList isVisible="false" height={["98px", "116px"]}> 

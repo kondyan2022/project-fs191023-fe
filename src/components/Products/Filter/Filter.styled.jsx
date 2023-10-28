@@ -205,6 +205,10 @@ export const Text = styled.div`
     stroke: var(--color-white);
     width: 18px;
     height: 18px;
+
+    use {
+      fill: transparent;
+    }
   }
 
   @media screen and (min-width: 768px) {

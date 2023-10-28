@@ -37,6 +37,7 @@ const ProductsPage = () => {
 
   return (
     <Section>
+      <div></div>
       <Container>
           <Wrap>
             <Title>Products</Title>
