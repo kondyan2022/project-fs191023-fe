@@ -87,7 +87,7 @@ export const SvgStatus = styled.svg`
 export const BtnShowPassword = styled.button`
   position: absolute;
   right: 16px;
-  top: 16px;
+  top: 12px;
   background-color: transparent;
 `
 

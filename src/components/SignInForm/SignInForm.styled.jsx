@@ -46,7 +46,7 @@ export const Input = styled(Field)`
         line-height: 1.5;
       }
     }
-    &:hoverSu {
+    &:hover {
     border: 1px solid #e6533c;
     outline: 0;
   }
@@ -86,7 +86,7 @@ export const SvgStatus = styled.svg`
 export const BtnShowPassword = styled.button`
   position: absolute;
   right: 16px;
-  top: 16px;
+  top: 12px;
   background-color: transparent;
 `
 
