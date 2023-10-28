@@ -7,6 +7,7 @@ import {
   RecommSelect,
   Text,
   SearchButton,
+  Wrap,
 } from './Filter.styled';
 import categories from '../../../../resources/productsCategories.json';
 import sprite from '../../../images/sprite.svg';
@@ -14,13 +15,12 @@ import sprite from '../../../images/sprite.svg';
 const Filter = () => {
 
   const updatedStr = (str) => {
-    console.log(str)
     const firstLatter = str[0].toUpperCase();
     return firstLatter + str.slice(1);
   }
 
   return (
-    <div>
+    <Wrap>
       <SupText>Filters</SupText>
       <List>
         <li>
@@ -45,7 +45,7 @@ const Filter = () => {
                 <use href={`${sprite}#icon-arrow`}></use>
               </svg>
             </Text>
-            <CategoriesList isVisible="true" height={["228px", "276px"]}>
+            <CategoriesList isVisible="false" height={["228px", "276px"]}>
               <ul>
                 {categories.map((elem) => (
                   <li key={elem}>
@@ -70,7 +70,7 @@ const Filter = () => {
                 <use href={`${sprite}#icon-arrow`}></use>
               </svg>
             </Text>
-            <CategoriesList isVisible="true" height={["98px", "116px"]}> 
+            <CategoriesList isVisible="false" height={["98px", "116px"]}> 
               <ul>
                 <li>
                   <p>All</p>
@@ -86,7 +86,7 @@ const Filter = () => {
           </RecommSelect>
         </li>
       </List>
-    </div>
+    </Wrap>
   );
 };
 export default Filter;

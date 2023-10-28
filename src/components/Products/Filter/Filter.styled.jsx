@@ -1,12 +1,24 @@
 import styled from '@emotion/styled';
 
+export const Wrap = styled.div`
+  position: relative;
+`;
+
 export const SupText = styled.p`
   visibility: hidden;
   display: none;
+  position: absolute;
   color: rgba(239, 237, 232, 0.5);
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
+
+  @media screen and (min-width: 1440px) {
+    visibility: visible;
+    display: block;
+    right: 0;
+    top: -26px;
+  }
 `;
 
 export const List = styled.ul`
@@ -60,6 +72,7 @@ export const Input = styled.input`
   font-size: 14px;
   line-height: 18px;
   transition: all 100ms linear;
+  cursor: pointer;
 
   &::placeholder {
     color: var(--color-white);
@@ -215,6 +228,14 @@ export const SearchButton = styled.button`
     stroke: var(--color-white);
     width: 18px;
     height: 18px;
+  }
+
+  &:hover,
+  &:focus {
+    [Input] {
+      outline: none;
+      border-color: var(--color-orange);
+    }
   }
 
   @media screen and (min-width: 768px) {

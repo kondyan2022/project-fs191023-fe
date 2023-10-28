@@ -1,7 +1,8 @@
 // import { useEffect } from 'react';
 import Container from '../../components/Container/Container';
 import Filter from '../../components/Products/Filter/Filter';
-// import ProductsList from '../../components/Products/ProductsList/ProductsList';
+import { Section, Title, Wrap } from './ProductsPage.styled';
+import ProductsList from '../../components/Products/ProductsList/ProductsList';
 
 // import { useGetAllProductsQuery } from '../../redux/features/prodEndpoints';
 // import { useSelector } from 'react-redux';
@@ -35,28 +36,31 @@ const ProductsPage = () => {
   // console.log('DATA: ', data);
 
   return (
-    <Container>
-      <div>
-        <Filter/>
-        {/* <ProductsList /> */}
-        {/* <div>
-          <ul>
-            {isError && (
-              <p>
-                {error.status}
-                {error.data}
-              </p>
-            )}
-            {data &&
-              data.map((product) => (
-                <li key={product._id}>
-                  <b>Category</b>: {product.category}
-                </li>
-              ))}
-          </ul>
-        </div> */}
-      </div>
-    </Container>
+    <Section>
+      <Container>
+          <Wrap>
+            <Title>Products</Title>
+            <Filter />
+          </Wrap>
+          <ProductsList />
+          {/* <div>
+            <ul>
+              {isError && (
+                <p>
+                  {error.status}
+                  {error.data}
+                </p>
+              )}
+              {data &&
+                data.map((product) => (
+                  <li key={product._id}>
+                    <b>Category</b>: {product.category}
+                  </li>
+                ))}
+            </ul>
+          </div> */}
+      </Container>
+    </Section>
   );
 };
 export default ProductsPage;
