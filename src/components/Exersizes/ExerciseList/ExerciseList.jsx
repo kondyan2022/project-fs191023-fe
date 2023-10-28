@@ -1,6 +1,6 @@
 import exercises from '../../../../resources/exercises.json';
 import { ExerciseItem } from '../ExerciseItem/ExerciseItem';
-
+import { ExList, BackgroundImage } from './ExerciseList.styled';
 export const ExerciseList = ({ exerciseName }) => {
   const allExercises = exercises.filter(
     (exercise) =>
@@ -10,12 +10,15 @@ export const ExerciseList = ({ exerciseName }) => {
   );
 
   return (
-    <ul>
-      {allExercises.map((exercise) => (
-        <li key={exercise._id}>
-          <ExerciseItem exerciseCard={exercise} />
-        </li>
-      ))}
-    </ul>
+    <>
+      <ExList>
+        {allExercises.map((exercise) => (
+          <li key={exercise._id}>
+            <ExerciseItem exerciseCard={exercise} />
+          </li>
+        ))}
+      </ExList>
+      <BackgroundImage />
+    </>
   );
 };
