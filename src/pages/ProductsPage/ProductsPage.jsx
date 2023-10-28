@@ -15,6 +15,7 @@ const ProductsPage = () => {
   const isLoadedUser = useSelector(isLogin);
   const [currentCategory, setCurrentCategory] = useState();
   const [currentRecomm, setCurrentRecomm] = useState();
+  const [excessCalories, setExcessCalories] = useState(0);
   // const [searchParams, setSearchParams] = useSearchParams();
   // const query = useMemo(() => searchParams.get('query'), [searchParams]);
   // const [products, setProducts] = useState([]);
@@ -71,7 +72,9 @@ const ProductsPage = () => {
             {error.data}
           </p>
         )}
-        {data && <ProductsList products={data.slice(0, 20)} />}
+        {data && (
+          <ProductsList products={data.slice(0, 20)} setExcessCalories={setExcessCalories} />
+        )}
       </Container>
     </Section>
   );
