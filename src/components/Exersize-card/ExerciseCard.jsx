@@ -23,7 +23,7 @@ const ExerciseCard = ({
   equipment,
   gifUrl,
   time,
-  calories,
+  burnedCalories,
 }) => {
   const timeS = time * 60;
   const [passedPart, setPassedPart] = useState(0);
@@ -48,7 +48,8 @@ const ExerciseCard = ({
                 tipWidth={7}
               />
               <BurnedPshka>
-                Burned calories: <BurnedPshkaCost>{calories}</BurnedPshkaCost>
+                Burned calories:
+                <BurnedPshkaCost>{burnedCalories}</BurnedPshkaCost>
               </BurnedPshka>
             </li>
           </ListImgTimer>
