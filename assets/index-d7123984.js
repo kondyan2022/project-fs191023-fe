@@ -297,14 +297,14 @@ Error generating stack: `+a.message+`
     width: ${e=>e.primary?"136px":"130px"};
     font-size: 16px;
     line-height: 18px;
-    padding: '12px 40px';
+    padding: 12px 40px;
   }
 
   @media (min-width: 768px) {
-    width: '190px';
+    width: 190px;
     font-size: 20px;
     line-height: 24px;
-    padding: '16px 60px';
+    padding: 16px 60px;
   }
 `,os=({onClick:e,children:t,style:r,primary:i,type:n,isLoading:a})=>{const s=n==="submit"?"submit":"button";return f.jsx(z8,{onClick:e,primary:i,style:r,type:s,disabled:a,children:a?"Loading...":t})},F8=F.div`
     background: #ef8964;
