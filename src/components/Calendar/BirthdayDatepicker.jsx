@@ -40,7 +40,9 @@ const BirthdayDatepicker = ({ minDate, maxDate, disabledDates }) => {
                 formatWeekDay={(day) => day.substr(0, 1)}
                 excludeDates={disabledDates}
                 showYearDropdown
-                showMonthYearDropdown
+                showMonthDropdown
+                showMonthYearDropdown={false}
+            
             />
         </>
     );
