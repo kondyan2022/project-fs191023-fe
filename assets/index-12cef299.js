@@ -387,7 +387,7 @@ Error generating stack: `+a.message+`
     line-height: 24px;
     padding: 16px 60px;
   }
-`,Jn=({onClick:e,children:t,style:r,primary:i,type:n,isLoading:a})=>{const s=n==="submit"?"submit":"button";return p.jsx(LC,{onClick:e,primary:i,style:r,type:s,disabled:a,className:a&&"disabled",children:a?"Loading...":t})},DC=H.div`
+`,Jn=({onClick:e,children:t,style:r,primary:i,type:n,isLoading:a})=>{const s=n==="submit"?"submit":"button";return p.jsx(LC,{onClick:e,primary:i,style:r,type:s,disabled:a,className:a&&"disabled",children:t})},DC=H.div`
     background: #ef8964;
     width: 119px;
     height: 76px;
