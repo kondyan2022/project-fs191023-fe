@@ -182,7 +182,6 @@ export const CalendarGlobalStyles = createGlobalStyle`
 `;
 
 export const TitleWrapper = styled.button`
-  height: 24px;
   width: 133px;
   color: var(--color-white);
   background: transparent;
@@ -192,18 +191,22 @@ export const TitleWrapper = styled.button`
   padding: 0px 0px;
   font-size: 14px;
   align-items: left;
-  display: inline-flex;
-  /*flex-direction: row;*/
-  justify-content: space-between;
-  margin:auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;  
   align-content: center;
   text-align: center;
 
   @media screen and (min-width: 768px) {
-    height: 24px;
     width: 159px;
     line-height: 24px;
     font-size: 16px;
   }
+  .birthday-calendar-icon{
+    margin-left: 34px;
+    @media screen and (min-width: 768px) {
+      margin-left: 60px;
+    }
 
+  }
 `;
