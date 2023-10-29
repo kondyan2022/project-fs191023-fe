@@ -45,6 +45,6 @@ const AddProductSuccess = ({ excessCalories, closeModal }) => {
 export default AddProductSuccess;
 
 AddProductSuccess.propTypes = {
-  calories: PropTypes.number.isRequired,
+  excessCalories: PropTypes.number.isRequired,
   closeModal: PropTypes.func.isRequired,
 };
