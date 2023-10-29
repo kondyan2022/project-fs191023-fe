@@ -4,6 +4,7 @@ export const ExercisesPageWrap = styled.div`
   /* padding-left: 20px;
   padding-right: 20px; */
   margin-top: 40px;
+  overflow-x: hidden;
 
   @media screen and (min-width: 1440px) {
     margin-top: 72px;
