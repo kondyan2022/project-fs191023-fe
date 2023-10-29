@@ -356,8 +356,13 @@ const UserForm = () => {
                 ))}
               </WrapperLevel>
             </WrapperRadio>
-            <Button type="submit" />
-            {/* <Button type="submit">Save</Button> */}
+            <Button
+              primary={true}
+              type="submit"
+              isLoading={formik.isSubmitting}
+            >
+              Save
+            </Button>
           </Form>
         )}
       </Formik>
