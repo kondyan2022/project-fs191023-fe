@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { PropTypes } from 'prop-types';
-import like from '../../images/like-2x.png';
+import avocado from '../../images/avocado-2x.png';
 import sprite from '../../images/sprite.svg';
 
+import { PropTypes } from 'prop-types';
 import {
   ArrowRightIcon,
   ModalWindow,
@@ -13,24 +13,21 @@ import {
   ModalWindowTitle,
   ModalWindowWrap,
   ModalWindowWrapImg,
-} from './ModalProductDone.styled';
+} from './AddProductSuccess.styled';
 
-const ModalExercisesDone = ({ calories, time, closeModal }) => {
+const AddProductSuccess = ({ excessCalories, closeModal }) => {
   return (
     <ModalWindow>
       <ModalWindowWrap>
         <ModalWindowWrapImg>
-          <ModalWindowImg src={like} alt="like" />
+          <ModalWindowImg src={avocado} alt="avocado" />
           <ModalWindowTitle>Well done</ModalWindowTitle>
           <ModalWindowText>
-            Your time: <ModalWindowSpan>{time}</ModalWindowSpan>
-          </ModalWindowText>
-          <ModalWindowText>
-            Burned calories:: <ModalWindowSpan>{calories}</ModalWindowSpan>
+            Calories: <ModalWindowSpan>{excessCalories}</ModalWindowSpan>
           </ModalWindowText>
         </ModalWindowWrapImg>
         <Link to="/products" onClick={closeModal}>
-          <ModalWindowBtn>Next exercise</ModalWindowBtn>
+          <ModalWindowBtn>Next product</ModalWindowBtn>
         </Link>
         <Link to="/diary" onClick={closeModal}>
           <ModalWindowText>
@@ -45,9 +42,9 @@ const ModalExercisesDone = ({ calories, time, closeModal }) => {
   );
 };
 
-export default ModalExercisesDone;
+export default AddProductSuccess;
 
-ModalExercisesDone.propTypes = {
+AddProductSuccess.propTypes = {
   calories: PropTypes.number.isRequired,
   closeModal: PropTypes.func.isRequired,
 };

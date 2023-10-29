@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import avocado from '../../images/avocado-2x.png';
+import { PropTypes } from 'prop-types';
+import like from '../../images/like-2x.png';
 import sprite from '../../images/sprite.svg';
 
-import { PropTypes } from 'prop-types';
 import {
   ArrowRightIcon,
   ModalWindow,
@@ -15,19 +15,22 @@ import {
   ModalWindowWrapImg,
 } from './ModalProductDone.styled';
 
-const ModalProductDone = ({ excessCalories, closeModal }) => {
+const AddExercisesSuccess = ({ calories, time, closeModal }) => {
   return (
     <ModalWindow>
       <ModalWindowWrap>
         <ModalWindowWrapImg>
-          <ModalWindowImg src={avocado} alt="avocado" />
+          <ModalWindowImg src={like} alt="like" />
           <ModalWindowTitle>Well done</ModalWindowTitle>
           <ModalWindowText>
-            Calories: <ModalWindowSpan>{excessCalories}</ModalWindowSpan>
+            Your time: <ModalWindowSpan>{time}</ModalWindowSpan>
+          </ModalWindowText>
+          <ModalWindowText>
+            Burned calories:: <ModalWindowSpan>{calories}</ModalWindowSpan>
           </ModalWindowText>
         </ModalWindowWrapImg>
         <Link to="/products" onClick={closeModal}>
-          <ModalWindowBtn>Next product</ModalWindowBtn>
+          <ModalWindowBtn>Next exercise</ModalWindowBtn>
         </Link>
         <Link to="/diary" onClick={closeModal}>
           <ModalWindowText>
@@ -42,9 +45,9 @@ const ModalProductDone = ({ excessCalories, closeModal }) => {
   );
 };
 
-export default ModalProductDone;
+export default AddExercisesSuccess;
 
-ModalProductDone.propTypes = {
+AddExercisesSuccess.propTypes = {
   calories: PropTypes.number.isRequired,
   closeModal: PropTypes.func.isRequired,
 };
