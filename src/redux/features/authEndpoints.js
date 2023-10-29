@@ -8,17 +8,17 @@ const authApiSlice = userSplitApi.injectEndpoints({
       providesTags: ['userAuth'],
     }),
     uploadUserAvatar: builder.mutation({
-      query: (formData) => ({
+      query: (file) => ({
         url: `/users/avatars`,
         method: 'POST',
-        body: formData,
+        body: () => {
+          const formData = new FormData();
+          formData.append('avatar', file);
+          return formData;
+        }, // formData
         headers: { 'content-type': 'multipart/form-data' },
       }),
       invalidatesTags: ['userAuth'],
-    }),
-    getUserDiary: builder.query({
-      query: (data) => `users/diary/${data}`,
-      providesTags: ['userAuth'],
     }),
     userSignUp: builder.mutation({
       query: (newCredential) => ({
@@ -55,7 +55,7 @@ const authApiSlice = userSplitApi.injectEndpoints({
 
 export const {
   useGetCurrentUserQuery,
-  useGetUserDiaryQuery,
+  // useGetUserDiaryQuery,
   useUploadUserAvatarMutation,
   useUserSignUpMutation,
   useUserSignInMutation,
