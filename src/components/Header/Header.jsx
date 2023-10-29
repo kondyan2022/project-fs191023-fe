@@ -1,13 +1,12 @@
 import Container from '../Container/Container';
 import { isLogin } from '../../redux/selectors';
-import { HeaderContainer } from './Header.styled';
+import { HeaderContainer, SvgLogo } from './Header.styled';
 import UserMenu from '../UserMenu/UserMenu';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import spriteSvG from '../../images/sprite.svg';
 export const Header = () => {
   const isLoggedIn = useSelector(isLogin);
-  console.log(isLoggedIn);
 
   return (
     <Container>
@@ -31,9 +30,9 @@ export const Header = () => {
         }
       >
         <Link to="/">
-          <svg width="24" height="24">
-            <use href={`${spriteSvG}#icon-Line`} />
-          </svg>
+          <SvgLogo width="126" height="13">
+            <use href={`${spriteSvG}#icon-Logo`} />
+          </SvgLogo>
         </Link>
         {isLoggedIn && <UserMenu />}
       </HeaderContainer>
