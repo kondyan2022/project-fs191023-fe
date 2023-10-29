@@ -41,7 +41,7 @@ const BirthdayDatepicker = ({ minDate, maxDate, disabledDates }) => {
                 excludeDates={disabledDates}
                 showYearDropdown
                 showMonthDropdown
-                showMonthYearDropdown={false}
+                showMonthYearDropdown={false} /*Не спрацьовує*/
             
             />
         </>
