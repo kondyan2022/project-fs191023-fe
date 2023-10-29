@@ -4,6 +4,15 @@ import Container from '../../components/Container/Container';
 import WelcomeInfoCalories from '../../components/WelcomeInfoCalories/WelcomeInfoCalories';
 import WelcomeInfoVideo from '../../components/WelcomeInfoVideo/WelcomeInfoVideo';
 import { Title, WrappTitle, WrapperFlex } from './WelcomePage.styled';
+<<<<<<< Updated upstream
+=======
+
+// import {npm 
+//   // IconCircleDecorationStyled,
+//   // IconPlayVideoStyled,
+//   IconRunMenStyled,
+// } from './WelcomeIcons.styled';
+>>>>>>> Stashed changes
 import { buttonStyles } from '../../components/Button/Button.styled';
 import { Section } from '../../components/Section/Section.styled';
 import iconSvg from '../../images/sprite.svg'

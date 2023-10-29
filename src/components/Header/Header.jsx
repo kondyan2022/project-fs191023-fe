@@ -3,11 +3,14 @@ import Container from '../Container/Container';
 import { HeaderContainer } from './Header.styled';
 import UserMenu from '../UserMenu/UserMenu';
 import { Link } from 'react-router-dom';
+
+import StyledDatepickerBirthday from '../Calendar/StyledDatepickerBirthday'
 export const Header = () => {
   const USER_IS_LOGINING = true;
 
   return (
     <Container>
+      <StyledDatepickerBirthday/>
       {/* <Navigation>
         <StyledLink to="/signin">Sign In</StyledLink>
         <StyledLink to="/signup">Sign Up</StyledLink> 
