@@ -45,10 +45,8 @@ const BirthdayDatepicker = ({ minDate, maxDate, disabledDates }) => {
                 yearDropdownScrollable
                 scrollableYearDropdown
                 showMonthDropdown
-                />
+
     <CalendarGlobalStyles />
-  </>
-  );
-  };
+
 
 export default BirthdayDatepicker;
