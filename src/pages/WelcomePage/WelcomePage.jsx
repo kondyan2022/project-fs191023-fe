@@ -4,21 +4,20 @@ import Container from '../../components/Container/Container';
 import WelcomeInfoCalories from '../../components/WelcomeInfoCalories/WelcomeInfoCalories';
 import WelcomeInfoVideo from '../../components/WelcomeInfoVideo/WelcomeInfoVideo';
 import { Title, WrappTitle, WrapperFlex } from './WelcomePage.styled';
-<<<<<<< Updated upstream
-=======
+//<<<<<<< Updated upstream
+//=======
 
 // import {npm 
 //   // IconCircleDecorationStyled,
 //   // IconPlayVideoStyled,
 //   IconRunMenStyled,
 // } from './WelcomeIcons.styled';
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
 import { buttonStyles } from '../../components/Button/Button.styled';
 import { Section } from '../../components/Section/Section.styled';
 import iconSvg from '../../images/sprite.svg'
 import { IconCircleDecorStyled, IconPlayVideoStyled, IconRunMenStyled } from './WelcomeIcons.styled';
-import StyledDatepicker from '../../components/Calendar/StyledDatepicker'
-import BirthdayDatepicker from '../../components/Calendar/BirthdayDatepicker'
+
 
 
 const WelcomePage = () => {
@@ -31,15 +30,7 @@ const WelcomePage = () => {
     <Section>
       <Container>
         <div>
-          <WrappTitle>  
-
-          <div>
-            <h2>Звичайний календар</h2>
-            <StyledDatepicker />
-
-            <h2>Календар для вибору дати народження</h2>
-            <BirthdayDatepicker />
-          </div>          
+          <WrappTitle>               
             <Title>Transforming your body shape with Power Pulse</Title>
             <IconCircleDecorStyled>
               <use href={`${iconSvg}#icon-Line`} />

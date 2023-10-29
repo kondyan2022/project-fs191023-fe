@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { format } from "date-fns";
 import DatePicker from "react-datepicker";
-import { TitleWrapper } from "./StyledDatepicker.styled";
+import { CalendarGlobalStyles, TitleWrapper } from "./BirthdayDatepicker.styled";
 import "react-datepicker/dist/react-datepicker.css";
 import sprite from '../../images/sprite.svg';
 
 const BirthdayDatepicker = ({ minDate, maxDate, disabledDates }) => {
     const [selectedDate, setSelectedDate] = useState(Date.now());
+    const currentYear = new Date().getFullYear();
 
     const CustomInput = ({ onClick }) => {
         return (
@@ -37,15 +38,17 @@ const BirthdayDatepicker = ({ minDate, maxDate, disabledDates }) => {
                 customInput={<CustomInput />}
                 dateFormat="dd MM yyyy"
                 calendarStartDay={1}
-                formatWeekDay={(day) => day.substr(0, 1)}
+                formatWeekDay={(day) => day.substr(0, 2)}
                 excludeDates={disabledDates}
                 showYearDropdown
+                yearDropdownItemNumber={100}
+                yearDropdownScrollable
+                scrollableYearDropdown
                 showMonthDropdown
-                showMonthYearDropdown={false}
-            
-            />
-        </>
-    );
-};
+                />
+    <CalendarGlobalStyles />
+  </>
+  );
+  };
 
 export default BirthdayDatepicker;
