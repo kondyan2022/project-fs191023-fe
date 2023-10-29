@@ -13,9 +13,9 @@ import {
   ModalWindowTitle,
   ModalWindowWrap,
   ModalWindowWrapImg,
-} from './ModalProductDone.styled';
+} from './AddProductSuccess.styled';
 
-const ModalProductDone = ({ calories, closeModal }) => {
+const AddProductSuccess = ({ excessCalories, closeModal }) => {
   return (
     <ModalWindow>
       <ModalWindowWrap>
@@ -23,7 +23,7 @@ const ModalProductDone = ({ calories, closeModal }) => {
           <ModalWindowImg src={avocado} alt="avocado" />
           <ModalWindowTitle>Well done</ModalWindowTitle>
           <ModalWindowText>
-            Calories: <ModalWindowSpan>{calories}</ModalWindowSpan>
+            Calories: <ModalWindowSpan>{excessCalories}</ModalWindowSpan>
           </ModalWindowText>
         </ModalWindowWrapImg>
         <Link to="/products" onClick={closeModal}>
@@ -42,9 +42,9 @@ const ModalProductDone = ({ calories, closeModal }) => {
   );
 };
 
-export default ModalProductDone;
+export default AddProductSuccess;
 
-ModalProductDone.propTypes = {
+AddProductSuccess.propTypes = {
   calories: PropTypes.number.isRequired,
   closeModal: PropTypes.func.isRequired,
 };
