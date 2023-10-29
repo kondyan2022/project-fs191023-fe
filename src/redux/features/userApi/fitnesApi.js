@@ -17,7 +17,7 @@ export const userSplitApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['userAuth', 'exercises', 'products'],
+  tagTypes: ['userAuth', 'groups', 'exercises', 'products'],
 
   endpoints: () => ({}), // розбив АРІ на дві частини, для чистоти коду
 });

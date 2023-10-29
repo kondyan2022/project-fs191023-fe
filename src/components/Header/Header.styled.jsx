@@ -5,7 +5,9 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   padding: 20px;
   gap: 14px;
+  height: 61px;
   @media screen and (min-width: 768px) {
+    height: 84px;
   }
 
   @media screen and (min-width: 1440px) {

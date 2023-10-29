@@ -48,6 +48,7 @@ export const IconBtn = styled.svg`
   position: relative;
   top: -13px;
   left: 0px;
+  /* z-index: 1; */
 
   @media screen and (min-width: 768px) {
     width: 32px;

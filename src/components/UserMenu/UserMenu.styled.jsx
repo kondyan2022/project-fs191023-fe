@@ -3,7 +3,11 @@ import styled from '@emotion/styled';
 
 export const WrapperMenu = styled.div`
   display: flex;
+  align-items: center;
   gap: 16px;
+  a {
+    margin: 0;
+  }
 `;
 export const Navigat = styled.nav`
   display: none;
@@ -13,6 +17,24 @@ export const Navigat = styled.nav`
   @media screen and (min-width: 1440px) {
     display: block;
     margin-right: 32px;
+  }
+`;
+
+export const Wrapper = styled.div`
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  border: 1px solid #e6533c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    width: 46px;
+    height: 46px;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 `;
 
@@ -49,7 +71,7 @@ export const LinkLogout = styled(NavLink)`
   }
 `;
 export const Button = styled.button`
-  opacity: 0;
+  background: currentColor;
   svg {
     width: 20px;
     height: 16px;

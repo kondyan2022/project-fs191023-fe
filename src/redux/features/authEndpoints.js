@@ -7,8 +7,17 @@ const authApiSlice = userSplitApi.injectEndpoints({
       keepUnusedDataFor: 10,
       providesTags: ['userAuth'],
     }),
+    uploadUserAvatar: builder.mutation({
+      query: (formData) => ({
+        url: `/users/avatars`,
+        method: 'POST',
+        body: formData,
+        headers: { 'content-type': 'multipart/form-data' },
+      }),
+      invalidatesTags: ['userAuth'],
+    }),
     getUserDiary: builder.query({
-      query: ({ id, data }) => `users/diary/${id}/${data}`,
+      query: (data) => `users/diary/${data}`,
       providesTags: ['userAuth'],
     }),
     userSignUp: builder.mutation({
@@ -27,6 +36,13 @@ const authApiSlice = userSplitApi.injectEndpoints({
       }),
       invalidatesTags: ['userAuth'],
     }),
+    userDataUpdate: builder.mutation({
+      query: (updateData) => ({
+        url: `users`,
+        method: 'PUT',
+        body: updateData,
+      }),
+    }),
     userLogOut: builder.mutation({
       query: () => ({
         url: `users/logout/`,
@@ -40,7 +56,9 @@ const authApiSlice = userSplitApi.injectEndpoints({
 export const {
   useGetCurrentUserQuery,
   useGetUserDiaryQuery,
+  useUploadUserAvatarMutation,
   useUserSignUpMutation,
   useUserSignInMutation,
+  useUserDataUpdateMutation,
   useUserLogOutMutation,
 } = authApiSlice;

@@ -1,15 +1,25 @@
 import styled from 'styled-components';
 export const ListItem = styled.li`
-  border: 1px solid rgba(239, 237, 232, 0.2);
-  border-radius: 12px;
+  width: 100%;
+  min-height: 141px;
   padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 237, 232, 0.2);
+  background: rgba(239, 237, 232, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
   @media screen and (min-width: 768px) {
-    flex-basis: calc((100% - 16px) / 2);
+    width: 335px;
+    height: 163px;
   }
   @media screen and (min-width: 1440px) {
-    max-width: 405px;
+    width: 405px;
+    min-height: 141px;
   }
 `;
+
 export const Workout = styled.strong`
   border-radius: 4px;
   color: #fff;
@@ -18,7 +28,7 @@ export const Workout = styled.strong`
   font-family: 'Roboto';
   font-size: 12px;
   font-weight: 700;
-  display: inline-flex;
+
   margin-bottom: 33px;
   @media screen and (min-width: 768px) {
     margin-bottom: 25px;

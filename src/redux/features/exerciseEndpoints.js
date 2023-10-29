@@ -6,7 +6,12 @@ const exercisesApiEndpoints = userSplitApi.injectEndpoints({
       query: () => `exercises`,
       providesTags: ['exercises'],
     }),
+    getGroupExercises: builder.query({
+      query: () => `exercises/exercisegroups`,
+      providesTags: ['groups'],
+    }),
   }),
 });
 
-export const { useGetAllExercisesQuery } = exercisesApiEndpoints;
+export const { useGetAllExercisesQuery, useGetGroupExercisesQuery } =
+  exercisesApiEndpoints;
