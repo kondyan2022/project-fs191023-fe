@@ -15,7 +15,7 @@ import {
   ModalWindowWrapImg,
 } from './ModalProductDone.styled';
 
-const ModalProductDone = ({ calories, closeModal }) => {
+const ModalProductDone = ({ excessCalories, closeModal }) => {
   return (
     <ModalWindow>
       <ModalWindowWrap>
@@ -23,7 +23,7 @@ const ModalProductDone = ({ calories, closeModal }) => {
           <ModalWindowImg src={avocado} alt="avocado" />
           <ModalWindowTitle>Well done</ModalWindowTitle>
           <ModalWindowText>
-            Calories: <ModalWindowSpan>{calories}</ModalWindowSpan>
+            Calories: <ModalWindowSpan>{excessCalories}</ModalWindowSpan>
           </ModalWindowText>
         </ModalWindowWrapImg>
         <Link to="/products" onClick={closeModal}>
