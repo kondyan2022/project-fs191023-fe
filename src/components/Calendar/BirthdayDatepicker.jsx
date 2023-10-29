@@ -14,7 +14,7 @@ const BirthdayDatepicker = ({ minDate, maxDate, disabledDates }) => {
             <TitleWrapper>
                 <div onClick={onClick}>
                     {format(selectedDate, "dd.MM.yyyy")}
-                    <svg width="24" height="24" className="birthday-calendar-icon">
+                    <svg width="18" height="18" className="birthday-calendar-icon">
                         <use href={sprite + '#icon-calendar'} />
                     </svg>
                 </div>
@@ -23,7 +23,7 @@ const BirthdayDatepicker = ({ minDate, maxDate, disabledDates }) => {
     };
 
     return (
-        <>
+        <div>
             <DatePicker
                 selected={selectedDate}
                 onChange={(date) => {
@@ -45,8 +45,10 @@ const BirthdayDatepicker = ({ minDate, maxDate, disabledDates }) => {
                 yearDropdownScrollable
                 scrollableYearDropdown
                 showMonthDropdown
-
-    <CalendarGlobalStyles />
-
+            />
+            <CalendarGlobalStyles />
+        </div>
+    );
+};
 
 export default BirthdayDatepicker;

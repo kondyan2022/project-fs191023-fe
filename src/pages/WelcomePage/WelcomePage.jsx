@@ -21,9 +21,7 @@ const WelcomePage = () => {
     <Section>
       <Container>
         <div>
-
-          <WrappTitle>               
-
+          <WrappTitle>       
             <Title>Transforming your body shape with Power Pulse</Title>
             <IconCircleDecorStyled>
               <use href={`${iconSvg}#icon-Line`} />
