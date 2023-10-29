@@ -3,14 +3,17 @@ import { isLogin } from '../../redux/selectors';
 import { HeaderContainer } from './Header.styled';
 import UserMenu from '../UserMenu/UserMenu';
 import { Link } from 'react-router-dom';
+import StyledDatepickerBirthday from '../Calendar/StyledDatepickerBirthday'
 import { useSelector } from 'react-redux';
 import spriteSvG from '../../images/sprite.svg';
+
 export const Header = () => {
   const isLoggedIn = useSelector(isLogin);
   console.log(isLoggedIn);
 
   return (
     <Container>
+      <StyledDatepickerBirthday/>
       {/* <Navigation>
         <StyledLink to="/signin">Sign In</StyledLink>
         <StyledLink to="/signup">Sign Up</StyledLink> 
