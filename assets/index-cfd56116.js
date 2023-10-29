@@ -102,6 +102,7 @@ Error generating stack: `+a.message+`
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
+  overflow-x: hidden;
   /* outline: 1px dashed yellow; */
   /* @media screen and (min-width: 375px) {
     width: 375px;
@@ -2755,21 +2756,24 @@ line-height: 1.3;
   position: relative;
   @media screen and (min-width: 768px) {
     width: 335px;
-    height: 163px;
+    min-height: 163px;
   }
   @media screen and (min-width: 1440px) {
     width: 405px;
     min-height: 141px;
   }
-`,pT=H.strong`
+`,pT=H.div`
   border-radius: 4px;
-  color: #fff;
-  background-color: rgba(239, 237, 232, 0.05);
-  padding: 5px 7.5px 5px 7.5px;
+  padding: 5px 7.5px;
+
+  background: rgba(239, 237, 232, 0.05);
+  width: 73px;
+  height: 24px;
   font-family: 'Roboto';
   font-size: 12px;
   font-weight: 700;
-
+  line-height: normal;
+  text-transform: uppercase;
   margin-bottom: 33px;
   @media screen and (min-width: 768px) {
     margin-bottom: 25px;
@@ -2819,6 +2823,11 @@ line-height: 1.3;
   font-family: 'Roboto';
   font-size: 14px;
   line-height: 'calc(18px / 14px)';
+  svg {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+  }
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 'calc(24px / 16px)';
@@ -2826,7 +2835,7 @@ line-height: 1.3;
 `,Tf=H.span`
   color: #efede8;
   margin-left: 3px;
-`,yT=({exerciseCard:e})=>{const{target:t,bodyPart:r,burnedCalories:i,name:n}=e;return p.jsx(p.Fragment,{children:p.jsxs(fT,{children:[p.jsx(pT,{children:"WORKOUT"}),p.jsxs(cT,{children:[p.jsx(mT,{children:p.jsx("svg",{width:"24",height:"24",style:{fill:"#EFEDE8",zIndex:10},children:p.jsx("use",{href:fe+"#icon-run-man"})})}),p.jsx(gT,{children:n})]}),p.jsxs(bT,{children:[p.jsxs(Of,{children:["Burned calories: ",p.jsx(Tf,{children:i})]}),p.jsxs(Of,{children:["Body part: ",p.jsx(Tf,{children:r})]}),p.jsxs(Of,{children:["Target: ",p.jsx(Tf,{children:t})]})]}),p.jsxs(hT,{type:"button",children:["Start",p.jsx("svg",{width:16,height:16,style:{verticalAlign:"top",stroke:"#E6533C"},children:p.jsx("use",{href:fe+"#icon-arrow"})})]})]})})},vT=H.ul`
+`,yT=({exerciseCard:e})=>{const{target:t,bodyPart:r,burnedCalories:i,name:n}=e;return p.jsx(p.Fragment,{children:p.jsxs(fT,{children:[p.jsx(pT,{children:"WORKOUT"}),p.jsxs(cT,{children:[p.jsx(mT,{children:p.jsx("svg",{width:"24",height:"24",style:{fill:"#EFEDE8",zIndex:10},children:p.jsx("use",{href:fe+"#icon-run-man"})})}),p.jsx(gT,{children:n})]}),p.jsxs(bT,{children:[p.jsxs(Of,{children:["Burned calories: ",p.jsx(Tf,{children:i})]}),p.jsxs(Of,{children:["Body part: ",p.jsx(Tf,{children:r})]}),p.jsxs(Of,{children:["Target: ",p.jsx(Tf,{children:t})]})]}),p.jsxs(hT,{type:"button",children:["Start",p.jsx("svg",{style:{verticalAlign:"top",stroke:"#E6533C"},children:p.jsx("use",{href:fe+"#icon-arrow"})})]})]})})},vT=H.ul`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -2853,7 +2862,7 @@ line-height: 1.3;
     }
 
     &::-webkit-scrollbar-track {
-      background: rgb(255, 186, 12);
+      background: rgba(239, 237, 232, 0.1);
       border-radius: 12px;
     }
   }
@@ -2872,10 +2881,9 @@ line-height: 1.3;
     border: none;
     outline: none;
     position: absolute;
-    transform: translateX(130%);
+    /* transform: translateX(130%); */
     top: 80px;
-    /* top: 84px;
-    right: 96px; */
+    right: -120px;
     width: 670px;
     height: 902px;
     background-image: linear-gradient(
@@ -3060,6 +3068,7 @@ line-height: 1.3;
   /* padding-left: 20px;
   padding-right: 20px; */
   margin-top: 40px;
+  overflow-x: hidden;
 
   @media screen and (min-width: 1440px) {
     margin-top: 72px;
