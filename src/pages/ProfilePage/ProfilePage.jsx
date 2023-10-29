@@ -1,11 +1,16 @@
 import Container from '../../components/Container/Container';
 import UserCard from '../../components/UserCard/UserCard';
-import { Title, WrapperContent, WrapperForm } from './ProfilePage.styled';
+import {
+  OrangCardProfile,
+  Title,
+  WrapperContent,
+  WrapperForm,
+} from './ProfilePage.styled';
 import UserForm from '../../components/UserForm/UserForm';
 import Logout from '../../components/Logout/Logout';
 import Nottice from '../../components/Nottice/Nottice';
 import { WrapperDaily } from '../../components/UserCard/UserCard.styled';
-import { OrangCard } from '../../components/OneStatistic/OneStatistic.styled';
+import sprite from '../../images/sprite.svg';
 
 const ProfilePage = () => {
   return (
@@ -15,13 +20,22 @@ const ProfilePage = () => {
         <div>
           <UserCard />
           <WrapperDaily>
-            <OrangCard>
-              <p>Daily calorie intake</p>
-            </OrangCard>
-            <OrangCard>
-              <p>Daily norm of sports</p>
-            </OrangCard>
-            {/* <Nottice /> */}
+            <OrangCardProfile>
+              <div>
+                <svg>
+                  <use href={`${sprite}#icon-fork-knife`}></use>
+                </svg>
+                <p>Daily calorie intake</p>
+              </div>
+            </OrangCardProfile>
+            <OrangCardProfile>
+              <div>
+                <svg>
+                  <use href={`${sprite}#icon-daily-dumbbell`}></use>
+                </svg>
+                <p>Daily norm of sports</p>
+              </div>
+            </OrangCardProfile>
           </WrapperDaily>
           <Nottice />
           <Logout />
