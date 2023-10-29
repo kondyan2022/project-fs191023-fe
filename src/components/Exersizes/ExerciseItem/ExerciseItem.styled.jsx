@@ -12,7 +12,7 @@ export const ListItem = styled.li`
   position: relative;
   @media screen and (min-width: 768px) {
     width: 335px;
-    height: 163px;
+    min-height: 163px;
   }
   @media screen and (min-width: 1440px) {
     width: 405px;
@@ -20,15 +20,18 @@ export const ListItem = styled.li`
   }
 `;
 
-export const Workout = styled.strong`
+export const Workout = styled.div`
   border-radius: 4px;
-  color: #fff;
-  background-color: rgba(239, 237, 232, 0.05);
-  padding: 5px 7.5px 5px 7.5px;
+  padding: 5px 7.5px;
+
+  background: rgba(239, 237, 232, 0.05);
+  width: 73px;
+  height: 24px;
   font-family: 'Roboto';
   font-size: 12px;
   font-weight: 700;
-
+  line-height: normal;
+  text-transform: uppercase;
   margin-bottom: 33px;
   @media screen and (min-width: 768px) {
     margin-bottom: 25px;
@@ -37,6 +40,7 @@ export const Workout = styled.strong`
     margin-bottom: 27px;
   }
 `;
+
 export const TitleBlock = styled.div`
   display: flex;
   margin-bottom: 8px;
@@ -84,6 +88,11 @@ export const Button = styled.button`
   font-family: 'Roboto';
   font-size: 14px;
   line-height: 'calc(18px / 14px)';
+  svg {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+  }
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 'calc(24px / 16px)';
