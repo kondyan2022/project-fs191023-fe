@@ -14,22 +14,23 @@ export const ExersizeWrap = () => {
     const [activeBoard, setActiveBoard] = useState('Body parts');
     const [exerciseName, setExerciseName] = useState('');
 
-    const handleBoardClick = filter => {
-        setActiveBoard(filter)
-
+  const handleBoardClick = filter => {
+    setActiveBoard(filter)
 
         const url = new URL(window.location);
         url.searchParams.set('activeBoard', filter);
         window.history.pushState({}, '', url.toString());
     }
 
-    const handleExNameClick = name => {
-  setExerciseName(name)
-        const url = new URL(window.location);
-  url.searchParams.set('exerciseName', name);
-  window.history.pushState({}, '', url.toString());
-}
-
+  const handleExNameClick = name => {
+    setExerciseName(name)
+    
+    const url = new URL(window.location);
+    url.searchParams.set('exerciseName', name);
+    window.history.pushState({}, '', url.toString());
+  }
+  
+  
   useEffect(() => {
     const url = new URL(window.location);
     const activeBoardParam = url.searchParams.get('activeBoard');
@@ -37,8 +38,8 @@ export const ExersizeWrap = () => {
       setActiveBoard(activeBoardParam);
     }
   }, []);
-
-      useEffect(() => {
+  
+  useEffect(() => {
     const url2 = new URL(window.location);
     const exerciseNameParam = url2.searchParams.get('exerciseName');
     if (exerciseNameParam) {
