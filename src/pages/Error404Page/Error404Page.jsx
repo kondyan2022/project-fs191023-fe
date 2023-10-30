@@ -1,7 +1,7 @@
 import Container from '../../components/Container/Container'
 import { useNavigate } from 'react-router-dom'
 // import Button from '../../components/Button/Button'
-import { MainWrapper, Wrapper, Title, Subtitle, ButtonStyled } from './Error404Page.styled'
+import { Wrapper, ButtonStyled, WrappParent } from './Error404Page.styled'
 import Section from '../../components/Section/Section'
 
 const Error404Page = () => {
@@ -11,14 +11,14 @@ const Error404Page = () => {
   return (
     <Section>
       <Container>
-        <MainWrapper>
+        <WrappParent>
           <Wrapper>
-            <Title>404</Title>
-            <Subtitle>Sorry, you have reached a page that we could not find.
+            <h1>404</h1>
+            <p>Sorry, you have reached a page that we could not find.
               It seems that you are lost among the numbers and letters of our
               virtual space. Perhaps this page went on vacation or decided to
               disappear into another dimension. We apologize for this inconvenience.
-            </Subtitle>
+            </p>
 
             <ButtonStyled
               primary={true}
@@ -28,7 +28,7 @@ const Error404Page = () => {
             </ButtonStyled>
 
           </Wrapper>
-        </MainWrapper>
+        </WrappParent>
       </Container>
     </Section>
   );
