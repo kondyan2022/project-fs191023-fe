@@ -6,6 +6,7 @@ import ProductsList from '../../components/Products/ProductsList/ProductsList';
 import { useState } from 'react';
 
 import { useGetAllProductsQuery } from '../../redux/features/prodEndpoints';
+import { useUserLogOutMutation } from '../../redux/features/authEndpoints';
 import { useSelector } from 'react-redux';
 import { isLogin } from '../../redux/selectors';
 // import { useSearchParams } from 'react-router-dom';
@@ -23,10 +24,10 @@ const ProductsPage = () => {
 
   const { data, isLoading, isFetching, error, isError } =
     useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser });
-  
+
   // const { data, isLoading, isFetching, error, isError } =
   //   useGetAllProductsQuery(query, { skip: !isLoadedUser });
-  
+
   // console.log(data)
   // НЕ потрібно викликати дані асинхронно, працюєте тільки із витягнутими, фіксованими, даними(data, error...)
   // для спрацьовування хука по умові ви в хук першим параметном передаєте що відсліжувати а другим параметром об'єкт з ключами
@@ -34,6 +35,8 @@ const ProductsPage = () => {
   // Приклад:
   //                             const { data, isLoading, isFetching, error, isError } =
   //                               useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser });
+  //
+  //                             const [function, {isErrror, isSuccess}] = useUserLogOutMutation();
   //
   // ВАЖЛИВО! USEnameMUTATION ВІДПРАЦЬОВУЮТЬ ПЕРЕД USEnameQUERY
   //
@@ -50,7 +53,6 @@ const ProductsPage = () => {
   // Всі дані при першому запиту зберігаються у кеш, тому наступні запити вже не йдуть до бекенду а йдуть в кеш, якщо дані не змінювались
 
   // console.log('DATA: ', data);
-
 
   return (
     <Section>
@@ -73,7 +75,10 @@ const ProductsPage = () => {
           </p>
         )}
         {data && (
-          <ProductsList products={data.slice(0, 20)} setExcessCalories={setExcessCalories} />
+          <ProductsList
+            products={data.slice(0, 20)}
+            setExcessCalories={setExcessCalories}
+          />
         )}
       </Container>
     </Section>
