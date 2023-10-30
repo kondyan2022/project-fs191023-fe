@@ -1,11 +1,12 @@
 // import { useEffect } from 'react';
 import Container from '../../components/Container/Container';
 import Filter from '../../components/Products/Filter/Filter';
-import { Section, Title, Wrap } from './ProductsPage.styled';
+import { Section, Title, Wrap, NotFound } from './ProductsPage.styled';
 import ProductsList from '../../components/Products/ProductsList/ProductsList';
 import { useState } from 'react';
 
 import { useGetAllProductsQuery } from '../../redux/features/prodEndpoints';
+import { useUserLogOutMutation } from '../../redux/features/authEndpoints';
 import { useSelector } from 'react-redux';
 import { isLogin } from '../../redux/selectors';
 // import { useSearchParams } from 'react-router-dom';
@@ -16,6 +17,7 @@ const ProductsPage = () => {
   const [currentCategory, setCurrentCategory] = useState();
   const [currentRecomm, setCurrentRecomm] = useState();
   const [excessCalories, setExcessCalories] = useState(0);
+  // const [query, setQuery] = useState();
   // const [searchParams, setSearchParams] = useSearchParams();
   // const query = useMemo(() => searchParams.get('query'), [searchParams]);
   // const [products, setProducts] = useState([]);
@@ -23,10 +25,10 @@ const ProductsPage = () => {
 
   const { data, isLoading, isFetching, error, isError } =
     useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser });
-  
+
   // const { data, isLoading, isFetching, error, isError } =
   //   useGetAllProductsQuery(query, { skip: !isLoadedUser });
-  
+
   // console.log(data)
   // НЕ потрібно викликати дані асинхронно, працюєте тільки із витягнутими, фіксованими, даними(data, error...)
   // для спрацьовування хука по умові ви в хук першим параметном передаєте що відсліжувати а другим параметром об'єкт з ключами
@@ -34,6 +36,8 @@ const ProductsPage = () => {
   // Приклад:
   //                             const { data, isLoading, isFetching, error, isError } =
   //                               useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser });
+  //
+  //                             const [function, {isErrror, isSuccess}] = useUserLogOutMutation();
   //
   // ВАЖЛИВО! USEnameMUTATION ВІДПРАЦЬОВУЮТЬ ПЕРЕД USEnameQUERY
   //
@@ -63,6 +67,7 @@ const ProductsPage = () => {
             setCurrentCategory={setCurrentCategory}
             currentRecomm={currentRecomm}
             setCurrentRecomm={setCurrentRecomm}
+            // setSearchParams={setSearchParams}
           />
         </Wrap>
         {isFetching && <p>Loading...</p>}
@@ -72,9 +77,41 @@ const ProductsPage = () => {
             {error.data}
           </p>
         )}
+// <<<<<<< diary_routes
         {data && (
-          <ProductsList products={data.slice(0, 20)} setExcessCalories={setExcessCalories} />
+          <ProductsList
+            products={data.slice(0, 20)}
+            setExcessCalories={setExcessCalories}
+          />
         )}
+// =======
+//         {
+//           data && (
+//             // (filterData().length === 0 ? (
+//             //   <NotFound>
+//             //     <p>
+//             //       <span>Sorry, no results were found</span> for the product
+//             //       filters you selected. You may want to consider other search
+//             //       options to find the product you want. Our range is wide and you
+//             //       have the opportunity to find more options that suit your needs.
+//             //     </p>
+//             //     <span>Try changing the search parameters.</span>
+//             //   </NotFound>
+//             // ) : (
+//             <ProductsList
+//               products={data}
+//               setExcessCalories={setExcessCalories}
+//             />
+//           )
+//           // ))
+//         }
+//         {/* {data && (
+//           <ProductsList
+//             products={filterData()}
+//             setExcessCalories={setExcessCalories}
+//           />
+//         )} */}
+// >>>>>>> main
       </Container>
     </Section>
   );

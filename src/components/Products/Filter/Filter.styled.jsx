@@ -88,6 +88,9 @@ export const Input = styled.input`
     line-height: 24px;
     height: calc(100%);
   }
+  /* @media screen and (min-width: 1440px) {
+    height: calc(100%);
+  } */
 `;
 
 export const CategoriesSelect = styled.div`
@@ -247,5 +250,23 @@ export const SearchButton = styled.button`
 
   @media screen and (min-width: 768px) {
     bottom: 17px;
+  }
+`;
+
+export const CleanButton = styled.button`
+  position: absolute;
+  background-color: transparent;
+  padding: 0;
+  top: 14px;
+  right: 40px;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--color-orange);
+  }
+
+  @media screen and (min-width: 768px) {
+    top: 16px;
   }
 `;
