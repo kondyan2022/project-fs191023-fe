@@ -3,6 +3,7 @@ import Button from '../../components/Button/Button'
 
 
 export const WrappParent = styled.div`
+z-index: -1;
 width: 100%;
 height:  812px;
 position: relative;
