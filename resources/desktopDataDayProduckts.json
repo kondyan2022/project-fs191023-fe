@@ -1,22 +1,36 @@
 [
     {"titel":"Title",
     "marginTablet": "188px",
-    "marginDesktop": "196px"},
+    "marginDesktop": "196px",
+    "width": "204px",
+    "widthDesktop":"212px",
+    "key":"title"},
     
     {"titel":"Category",
     "marginTablet": "87px",
-    "marginDesktop": "125px"},
+    "marginDesktop": "125px",
+    "width": "128px",
+    "widthDesktop":"166px",
+    "key":"category"},
     
     {"titel":"Calories",
     "marginTablet": "54px",
-    "marginDesktop": "69px"},
+    "marginDesktop": "69px",
+    "width": "90px",
+    "widthDesktop":"105px",
+    "key":"calories"},
     
     {"titel":"Weight",
     "marginTablet": "60px",
-    "marginDesktop": "75px"},
+    "marginDesktop": "75px",
+    "width": "90px",
+    "widthDesktop":"105px",
+    "key":"weight"},
     
     {"titel":"Recommend",
     "marginTablet": "0px",
-    "marginDesktop": "0px"}
+    "marginDesktop": "0px",
+    "display":"none"
+    }
    
 ]
