@@ -11,7 +11,7 @@ import {
 import { ExerciseList } from '../ExerciseList/ExerciseList';
 
 export const ExersizeWrap = () => {
-    const [activeBoard, setActiveBoard] = useState('');
+    const [activeBoard, setActiveBoard] = useState('Body parts');
     const [exerciseName, setExerciseName] = useState('');
 
     const handleBoardClick = filter => {
@@ -43,17 +43,14 @@ export const ExersizeWrap = () => {
   return (
     <ExercisesPageWrap>
       <ExercisesBox>
-        {/* {activeBoard !== 'Waist' ? (
-          <ExercisesTitle>Exercises</ExercisesTitle>
-        ) : (
-          <ExercisesTitle>{capitalizeFirstLeter(exerciseName)}</ExercisesTitle>
-        )} */}
         {exerciseName ? (
           <ExercisesTitle>{capitalizeFirstLeter(exerciseName)}</ExercisesTitle>
         ) : (
           <ExercisesTitle>Exercises</ExercisesTitle>
         )}
         <ExercisesNavigation
+          exerciseName={exerciseName}
+          setExerciseName={setExerciseName}
           activeBoard={activeBoard}
           handleBoardClick={handleBoardClick}
         />

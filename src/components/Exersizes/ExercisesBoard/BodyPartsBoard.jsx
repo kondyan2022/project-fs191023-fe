@@ -9,7 +9,6 @@ export const BodyPartsBoard = ({ handleBoardClick, handleExNameClick }) => {
     const bodyPartsCards = cards.filter(card => card.filter === "Body parts");
     const [currentPage, setCurrentPage] = useState(1);
     
-    handleBoardClick("Body parts")
 
   const determineItemsPerPage = () => {
     const windowWidth = window.innerWidth
