@@ -2,10 +2,13 @@ import styled from '@emotion/styled';
 import { Field } from 'formik';
 
 export const Backdrop = styled.div`
-  width: 100vw;
-  height: 100vh;
   position: fixed;
-  background: rgba(4, 4, 4, 0.4);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
 `;
 
 export const Modal = styled.div`
@@ -19,7 +22,7 @@ export const Modal = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  padding: 32px;
+  padding: 48px 32px;
 
   @media screen and (min-width: 768px) {
     max-width: 479px;
@@ -29,11 +32,32 @@ export const Modal = styled.div`
 `;
 
 export const CloseButton = styled.button`
-  background-color: inherit;
-  color: white;
-  margin-left: auto;
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: inherit;
+  position: absolute;
+  top: 14px;
+  right: 14px;
   padding: 0;
-  margin-bottom: 8px;
+
+  @media screen and (min-width: 768px) {
+    width: 26px;
+    height: 26px;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    transition: all 0.1s linear;
+
+    stroke: var(--color-white);
+
+    &:hover,
+    &:focus {
+      stroke: var(--color-orange);
+    }
+  }
 `;
 
 export const FormBlock = styled.div`
@@ -119,6 +143,7 @@ export const ErrorMessage = styled.p`
   font-size: 12px;
   line-height: 18px;
   letter-spacing: 0.12px;
+  max-width: 155px;
 `;
 
 export const Calories = styled.p`
@@ -177,12 +202,18 @@ export const StyledAddButton = styled.button`
   padding: 12px auto;
   border-radius: 12px;
   background: var(--color-orange);
+  opacity: ${({ disabled }) => {
+    return disabled ? '0.3' : '1';
+  }};
   border: none;
   color: var(--color-white);
   font-size: 16px;
   font-weight: 500;
   line-height: 18px;
   transition: all 0.1s linear;
+  cursor: ${({ disabled }) => {
+    return disabled && 'default';
+  }};
 
   @media screen and (min-width: 768px) {
     width: 151px;
@@ -190,9 +221,15 @@ export const StyledAddButton = styled.button`
     line-height: 24px;
   }
 
-  &:hover, &:focus {
+  ${({ disabled }) => {
+    return (
+      !disabled &&
+      `&:hover,
+  &:focus {
     background-color: var(--color-orange-one);
-  }
+  }`
+    );
+  }}
 `;
 
 export const StyledCancelButton = styled.button`

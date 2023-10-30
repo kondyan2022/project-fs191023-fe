@@ -1,35 +1,19 @@
-// import axios from 'axios';
-// import { useEffect, useState } from 'react';
 import ProductsItem from '../ProductsItem/ProductsItem';
-// import products from '../../../../resources/products.json';
 import { Card, List } from './ProductsList.styled';
-import { useGetAllProductsQuery } from '../../../redux/features/prodEndpoints';
-const ProductsList = () => {
-  // const [page, setPage] = useState(1);
 
-  // const getAllProducts = async (skip = 0) => {
-  //   const res = await axios.get(
-  //     `https://power-plus-service.onrender.com/products`,
-  //   ); Без токена 204
-  //   return res;
-  // };
-
-  const { data, isLoading, isError } =
-    useGetAllProductsQuery();
-    // ['products', page],
-    // () => getAllProducts(page), {
-    //   keepPreviousData: true,
-    // }
-  console.log(data);
-  const products = data?.slice(0, 20);
-
+const ProductsList = ({ products, setExcessCalories, blood }) => {
   return (
     <>
-      {isLoading && <p>Loading...</p>}
-      {isError && <p>Error</p>}
-      {products && (
-        <List>
-          {products.map(({ _id, weight, calories, category, title }) => (
+      <List>
+        {products.map(
+          ({
+            _id,
+            weight,
+            calories,
+            category,
+            title,
+            groupBloodNotAllowed,
+          }) => (
             <Card key={_id}>
               <ProductsItem
                 weight={weight}
@@ -37,12 +21,14 @@ const ProductsList = () => {
                 category={category}
                 title={title}
                 id={_id}
+                setExcessCalories={setExcessCalories}
+                isRecom={!groupBloodNotAllowed[blood]}
               />
             </Card>
-          ))}
-        </List>
-      )}{' '}
-      {!isLoading && !isError && !products && (
+          ),
+        )}
+      </List>
+      {/* {!isLoading && !isError && !products && (
         <>
           <p>
             Sorry, no results were found for the product filters you selected.
@@ -52,7 +38,7 @@ const ProductsList = () => {
           </p>
           <p>Try changing the search parameters.</p>
         </>
-      )}
+      )} */}
     </>
   );
 };

@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import {
   CloseButton,
   Link,
-  Logout,
   MenuWrapper,
   NavList,
   Overlay,
 } from './MobileMenu.styled';
+import Logout from '../Logout/Logout';
 
 const MobileMenu = ({ onClose }) => {
   useEffect(() => {
@@ -54,9 +54,10 @@ const MobileMenu = ({ onClose }) => {
               </li>
             </NavList>
           </nav>
-          <Logout type="button" onClick={onClose}>
+          <Logout />
+          {/* <Logout type="button" onClick={onClose}>
             <span>Logout</span>
-          </Logout>
+          </Logout> */}
         </MenuWrapper>
       </Overlay>
     </>

@@ -1,16 +1,17 @@
 import styled from '@emotion/styled';
 
 export const ExercisesPageWrap = styled.div`
-  padding-left: 20px;
-  padding-right: 20px;
+  /* padding-left: 20px;
+  padding-right: 20px; */
   margin-top: 40px;
+  overflow-x: hidden;
 
   @media screen and (min-width: 1440px) {
     margin-top: 72px;
     margin-left: auto;
     margin-right: auto;
   }
-`
+`;
 
 export const ExercisesBox = styled.div`
   margin-bottom: 40px;
@@ -18,7 +19,7 @@ export const ExercisesBox = styled.div`
     display: flex;
     margin-bottom: 64px;
   }
-`
+`;
 
 export const ExercisesTitle = styled.h2`
   @media screen and (max-width: 767.99px) {
@@ -29,4 +30,4 @@ export const ExercisesTitle = styled.h2`
   font-size: 24px;
   font-weight: 700;
   line-height: 1.16;
-`
+`;

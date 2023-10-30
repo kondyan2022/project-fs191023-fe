@@ -1,12 +1,13 @@
 import Button from '../Button/Button'
 import { Formik, ErrorMessage, Form } from 'formik';
-import { BtnShowPassword, FormBox, WrappErrorServer, Input, InputsParent, StatusWrapp, BoxParent, SvgEye, SvgStatus, SubmitParent } from './SignInForm.styled';
+import { BtnShowPassword, FormBox, WrappErrorServer, Input, InputsParent, StatusWrapp, BoxParent, SvgEye, SvgStatus, SubmitParent } from './SignInForm.styled'
 import { useDispatch } from 'react-redux'
 import { validationSchemaLogin } from '../../utils/validateSchemes'
 import { useUserSignInMutation } from '../../redux/features/authEndpoints'
 import { setToken } from '../../redux/features/userToken'
 import { useEffect, useState } from 'react'
 import spriteSvG from '../../images/sprite.svg'
+import Loading from '../Loading/Loading'
 
 const SignInForm = () => {
     const dispatch = useDispatch();
@@ -18,8 +19,7 @@ const SignInForm = () => {
         loginUser,
         {
             data: singInResult,
-            // isFetching: loader,
-            // isSuccess: successResponse,
+            isLoading,
             error: signInError,
             isError: controlError
         },
@@ -48,7 +48,7 @@ const SignInForm = () => {
                 validationSchema={validationSchemaLogin}
                 onSubmit={handleSubmit}
             >
-                {({ errors, touched }) => (
+                {({ errors, touched, isValid, dirty }) => (
                     <Form autoComplete="off">
                         <FormBox>
                             <BoxParent>
@@ -118,7 +118,14 @@ const SignInForm = () => {
                             </BoxParent>
                         </FormBox>
                         <SubmitParent>
-                            <Button primary={true} type='submit'>Sign in</Button>
+                            <Button
+                                primary={true}
+                                type='submit'
+                                isLoading={isLoading || (!isValid || !dirty)}
+                            >
+                                Sign in
+                            </Button>
+                            {isLoading && <Loading styles={{ position: 'absolute', top: "-45px" }} />}
                             {controlError && <WrappErrorServer>{signInError.data.message}</WrappErrorServer>}
                         </SubmitParent>
                     </Form>

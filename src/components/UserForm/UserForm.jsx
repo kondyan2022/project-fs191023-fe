@@ -8,26 +8,32 @@ import {
   Input,
   WrapperInputField,
   InputField,
-  Button,
   WrapperRadio,
   Wrapper,
   WrapperLevel,
   WrappInput,
+  Status,
+  StatusWrapper,
 } from './UserForm.styled';
 import RadioOption from '../RadioOption/RadioOption';
+import spriteSvG from '../../images/sprite.svg';
+import {
+  useGetCurrentUserQuery,
+  useUserDataUpdateMutation,
+} from '../../redux/features/authEndpoints';
+import Button from '../Button/Button';
 
-const initialValues = {
-  name: '',
-  height: '',
-  currentWeight: '',
-  desiredWeight: '',
-  blood: '',
-  sex: '',
-  levelActivity: '',
-};
+// import StyledDatepicker from './../Calendar/StyledDatepicker';
 
 const validationSchema = yup.object({
-  name: yup.string().min(3).required('Name is required'),
+  name: yup
+    .string()
+    .min(3)
+    .matches(
+      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+      'Only letters, apostrophe, dash and spaces',
+    )
+    .required('Name is required'),
   height: yup.number().min(150, 'Min 150!').required('Height is required'),
   currentWeight: yup
     .number()
@@ -38,7 +44,7 @@ const validationSchema = yup.object({
     .min(35, 'Min 35kg!')
     .required('Desired weight is required'),
   // birthday - date; must be older than 18 years;  required
-  // blood: yup.number().allowedValues([1, 2, 3, 4]).required()
+  // blood: yup.number().allowedValues([1, 2, 3, 4]).required(),
   // sex - string; allowed values "male", "female"; required
   // levelActivity - number; allowed values 1, 2, 3, 4, 5; required
 });
@@ -85,8 +91,38 @@ const levelOptions = [
 ];
 
 const UserForm = () => {
+  const [userFormUpdate, { isError }] = useUserDataUpdateMutation();
+  const { data } = useGetCurrentUserQuery();
+  console.log(data?.profile);
+
+  const initialValues = {
+    name: data?.name || '',
+    height: data?.profile.height || '150',
+    currentWeight: data?.profile.currentWeight || '35',
+    desiredWeight: data?.profile.defaultValue || '35',
+    birthday: '12/20/2000',
+    blood: data?.profile.blood || '',
+    sex: data?.profile.sex || '',
+    levelActivity: data?.profile.levelActivity || '',
+  };
+
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    const data = {
+      name: values.name,
+      profile: {
+        height: values.height,
+        currentWeight: values.currentWeight,
+        desiredWeight: values.desiredWeight,
+        birthday: '12/20/2000',
+        blood: values.blood,
+        sex: values.sex,
+        levelActivity: values.levelActivity,
+      },
+    };
+
+    userFormUpdate(data);
+    // console.log(values);
+    // console.log(isError);
     resetForm();
   };
 
@@ -98,7 +134,7 @@ const UserForm = () => {
         onSubmit={handleSubmit}
       >
         {(formik) => (
-          <Form>
+          <Form utocomplete="off">
             <FormContainer>
               <div>
                 <SectionTitle>Basic info</SectionTitle>
@@ -107,20 +143,45 @@ const UserForm = () => {
                   type="text"
                   placeholder="Your name"
                   as={Input}
+                  className={`${
+                    formik.touched.name && !formik.errors.name && 'success'
+                  }
+                                ${
+                                  formik.touched.name &&
+                                  formik.errors.name &&
+                                  'error'
+                                }`}
                 />
-                <ErrorMessage name="name" component="p" />
+                {formik.touched.name && (
+                  <Status>
+                    <svg
+                      className={
+                        formik.touched.name && !formik.errors.name
+                          ? `${'success'}`
+                          : `${'error'}`
+                      }
+                    >
+                      <use href={`${spriteSvG}#icon-circle-fill`} />
+                    </svg>
+                    {formik.errors.name ? (
+                      <ErrorMessage name="name" component="p" />
+                    ) : (
+                      <p>Success!</p>
+                    )}
+                  </Status>
+                )}
               </div>
               <div>
                 <Input
                   type="text"
                   name="email"
                   style={{ color: 'rgba(239, 237, 232, 0.60)' }}
+                  defaultValue={data?.email}
                   readOnly
                   disabled
                 />
               </div>
             </FormContainer>
-
             <WrapperInputField>
               <WrappInput>
                 <label htmlFor="height">Height</label>
@@ -130,8 +191,34 @@ const UserForm = () => {
                   id="height"
                   placeholder="Enter height"
                   as={InputField}
+                  className={`${
+                    formik.touched.height && !formik.errors.height && 'success'
+                  }
+                                ${
+                                  formik.touched.height &&
+                                  formik.errors.height &&
+                                  'error'
+                                }`}
                 />
-                <ErrorMessage name="height" component="p" />
+
+                {formik.touched.height && (
+                  <StatusWrapper>
+                    <svg
+                      className={
+                        formik.touched.height && !formik.errors.height
+                          ? `${'success'}`
+                          : `${'error'}`
+                      }
+                    >
+                      <use href={`${spriteSvG}#icon-circle-fill`} />
+                    </svg>
+                    {formik.errors.height ? (
+                      <ErrorMessage name="height" component="p" />
+                    ) : (
+                      <p>Success!</p>
+                    )}
+                  </StatusWrapper>
+                )}
               </WrappInput>
               <Wrapper>
                 <WrappInput>
@@ -142,8 +229,36 @@ const UserForm = () => {
                     id="currentWeight"
                     placeholder="Enter weight"
                     as={InputField}
+                    className={`${
+                      formik.touched.currentWeight &&
+                      !formik.errors.currentWeight &&
+                      'success'
+                    }
+                                ${
+                                  formik.touched.currentWeight &&
+                                  formik.errors.currentWeight &&
+                                  'error'
+                                }`}
                   />
-                  <ErrorMessage name="currentWeight" component="p" />
+                  {formik.touched.currentWeight && (
+                    <StatusWrapper>
+                      <svg
+                        className={
+                          formik.touched.currentWeight &&
+                          !formik.errors.currentWeight
+                            ? `${'success'}`
+                            : `${'error'}`
+                        }
+                      >
+                        <use href={`${spriteSvG}#icon-circle-fill`} />
+                      </svg>
+                      {formik.errors.nacurrentWeightme ? (
+                        <ErrorMessage name="currentWeight" component="p" />
+                      ) : (
+                        <p>Success!</p>
+                      )}
+                    </StatusWrapper>
+                  )}
                 </WrappInput>
               </Wrapper>
             </WrapperInputField>
@@ -158,12 +273,39 @@ const UserForm = () => {
                   as={InputField}
                   required
                   pattern="[35]"
+                  className={`${
+                    formik.touched.desiredWeight &&
+                    !formik.errors.desiredWeight &&
+                    'success'
+                  }
+                                ${
+                                  formik.touched.desiredWeight &&
+                                  formik.errors.desiredWeight &&
+                                  'error'
+                                }`}
                 />
-                <ErrorMessage name="desiredWeight" component="p" />
+                {formik.touched.desiredWeight && (
+                  <StatusWrapper>
+                    <svg
+                      className={
+                        formik.touched.desiredWeight &&
+                        !formik.errors.desiredWeight
+                          ? `${'success'}`
+                          : `${'error'}`
+                      }
+                    >
+                      <use href={`${spriteSvG}#icon-circle-fill`} />
+                    </svg>
+                    {formik.errors.desiredWeight ? (
+                      <ErrorMessage name="desiredWeight" component="p" />
+                    ) : (
+                      <p>Success!</p>
+                    )}
+                  </StatusWrapper>
+                )}
               </WrappInput>
-              {/* birthday */}
+              {/* <StyledDatepicker /> */}
             </WrapperInputField>
-
             <SectionTitle>Blood</SectionTitle>
             <WrapperRadio>
               <div style={{ display: 'flex', marginRight: '20px' }}>
@@ -214,8 +356,8 @@ const UserForm = () => {
                 ))}
               </WrapperLevel>
             </WrapperRadio>
-
-            <Button type="submit">Save</Button>
+            <Button type="submit" />
+            {/* <Button type="submit">Save</Button> */}
           </Form>
         )}
       </Formik>

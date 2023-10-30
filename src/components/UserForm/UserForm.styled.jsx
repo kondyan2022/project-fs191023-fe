@@ -1,16 +1,10 @@
 import styled from '@emotion/styled';
 export const FormContainer = styled.div`
   margin-top: 20px;
-
   position: relative;
-
-  p {
-    position: absolute;
-    font-family: Roboto;
-    top: 66px;
-    left: 0px;
-    font-size: 12px;
-    color: var(--color-rad);
+  div {
+    padding: 0 7px;
+    width: 100%;
   }
 
   @media screen and (min-width: 768px) {
@@ -19,9 +13,41 @@ export const FormContainer = styled.div`
     align-items: flex-end;
     justify-content: space-between;
     width: 700px;
-    p {
-      top: 87px;
+  }
+`;
+
+export const Status = styled.div`
+  position: absolute;
+  display: block;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  top: 65px;
+  left: 0px;
+
+  p {
+    font-family: Roboto;
+
+    font-size: 12px;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    &.success {
+      fill: #3cbf61;
     }
+    &.error {
+      fill: var(--color-rad);
+    }
+  }
+
+  button {
+    margin: 40px;
+  }
+  @media screen and (min-width: 768px) {
+    top: 88px;
+    left: 0px;
   }
 `;
 
@@ -36,7 +62,8 @@ export const SectionTitle = styled.h4`
 `;
 
 export const Input = styled.input`
-  width: 335px;
+  min-width: 100%;
+  max-width: 335px;
   padding: 14px;
   margin-bottom: 14px;
   align-items: center;
@@ -46,6 +73,13 @@ export const Input = styled.input`
   background-color: transparent;
   color: var(--color-white);
   font-size: 14;
+
+  &.success {
+    border: 1px solid #3cbf61;
+  }
+  &.error {
+    border: 1px solid rgba(248, 5, 5, 0.973);
+  }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     width: 341px;
@@ -68,7 +102,7 @@ export const Wrapper = styled.div`
 `;
 
 export const InputField = styled.input`
-  width: 165px;
+  width: 100%;
   padding: 14px;
   align-items: center;
   gap: 10px;
@@ -76,9 +110,21 @@ export const InputField = styled.input`
   border: 1px solid rgba(239, 237, 232, 0.3);
   background-color: transparent;
   color: var(--color-white);
+  &.success {
+    border: 1px solid #3cbf61;
+  }
+  &.error {
+    border: 1px solid rgba(248, 5, 5, 0.973);
+  }
+
   &:focus {
     outline: none;
     border-color: var(--color-orange);
+  }
+  @media screen and (min-width: 768px) {
+    width: 140px;
+  }
+  @media screen and(max-width: 1439px) {
   }
 `;
 
@@ -169,11 +215,22 @@ export const WrapperRadio = styled.div`
   }
 `;
 
-export const Button = styled.button`
-  margin: 40px 0px 80px 20px;
-  padding: 12px 40px;
-  border-radius: 12px;
-`;
+// export const Button = styled.button`
+//   margin: 40px 0px 80px 20px;
+//   padding: 12px 40px;
+//   border-radius: 12px;
+//   background: var(--color-orange);
+//   color: rgba(239, 237, 232, 0.6);
+
+//   &.hover {
+//     background: red;
+//   }
+
+//   @media screen and (min-width: 768px) {
+//     margin: 40px 0px 64px 0;
+//     padding: 16px 50px;
+//   }
+// `;
 
 export const WrapperLevel = styled.div`
   margin-top: 40px;
@@ -186,13 +243,10 @@ export const WrapperLevel = styled.div`
 `;
 
 export const WrappInput = styled.div`
+  position: relative;
   height: 100px;
   margin-top: 14px;
 
-  p {
-    font-size: 12px;
-    color: var(--color-rad);
-  }
   label {
     margin-bottom: 4px;
     display: block;
@@ -205,5 +259,35 @@ export const WrappInput = styled.div`
     -moz-appearance: none;
     appearance: none;
     margin: 0;
+  }
+`;
+
+export const StatusWrapper = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  top: 71px;
+  left: 0px;
+
+  p {
+    font-family: Roboto;
+
+    font-size: 12px;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    &.success {
+      fill: #3cbf61;
+    }
+    &.error {
+      fill: var(--color-rad);
+    }
+  }
+  @media screen and (min-width: 768px) {
+    top: 73px;
+    left: 0px;
   }
 `;

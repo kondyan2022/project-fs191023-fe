@@ -1,13 +1,16 @@
 import Container from '../Container/Container';
-
-import { HeaderContainer } from './Header.styled';
+import { isLogin } from '../../redux/selectors';
+import { HeaderContainer, SvgLogo } from './Header.styled';
 import UserMenu from '../UserMenu/UserMenu';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import spriteSvG from '../../images/sprite.svg';
+
 export const Header = () => {
-  const USER_IS_LOGINING = true;
+  const isLoggedIn = useSelector(isLogin);
 
   return (
-    <Container>
+    <Container>    
       {/* <Navigation>
         <StyledLink to="/signin">Sign In</StyledLink>
         <StyledLink to="/signup">Sign Up</StyledLink> 
@@ -20,17 +23,19 @@ export const Header = () => {
 
       <HeaderContainer
         style={
-          USER_IS_LOGINING
-            ? { borderBottom: '1px solid rgba(239, 237, 232, 0.20)' }
-            : { borderBottom: 'none' }
+          isLoggedIn
+            ? {
+                borderBottom: '1px solid rgba(239, 237, 232, 0.20)',
+              }
+            : { borderBottom: 'none', position: 'absolute' }
         }
       >
         <Link to="/">
-          <svg width="24" height="24">
-            <use href="" />
-          </svg>
+          <SvgLogo width="126" height="13">
+            <use href={`${spriteSvG}#icon-Logo`} />
+          </SvgLogo>
         </Link>
-        {USER_IS_LOGINING && <UserMenu />}
+        {isLoggedIn && <UserMenu />}
       </HeaderContainer>
     </Container>
   );

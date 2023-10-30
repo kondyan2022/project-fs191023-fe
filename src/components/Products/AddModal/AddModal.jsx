@@ -13,12 +13,38 @@ import {
 } from './AddModal.styled';
 import { Form, Formik } from 'formik';
 import { inputSchema } from './AddModalSchema';
-import { useState } from 'react';
+import { useEffect } from 'react';
+import sprite from '../../../images/sprite.svg';
+// import { useAddDiaryProductsMutation } from '../../../redux/features/userDiaryEndpoints';
 
-const AddModal = ({ closeModal, title, calories }) => {
-  const [countedCalories, setCountedCalories] = useState(0);
+const AddModal = ({ closeModal, title, calories, setExcessCalories }) => {
   const initialValues = {
-    grams: '',
+    grams: '100',
+  };
+
+  // const [f, { isSuccess, isError, isLoading }] = useAddDiaryProductsMutation();
+
+  // console.log(isUninitialized);
+  // console.log(f);
+
+
+  useEffect(() => {
+    const closeESC = (e) => {
+      if (e.code === 'Escape') {
+        closeModal();
+      }
+    };
+    document.addEventListener('keydown', closeESC);
+
+    return () => {
+      document.removeEventListener('keydown', closeESC);
+    };
+  }, [closeModal]);
+
+  const handleClickBackground = (e) => {
+    if (e.currentTarget === e.target) {
+      closeModal();
+    }
   };
 
   const errorText = (e) => {
@@ -34,16 +60,19 @@ const AddModal = ({ closeModal, title, calories }) => {
   };
 
   const onFormSubmit = (value) => {
-    setCountedCalories(Math.round((calories / 100) * Number(value.grams)));
+    const countedCalories = Math.round((calories / 100) * Number(value.grams));
+    setExcessCalories(countedCalories);
     console.log({ ...value, calories: countedCalories });
     closeModal();
   };
 
   return (
-    <Backdrop>
+    <Backdrop onClick={handleClickBackground}>
       <Modal>
-        <CloseButton type="button" onClick={closeModal}>
-          X
+        <CloseButton onClick={closeModal}>
+          <svg>
+            <use href={`${sprite}#icon-x`}></use>
+          </svg>
         </CloseButton>
         <FormBlock>
           <div>
@@ -62,7 +91,12 @@ const AddModal = ({ closeModal, title, calories }) => {
                 </ErrorMessage>
                 <ButtonsList>
                   <li>
-                    <StyledAddButton type="submit" >
+                    <StyledAddButton
+                      type="submit"
+                      disabled={
+                        formik.values.grams.trim() === '' || formik.errors.grams
+                      }
+                    >
                       Add to diary
                     </StyledAddButton>
                   </li>

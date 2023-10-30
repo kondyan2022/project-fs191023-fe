@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom';
 export const DayProductsComponent = styled.div`
 
 width: 100%;
-height: 335px;
-padding: 16px;
+min-height:355px;
+max-height: 824px;
+padding-left: 16px;
+padding-right:3px;
+padding-top:16px;
+padding-bottom:16px;
+
 
 background-color:rgba(239, 237, 232, 0.05);
 
@@ -14,6 +19,7 @@ border: 1px solid;
 gap: 32px;
 color:rgba(239, 237, 232, 0.2);
 margin-bottom:40px;
+
 
 @media screen and (min-width: 375px){
   width: 335px;
@@ -38,9 +44,31 @@ padding: 16px;
 
 `
 
+export const Scroll = styled.div`
+  max-height: 755px;
+  overflow-y: scroll;
+    &::-webkit-scrollbar-thumb {
+      background: rgba(239, 237, 232, 0.1);
+      border-radius: 12px;
+      
+      }
+
+    &::-webkit-scrollbar {
+      width:6px;
+      height:103px;
+     }
+
+    &::-webkit-scrollbar-track {
+      margin-top:25px;
+      margin-bottom:40px;
+    }
+` 
+
+
 export const Header = styled.div`
   display:flex;
   justify-content: space-between;
+  margin-bottom:22px;
   
 `
 
@@ -96,4 +124,6 @@ text-align:center;
   left: 50%;
   transform: translate(-50%, -50%);}
 `
+
+
 

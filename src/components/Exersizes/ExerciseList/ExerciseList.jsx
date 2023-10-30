@@ -1,7 +1,14 @@
 import exercises from '../../../../resources/exercises.json';
 import { ExerciseItem } from '../ExerciseItem/ExerciseItem';
+import { ExList, BackgroundImage } from './ExerciseList.styled';
 
-export const ExerciseList = ({ exerciseName }) => {
+export const ExerciseList = ({ exerciseName, handleBoardClick, handleExNameClick }) => {
+  
+  if (exerciseName) {
+    handleBoardClick(exerciseName);
+    handleExNameClick(exerciseName);
+  }
+
   const allExercises = exercises.filter(
     (exercise) =>
       exercise.bodyPart ||
@@ -10,12 +17,15 @@ export const ExerciseList = ({ exerciseName }) => {
   );
 
   return (
-    <ul>
-      {allExercises.map((exercise) => (
-        <li key={exercise._id}>
-          <ExerciseItem exerciseCard={exercise} />
-        </li>
-      ))}
-    </ul>
+    <>
+      <ExList>
+        {allExercises.map((exercise) => (
+          <li key={exercise._id}>
+            <ExerciseItem exerciseCard={exercise} />
+          </li>
+        ))}
+      </ExList>
+      <BackgroundImage />
+    </>
   );
 };

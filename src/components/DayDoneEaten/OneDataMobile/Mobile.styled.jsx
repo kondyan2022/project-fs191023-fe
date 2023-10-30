@@ -1,13 +1,7 @@
 import styled from '@emotion/styled';
 
 export const AllData = styled.div`
-
-button{
-    background-color: transparent;
-    margin-left:8px;
-    padding:0px;
-    margin-bottom:9px;
-}
+margin-bottom:40px;
     
 `
 
@@ -16,6 +10,12 @@ export const NamOfCategory = styled.p`
     font-size:12px;
     line-height:1.5;
     margin-bottom:8px;
+    
+    overflow: hidden;
+    white-space: nowrap;
+    width:80px;
+    text-overflow: ellipsis;
+    
 p::first-letter {
   text-transform: uppercase;
 }
@@ -99,11 +99,19 @@ line-height:1.3;
 color:var(--color-white); 
 `
 
-export const Circle = styled.span`
-width: 14px;
-height: 14px;
-border-radius: 10px;
-margin-right:8px;
-background-color: ${props=> props.isRecommended? 'rgba(65, 155, 9, 1)':'rgba(233, 16, 29, 1)'}
+export const DivLeater = styled.div`
+    overflow: hidden;
+    white-space: nowrap;
+    width:80px;
+    text-overflow: ellipsis;
+::first-letter {
+  text-transform: uppercase;
+}
 
 `
+
+
+
+
+
+

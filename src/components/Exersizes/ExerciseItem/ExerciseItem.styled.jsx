@@ -1,24 +1,37 @@
 import styled from 'styled-components';
 export const ListItem = styled.li`
-  border: 1px solid rgba(239, 237, 232, 0.2);
-  border-radius: 12px;
+  width: 100%;
+  min-height: 141px;
   padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 237, 232, 0.2);
+  background: rgba(239, 237, 232, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
   @media screen and (min-width: 768px) {
-    flex-basis: calc((100% - 16px) / 2);
+    width: 335px;
+    min-height: 163px;
   }
   @media screen and (min-width: 1440px) {
-    max-width: 405px;
+    width: 405px;
+    min-height: 141px;
   }
 `;
-export const Workout = styled.strong`
+
+export const Workout = styled.div`
   border-radius: 4px;
-  color: #fff;
-  background-color: rgba(239, 237, 232, 0.05);
-  padding: 5px 7.5px 5px 7.5px;
+  padding: 5px 7.5px;
+
+  background: rgba(239, 237, 232, 0.05);
+  width: 73px;
+  height: 24px;
   font-family: 'Roboto';
   font-size: 12px;
   font-weight: 700;
-  display: inline-flex;
+  line-height: normal;
+  text-transform: uppercase;
   margin-bottom: 33px;
   @media screen and (min-width: 768px) {
     margin-bottom: 25px;
@@ -27,6 +40,7 @@ export const Workout = styled.strong`
     margin-bottom: 27px;
   }
 `;
+
 export const TitleBlock = styled.div`
   display: flex;
   margin-bottom: 8px;
@@ -74,6 +88,11 @@ export const Button = styled.button`
   font-family: 'Roboto';
   font-size: 14px;
   line-height: 'calc(18px / 14px)';
+  svg {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+  }
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 'calc(24px / 16px)';

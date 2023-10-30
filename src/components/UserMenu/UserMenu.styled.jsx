@@ -3,7 +3,11 @@ import styled from '@emotion/styled';
 
 export const WrapperMenu = styled.div`
   display: flex;
+  align-items: center;
   gap: 16px;
+  a {
+    margin: 0;
+  }
 `;
 export const Navigat = styled.nav`
   display: none;
@@ -16,7 +20,34 @@ export const Navigat = styled.nav`
   }
 `;
 
-export const LinkSvg = styled(NavLink)``;
+export const Wrapper = styled.div`
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  border: 1px solid #e6533c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    width: 46px;
+    height: 46px;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+`;
+
+export const LinkSvg = styled(NavLink)`
+  svg {
+    @media screen and (min-width: 768px) {
+      width: 28px;
+      height: 27px;
+    }
+    @media screen and (min-width: 1440px) {
+    }
+  }
+`;
 
 export const LinkMenu = styled(NavLink)`
   font-size: Roboto;
@@ -42,14 +73,14 @@ export const Ul = styled.ul`
   list-style: none;
   gap: 10px;
 `;
-export const LinkLogout = styled(NavLink)`
-  display: none;
-  @media screen and (min-width: 1440px) {
-    display: block;
-  }
-`;
+// export const LinkLogout = styled(NavLink)`
+//   display: none;
+//   @media screen and (min-width: 1440px) {
+//     display: block;
+//   }
+// `;
 export const Button = styled.button`
-  opacity: 0;
+  background: currentColor;
   svg {
     width: 20px;
     height: 16px;
@@ -57,4 +88,46 @@ export const Button = styled.button`
   @media screen and (min-width: 1440px) {
     display: none;
   }
+`;
+
+export const Photo = styled.img`
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  @media screen and (min-width: 768px) {
+    height: 37px;
+    width: 37px;
+  }
+  @media screen and (min-width: 1440px) {
+  }
+`;
+
+export const WrapperLogout = styled.div`
+  display: none;
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1440px) {
+    display: block;
+  }
+`;
+
+export const LogoutLink = styled(NavLink)`
+  display: none;
+  @media screen and (min-width: 768px) {
+  }
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: var(--color-white);
+  margin-top: 40px;
+
+  @media screen and (min-width: 768px) and (max-width: 1440px) {
+    margin-right: 150px;
+  }
+`;
+
+export const Text = styled.span`
+  margin-right: 8px;
+  color: rgba(239, 237, 232, 1);
 `;
