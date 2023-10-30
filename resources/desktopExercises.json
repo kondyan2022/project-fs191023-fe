@@ -1,0 +1,45 @@
+[
+    {"titel":"Body Part",
+    "marginTablet": "45px",
+    "marginDesktop": "70px",
+    "width": "90px",
+    "widthDesktop":"105px",
+    "key":"bodyPart"},
+    
+    {"titel":"Equipment",
+    "marginTablet": "82px",
+    "marginDesktop": "107px",
+    "width": "132px",
+    "widthDesktop":"157px",
+    "key":"equipment"},
+    
+    {"titel":"Name",
+    "marginTablet": "104px",
+    "marginDesktop": "107px",
+    "width": "128px",
+    "widthDesktop":"131px",
+    "key":"name"
+},
+    
+    {"titel":"Target",
+    "marginTablet": "58px",
+    "marginDesktop": "80px",
+    "width": "84px",
+    "widthDesktop":"106px",
+    "key":"target"},
+    
+    {"titel":"Burned Calories",
+    "marginTablet": "8px",
+    "marginDesktop": "14px",
+    "width": "78px",
+    "widthDesktop":"91px",
+    "key":"burnedCalories"},
+
+    {"titel":"Time",
+    "marginTablet": "0px",
+    "marginDesktop": "0px",
+    "width": "72px",
+    "widthDesktop":"82px",
+    "key":"time"}
+   
+]

@@ -1,7 +1,7 @@
-import {TitleCategory,OtherData,AllData,NamOfCategory,RecommendDiv,Container } from "./ProductEaten.styled"
-import {Recommend} from './DayDoneOperations'
-import {BtnTrash} from '../DayProducts/btn/btn'
-import {Circle} from '../DayProducts/Circle/Circle'
+import {TitleCategory,OtherData,AllData,NamOfCategory,RecommendDiv,Container } from "./Mobile.styled"
+import {Recommend} from '../operations/DayDoneOperations'
+import {BtnTrash} from '../btn/btn'
+import {Circle} from '../Circle/Circle'
 
 
 export const ProductEaten = (props) =>{
@@ -9,7 +9,8 @@ export const ProductEaten = (props) =>{
 
 const {title,calories,weight,groupBloodNotAllowed,category} = props;
 const isRecommended = (Recommend(3,groupBloodNotAllowed));
-return <>
+ 
+ return <>
 
     <AllData>
         
