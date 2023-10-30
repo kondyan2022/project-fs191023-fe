@@ -1,75 +1,75 @@
 import styled from 'styled-components'
-import imageLarge1x from '../../images/side-gym-desktop-tab-1x.jpg'
-import imageLarge2x from '../../images/side-gym-desktop-tab-2x.jpg'
-import image1x from '../../images/side-gym-mob-1x.jpg'
-import image2x from '../../images/side-gym-mob-2x.jpg'
+import Button from '../../components/Button/Button'
 
 
-export const MainWrapper = styled.div`
-    /* width: 406px; // 446px; */
-    width: 100%;
-    height: 812px;  // header 61px
-    background-image: url(${image1x});
-    background-size: auto;
-    background-repeat: no-repeat;
-    background-position-x: 100%;
-    position: relative;
-
-    @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-        background-image: url(${image2x});
-    }
-
+export const WrappParent = styled.div`
+z-index: -1;
+width: 100%;
+height:  812px;
+position: relative;
     @media (min-width: 768px) {
-    /* width: 704px;// 768px; */
-    height: 1024px;  // header 84px
-    background-image: url(${imageLarge1x});
+        height: 1024px;
     }
-
-    @media (min-width: 768px) and (min-device-pixel-ratio: 2),
-    (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-width: 768px) and (min-resolution: 192dpi),
-    (min-width: 768px) and (min-resolution: 2dppx) {
-        background-image: url(${imageLarge2x});
-    }
-
     @media (min-width: 1440px) {
-    /* width: 1248px;// 1440px; */
-    height: 800px; // header 84px
+        height: 800px;
     }
 `
 
 export const Wrapper = styled.div`
+    width: 100%;
     max-width: 240px;
-    height: 100%;
+    height: 812px;
     background-color: var(--color-orange);
     position: absolute;
+    top: 0;
     left: -20px;
     padding: 250px 20px;
 
     @media (min-width: 768px) {
-    max-width: 420px;
-    left: -32px;
-    padding: 309px 32px;
+        max-width: 420px;
+        height: 1024px;
+        left: -32px;
+        padding: 309px 32px;
     }
     @media (min-width: 1440px) {
-    max-width: 669px;
-    left: -96px;
-    padding: 221px 96px;
+        max-width: 669px;
+        height: 800px;
+        left: -96px;
+        padding: 221px 96px;
     }
-`
-
-export const Title = styled.h1`
-    margin-bottom: 14px;
-
-    @media (min-width: 768px) {
-    margin-bottom: 28px;
-
+    h1{
+        color: var(--color-white);
+        font-family: 'Roboto', sans-serif;
+        font-size: 66px;
+        font-weight: 500;
+        line-height: 1; 
+        letter-spacing: 0.66px;
+        margin-bottom: 14px;
+        @media (min-width: 768px) {
+            font-size: 160px;
+            line-height: 1.06; 
+            letter-spacing: 1.6px;
+            margin-bottom: 28px;
+        }
     }
-    /* @media (min-width: 1440px) {
-    } */
+        p {
+            margin-bottom: 28px;
+            width: 100%;
+            max-width: 200px;
+            color: var(--color-white);
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.2;
+            @media (min-width: 768px) {
+                max-width: 356px;
+                font-size: 16px;
+                line-height: 1.5; 
+            }
+            @media (min-width: 1440px) {
+                max-width: 477px;
+            }
+        }
 `
 
 export const Subtitle = styled.h3`
@@ -79,5 +79,10 @@ export const Subtitle = styled.h3`
 
     }
     @media (min-width: 1440px) {
+        width: 477px;
     } */
+`
+
+export const ButtonStyled = styled(Button)`
+    border: 1px solid var(--accent-color-grey);
 `

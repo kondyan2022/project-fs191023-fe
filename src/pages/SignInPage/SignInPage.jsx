@@ -1,7 +1,7 @@
 import Container from '../../components/Container/Container';
 import { Link } from 'react-router-dom';
 import SignInForm from '../../components/SignInForm/SignInForm';
-import { Section } from '../../components/Section/Section.styled';
+import Section from '../../components/Section/Section';
 import { Redirect, Text, Title } from './SignInPage.styled';
 
 const SignInPage = () => {

@@ -1,8 +1,7 @@
-
 import { Link } from 'react-router-dom'
 import Container from '../../components/Container/Container'
 import SignUpForm from '../../components/SignUpForm/SignUpForm'
-import { Section } from '../../components/Section/Section.styled'
+import Section from '../../components/Section/Section'
 import { Text, Title, Redirect } from './SignUpPage.styled'
 
 
