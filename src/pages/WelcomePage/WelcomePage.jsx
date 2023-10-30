@@ -8,7 +8,6 @@ import Section from '../../components/Section/Section';
 import iconSvg from '../../images/sprite.svg'
 import CardInfoCalories from '../../components/CardInfoCalories/CardInfoCalories';
 
-
 const WelcomePage = () => {
   const navigate = useNavigate();
 
@@ -35,7 +34,7 @@ const WelcomePage = () => {
             </Button>
             <Button onClick={handleButtonSignIn} style={buttonStyles}>
               Sign In
-            </Button>
+            </Button>            
           </WrapperFlex>
         </Wrapper>
         <CardInfoVideo />

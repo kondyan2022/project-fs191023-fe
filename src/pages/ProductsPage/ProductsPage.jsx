@@ -4,13 +4,12 @@ import Filter from '../../components/Products/Filter/Filter';
 import { Section, Title, Wrap, NotFound } from './ProductsPage.styled';
 import ProductsList from '../../components/Products/ProductsList/ProductsList';
 import { useState } from 'react';
-
 import { useGetAllProductsQuery } from '../../redux/features/prodEndpoints';
 import { useSelector } from 'react-redux';
 import { isLogin } from '../../redux/selectors';
+// import { useGetCurrentUserQuery } from '../../redux/features/authEndpoints';
 // import { useSearchParams } from 'react-router-dom';
 // import { useMemo } from 'react';
-
 const ProductsPage = () => {
   const isLoadedUser = useSelector(isLogin);
   const [currentCategory, setCurrentCategory] = useState();
@@ -21,21 +20,23 @@ const ProductsPage = () => {
   // const query = useMemo(() => searchParams.get('query'), [searchParams]);
   // const [products, setProducts] = useState([]);
   // const [addModalOpen, setAddModalOpen] = useState(false);
-
   const { data, isLoading, isFetching, error, isError } =
     useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser });
-  
+
+  // const currentUser = useGetCurrentUserQuery();
+  // const blood = currentUser.data.profile.blood
+  const blood = '2';
+
   // console.log(
   //   data?.map((product) =>
   //     product.title.toLowerCase().includes(searchParams?.get('query')),
   //   ),
   // );
-
   // console.log(searchParams.size === 0)
-  
+
   // const { data, isLoading, isFetching, error, isError } =
   //   useGetAllProductsQuery(query, { skip: !isLoadedUser });
-  
+
   // console.log(data)
   // НЕ потрібно викликати дані асинхронно, працюєте тільки із витягнутими, фіксованими, даними(data, error...)
   // для спрацьовування хука по умові ви в хук першим параметном передаєте що відсліжувати а другим параметром об'єкт з ключами
@@ -57,15 +58,12 @@ const ProductsPage = () => {
   //  isError - якщо була помилка запиту, повертає true або нічого, бо при false значить успішний запит і поверне 'isSuccess' = true
   // isSuccess - якщо запит успішний = true
   // Всі дані при першому запиту зберігаються у кеш, тому наступні запити вже не йдуть до бекенду а йдуть в кеш, якщо дані не змінювались
-
   // console.log('DATA: ', data);
-
   // {
   //   q: "apple",
   //   category: "fruits",
   //   recomendation: "true",
   // }
-
 
   return (
     <Section>
@@ -104,6 +102,7 @@ const ProductsPage = () => {
             <ProductsList
               products={data}
               setExcessCalories={setExcessCalories}
+              blood={blood}
             />
           )
           // ))

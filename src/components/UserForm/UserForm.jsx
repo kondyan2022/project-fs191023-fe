@@ -121,8 +121,8 @@ const UserForm = () => {
     };
 
     userFormUpdate(data);
-    console.log(values);
-    console.log(isError);
+    // console.log(values);
+    // console.log(isError);
     resetForm();
   };
 
@@ -356,8 +356,13 @@ const UserForm = () => {
                 ))}
               </WrapperLevel>
             </WrapperRadio>
-            <Button type="submit" />
-            {/* <Button type="submit">Save</Button> */}
+            <Button
+              primary={true}
+              type="submit"
+              isLoading={formik.isSubmitting}
+            >
+              Save
+            </Button>
           </Form>
         )}
       </Formik>
