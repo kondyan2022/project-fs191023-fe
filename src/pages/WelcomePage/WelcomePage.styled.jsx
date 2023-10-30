@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
         padding-top: 200px;
         padding-bottom: 246px;
     }
-`
+`;
 
 export const WrappTitle = styled.div`
     width: 100%;
@@ -34,18 +34,30 @@ export const WrappTitle = styled.div`
             letter-spacing: 0.7px;
         }
     }
-`
+`;
+
 export const WrapperFlex = styled.div`
     display: flex;
     gap: 14px;
         @media(min-width: 768px) {
             gap: 20px;
     }
-`
+`;
 
-// @media(min-width: 375px) {
-// }
-// @media(min-width: 768px) {
-// }
-// @media(min-width: 1440px) {
-// }
+export const IconCircleDecorStyled = styled.svg`
+    z-index: -1;
+    stroke-width: 2px;
+    stroke: var(--color-orange-one);
+    fill: transparent;
+    width: 98px;
+    height: 35px;
+    position: absolute;
+    top: 43px;
+    left: -8px;
+    @media(min-width: 768px) {
+        width: 185px;
+        height: 67px;
+        top: 85px;
+        left: -15px;
+    }
+`;
