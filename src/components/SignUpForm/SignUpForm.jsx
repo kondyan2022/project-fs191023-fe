@@ -1,12 +1,13 @@
-import Button from '../Button/Button';
-import { Formik, ErrorMessage, Form } from 'formik';
-import { useDispatch } from 'react-redux';
-import { validationSchemaRegister } from '../../utils/validateSchemes';
-import { useUserSignUpMutation } from '../../redux/features/authEndpoints';
-import { setToken } from '../../redux/features/userToken';
-import { useEffect, useState } from 'react';
-import { BtnShowPassword, FormBox, Input, WrappErrorServer, InputsParent, StatusWrapp, BoxParent, SvgEye, SvgStatus, SubmitParent } from './SignUpForm.styled';
+import Button from '../Button/Button'
+import { Formik, ErrorMessage, Form } from 'formik'
+import { useDispatch } from 'react-redux'
+import { validationSchemaRegister } from '../../utils/validateSchemes'
+import { useUserSignUpMutation } from '../../redux/features/authEndpoints'
+import { setToken } from '../../redux/features/userToken'
+import { useEffect, useState } from 'react'
+import { BtnShowPassword, FormBox, Input, WrappErrorServer, InputsParent, StatusWrapp, BoxParent, SvgEye, SvgStatus, SubmitParent } from './SignUpForm.styled'
 import spriteSvG from '../../images/sprite.svg'
+import Loading from '../Loading/Loading'
 
 const SignUpForm = () => {
     const dispatch = useDispatch();
@@ -18,8 +19,7 @@ const SignUpForm = () => {
         createUser,
         {
             data: createdUser,
-            // isFetching: loader,
-            // isSuccess: isCreateSuccess,
+            isLoading,
             error: createError,
             isError: isCreateError,
         },
@@ -50,7 +50,7 @@ const SignUpForm = () => {
                 validationSchema={validationSchemaRegister}
                 onSubmit={handleSubmit}
             >
-                {({ errors, touched }) => (
+                {({ errors, touched, isValid, dirty }) => (
                     <Form autoComplete="off">
                         <FormBox>
                             <BoxParent>
@@ -144,7 +144,15 @@ const SignUpForm = () => {
                             </BoxParent>
                         </FormBox>
                         <SubmitParent>
-                            <Button primary={true} type="submit">Sign Up</Button>
+
+                            <Button
+                                primary={true}
+                                type="submit"
+                                isLoading={isLoading || (!isValid || !dirty)}
+                            >
+                                Sign Up
+                            </Button>
+                            {isLoading && <Loading styles={{ position: 'absolute', top: "-45px" }} />}
                             {isCreateError && <WrappErrorServer>{createError.data.message}</WrappErrorServer>}
                         </SubmitParent>
                     </Form>

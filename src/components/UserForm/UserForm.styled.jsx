@@ -5,8 +5,6 @@ export const FormContainer = styled.div`
   div {
     padding: 0 7px;
     width: 100%;
-    display: inline-flex;
-    flex-direction: column;
   }
 
   @media screen and (min-width: 768px) {
@@ -20,6 +18,7 @@ export const FormContainer = styled.div`
 
 export const Status = styled.div`
   position: absolute;
+  display: block;
   display: flex;
   align-items: center;
   gap: 2px;
@@ -216,22 +215,22 @@ export const WrapperRadio = styled.div`
   }
 `;
 
-export const Button = styled.button`
-  margin: 40px 0px 80px 20px;
-  padding: 12px 40px;
-  border-radius: 12px;
-  background: var(--color-orange);
-  color: rgba(239, 237, 232, 0.6);
+// export const Button = styled.button`
+//   margin: 40px 0px 80px 20px;
+//   padding: 12px 40px;
+//   border-radius: 12px;
+//   background: var(--color-orange);
+//   color: rgba(239, 237, 232, 0.6);
 
-  &.hover {
-    background: red;
-  }
+//   &.hover {
+//     background: red;
+//   }
 
-  @media screen and (min-width: 768px) {
-    margin: 40px 0px 64px 0;
-    padding: 16px 50px;
-  }
-`;
+//   @media screen and (min-width: 768px) {
+//     margin: 40px 0px 64px 0;
+//     padding: 16px 50px;
+//   }
+// `;
 
 export const WrapperLevel = styled.div`
   margin-top: 40px;

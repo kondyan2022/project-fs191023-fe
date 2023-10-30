@@ -7,6 +7,7 @@ export const Container = styled.div`
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
+  overflow-x: hidden;
   /* outline: 1px dashed yellow; */
   /* @media screen and (min-width: 375px) {
     width: 375px;

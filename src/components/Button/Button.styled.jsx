@@ -34,7 +34,11 @@ export const StyledButton = styled.button`
   ${(props) =>
     props.primary
       ? buttonStyles.primaryButtonStyles
-      : buttonStyles.secondaryButtonStyles};
+      : buttonStyles.secondaryButtonStyles}
+      
+      &.disabled{
+        background-color: var(--color-beige);
+      }
 
   @media (min-width: 375px) and (max-width: 768px) {
     width: ${(props) => (props.primary ? '136px' : '130px')};

@@ -84,5 +84,5 @@ export const ModalWindowBtn = styled.button`
 export const ArrowRightIcon = styled.svg`
   width: 16px;
   height: 16px;
-  stroke: var(--white-color);
+  stroke: var(--color-white);
 `;
