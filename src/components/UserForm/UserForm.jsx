@@ -14,21 +14,16 @@ import {
   WrappInput,
   Status,
   StatusWrapper,
-  Button,
 } from './UserForm.styled';
 import RadioOption from '../RadioOption/RadioOption';
 import spriteSvG from '../../images/sprite.svg';
-import StyledDatepicker from './../Calendar/StyledDatepicker';
+import {
+  useGetCurrentUserQuery,
+  useUserDataUpdateMutation,
+} from '../../redux/features/authEndpoints';
+import Button from '../Button/Button';
 
-const initialValues = {
-  name: '',
-  height: '',
-  currentWeight: '',
-  desiredWeight: '',
-  blood: '',
-  sex: '',
-  levelActivity: '',
-};
+// import StyledDatepicker from './../Calendar/StyledDatepicker';
 
 const validationSchema = yup.object({
   name: yup
@@ -48,7 +43,7 @@ const validationSchema = yup.object({
     .number()
     .min(35, 'Min 35kg!')
     .required('Desired weight is required'),
-  // // birthday - date; must be older than 18 years;  required
+  // birthday - date; must be older than 18 years;  required
   // blood: yup.number().allowedValues([1, 2, 3, 4]).required(),
   // sex - string; allowed values "male", "female"; required
   // levelActivity - number; allowed values 1, 2, 3, 4, 5; required
@@ -96,8 +91,38 @@ const levelOptions = [
 ];
 
 const UserForm = () => {
+  const [userFormUpdate, { isError }] = useUserDataUpdateMutation();
+  const { data } = useGetCurrentUserQuery();
+  console.log(data?.profile);
+
+  const initialValues = {
+    name: data?.name || '',
+    height: data?.profile.height || '150',
+    currentWeight: data?.profile.currentWeight || '35',
+    desiredWeight: data?.profile.defaultValue || '35',
+    birthday: '12/20/2000',
+    blood: data?.profile.blood || '',
+    sex: data?.profile.sex || '',
+    levelActivity: data?.profile.levelActivity || '',
+  };
+
   const handleSubmit = (values, { resetForm }) => {
+    const data = {
+      name: values.name,
+      profile: {
+        height: values.height,
+        currentWeight: values.currentWeight,
+        desiredWeight: values.desiredWeight,
+        birthday: '12/20/2000',
+        blood: values.blood,
+        sex: values.sex,
+        levelActivity: values.levelActivity,
+      },
+    };
+
+    userFormUpdate(data);
     console.log(values);
+    console.log(isError);
     resetForm();
   };
 
@@ -109,7 +134,7 @@ const UserForm = () => {
         onSubmit={handleSubmit}
       >
         {(formik) => (
-          <Form utoComplete="off">
+          <Form utocomplete="off">
             <FormContainer>
               <div>
                 <SectionTitle>Basic info</SectionTitle>
@@ -151,6 +176,7 @@ const UserForm = () => {
                   type="text"
                   name="email"
                   style={{ color: 'rgba(239, 237, 232, 0.60)' }}
+                  defaultValue={data?.email}
                   readOnly
                   disabled
                 />
@@ -330,7 +356,8 @@ const UserForm = () => {
                 ))}
               </WrapperLevel>
             </WrapperRadio>
-            <Button type="submit">Save</Button>
+            <Button type="submit" />
+            {/* <Button type="submit">Save</Button> */}
           </Form>
         )}
       </Formik>

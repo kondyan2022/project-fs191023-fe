@@ -28,7 +28,7 @@ export const ExList = styled.ul`
     }
 
     &::-webkit-scrollbar-track {
-      background: rgb(255, 186, 12);
+      background: rgba(239, 237, 232, 0.1);
       border-radius: 12px;
     }
   }
@@ -48,10 +48,9 @@ export const BackgroundImage = styled.div`
     border: none;
     outline: none;
     position: absolute;
-    transform: translateX(130%);
+    /* transform: translateX(130%); */
     top: 80px;
-    /* top: 84px;
-    right: 96px; */
+    right: -120px;
     width: 670px;
     height: 902px;
     background-image: linear-gradient(

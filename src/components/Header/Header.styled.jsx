@@ -3,13 +3,25 @@ import styled from '@emotion/styled';
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  align-items: center;
+  padding: 20px 0;
   gap: 14px;
   height: 61px;
   @media screen and (min-width: 768px) {
     height: 84px;
   }
 
+  @media screen and (min-width: 1440px) {
+  }
+`;
+
+export const SvgLogo = styled.svg`
+  width: 126px;
+  height: 13px;
+  @media screen and (min-width: 768px) {
+  }
+  width: 151px;
+  height: 17px;
   @media screen and (min-width: 1440px) {
   }
 `;

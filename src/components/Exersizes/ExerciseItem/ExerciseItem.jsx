@@ -46,11 +46,7 @@ export const ExerciseItem = ({ exerciseCard }) => {
         </Statistics>
         <Button type="button">
           Start
-          <svg
-            width={16}
-            height={16}
-            style={{ verticalAlign: 'top', stroke: '#E6533C' }}
-          >
+          <svg style={{ verticalAlign: 'top', stroke: '#E6533C' }}>
             <use href={sprite + '#icon-arrow'} />
           </svg>
         </Button>

@@ -38,7 +38,7 @@ const BasicModalWindow = ({ children, isToggleModal }) => {
     </Backdrop>;
   };
 
-  return createPortal(modal, document.querySelector('#modal-window'));
+  return createPortal(modal, document.querySelector('#modal-root'));
 };
 
 export default BasicModalWindow;
