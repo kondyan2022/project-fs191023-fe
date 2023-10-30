@@ -1,19 +1,18 @@
 import Container from '../../components/Container/Container';
-import { Link } from 'react-router-dom';
 import SignInForm from '../../components/SignInForm/SignInForm';
 import Section from '../../components/Section/Section';
-import { Redirect, Text, Title } from './SignInPage.styled';
+import { LinkTo, Redirect, Wrapper, Text } from './SignInPage.styled';
 
 const SignInPage = () => {
   return (
     <Section>
       <Container>
-        <div>
-          <Title>Sign In</Title>
+        <Wrapper>
+          <h2>Sign In</h2>
           <Text>Welcome! Please enter your credentials to login to the platform:</Text>
           <SignInForm />
-          <Redirect>Don`t have an account? <Link to='/signup'>Sign Up</Link></Redirect>
-        </div>
+          <Redirect>Don`t have an account? <LinkTo to='/signup'>Sign Up</LinkTo></Redirect>
+        </Wrapper>
       </Container>
     </Section>
   );

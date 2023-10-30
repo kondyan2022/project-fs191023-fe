@@ -1,15 +1,18 @@
 import styled from 'styled-components'
-import {Field} from 'formik';
+import { Field } from 'formik';
+
+
 
 export const FormBox = styled.div`
+  width: 100%;
   max-width: 286px;
   display: flex;
   flex-direction: column;
-  gap: 24px; // 14px +10 on status svg
+  gap: 25px; // 14px +11 on status svg
   margin-bottom: 28px;
   @media(min-width: 768px) {
-    max-width: 310px;
-    gap: 30px; // 20px +10 on status svg
+    max-width: 364px;
+    gap: 31px; // 20px +11 on status svg
     margin-bottom: 64px;
   }
 `
@@ -24,8 +27,9 @@ export const BoxParent = styled.div`
 
 export const Input = styled(Field)`
     width: 100%;
+    max-width: 100%;
     background-color:  transparent;
-    padding: 14px 31px 14px 14px;
+    padding: 14px 45px 14px 14px;
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.30);
     outline: none;
@@ -34,7 +38,6 @@ export const Input = styled(Field)`
     font-size: 14px;
     font-weight: 400;
     line-height: 18px;
-    /* margin-bottom: 22px; */
     &::placeholder {
       background-color: transparent;
       color: var(--accent-color-grey);
@@ -68,8 +71,12 @@ export const StatusWrapp = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content:  flex-end;
   position: absolute;
-  bottom: -18px;
+  bottom: -20px;
+    @media(min-width: 768px) {
+      bottom: -22px;
+    }
 `
 export const SvgStatus = styled.svg`
   display: inline-block;
@@ -112,12 +119,4 @@ export const WrappErrorServer = styled.div`
   @media(min-width: 768px) {
     font-size: 16px;
   }
-`
-
-// @media(min - width: 375px) {
-// }
-// @media(min - width: 768px) {
-  
-// }
-// @media(min - width: 1440px) {
-// }
+`;
