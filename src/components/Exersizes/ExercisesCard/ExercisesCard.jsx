@@ -14,7 +14,9 @@ export const ExercisesCard = ({ exercisesCard, handleBoardClick, handleExNameCli
     }
 
     return (
-        <ExCard onClick={() => onClick(name)}>
+        <ExCard
+            to={`groups/${exercisesCard._id.$oid}`}
+            onClick={() => onClick(name)}>
             <ExCardImage src={imgURL} alt={name} />
             <ExCardData>
                 <ExCardTitle>{capitalizeFirstLeter(name)}</ExCardTitle>
