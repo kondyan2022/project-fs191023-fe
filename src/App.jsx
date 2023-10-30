@@ -13,7 +13,7 @@ import { PublicRoute } from './components/PublicRoute/PublicRoute';
 import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
 import { useSelector } from 'react-redux';
 import { isLogin } from './redux/selectors';
-import { ExersizeWrap } from './components/Exersizes/ExercisesWrap/ExercisesWrap';
+import { ExerciseList } from './components/Exersizes/ExerciseList/ExerciseList';
 import { BodyPartsBoard } from './components/Exersizes/ExercisesBoard/BodyPartsBoard';
 import { MusclesBoard } from './components/Exersizes/ExercisesBoard/MusclesBoard';
 import { EquipmentBoard } from './components/Exersizes/ExercisesBoard/EquipmentBoard';
@@ -93,10 +93,10 @@ function App() {
             </PrivateRoute>
           }
         >
-          <Route index element={<ExersizeWrap />} />
           <Route path="bodyparts" element={<BodyPartsBoard />} />
           <Route path="muscles" element={<MusclesBoard />} />
           <Route path="equipment" element={<EquipmentBoard />} />
+          <Route path="groups/:groupId" element={<ExerciseList />} />
           {/* може роути тут */}
         </Route>
         <Route path="*" element={<Error404Page />} />

@@ -12,7 +12,7 @@ const Button = ({ onClick, children, style, primary, type, isLoading }) => {
     type={buttonType} 
     disabled={isLoading}
     className={isLoading && 'disabled'}>
-      {isLoading ? 'Loading...' : children}
+      {children}
     </StyledButton>
 
   );

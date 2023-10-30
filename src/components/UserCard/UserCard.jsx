@@ -20,7 +20,7 @@ const UserCard = (user) => {
       <use href={`${sprite}#icon-user`}></use>
     </SvgLogoUser>
   );
-  // const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Wrapper>
       <Avatar>{avatar ? avatarUser : avatarLogo}</Avatar>

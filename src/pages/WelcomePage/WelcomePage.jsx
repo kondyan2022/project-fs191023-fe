@@ -5,7 +5,7 @@ import WelcomeInfoCalories from '../../components/WelcomeInfoCalories/WelcomeInf
 import WelcomeInfoVideo from '../../components/WelcomeInfoVideo/WelcomeInfoVideo';
 import { Title, WrappTitle, WrapperFlex } from './WelcomePage.styled';
 import { buttonStyles } from '../../components/Button/Button.styled';
-import { Section } from '../../components/Section/Section.styled';
+import Section from '../../components/Section/Section';
 import iconSvg from '../../images/sprite.svg'
 import { IconCircleDecorStyled, IconPlayVideoStyled, IconRunMenStyled } from './WelcomeIcons.styled';
 
@@ -21,9 +21,7 @@ const WelcomePage = () => {
     <Section>
       <Container>
         <div>
-
-          <WrappTitle>               
-
+          <WrappTitle>
             <Title>Transforming your body shape with Power Pulse</Title>
             <IconCircleDecorStyled>
               <use href={`${iconSvg}#icon-Line`} />

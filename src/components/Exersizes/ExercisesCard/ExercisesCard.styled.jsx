@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
-export const ExCard = styled.div`
+export const ExCard = styled(Link)`
     position: relative;
     cursor: pointer;
 `
