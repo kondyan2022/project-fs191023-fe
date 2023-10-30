@@ -1,21 +1,40 @@
 // import { useEffect } from 'react';
-import Container from '../../components/Container/Container';
-import ProductsList from '../../components/Products/ProductsList/ProductsList';
+import { useState } from 'react';
 
-// import { useGetAllProductsQuery } from '../../redux/features/prodEndpoints';
-// import { useSelector } from 'react-redux';
-// import { isLogin } from '../../redux/selectors';
+import { useSelector } from 'react-redux';
+import { useGetAllProductsQuery } from '../../redux/features/prodEndpoints';
+import { isLogin } from '../../redux/selectors';
+// import { useGetCurrentUserQuery } from '../../redux/features/authEndpoints';
+
+// import { useSearchParams } from 'react-router-dom';
+// import { useMemo } from 'react';
 
 const ProductsPage = () => {
-  // const isLoadedUser = useSelector(isLogin);
+  const isLoadedUser = useSelector(isLogin);
+  const [currentCategory, setCurrentCategory] = useState();
+  const [currentRecomm, setCurrentRecomm] = useState();
+  const [excessCalories, setExcessCalories] = useState(0);
+  // const [query, setQuery] = useState();
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const query = useMemo(() => searchParams.get('query'), [searchParams]);
+  // const [products, setProducts] = useState([]);
+  // const [addModalOpen, setAddModalOpen] = useState(false);
+
+  const { data, isLoading, isFetching, error, isError } =
+    useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser });
 
   // const { data, isLoading, isFetching, error, isError } =
-  //   // useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser }); // НЕ потрібно викликати дані асинхронно, працюєте тільки із витягнутими, фіксованими, даними(data, error...)
+  //   useGetAllProductsQuery(query, { skip: !isLoadedUser });
+
+  // console.log(data)
+  // НЕ потрібно викликати дані асинхронно, працюєте тільки із витягнутими, фіксованими, даними(data, error...)
   // для спрацьовування хука по умові ви в хук першим параметном передаєте що відсліжувати а другим параметром об'єкт з ключами
   // один з ключів це "skip" йому передаєте анонімну функцію обробщика або якусь перемінну. наприклад результат сулуктора токена
   // Приклад:
   //                             const { data, isLoading, isFetching, error, isError } =
   //                               useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser });
+  //
+  //                             const [function, {isErrror, isSuccess}] = useUserLogOutMutation();
   //
   // ВАЖЛИВО! USEnameMUTATION ВІДПРАЦЬОВУЮТЬ ПЕРЕД USEnameQUERY
   //
@@ -33,28 +52,6 @@ const ProductsPage = () => {
 
   // console.log('DATA: ', data);
 
-  return (
-    <Container>
-      <div>
-        <ProductsList />
-        {/* <div>
-          <ul>
-            {isError && (
-              <p>
-                {error.status}
-                {error.data}
-              </p>
-            )}
-            {data &&
-              data.map((product) => (
-                <li key={product._id}>
-                  <b>Category</b>: {product.category}
-                </li>
-              ))}
-          </ul>
-        </div> */}
-      </div>
-    </Container>
-  );
+  return <div>aboba</div>;
 };
 export default ProductsPage;

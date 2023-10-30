@@ -1,6 +1,5 @@
 import CircleCountDown from '../CircleCountDown/CircleCountDown';
 import { StyledAddButton } from '../Products/AddModal/AddModal.styled';
-import image from '../../images/../images/side-gym-desktop-tab-2x.jpg';
 import {
   AddButtonPos,
   BurnedPshka,
@@ -14,7 +13,7 @@ import {
   Pshka,
 } from './ExerciseCard.styled';
 
-import { useState } from 'react';
+import { useAddDairyExercisesMutation } from '../../redux/features/userDiaryEndpoints';
 
 const ExerciseCard = ({
   name,
@@ -26,7 +25,20 @@ const ExerciseCard = ({
   burnedCalories,
 }) => {
   const timeS = time * 60;
-  const [passedPart, setPassedPart] = useState(0);
+  const [addDairyExercise, { isSuccess, isError }] =
+    useAddDairyExercisesMutation();
+
+  const handleAddToDiary = () => {
+    addDairyExercise(
+      name,
+      target,
+      bodyPart,
+      equipment,
+      gifUrl,
+      time,
+      burnedCalories,
+    );
+  };
   return (
     <CardBack>
       <ListFlex>
@@ -34,7 +46,7 @@ const ExerciseCard = ({
           <ListImgTimer>
             <li>
               <ImagePos>
-                <CardImg src={image} />
+                <CardImg src={gifUrl} />
               </ImagePos>
             </li>
             <li>
@@ -76,7 +88,9 @@ const ExerciseCard = ({
         </li>
       </ListFlex>
       <AddButtonPos>
-        <StyledAddButton>Add to diary</StyledAddButton>
+        <StyledAddButton onClick={handleAddToDiary}>
+          Add to diary
+        </StyledAddButton>
       </AddButtonPos>
     </CardBack>
   );
