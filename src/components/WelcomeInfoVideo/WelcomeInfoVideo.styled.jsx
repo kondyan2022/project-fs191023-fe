@@ -7,7 +7,7 @@ export const CardVideo = styled.div`
   border-radius: 12px;
   padding: 14px 14px 14px 18px;
   position: absolute;
-  right: 108px;
+  right: 82px;
   bottom: 186px;
   display: flex;
   align-items: center;
@@ -21,7 +21,7 @@ export const CardVideo = styled.div`
   }
   @media (min-width: 1440px) {
     right: 464px;
-    bottom: 373px;
+    bottom: 321px;
   }
 `;
 
