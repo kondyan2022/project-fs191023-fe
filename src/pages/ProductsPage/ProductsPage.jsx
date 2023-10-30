@@ -8,6 +8,8 @@ import { useState } from 'react';
 import { useGetAllProductsQuery } from '../../redux/features/prodEndpoints';
 import { useSelector } from 'react-redux';
 import { isLogin } from '../../redux/selectors';
+// import { useGetCurrentUserQuery } from '../../redux/features/authEndpoints';
+
 // import { useSearchParams } from 'react-router-dom';
 // import { useMemo } from 'react';
 
@@ -24,6 +26,10 @@ const ProductsPage = () => {
 
   const { data, isLoading, isFetching, error, isError } =
     useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser });
+  
+  // const currentUser = useGetCurrentUserQuery();
+  // const blood = currentUser.data.profile.blood 
+  const blood = "2";
   
   // console.log(
   //   data?.map((product) =>
@@ -104,6 +110,7 @@ const ProductsPage = () => {
             <ProductsList
               products={data}
               setExcessCalories={setExcessCalories}
+              blood={blood}
             />
           )
           // ))
