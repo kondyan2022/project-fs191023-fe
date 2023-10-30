@@ -78,7 +78,10 @@ export const ExersizeWrap = () => {
       )}
 
       {activeBoard === exerciseName && (
-        <ExerciseList exerciseName={exerciseName} />
+        <ExerciseList
+          exerciseName={exerciseName}
+          handleBoardClick={handleBoardClick}
+        />
       )}
     </ExercisesPageWrap>
   );

@@ -1,7 +1,16 @@
 import exercises from '../../../../resources/exercises.json';
 import { ExerciseItem } from '../ExerciseItem/ExerciseItem';
 import { ExList, BackgroundImage } from './ExerciseList.styled';
-export const ExerciseList = ({ exerciseName }) => {
+
+
+
+
+export const ExerciseList = ({ exerciseName}) => {
+
+
+ 
+
+
   const allExercises = exercises.filter(
     (exercise) =>
       exercise.bodyPart ||
