@@ -31,10 +31,10 @@ export const Section = styled.section`
     & > div:first-of-type {
       position: absolute;
       top: 0;
-      right: -378px;
-      background: linear-gradient(89deg, #040404 1.1%, rgba(4, 4, 4, 0.00) 70.79%);
+      right: 2px;
+      background: linear-gradient(89deg, #040404 1.1%, rgba(4, 4, 4, 0) 141.60%);
       height: 100%;
-      width: 807px;
+      width: 428px;
       background-position-x: 100%;
     }
   }
@@ -71,9 +71,25 @@ export const Wrap = styled.div`
   }
 `;
 
-// @media screen and (min-width: 768px) {
-//   }
+export const NotFound = styled.div`
+  width: 100%;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin-top: 64px;
+  p {
+    color: rgba(239, 237, 232, 0.3);
+    margin-bottom: 16px;
+  }
+  span {
+    color: var(--color-orange);
+  }
 
-//   @media screen and (min-width: 1440px) {
-
-//   }
+  @media screen and (min-width: 768px) {
+    width: 580px;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 132px;
+  }
+`;
