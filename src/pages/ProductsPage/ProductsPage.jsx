@@ -9,6 +9,8 @@ import { useGetAllProductsQuery } from '../../redux/features/prodEndpoints';
 import { useUserLogOutMutation } from '../../redux/features/authEndpoints';
 import { useSelector } from 'react-redux';
 import { isLogin } from '../../redux/selectors';
+// import { useGetCurrentUserQuery } from '../../redux/features/authEndpoints';
+
 // import { useSearchParams } from 'react-router-dom';
 // import { useMemo } from 'react';
 
@@ -77,14 +79,13 @@ const ProductsPage = () => {
             {error.data}
           </p>
         )}
-// <<<<<<< diary_routes
+
         {data && (
           <ProductsList
             products={data.slice(0, 20)}
             setExcessCalories={setExcessCalories}
           />
         )}
-// =======
 //         {
 //           data && (
 //             // (filterData().length === 0 ? (
