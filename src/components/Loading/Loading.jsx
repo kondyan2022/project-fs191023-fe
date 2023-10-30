@@ -5,7 +5,7 @@ const Loading = ({ styles }) => {
         <div style={styles}>
             <FallingLines
                 color="#e6533c"
-                width="50"
+                width="40"
                 visible={true}
                 ariaLabel='falling-lines-loading'
             />
@@ -15,4 +15,4 @@ const Loading = ({ styles }) => {
 
 export default Loading
 
-// <Loading styles={{ position: 'absolute', top: "-45px" }} />
+// Please add styles in special props -> <Loading styles={{ position: 'absolute', top: "-45px" }} />

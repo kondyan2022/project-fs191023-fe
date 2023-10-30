@@ -32,7 +32,6 @@ const SignInForm = () => {
     useEffect(() => {
         if (singInResult && singInResult.token) {
             dispatch(setToken(singInResult.token))
-            console.log(singInResult);
         }
     }, [singInResult, dispatch])
 
@@ -69,8 +68,8 @@ const SignInForm = () => {
                                         <use href={`${spriteSvG}#icon-circle-fill`} />
                                     </SvgStatus>
                                     {errors.email
-                                        ? (<ErrorMessage name="email" component="div" />)
-                                        : (<p>Success!</p>)
+                                        ? (<ErrorMessage name="email" component="div" style={{ fontSize: '12px', color: 'red' }} />)
+                                        : (<p style={{ fontSize: '12px', color: 'green' }}>Success!</p>)
                                     }
                                 </StatusWrapp>)}
                             </BoxParent>
@@ -111,8 +110,8 @@ const SignInForm = () => {
                                         <use href={`${spriteSvG}#icon-circle-fill`} />
                                     </SvgStatus>
                                     {errors.password
-                                        ? (<ErrorMessage name="password" component="div" />)
-                                        : (<p>Success!</p>)
+                                        ? (<ErrorMessage name="password" component="div" style={{ fontSize: '12px', color: 'red' }} />)
+                                        : (<p style={{ fontSize: '12px', color: 'green' }}>Success!</p>)
                                     }
                                 </StatusWrapp>)}
                             </BoxParent>
@@ -125,7 +124,7 @@ const SignInForm = () => {
                             >
                                 Sign in
                             </Button>
-                            {isLoading && <Loading styles={{ position: 'absolute', top: "-45px" }} />}
+                            {isLoading && <Loading styles={{ position: 'absolute', top: "-40px" }} />}
                             {controlError && <WrappErrorServer>{signInError.data.message}</WrappErrorServer>}
                         </SubmitParent>
                     </Form>
