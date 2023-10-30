@@ -38,4 +38,10 @@ const diaryEndpoints = userSplitApi.injectEndpoints({
   }),
 });
 
-export const { useGetUserDiaryQuery } = diaryEndpoints;
+export const {
+  useGetUserDiaryQuery,
+  useAddDairyExercisesMutation,
+  useAddDiaryProductsMutation,
+  useDeleteDiaryProductsMutation,
+  useDelteDairyExercisesMutation,
+} = diaryEndpoints;
