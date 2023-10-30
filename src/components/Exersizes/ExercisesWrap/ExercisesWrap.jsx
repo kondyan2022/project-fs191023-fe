@@ -24,14 +24,25 @@ export const ExersizeWrap = () => {
     }
 
     const handleExNameClick = name => {
-        setExerciseName(name)
-    }
+  setExerciseName(name)
+        const url = new URL(window.location);
+  url.searchParams.set('exerciseName', name);
+  window.history.pushState({}, '', url.toString());
+}
 
   useEffect(() => {
     const url = new URL(window.location);
     const activeBoardParam = url.searchParams.get('activeBoard');
     if (activeBoardParam) {
       setActiveBoard(activeBoardParam);
+    }
+  }, []);
+
+      useEffect(() => {
+    const url2 = new URL(window.location);
+    const exerciseNameParam = url2.searchParams.get('exerciseName');
+    if (exerciseNameParam) {
+      setExerciseName(exerciseNameParam);
     }
   }, []);
 
@@ -81,6 +92,7 @@ export const ExersizeWrap = () => {
         <ExerciseList
           exerciseName={exerciseName}
           handleBoardClick={handleBoardClick}
+          handleExNameClick={handleExNameClick}
         />
       )}
     </ExercisesPageWrap>

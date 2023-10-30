@@ -2,14 +2,12 @@ import exercises from '../../../../resources/exercises.json';
 import { ExerciseItem } from '../ExerciseItem/ExerciseItem';
 import { ExList, BackgroundImage } from './ExerciseList.styled';
 
-
-
-
-export const ExerciseList = ({ exerciseName}) => {
-
-
- 
-
+export const ExerciseList = ({ exerciseName, handleBoardClick, handleExNameClick }) => {
+  
+  if (exerciseName) {
+    handleBoardClick(exerciseName);
+    handleExNameClick(exerciseName);
+  }
 
   const allExercises = exercises.filter(
     (exercise) =>
