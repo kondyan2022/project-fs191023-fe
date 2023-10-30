@@ -1,8 +1,10 @@
 import Container from '../../components/Container/Container'
-import { useNavigate } from 'react-router-dom'
-// import Button from '../../components/Button/Button'
-import { Wrapper, ButtonStyled, WrappParent } from './Error404Page.styled'
+import { Link, useNavigate } from 'react-router-dom'
+import Button from '../../components/Button/Button'
+import { SvgLogo, Wrapper, WrappParent } from './Error404Page.styled'
 import Section from '../../components/Section/Section'
+import spriteSvG from '../../images/sprite.svg'
+
 
 const Error404Page = () => {
   const navigate = useNavigate();
@@ -20,14 +22,21 @@ const Error404Page = () => {
               disappear into another dimension. We apologize for this inconvenience.
             </p>
 
-            <ButtonStyled
+            <Button
               primary={true}
               onClick={handleButton}
             >
               Go Home
-            </ButtonStyled>
+            </Button>
 
           </Wrapper>
+
+          <Link to="/">
+            <SvgLogo width="126" height="13">
+              <use href={`${spriteSvG}#icon-Logo`} />
+            </SvgLogo>
+          </Link>
+
         </WrappParent>
       </Container>
     </Section>

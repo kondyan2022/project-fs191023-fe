@@ -10,7 +10,6 @@ import iconSvg from '../../images/sprite.svg'
 import { IconCircleDecorStyled, IconPlayVideoStyled, IconRunMenStyled } from './WelcomeIcons.styled';
 
 
-
 const WelcomePage = () => {
   const navigate = useNavigate();
 
@@ -21,7 +20,7 @@ const WelcomePage = () => {
     <Section>
       <Container>
         <div>
-          <WrappTitle>
+          <WrappTitle>            
             <Title>Transforming your body shape with Power Pulse</Title>
             <IconCircleDecorStyled>
               <use href={`${iconSvg}#icon-Line`} />
@@ -37,7 +36,7 @@ const WelcomePage = () => {
             </Button>
             <Button onClick={handleButtonSignIn} style={buttonStyles}>
               Sign In
-            </Button>
+            </Button>            
           </WrapperFlex>
           <div>
             <WelcomeInfoVideo

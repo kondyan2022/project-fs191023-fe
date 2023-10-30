@@ -1,3 +1,4 @@
+
 import styled from '@emotion/styled';
 
 export const buttonStyles = {
@@ -27,6 +28,15 @@ export const buttonStyles = {
       border: '1px solid var(--color-orange)',
     },
   },
+  homeButtonStyles: {
+    background: 'transparent',
+    border: '1px solid var(--accent-color-grey)',
+    '&:hover': {
+      background: 'var(--color-orange-one)',      
+    },
+    width: '147px'
+  },
+
 };
 
 export const StyledButton = styled.button`
@@ -34,11 +44,13 @@ export const StyledButton = styled.button`
   ${(props) =>
     props.primary
       ? buttonStyles.primaryButtonStyles
-      : buttonStyles.secondaryButtonStyles}
+      : props.home
+        ? buttonStyles.homeButtonStyles
+        : buttonStyles.secondaryButtonStyles}
       
-      &.disabled{
-        background-color: var(--color-beige);
-      }
+  &.disabled {
+    background-color: var(--color-beige);
+  }
 
   @media (min-width: 375px) and (max-width: 768px) {
     width: ${(props) => (props.primary ? '136px' : '130px')};
@@ -47,10 +59,13 @@ export const StyledButton = styled.button`
     padding: 12px 40px;
   }
 
-  @media (min-width: 768px) {
-    width: 190px;
-    font-size: 20px;
-    line-height: 24px;
-    padding: 16px 60px;
-  }
-`;
+  @media (min-width: 769px) {
+  width: ${(props) => (props.primary || !props.home ? '190px' : '204px')};
+  font-size: 20px;
+  line-height: 24px;
+  padding: 16px 60px;
+}
+`
+
+
+

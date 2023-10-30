@@ -1,9 +1,6 @@
 import styled from 'styled-components'
-import Button from '../../components/Button/Button'
-
 
 export const WrappParent = styled.div`
-z-index: -1;
 width: 100%;
 height:  812px;
 position: relative;
@@ -72,17 +69,16 @@ export const Wrapper = styled.div`
         }
 `
 
-export const Subtitle = styled.h3`
-    margin-bottom: 28px;
-
-    /* @media (min-width: 768px) {
-
+export const SvgLogo = styled.svg`
+    z-index: 100;
+    --color1: #efede8;
+    position: absolute;
+    width: 126px;
+    height: 13px;
+    top: 24px;
+    @media screen and (min-width: 768px) {
+        width: 151px;
+        height: 17px;
+        top: 32px;
     }
-    @media (min-width: 1440px) {
-        width: 477px;
-    } */
-`
-
-export const ButtonStyled = styled(Button)`
-    border: 1px solid var(--accent-color-grey);
 `

@@ -6,6 +6,7 @@ import ProductsList from '../../components/Products/ProductsList/ProductsList';
 import { useState } from 'react';
 
 import { useGetAllProductsQuery } from '../../redux/features/prodEndpoints';
+import { useUserLogOutMutation } from '../../redux/features/authEndpoints';
 import { useSelector } from 'react-redux';
 import { isLogin } from '../../redux/selectors';
 // import { useGetCurrentUserQuery } from '../../redux/features/authEndpoints';
@@ -26,22 +27,10 @@ const ProductsPage = () => {
 
   const { data, isLoading, isFetching, error, isError } =
     useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser });
-  
-  // const currentUser = useGetCurrentUserQuery();
-  // const blood = currentUser.data.profile.blood 
-  const blood = "2";
-  
-  // console.log(
-  //   data?.map((product) =>
-  //     product.title.toLowerCase().includes(searchParams?.get('query')),
-  //   ),
-  // );
 
-  // console.log(searchParams.size === 0)
-  
   // const { data, isLoading, isFetching, error, isError } =
   //   useGetAllProductsQuery(query, { skip: !isLoadedUser });
-  
+
   // console.log(data)
   // НЕ потрібно викликати дані асинхронно, працюєте тільки із витягнутими, фіксованими, даними(data, error...)
   // для спрацьовування хука по умові ви в хук першим параметном передаєте що відсліжувати а другим параметром об'єкт з ключами
@@ -49,6 +38,8 @@ const ProductsPage = () => {
   // Приклад:
   //                             const { data, isLoading, isFetching, error, isError } =
   //                               useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser });
+  //
+  //                             const [function, {isErrror, isSuccess}] = useUserLogOutMutation();
   //
   // ВАЖЛИВО! USEnameMUTATION ВІДПРАЦЬОВУЮТЬ ПЕРЕД USEnameQUERY
   //
@@ -65,12 +56,6 @@ const ProductsPage = () => {
   // Всі дані при першому запиту зберігаються у кеш, тому наступні запити вже не йдуть до бекенду а йдуть в кеш, якщо дані не змінювались
 
   // console.log('DATA: ', data);
-
-  // {
-  //   q: "apple",
-  //   category: "fruits",
-  //   recomendation: "true",
-  // }
 
 
   return (
@@ -94,33 +79,40 @@ const ProductsPage = () => {
             {error.data}
           </p>
         )}
-        {
-          data && (
-            // (filterData().length === 0 ? (
-            //   <NotFound>
-            //     <p>
-            //       <span>Sorry, no results were found</span> for the product
-            //       filters you selected. You may want to consider other search
-            //       options to find the product you want. Our range is wide and you
-            //       have the opportunity to find more options that suit your needs.
-            //     </p>
-            //     <span>Try changing the search parameters.</span>
-            //   </NotFound>
-            // ) : (
-            <ProductsList
-              products={data}
-              setExcessCalories={setExcessCalories}
-              blood={blood}
-            />
-          )
-          // ))
-        }
-        {/* {data && (
+
+        {data && (
           <ProductsList
-            products={filterData()}
+            products={data.slice(0, 20)}
             setExcessCalories={setExcessCalories}
           />
-        )} */}
+        )}
+//         {
+//           data && (
+//             // (filterData().length === 0 ? (
+//             //   <NotFound>
+//             //     <p>
+//             //       <span>Sorry, no results were found</span> for the product
+//             //       filters you selected. You may want to consider other search
+//             //       options to find the product you want. Our range is wide and you
+//             //       have the opportunity to find more options that suit your needs.
+//             //     </p>
+//             //     <span>Try changing the search parameters.</span>
+//             //   </NotFound>
+//             // ) : (
+//             <ProductsList
+//               products={data}
+//               setExcessCalories={setExcessCalories}
+//             />
+//           )
+//           // ))
+//         }
+//         {/* {data && (
+//           <ProductsList
+//             products={filterData()}
+//             setExcessCalories={setExcessCalories}
+//           />
+//         )} */}
+// >>>>>>> main
       </Container>
     </Section>
   );
