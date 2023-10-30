@@ -8,29 +8,48 @@ import {
   Text,
   SearchButton,
   Wrap,
+  CleanButton,
 } from './Filter.styled';
 import categories from '../../../../resources/productsCategories.json';
 import sprite from '../../../images/sprite.svg';
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+// import { useGetGroupProductQuery } from '../../../redux/features/prodEndpoints';
 
 const Filter = ({
   currentCategory,
   setCurrentCategory,
   currentRecomm,
   setCurrentRecomm,
+  // setQuery,
 }) => {
   const [isCatOpen, setIsCatOpen] = useState(false);
   const [isRecommOpen, setIsRecommOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  // const [isFulled, setIsFulled] = useState(false);
+  const [value, setValue] = useState("");
+
+  // const categories = useGetGroupProductQuery();
 
   const updatedStr = (str) => {
     const firstLatter = str[0].toUpperCase();
     return firstLatter + str.slice(1);
   };
 
-  const onSubmitRequest = (e) => {
-    e.preventDefault();
-    e.target.elements.search.value = "";
+  const onCleanInputContent = () => {
+    setValue("");
   }
+
+  const onSubmitRequest = (e) => {
+    let value = e.target.elements.search.value;
+    e.preventDefault();
+    // setQuery(value);
+    if (value === '') {
+      return;
+    }
+    setSearchParams({ q: value });
+    value = searchParams.get('q');
+  };
 
   return (
     <Wrap>
@@ -38,7 +57,20 @@ const Filter = ({
       <List>
         <li>
           <form onSubmit={onSubmitRequest}>
-            <Input type="text" placeholder="Search" name='search'/>
+            <Input
+              type="text"
+              placeholder="Search"
+              name="search"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+            />
+            {value !== '' && (
+              <CleanButton type="button" onClick={onCleanInputContent}>
+                <svg>
+                  <use href={`${sprite}#icon-clean-filter`}></use>
+                </svg>
+              </CleanButton>
+            )}
             <SearchButton type="submit">
               <svg>
                 <use href={`${sprite}#icon-search`}></use>

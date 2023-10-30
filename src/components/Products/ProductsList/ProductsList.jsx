@@ -1,22 +1,32 @@
 import ProductsItem from '../ProductsItem/ProductsItem';
 import { Card, List } from './ProductsList.styled';
 
-const ProductsList = ({ products, setExcessCalories }) => {
+const ProductsList = ({ products, setExcessCalories, blood }) => {
   return (
     <>
       <List>
-        {products.map(({ _id, weight, calories, category, title }) => (
-          <Card key={_id}>
-            <ProductsItem
-              weight={weight}
-              calories={calories}
-              category={category}
-              title={title}
-              id={_id}
-              setExcessCalories={setExcessCalories}
-            />
-          </Card>
-        ))}
+        {products.map(
+          ({
+            _id,
+            weight,
+            calories,
+            category,
+            title,
+            groupBloodNotAllowed,
+          }) => (
+            <Card key={_id}>
+              <ProductsItem
+                weight={weight}
+                calories={calories}
+                category={category}
+                title={title}
+                id={_id}
+                setExcessCalories={setExcessCalories}
+                isRecom={!groupBloodNotAllowed[blood]}
+              />
+            </Card>
+          ),
+        )}
       </List>
       {/* {!isLoading && !isError && !products && (
         <>

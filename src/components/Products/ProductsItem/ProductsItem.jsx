@@ -17,8 +17,10 @@ const ProductsItem = ({
   category,
   title,
   setExcessCalories,
+  isRecom,
 }) => {
-  const isRecommended = false;
+  const isRecommended = isRecom;
+  
   const wdt = window.innerWidth;
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
@@ -46,18 +48,20 @@ const ProductsItem = ({
   };
 
   const updatedTitle = () => {
+    const firstLetter = title.slice(0, 1).toUpperCase();
+    const newTitle = firstLetter + title.slice(1);
     if (wdt < 375 && title.length > 17) {
-      return title.slice(0, 18) + '...';
+      return newTitle.slice(0, 18) + '...';
     }
     if (wdt < 768 && wdt >= 375 && title.length > 24) {
       // return title.slice(0, 25) + '...';
-      return title.slice(0, 18) + '...';
+      return newTitle.slice(0, 18) + '...';
     }
     if (wdt >= 768 && title.length > 22) {
       // return title.slice(0, 20) + '...';
-      return title.slice(0, 18) + '...';
+      return newTitle.slice(0, 18) + '...';
     }
-    return title;
+    return newTitle;
   };
 
   return (
@@ -65,7 +69,7 @@ const ProductsItem = ({
       {isAddModalOpen && (
         <AddModal
           closeModal={closeModal}
-          title={title}
+          title={title.slice(0, 1).toUpperCase() + title.slice(1)}
           calories={calories}
           setExcessCalories={setExcessCalories}
         />

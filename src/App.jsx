@@ -13,11 +13,12 @@ import { PublicRoute } from './components/PublicRoute/PublicRoute';
 import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
 import { useSelector } from 'react-redux';
 import { isLogin } from './redux/selectors';
-import { ExersizeWrap } from './components/Exersizes/ExercisesWrap/ExercisesWrap';
+import { ExerciseList } from './components/Exersizes/ExerciseList/ExerciseList';
 import { BodyPartsBoard } from './components/Exersizes/ExercisesBoard/BodyPartsBoard';
 import { MusclesBoard } from './components/Exersizes/ExercisesBoard/MusclesBoard';
 import { EquipmentBoard } from './components/Exersizes/ExercisesBoard/EquipmentBoard';
-
+import useTokenExpirationControl from './hooks/controlCurrentUser';
+import { selectToken } from './redux/selectors';
 // const test = import.meta.env.VITE_API_TEST;
 
 // const USER_IS_LOGINING = true;
@@ -25,11 +26,12 @@ import { EquipmentBoard } from './components/Exersizes/ExercisesBoard/EquipmentB
 function App() {
   const isLoggedIn = useSelector(isLogin);
   // console.log(isLoggedIn);
+  // const tokenInState = useSelector(selectToken); // токен
+  // useTokenExpirationControl(3000);
 
   // const { data, isSuccess } = useGetCurrentUserQuery(isLoggedIn, {
   //   skip: !isLoggedIn,
   // });
-
 
   return (
     <Routes>
@@ -91,10 +93,10 @@ function App() {
             </PrivateRoute>
           }
         >
-          <Route index element={<ExersizeWrap />} />
           <Route path="bodyparts" element={<BodyPartsBoard />} />
           <Route path="muscles" element={<MusclesBoard />} />
           <Route path="equipment" element={<EquipmentBoard />} />
+          <Route path="groups/:groupId" element={<ExerciseList />} />
           {/* може роути тут */}
         </Route>
         <Route path="*" element={<Error404Page />} />

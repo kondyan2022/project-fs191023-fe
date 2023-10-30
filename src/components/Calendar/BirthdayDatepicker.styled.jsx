@@ -36,14 +36,13 @@ export const CalendarGlobalStyles = createGlobalStyle`
     font-family: Roboto;
     border-radius: 8px;
   }
-  /*.react-datepicker__month-container {
-    float: inherit;
-    overflow: hidden;
+  .react-datepicker__month-container {
+    float: inherit;   
     box-sizing: border-box;
     width: 187px;
     height: 161px;
     padding-bottom: 5px;
-  }*/
+  }
   .react-datepicker__header {
     position: relative;
     background-color: var(--color-orange-one);
@@ -75,6 +74,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     color: var(--color-white);
     padding-bottom: 10px;
     display: inline-flex;
+    display:none;
   }
   .react-datepicker__day-name {
     margin: 0;
@@ -87,33 +87,27 @@ export const CalendarGlobalStyles = createGlobalStyle`
     text-align: center;
     color: rgba(239, 237, 232, 0.5);
   }
-  .react-datepicker__navigation {
-    margin-top: 14px;
-    color: var(--color-white);
-    fill:var(--color-white);
+  .react-datepicker__navigation {       
+    display:none;
   }
 
   .react-datepicker__navigation--previous {
+<<<<<<< Updated upstream
     left: 7px;
     width: 18px;
     height: 18px;
     margin-left: 10px;
     fill:var(--color-white);
     color: var(--color-white);
+    display:none;
+=======
+  
+>>>>>>> Stashed changes
   }
   .react-datepicker__navigation--next {
-    right: 7px;
-    width: 18px;
-    height: 18px;
-    margin-left: 10px;
-    fill:var(--color-white);
-    color: var(--color-white);
+   
   }
-  .react-datepicker__navigation-icon::before:hover:focus {
-    border-color: rgba(239, 237, 232, 0.6);
-    /*background-image: url('public/calendar-icon.svg#icon-arrow-left')*/
-    fill:rgba(239, 237, 232, 0.6);
-  } 
+
   .react-datepicker__week {
     display: flex;
     align-items: center;
@@ -139,15 +133,14 @@ export const CalendarGlobalStyles = createGlobalStyle`
     line-height: 18px;
     text-align: center;
   }
-  /*.react-datepicker__month {
+  .react-datepicker__month {
     display: flex;
     gap: 7px;
     flex-direction: column;
     justify-content: space-between;
     padding-top: 16px;
-    margin: 0;
-    overflow: hidden;
-  }*/
+    margin: 0;    
+  }
   .react-datepicker__day--selected {
     background-color: var( --color-black);
     color:var(--color-white);
@@ -180,63 +173,61 @@ export const CalendarGlobalStyles = createGlobalStyle`
   }
   .react-datepicker__triangle {
     visibility: hidden;
+    }
+
+  .react-datepicker__year-read-view{
+    color: var(--color-white);
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .react-datepicker__month-read-view{
+    color: var(--color-white);
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .react-datepicker__month-dropdown{
+    background: var(--color-beige);
+    color: var (--color-white);
+  }
+  .react-datepicker__year-option{
+    color: var (--color-white);
+    font-family: Roboto;
+    font-weight: 400;
   }
 `;
 
 export const TitleWrapper = styled.button`
-  height: 20px;
-  width: 183px;
+  width: 133px;
   color: var(--color-white);
   background: transparent;
-  font-weight: 700;
-  line-height: 1, 05;
-  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 18px;
+  /*text-transform: uppercase;*/
   padding: 0px 0px;
-  font-size: 18px;
+  font-size: 14px;
   align-items: left;
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-between;  
   align-content: center;
   text-align: center;
 
   @media screen and (min-width: 768px) {
-    height: 32px;
-    width: 239px;
-    line-height: 32px;
-    font-size: 24px;
+    width: 159px;
+    line-height: 24px;
+    font-size: 16px;
   }
-
-  .react-datepicker__containet-bottom {
-    width: 125px;
+  .birthday-calendar-icon{
+    margin-left: 34px;
     @media screen and (min-width: 768px) {
-      width: 161px;
+      margin-left: 60px;
     }
-  }
 
-  .react-datepicker__calendar-icon {
-    --color1: var(--color-orange-one);
-    margin-left: 8px;
-    margin-right: auto;
-    width: 20px;
-    height: 20px;
-    padding: 0px;
-    position: initial;
-
-    @media screen and (min-width: 768px) {
-      width: 24px;
-      height: 24px;
-    }
-  }
-
-  .react-datepicker__navigation-title-day--next {
-    width: 16px;
-    height: 16px;
-    --color2: var(--color-white);
-  }
-  .react-datepicker__navigation-title-day--previous {
-    width: 16px;
-    height: 16px;
-    --color2: var(--color-white);
   }
 `;
