@@ -37,7 +37,7 @@ const WelcomePage = () => {
             </Button>
             <Button onClick={handleButtonSignIn} style={buttonStyles}>
               Sign In
-            </Button>
+            </Button>            
           </WrapperFlex>
           <div>
             <WelcomeInfoVideo

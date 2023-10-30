@@ -74,6 +74,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     color: var(--color-white);
     padding-bottom: 10px;
     display: inline-flex;
+    display:none;
   }
   .react-datepicker__day-name {
     margin: 0;
@@ -99,6 +100,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     margin-left: 10px;
     fill:var(--color-white);
     color: var(--color-white);
+    display:none;
   }
   .react-datepicker__navigation--next {
     right: 7px;
