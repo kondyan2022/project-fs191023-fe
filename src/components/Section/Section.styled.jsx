@@ -5,7 +5,7 @@ import image1x from '../../images/side-gym-mob-1x.jpg'
 import image2x from '../../images/side-gym-mob-2x.jpg'
 
 // section with background image >>
-export const Section = styled.div`
+export const SectionWrapper = styled.div`
     width: 375px;
     height: 812px;  // header 61px
     margin: 0 auto;
