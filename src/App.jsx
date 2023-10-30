@@ -17,7 +17,8 @@ import { ExersizeWrap } from './components/Exersizes/ExercisesWrap/ExercisesWrap
 import { BodyPartsBoard } from './components/Exersizes/ExercisesBoard/BodyPartsBoard';
 import { MusclesBoard } from './components/Exersizes/ExercisesBoard/MusclesBoard';
 import { EquipmentBoard } from './components/Exersizes/ExercisesBoard/EquipmentBoard';
-
+import useTokenExpirationControl from './hooks/controlCurrentUser';
+import { selectToken } from './redux/selectors';
 // const test = import.meta.env.VITE_API_TEST;
 
 // const USER_IS_LOGINING = true;
@@ -25,11 +26,12 @@ import { EquipmentBoard } from './components/Exersizes/ExercisesBoard/EquipmentB
 function App() {
   const isLoggedIn = useSelector(isLogin);
   // console.log(isLoggedIn);
+  // const tokenInState = useSelector(selectToken); // токен
+  // useTokenExpirationControl(3000);
 
   // const { data, isSuccess } = useGetCurrentUserQuery(isLoggedIn, {
   //   skip: !isLoggedIn,
   // });
-
 
   return (
     <Routes>
