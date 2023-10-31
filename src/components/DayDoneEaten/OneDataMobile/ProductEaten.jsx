@@ -16,16 +16,8 @@ const toDelit = {
 }
 
 const [deleteProduct] = useDeleteDiaryProductsMutation()
-const handleDelete = () => dispatch(deleteProduct(toDelit));
+const handleDeleteProduct = () => dispatch(deleteProduct(toDelit));
 
-
-
-// const Delete = obj => {
-//     console.log(obj)
-//     deleteProduct(obj);
-//   };
-
- 
  return <>
 
     <AllData>
@@ -54,8 +46,9 @@ const handleDelete = () => dispatch(deleteProduct(toDelit));
         <RecommendDiv>{recommended? (<><Circle isRecommended={recommended}></Circle>Yes</>) : (<><Circle isRecommended={recommended}></Circle>No</>)}</RecommendDiv>
         </span>            
         </OtherData>
-       <BtnTrash onClick={handleDelete}  />
-    {/* //    {() => Delete(toDelit)} */}
+        {/* <button onClick={{handleDeleteProduct}}></button> */}
+       <BtnTrash handleDeleteProduct={handleDeleteProduct}  />
+   
      
         </Container>
 </AllData>

@@ -2,7 +2,7 @@ import Container from '../../components/Container/Container';
 import { OnTheDay } from '../../components/DayDoneEaten/OnTheDay/OnTheDay';
 
 
-import {useGetUserDiaryQuery} from '../../redux/features/userDiaryEndpoints';
+import {useGetDiaryQuery} from '../../redux/features/userDiaryEndpoints';
 import {DayDashboard} from '../../components/DayDashboard/DayDashboard'
 import {PageName,DescktopStyle,HederOfPage} from './DiaryPage.styled'
 import {useEffect} from 'react'
@@ -22,7 +22,7 @@ const DiaryPage = () => {
 
  
  
- const {data} = useGetUserDiaryQuery(date, {skip: !date});
+ const {data} = useGetDiaryQuery(date, {skip: !date});
  useEffect(()=>{
   if(!data){return}
   console.log(data)

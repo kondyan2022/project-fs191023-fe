@@ -89,7 +89,9 @@ div{
  svg {
     width:20px;
     height:20px;
-    margin-right:8px;}
+    margin-right:8px;
+    fill:#EF8964;
+}
 
 p{
 font-size: 12px;
