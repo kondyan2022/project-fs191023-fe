@@ -26,14 +26,12 @@ const SignUpForm = () => {
     ] = useUserSignUpMutation();
 
     const handleSubmit = (values) => {
-        console.log(values);
         createUser({ ...values });
     };
 
     useEffect(() => {
         if (createdUser && createdUser.token) {
             dispatch(setToken(createdUser.token));
-            console.log(createdUser);
         }
     }, [createdUser, dispatch]);
 
@@ -72,8 +70,8 @@ const SignUpForm = () => {
                                         <use href={`${spriteSvG}#icon-circle-fill`} />
                                     </SvgStatus>
                                     {errors.name
-                                        ? (<ErrorMessage name="name" component="div" />)
-                                        : (<p>Success!</p>)
+                                        ? (<ErrorMessage name="name" component="div" style={{ fontSize: '12px', color: 'red' }} />)
+                                        : (<p style={{ fontSize: '12px', color: 'green' }}>Success!</p>)
                                     }
                                 </StatusWrapp>)}
                             </BoxParent>
@@ -96,8 +94,8 @@ const SignUpForm = () => {
                                         <use href={`${spriteSvG}#icon-circle-fill`} />
                                     </SvgStatus>
                                     {errors.email
-                                        ? (<ErrorMessage name="email" component="div" />)
-                                        : (<p>Success!</p>)
+                                        ? (<ErrorMessage name="email" component="div" style={{ fontSize: '12px', color: 'red' }} />)
+                                        : (<p style={{ fontSize: '12px', color: 'green' }}>Success!</p>)
                                     }
                                 </StatusWrapp>)}
                             </BoxParent>
@@ -137,8 +135,8 @@ const SignUpForm = () => {
                                         <use href={`${spriteSvG}#icon-circle-fill`} />
                                     </SvgStatus>
                                     {errors.password
-                                        ? (<ErrorMessage name="password" component="div" />)
-                                        : (<p>Success!</p>)
+                                        ? (<ErrorMessage name="password" component="div" style={{ fontSize: '12px', color: 'red' }} />)
+                                        : (<p style={{ fontSize: '12px', color: 'green' }}>Success!</p>)
                                     }
                                 </StatusWrapp>)}
                             </BoxParent>
@@ -152,7 +150,7 @@ const SignUpForm = () => {
                             >
                                 Sign Up
                             </Button>
-                            {isLoading && <Loading styles={{ position: 'absolute', top: "-45px" }} />}
+                            {isLoading && <Loading styles={{ position: 'absolute', top: "-40px" }} />}
                             {isCreateError && <WrappErrorServer>{createError.data.message}</WrappErrorServer>}
                         </SubmitParent>
                     </Form>
