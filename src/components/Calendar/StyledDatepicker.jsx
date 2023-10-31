@@ -1,89 +1,117 @@
-import React, { useState } from "react";
-import { format, addDays, subDays } from "date-fns";
-import DatePicker from "react-datepicker";
-import { CalendarGlobalStyles, TitleWrapper, BirthdayCalendarWrapper } from "./StyledDatepicker.styled";
-import "react-datepicker/dist/react-datepicker.css";
+import { useState } from 'react';
+import { format, addDays, subDays } from 'date-fns';
+import DatePicker from 'react-datepicker';
+import {
+  CalendarGlobalStyles,
+  TitleWrapper,
+  BirthdayCalendarWrapper,
+} from './StyledDatepicker.styled';
+import 'react-datepicker/dist/react-datepicker.css';
 import sprite from '../../images/sprite.svg';
 
-const StyledDatepicker = ({ minDate, maxDate, disabledDates, calendarType}) => {
-const [selectedDate, setSelectedDate] = useState(Date.now());
-const isBirthdayPicker = true;
+const StyledDatepicker = ({
+  minDate,
+  maxDate,
+  disabledDates,
+  calendarType,
+  getData,
+  setFormData,
+}) => {
+  const [selectedDate, setSelectedDate] = useState(setFormData || Date.now());
+  // const isBirthdayPicker = true;
 
-const CustomInput = ({ onClick }) => {
-  return (
-    calendarType === 'birthday'? (
+  console.log(selectedDate);
+  console.log('minDate', minDate);
+  console.log('maxDate', maxDate);
+
+  const CustomInput = ({ onClick }) => {
+    return calendarType === 'birthday' ? (
       <BirthdayCalendarWrapper>
         <div onClick={onClick}>
-          {format(selectedDate, "dd.MM.yyyy")}   
-          <svg width="24" height="24" className="react-datepicker__calendar-icon">
+          {format(selectedDate, 'dd.MM.yyyy')}
+          <svg
+            width="24"
+            height="24"
+            className="react-datepicker__calendar-icon"
+          >
             <use href={sprite + '#icon-calendar'} />
-          </svg>      
+          </svg>
         </div>
       </BirthdayCalendarWrapper>
     ) : (
-      <TitleWrapper>        
+      <TitleWrapper>
         <div onClick={onClick}>
-          {format(selectedDate, "dd/MM/yyyy")}   
-          <svg width="24" height="24" className="react-datepicker__calendar-icon">
+          {format(selectedDate, 'dd/MM/yyyy')}
+          <svg
+            width="24"
+            height="24"
+            className="react-datepicker__calendar-icon"
+          >
             <use href={sprite + '#icon-calendar'} />
-          </svg>      
+          </svg>
         </div>
-    
+
         <div className="react-datepicker__navigation-title-day">
-          <span onClick={handlePrevDay} className="react-datepicker__navigation-title-day--previous">
+          <span
+            onClick={handlePrevDay}
+            className="react-datepicker__navigation-title-day--previous"
+          >
             <svg width="16" height="16">
               <use href={sprite + '#icon-chevron-left'} />
-            </svg> 
+            </svg>
           </span>
-          <span onClick={handleNextDay} className="react-datepicker__navigation-title-day--next">
+          <span
+            onClick={handleNextDay}
+            className="react-datepicker__navigation-title-day--next"
+          >
             <svg width="16" height="16">
               <use href={sprite + '#icon-chevron-right'} />
-            </svg> 
+            </svg>
           </span>
-        </div>    
+        </div>
       </TitleWrapper>
-    )
-  );
-};
-
-const handlePrevDay = () => {
-  const prevDay = subDays(selectedDate, 1);
-  if (minDate && prevDay < minDate) {
-    return;
-  }
-  setSelectedDate(prevDay);
-};
-
-const handleNextDay = () => {
-  const nextDay = addDays(selectedDate, 1);
-  if (maxDate && nextDay > maxDate) {
-    return;
-  }
-  setSelectedDate(nextDay);
-};
-
-return (
-  <>
-    <DatePicker
-      selected={selectedDate}
-      onChange={(date) => {
-        if (minDate && date < minDate) {
-          return;
-        }
-        if (maxDate && date > maxDate) {
-          return;
-        }
-        setSelectedDate(date);
-      }}
-      customInput={<CustomInput />}
-      dateFormat={"dd MM yyyy"}
-      calendarStartDay={1}
-      formatWeekDay={(day) => day.substr(0, 2)}
-      excludeDates={disabledDates}
-    />
-    <CalendarGlobalStyles />
-  </>
-  );
+    );
   };
-  
-  export default StyledDatepicker;
+
+  const handlePrevDay = () => {
+    const prevDay = subDays(selectedDate, 1);
+    if (minDate && prevDay < minDate) {
+      return;
+    }
+    setSelectedDate(prevDay);
+  };
+
+  const handleNextDay = () => {
+    const nextDay = addDays(selectedDate, 1);
+    if (maxDate && nextDay > maxDate) {
+      return;
+    }
+    setSelectedDate(nextDay);
+  };
+
+  return (
+    <>
+      <DatePicker
+        selected={setFormData && selectedDate}
+        onChange={(date) => {
+          if (minDate && date < minDate) {
+            return;
+          }
+          if (maxDate && date > maxDate) {
+            return;
+          }
+          setSelectedDate(date);
+          getData(selectedDate);
+        }}
+        customInput={<CustomInput />}
+        dateFormat={'dd MM yyyy'}
+        calendarStartDay={1}
+        formatWeekDay={(day) => day.substr(0, 2)}
+        excludeDates={disabledDates}
+      />
+      <CalendarGlobalStyles />
+    </>
+  );
+};
+
+export default StyledDatepicker;

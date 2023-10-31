@@ -252,6 +252,7 @@ export const WrappInput = styled.div`
   position: relative;
   height: 100px;
   margin-top: 14px;
+  gap: 14px;
 
   label {
     margin-bottom: 4px;
@@ -297,3 +298,5 @@ export const StatusWrapper = styled.div`
     left: 0px;
   }
 `;
+
+export const BirthdayWrapper = styled.div``;

@@ -14,6 +14,7 @@ import {
   WrappInput,
   Status,
   StatusWrapper,
+  BirthdayWrapper,
 } from './UserForm.styled';
 import RadioOption from '../RadioOption/RadioOption';
 import spriteSvG from '../../images/sprite.svg';
@@ -22,6 +23,7 @@ import {
   useUserDataUpdateMutation,
 } from '../../redux/features/authEndpoints';
 import Button from '../Button/Button';
+import StyledDatepicker from '../Calendar/StyledDatepicker';
 
 // import StyledDatepicker from './../Calendar/StyledDatepicker';
 
@@ -50,10 +52,10 @@ const validationSchema = yup.object({
 });
 
 const bloodOptions = [
-  { id: '1', value: '1', label: '1' },
-  { id: '2', value: '2', label: '2' },
-  { id: '3', value: '3', label: '3' },
-  { id: '4', value: '4', label: '4' },
+  { id: '1', value: 1, label: '1' },
+  { id: '2', value: 2, label: '2' },
+  { id: '3', value: 3, label: '3' },
+  { id: '4', value: 4, label: '4' },
 ];
 
 const sexOptions = [
@@ -64,46 +66,46 @@ const sexOptions = [
 const levelOptions = [
   {
     id: 'level-1',
-    value: '1',
+    value: 1,
     label: 'Sedentary lifestyle (little or no physical activity)',
   },
   {
     id: 'level-2',
-    value: '2',
+    value: 2,
     label: 'Light activity (light exercises/sports 1-3 days per week)',
   },
   {
     id: 'level-3',
-    value: '3',
+    value: 3,
     label: 'Moderately active (moderate exercises/sports 3-5 days per week)',
   },
   {
     id: 'level-4',
-    value: '4',
+    value: 4,
     label: 'Very active (intense exercises/sports 6-7 days per week)',
   },
   {
     id: 'level-5',
-    value: '5',
+    value: 5,
     label:
       'Extremely active (very strenuous exercises/sports and physical work)',
   },
 ];
 
 const UserForm = () => {
-  const [userFormUpdate, { isError }] = useUserDataUpdateMutation();
+  const [userFormUpdate] = useUserDataUpdateMutation();
   const { data } = useGetCurrentUserQuery();
   console.log(data?.profile);
 
   const initialValues = {
     name: data?.name || '',
-    height: data?.profile.height || '150',
-    currentWeight: data?.profile.currentWeight || '35',
-    desiredWeight: data?.profile.defaultValue || '35',
-    birthday: '12/20/2000',
-    blood: data?.profile.blood || '',
-    sex: data?.profile.sex || '',
-    levelActivity: data?.profile.levelActivity || '',
+    height: data?.profile.height || 150,
+    currentWeight: data?.profile.currentWeight || 35,
+    desiredWeight: data?.profile.defaultValue || 35,
+    birthday: new Date(data?.profile.birthday),
+    blood: data?.profile.blood || 1,
+    sex: data?.profile.sex || 'male',
+    levelActivity: data?.profile.levelActivity || 1,
   };
 
   const handleSubmit = (values, { resetForm }) => {
@@ -113,7 +115,7 @@ const UserForm = () => {
         height: values.height,
         currentWeight: values.currentWeight,
         desiredWeight: values.desiredWeight,
-        birthday: '12/20/2000',
+        birthday: values.birthday,
         blood: values.blood,
         sex: values.sex,
         levelActivity: values.levelActivity,
@@ -121,7 +123,7 @@ const UserForm = () => {
     };
 
     userFormUpdate(data);
-    // console.log(values);
+    console.log('values>>>>', values);
     // console.log(isError);
     resetForm();
   };
@@ -303,8 +305,15 @@ const UserForm = () => {
                     )}
                   </StatusWrapper>
                 )}
+
+                <StyledDatepicker
+                  calendarType={'birthday'}
+                  setFormData={formik.values.birthday}
+                  getData={(date) => {
+                    formik.setFieldValue('birthday', date);
+                  }}
+                />
               </WrappInput>
-              {/* <StyledDatepicker /> */}
             </WrapperInputField>
             <SectionTitle>Blood</SectionTitle>
             <WrapperRadio>
@@ -312,6 +321,7 @@ const UserForm = () => {
                 <div style={{ display: 'flex', marginRight: '20px' }}>
                   {bloodOptions.map((option) => (
                     <RadioOption
+                      type="radio"
                       key={option.id}
                       id={option.id}
                       name="blood"
@@ -328,6 +338,7 @@ const UserForm = () => {
                 <div style={{ display: 'flex' }}>
                   {sexOptions.map((option) => (
                     <RadioOption
+                      type="radio"
                       key={option.id}
                       id={option.id}
                       name="sex"
@@ -343,6 +354,7 @@ const UserForm = () => {
               <WrapperLevel>
                 {levelOptions.map((option) => (
                   <RadioOption
+                    type="radio"
                     key={option.id}
                     id={option.id}
                     name="levelActivity"
