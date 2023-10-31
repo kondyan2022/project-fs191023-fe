@@ -43,7 +43,7 @@ const ProfilePage = () => {
           <Logout />
         </div>
         <WrapperForm>
-          <UserForm />
+          <UserForm />          
         </WrapperForm>
       </WrapperContent>
     </Container>
