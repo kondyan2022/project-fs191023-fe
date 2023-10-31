@@ -10,28 +10,21 @@ import ExercisesPage from './pages/ExercisesPage/ExercisePage';
 import Error404Page from './pages/Error404Page/Error404Page';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { PublicRoute } from './components/PublicRoute/PublicRoute';
-import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
 import { useSelector } from 'react-redux';
 import { isLogin } from './redux/selectors';
 import { ExerciseList } from './components/Exersizes/ExerciseList/ExerciseList';
 import { BodyPartsBoard } from './components/Exersizes/ExercisesBoard/BodyPartsBoard';
 import { MusclesBoard } from './components/Exersizes/ExercisesBoard/MusclesBoard';
 import { EquipmentBoard } from './components/Exersizes/ExercisesBoard/EquipmentBoard';
-import useTokenExpirationControl from './hooks/controlCurrentUser';
+//
 import { selectToken } from './redux/selectors';
-// const test = import.meta.env.VITE_API_TEST;
-
-// const USER_IS_LOGINING = true;
+import { useTokenExpirationCheck } from './hooks/controlCurrentUser';
 
 function App() {
   const isLoggedIn = useSelector(isLogin);
-  // console.log(isLoggedIn);
-  // const tokenInState = useSelector(selectToken); // токен
-  // useTokenExpirationControl(3000);
+  const tokenInState = useSelector(selectToken); // токен
 
-  // const { data, isSuccess } = useGetCurrentUserQuery(isLoggedIn, {
-  //   skip: !isLoggedIn,
-  // });
+  tokenInState && useTokenExpirationCheck(tokenInState, 3000);
 
   return (
     <Routes>

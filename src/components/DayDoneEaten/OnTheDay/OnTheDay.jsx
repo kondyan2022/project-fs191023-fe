@@ -10,7 +10,9 @@ import {DesktoVersionExercises} from '../DesktopVersion/DesktopVersionExercises'
 
  export const OnTheDay = ({oneProductTest, exercisesTest})=> {
   const [size, setSize] = useState({});
+
   const ref = useRef();
+
 
 const resizeHandler = () => {
 const { clientHeight, clientWidth } = ref.current || {};
@@ -38,7 +40,7 @@ window.removeEventListener("resize", resizeHandler);
     </Header>
 
 {oneProductTest.length > 0 ? size.clientWidth > 700? (<DesktopVersionProdukt oneProductTest={oneProductTest}/>)
-: (<Scroll> {oneProductTest.map(oneProduct => (<ProductEaten key={oneProduct._id.$oid} {...oneProduct}/>))}</Scroll>)
+: (<Scroll> {oneProductTest.map(oneProduct => (<ProductEaten key={oneProduct._id.$oid} {...oneProduct} />))}</Scroll>)
   
 : <NotFound>Not found products</NotFound>
 }

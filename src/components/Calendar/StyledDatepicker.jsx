@@ -1,40 +1,49 @@
 import React, { useState } from "react";
 import { format, addDays, subDays } from "date-fns";
 import DatePicker from "react-datepicker";
-import { CalendarGlobalStyles, TitleWrapper } from "./StyledDatepicker.styled";
+import { CalendarGlobalStyles, TitleWrapper, BirthdayCalendarWrapper } from "./StyledDatepicker.styled";
 import "react-datepicker/dist/react-datepicker.css";
 import sprite from '../../images/sprite.svg';
 
-const StyledDatepicker = ({ minDate, maxDate, disabledDates }) => {
+const StyledDatepicker = ({ minDate, maxDate, disabledDates, calendarType}) => {
 const [selectedDate, setSelectedDate] = useState(Date.now());
+const isBirthdayPicker = true;
 
 const CustomInput = ({ onClick }) => {
   return (
-    <TitleWrapper>        
-    <div onClick={onClick}>
-      {format(selectedDate, "dd/MM/yyyy")}   
-      <svg width="24" height="24" className="react-datepicker__calendar-icon">
-        <use href={sprite + '#icon-calendar'} />
-      </svg>      
-    </div>
+    calendarType === 'birthday'? (
+      <BirthdayCalendarWrapper>
+        <div onClick={onClick}>
+          {format(selectedDate, "dd.MM.yyyy")}   
+          <svg width="24" height="24" className="react-datepicker__calendar-icon">
+            <use href={sprite + '#icon-calendar'} />
+          </svg>      
+        </div>
+      </BirthdayCalendarWrapper>
+    ) : (
+      <TitleWrapper>        
+        <div onClick={onClick}>
+          {format(selectedDate, "dd/MM/yyyy")}   
+          <svg width="24" height="24" className="react-datepicker__calendar-icon">
+            <use href={sprite + '#icon-calendar'} />
+          </svg>      
+        </div>
     
-    <div className="react-datepicker__navigation-title-day">
-      <span onClick={handlePrevDay} className="react-datepicker__navigation-title-day--previous">
-      <svg width="16" height="16" className="">
-        <use href={sprite + '#icon-chevron-left'} />
-      </svg> 
-      </span>
-      <span onClick={handleNextDay} className="react-datepicker__navigation-title-day--next">
-      <svg width="16" height="16" className="">
-        <use href={sprite + '#icon-chevron-right'} />
-      </svg> 
-      </span>
-    </div>
-    
-  </TitleWrapper>
-
-  
-);
+        <div className="react-datepicker__navigation-title-day">
+          <span onClick={handlePrevDay} className="react-datepicker__navigation-title-day--previous">
+            <svg width="16" height="16">
+              <use href={sprite + '#icon-chevron-left'} />
+            </svg> 
+          </span>
+          <span onClick={handleNextDay} className="react-datepicker__navigation-title-day--next">
+            <svg width="16" height="16">
+              <use href={sprite + '#icon-chevron-right'} />
+            </svg> 
+          </span>
+        </div>    
+      </TitleWrapper>
+    )
+  );
 };
 
 const handlePrevDay = () => {

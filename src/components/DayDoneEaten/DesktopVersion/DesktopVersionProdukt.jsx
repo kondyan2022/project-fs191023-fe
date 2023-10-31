@@ -9,7 +9,7 @@ return <>
 {desktopDataDayProdukts.map((oneItem,index) => <NamOfCategoryDesk key={index} data={oneItem}>{oneItem.titel}</NamOfCategoryDesk>)}
 </DesktopStyled>
 <ScrollContainer>
-{oneProductTest.map(oneProduct => (<OneProduktDesktop key={oneProduct._id.$oid} {...oneProduct}/>))}
+{oneProductTest.map(oneProduct => (<OneProduktDesktop key={oneProduct._id.$oid} {...oneProduct} />))}
 </ScrollContainer>
 </>
 } 

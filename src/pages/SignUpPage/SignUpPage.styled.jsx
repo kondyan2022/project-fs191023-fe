@@ -4,6 +4,9 @@ import { NavLink } from 'react-router-dom'
 export const Wrapper = styled.div`
     padding-top: 127px;
     padding-bottom: 373px;
+
+    position: relative;
+
     @media(min-width: 768px) {
         padding-top: 189px;
         padding-bottom: 445px;
