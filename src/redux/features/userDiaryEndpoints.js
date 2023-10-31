@@ -2,7 +2,7 @@ import { userSplitApi } from './userApi/fitnesApi';
 
 const diaryEndpoints = userSplitApi.injectEndpoints({
   endpoints: (builder) => ({
-    getUserDiary: builder.query({
+    getDiary: builder.query({
       query: (dayData) => `/diary/${dayData}`,
       providesTags: ['userAuth'],
     }),
@@ -13,7 +13,14 @@ const diaryEndpoints = userSplitApi.injectEndpoints({
         body: exercise,
       }),
     }),
-    deleteDairyExercises: builder.mutation({}),
+    deleteDairyExercises: builder.mutation({
+      query: (exerciseData) => ({
+        url: `diary/exercise`,
+        method: 'DELETE',
+        body: exerciseData,
+      }),
+    }),
+    //
     addDiaryProducts: builder.mutation({
       query: (product) => ({
         url: `diary/product`,
@@ -32,9 +39,9 @@ const diaryEndpoints = userSplitApi.injectEndpoints({
 });
 
 export const {
-  useGetUserDiaryQuery,
+  useGetDiaryQuery,
   useAddDairyExercisesMutation,
   useAddDiaryProductsMutation,
-  useDeleteDiaryProductsMutation,
   useDeleteDairyExercisesMutation,
+  useDeleteDiaryProductsMutation,
 } = diaryEndpoints;
