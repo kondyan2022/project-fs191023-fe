@@ -19,6 +19,13 @@ import { EquipmentBoard } from './components/Exersizes/ExercisesBoard/EquipmentB
 //
 import { selectToken } from './redux/selectors';
 import { useTokenExpirationCheck } from './hooks/controlCurrentUser';
+//
+import { useDispatch } from 'react-redux';
+import { logOut } from './redux/features/userToken'; // очищення глобального стейту
+import { useUserLogOutMutation } from './redux/features/authEndpoints';
+import { useJwt } from 'react-jwt';
+import { useEffect } from 'react';
+import { jwtDecode } from 'jwt-decode';
 
 function App() {
   const dispatch = useDispatch();
