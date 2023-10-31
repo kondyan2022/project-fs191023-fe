@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import sprite from '../../../images/sprite.svg';
 import {
   ListItem,
@@ -10,6 +11,7 @@ import {
   Span,
   Button,
 } from './ExerciseItem.styled';
+import ExercisesCard from '../../Exersize-card/ExerciseCard';
 
 export const ExerciseItem = ({ exerciseCard }) => {
   const { target, bodyPart, burnedCalories, name } = exerciseCard;
@@ -27,7 +29,10 @@ export const ExerciseItem = ({ exerciseCard }) => {
   return (
     <>
       {isAddModalOpen && (
-        <ExerciseCard {...diary} setIsAddModalOpen={setIsAddModalOpen} />
+        <ExercisesCard
+          // {...diary}
+          setIsAddModalOpen={setIsAddModalOpen}
+        />
       )}
       <ListItem>
         <Workout>WORKOUT</Workout>
