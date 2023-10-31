@@ -36,38 +36,46 @@ export const Circle = styled.div`
         height: 24px;
         margin-bottom: 12px;
     }
-`
+`;
+
 export const FlexParent = styled.div`
     display: flex;
     align-items: baseline;
     gap: 8px;
-@media (min-width: 768px) {
-    gap: 11px;
-
-}
-`
-
-export const Quantity = styled.div`
-    color: var(--color-white);
-    font-family: 'Roboto', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -1px;
     @media (min-width: 768px) {
-        font-size: 48px;
-        line-height: 0.9;
+        gap: 11px;
     }
-`
+    span {
+        color: var(--color-white);
+        font-family: 'Roboto', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -1px;
+        @media (min-width: 768px) {
+            font-size: 48px;
+            line-height: 0.9;
+        }
+    }
+    p {
+        color: rgba(239, 237, 232, 0.65);
+        font-family: 'Roboto', sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 0.75;
+        @media (min-width: 768px) {
+            font-size: 16px;
+            line-height: 0.66;
+        }
+    }
+`;
 
-export const Text = styled.div`
-color: rgba(239, 237, 232, 0.65);
-font-family: 'Roboto', sans-serif;
-font-size: 12px;
-font-weight: 700;
-line-height: 0.75;
-    @media (min-width: 768px) {
-        font-size: 16px;
-        line-height: 0.66;
-    }
-`
+export const IconRunMenStyled = styled.svg`
+    fill: var(--color-white);
+    width: 12px;
+    height: 12px;
+        @media(min-width: 768px) {
+            width: 16px;
+            height: 16px;
+        }
+`;
