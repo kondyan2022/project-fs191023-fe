@@ -114,6 +114,7 @@ export const CloseButton = styled.svg`
   width: 16px;
   height: 16px;
   fill: #efede8;
+  cursor: pointer;
 `;
 export const StyledDisableButton = styled.button`
   width: 100%;
