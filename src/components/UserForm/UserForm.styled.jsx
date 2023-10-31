@@ -140,9 +140,15 @@ export const WrapperRadio = styled.div`
   margin-top: 4px;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 38px;
+  }
 
   @media screen and (min-width: 1440px) {
     display: block;
+    margin-bottom: 48px;
   }
 
   .radio {
