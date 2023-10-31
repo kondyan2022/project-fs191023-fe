@@ -1,8 +1,10 @@
 // import { useEffect } from 'react';
+import Container from '../../components/Container/Container';
+import Filter from '../../components/Products/Filter/Filter';
+import { Section, Title, Wrap, NotFound } from './ProductsPage.styled';
+import ProductsList from '../../components/Products/ProductsList/ProductsList';
 import { useState } from 'react';
-
 import { useGetAllProductsQuery } from '../../redux/features/prodEndpoints';
-import { useUserLogOutMutation } from '../../redux/features/authEndpoints';
 import { useSelector } from 'react-redux';
 import { isLogin } from '../../redux/selectors';
 // import { useGetCurrentUserQuery } from '../../redux/features/authEndpoints';
@@ -57,7 +59,62 @@ const ProductsPage = () => {
   // isSuccess - якщо запит успішний = true
   // Всі дані при першому запиту зберігаються у кеш, тому наступні запити вже не йдуть до бекенду а йдуть в кеш, якщо дані не змінювались
   // console.log('DATA: ', data);
+  // {
+  //   q: "apple",
+  //   category: "fruits",
+  //   recomendation: "true",
+  // }
 
-  return <div>aboba</div>;
+  return (
+    <Section>
+      <div></div>
+      <Container>
+        <Wrap>
+          <Title>Products</Title>
+          <Filter
+            currentCategory={currentCategory}
+            setCurrentCategory={setCurrentCategory}
+            currentRecomm={currentRecomm}
+            setCurrentRecomm={setCurrentRecomm}
+            // setSearchParams={setSearchParams}
+          />
+        </Wrap>
+        {isFetching && <p>Loading...</p>}
+        {isError && (
+          <p>
+            {error.status}
+            {error.data}
+          </p>
+        )}
+        {
+          data && (
+            // (filterData().length === 0 ? (
+            //   <NotFound>
+            //     <p>
+            //       <span>Sorry, no results were found</span> for the product
+            //       filters you selected. You may want to consider other search
+            //       options to find the product you want. Our range is wide and you
+            //       have the opportunity to find more options that suit your needs.
+            //     </p>
+            //     <span>Try changing the search parameters.</span>
+            //   </NotFound>
+            // ) : (
+            <ProductsList
+              products={data}
+              setExcessCalories={setExcessCalories}
+              blood={blood}
+            />
+          )
+          // ))
+        }
+        {/* {data && (
+          <ProductsList
+            products={filterData()}
+            setExcessCalories={setExcessCalories}
+          />
+        )} */}
+      </Container>
+    </Section>
+  );
 };
 export default ProductsPage;
