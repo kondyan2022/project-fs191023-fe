@@ -55,7 +55,6 @@ export const Scroll = styled.div`
 
     &::-webkit-scrollbar {
       width:6px;
-      height:103px;
      }
 
     &::-webkit-scrollbar-track {
