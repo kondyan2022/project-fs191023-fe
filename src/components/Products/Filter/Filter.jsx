@@ -22,7 +22,7 @@ const Filter = ({ setCurrentCategory, currentRecomm, setCurrentRecomm }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [value, setValue] = useState(searchParams.get('q') || '');
 
-  const {data} = useGetGroupProductQuery();
+  const { data } = useGetGroupProductQuery();
 
   const updatedStr = (str) => {
     const firstLatter = str[0].toUpperCase();
@@ -31,7 +31,7 @@ const Filter = ({ setCurrentCategory, currentRecomm, setCurrentRecomm }) => {
 
   const onCleanInputContent = () => {
     setValue('');
-    setSearchParams({})
+    setSearchParams({});
   };
 
   const onSubmitRequest = (e) => {
@@ -61,6 +61,14 @@ const Filter = ({ setCurrentCategory, currentRecomm, setCurrentRecomm }) => {
     }
 
     return 'Categories';
+  };
+
+  const recomTextContent = () => {
+    const params = Object.fromEntries([...searchParams]);
+    if (params.recommend) {
+      return params.recommend === 'true' ? 'Recommended' : 'Not recommended';
+    }
+    return 'All';
   };
 
   return (
@@ -148,7 +156,7 @@ const Filter = ({ setCurrentCategory, currentRecomm, setCurrentRecomm }) => {
                 setIsRecommOpen(!isRecommOpen);
               }}
             >
-              <p>{currentRecomm || 'All'}</p>
+              <p>{recomTextContent()}</p>
               <svg>
                 <use href={`${sprite}#icon-filter-down`}></use>
               </svg>
@@ -191,4 +199,5 @@ const Filter = ({ setCurrentCategory, currentRecomm, setCurrentRecomm }) => {
     </Wrap>
   );
 };
+
 export default Filter;
