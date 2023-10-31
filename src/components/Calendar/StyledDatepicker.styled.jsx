@@ -238,3 +238,33 @@ export const TitleWrapper = styled.button`
     --color2: var(--color-white);
   }
 `;
+export const BirthdayCalendarWrapper = styled(TitleWrapper)`
+    
+  width: 100%;
+  color: var(--color-white);
+  background: transparent;
+  font-weight: 400;
+  line-height: 24 px;
+  text-transform: uppercase;
+  padding: 0px 0px;
+  font-size: 16px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  text-align: center;
+
+  
+  .react-datepicker__calendar-icon {
+    --color1: var(--color-white);     
+    width: 18px;
+    height: 18px;
+    padding: 0px;
+    position: initial;
+
+  }
+ 
+
+
+`;
