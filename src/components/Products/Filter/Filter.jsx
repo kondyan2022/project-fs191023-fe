@@ -10,26 +10,19 @@ import {
   Wrap,
   CleanButton,
 } from './Filter.styled';
-import categories from '../../../../resources/productsCategories.json';
 import sprite from '../../../images/sprite.svg';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-// import { useGetGroupProductQuery } from '../../../redux/features/prodEndpoints';
+import { indexof, slice } from 'stylis';
+import { useGetGroupProductQuery } from '../../../redux/features/prodEndpoints';
 
-const Filter = ({
-  currentCategory,
-  setCurrentCategory,
-  currentRecomm,
-  setCurrentRecomm,
-  // setQuery,
-}) => {
+const Filter = ({ setCurrentCategory, currentRecomm, setCurrentRecomm }) => {
   const [isCatOpen, setIsCatOpen] = useState(false);
   const [isRecommOpen, setIsRecommOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  // const [isFulled, setIsFulled] = useState(false);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(searchParams.get('q') || '');
 
-  // const categories = useGetGroupProductQuery();
+  const {data} = useGetGroupProductQuery();
 
   const updatedStr = (str) => {
     const firstLatter = str[0].toUpperCase();
@@ -37,18 +30,37 @@ const Filter = ({
   };
 
   const onCleanInputContent = () => {
-    setValue("");
-  }
+    setValue('');
+    setSearchParams({})
+  };
 
   const onSubmitRequest = (e) => {
     let value = e.target.elements.search.value;
     e.preventDefault();
-    // setQuery(value);
     if (value === '') {
       return;
     }
-    setSearchParams({ q: value });
-    value = searchParams.get('q');
+    const params = Object.fromEntries([...searchParams]);
+    setSearchParams({
+      ...params,
+      q: value,
+    });
+    setValue(value);
+  };
+
+  const textContent = () => {
+    const curCategory = searchParams.get('category');
+    if (curCategory) {
+      const updatedText = `${curCategory
+        .slice(0, 1)
+        .toUpperCase()}${curCategory.slice(1)}`;
+
+      return updatedText.length > 16
+        ? updatedText.slice(0, 10) + '...'
+        : updatedText;
+    }
+
+    return 'Categories';
   };
 
   return (
@@ -91,7 +103,7 @@ const Filter = ({
                 setIsCatOpen(!isCatOpen);
               }}
             >
-              <p>{currentCategory || 'Categories'}</p>
+              <p>{textContent()}</p>
               <svg>
                 <use href={`${sprite}#icon-filter-down`}></use>
               </svg>
@@ -99,18 +111,23 @@ const Filter = ({
             {isCatOpen && (
               <CategoriesList height={['228px', '276px']}>
                 <ul>
-                  {categories.map((elem) => (
+                  {data.map(({ name }) => (
                     <li
-                      key={elem}
+                      key={name}
                       onClick={(e) => {
                         const text = e.target.textContent;
                         setIsCatOpen(!isCatOpen);
+                        const params = Object.fromEntries([...searchParams]);
+                        setSearchParams({
+                          ...params,
+                          category: name,
+                        });
                         setCurrentCategory(
                           text.length > 16 ? text.slice(0, 10) + '...' : text,
                         );
                       }}
                     >
-                      <p>{updatedStr(elem)}</p>
+                      <p>{updatedStr(name)}</p>
                     </li>
                   ))}
                 </ul>
@@ -146,6 +163,20 @@ const Filter = ({
                         const text = e.target.textContent;
                         setIsRecommOpen(!isRecommOpen);
                         setCurrentRecomm(text);
+                        if (item === 'All') {
+                          const params = Object.fromEntries([...searchParams]);
+                          if (params.recommend) {
+                            delete params.recommend;
+                            setSearchParams({ ...params });
+                          }
+                        }
+                        if (item !== 'All') {
+                          const params = Object.fromEntries([...searchParams]);
+                          setSearchParams({
+                            ...params,
+                            recommend: item === 'Recommended' ? true : false,
+                          });
+                        }
                       }}
                     >
                       <p>{item}</p>

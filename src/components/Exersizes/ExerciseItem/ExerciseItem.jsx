@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import sprite from '../../../images/sprite.svg';
 import {
   ListItem,
@@ -10,14 +11,47 @@ import {
   Span,
   Button,
 } from './ExerciseItem.styled';
+
+import ExerciseCard from '../../Exersize-card/ExerciseCard';
+
 export const ExerciseItem = ({ exerciseCard }) => {
-  const { target, bodyPart, burnedCalories, name } = exerciseCard;
+  const {
+    target,
+    bodyPart,
+    burnedCalories,
+    name,
+    id,
+    equipment,
+    gifUrl,
+    time,
+  } = exerciseCard;
+
   const capitalizeFirstLeter = (string) => {
     const newString = string.slice(0, 1).toUpperCase() + string.slice(1);
     return newString;
   };
+
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsAddModalOpen(true);
+  };
+
   return (
     <>
+      {isAddModalOpen && (
+        <ExerciseCard
+          target={capitalizeFirstLeter(target)}
+          bodyPart={capitalizeFirstLeter(bodyPart)}
+          equipment={capitalizeFirstLeter(equipment)}
+          gifUrl={gifUrl}
+          time={time}
+          id={id}
+          burnedCalories={burnedCalories}
+          name={capitalizeFirstLeter(name)}
+          setIsAddModalOpen={setIsAddModalOpen}
+        />
+      )}
       <ListItem>
         <Workout>WORKOUT</Workout>
         <TitleBlock>
@@ -41,13 +75,13 @@ export const ExerciseItem = ({ exerciseCard }) => {
             Burned calories: <Span>{burnedCalories}</Span>
           </StatData>
           <StatData>
-            Body part: <Span>{bodyPart}</Span>
+            Body part: <Span>{capitalizeFirstLeter(bodyPart)}</Span>
           </StatData>
           <StatData>
-            Target: <Span>{target}</Span>
+            Target: <Span>{capitalizeFirstLeter(target)}</Span>
           </StatData>
         </Statistics>
-        <Button type="button">
+        <Button type="button" onClick={openModal}>
           Start
           <svg style={{ verticalAlign: 'top', stroke: '#E6533C' }}>
             <use href={sprite + '#icon-arrow'} />

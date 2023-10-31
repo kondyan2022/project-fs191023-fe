@@ -15,18 +15,25 @@ import { Form, Formik } from 'formik';
 import { inputSchema } from './AddModalSchema';
 import { useEffect } from 'react';
 import sprite from '../../../images/sprite.svg';
-// import { useAddDiaryProductsMutation } from '../../../redux/features/userDiaryEndpoints';
+import { useAddDiaryProductsMutation } from '../../../redux/features/userDiaryEndpoints';
+import toast from 'react-hot-toast';
+import { createPortal } from 'react-dom';
+import Loading from '../../Loading/Loading';
 
-const AddModal = ({ closeModal, title, calories, setExcessCalories }) => {
+const AddModal = ({
+  closeModal,
+  title,
+  calories,
+  setExcessCalories,
+  id,
+  setIsAddedSuccess,
+}) => {
   const initialValues = {
     grams: '100',
   };
 
-  // const [f, { isSuccess, isError, isLoading }] = useAddDiaryProductsMutation();
-
-  // console.log(isUninitialized);
-  // console.log(f);
-
+  const [submitProduct, res] = useAddDiaryProductsMutation();
+  // console.log(res)
 
   useEffect(() => {
     const closeESC = (e) => {
@@ -59,14 +66,37 @@ const AddModal = ({ closeModal, title, calories, setExcessCalories }) => {
     }
   };
 
+  const formattedData = () => {
+    const dateObj = new Date();
+    const year = dateObj.getFullYear();
+    const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    return `${day}/${month}/${year}`;
+  };
+
   const onFormSubmit = (value) => {
     const countedCalories = Math.round((calories / 100) * Number(value.grams));
     setExcessCalories(countedCalories);
-    console.log({ ...value, calories: countedCalories });
-    closeModal();
+    const productData = {
+      product: id,
+      date: formattedData(),
+      amount: Number(value.grams),
+      calories: countedCalories,
+    };
+    submitProduct(productData);
+    if (res.isUninitialized) {
+      toast('Something was wrong. Please, try again.');
+    }
+    // console.log(productData);
+    // console.log(res);
+    if (res.isSuccess) {
+      setIsAddedSuccess(true);
+      closeModal();
+    }
+    // console.log({ ...value, calories: countedCalories });
   };
 
-  return (
+  return createPortal(
     <Backdrop onClick={handleClickBackground}>
       <Modal>
         <CloseButton onClick={closeModal}>
@@ -94,11 +124,18 @@ const AddModal = ({ closeModal, title, calories, setExcessCalories }) => {
                     <StyledAddButton
                       type="submit"
                       disabled={
-                        formik.values.grams.trim() === '' || formik.errors.grams
+                        formik.values.grams.trim() === '' ||
+                        formik.errors.grams ||
+                        res.isLoading
                       }
                     >
                       Add to diary
                     </StyledAddButton>
+                    {res.isLoading && (
+                      <Loading
+                        styles={{ position: 'absolute', top: '-40px', border: 'none', padding: "0" }}
+                      />
+                    )}
                   </li>
                   <li>
                     <StyledCancelButton onClick={closeModal} type="button">
@@ -121,7 +158,8 @@ const AddModal = ({ closeModal, title, calories, setExcessCalories }) => {
           </Formik>
         </FormBlock>
       </Modal>
-    </Backdrop>
+    </Backdrop>,
+    document.querySelector('#modal-root'),
   );
 };
 

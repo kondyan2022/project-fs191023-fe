@@ -1,7 +1,13 @@
 import ProductsItem from '../ProductsItem/ProductsItem';
 import { Card, List } from './ProductsList.styled';
 
-const ProductsList = ({ products, setExcessCalories, blood }) => {
+const ProductsList = ({
+  products,
+  setExcessCalories,
+  blood,
+  setIsAddedSuccess,
+  isLoading,
+}) => {
   return (
     <>
       <List>
@@ -23,6 +29,9 @@ const ProductsList = ({ products, setExcessCalories, blood }) => {
                 id={_id}
                 setExcessCalories={setExcessCalories}
                 isRecom={!groupBloodNotAllowed[blood]}
+                groupBloodNotAllowed={groupBloodNotAllowed}
+                setIsAddedSuccess={setIsAddedSuccess}
+                isLoading={isLoading}
               />
             </Card>
           ),
