@@ -6,6 +6,7 @@ const ProductsList = ({
   setExcessCalories,
   blood,
   setIsAddedSuccess,
+  isLoading,
 }) => {
   return (
     <>
@@ -30,6 +31,7 @@ const ProductsList = ({
                 isRecom={!groupBloodNotAllowed[blood]}
                 groupBloodNotAllowed={groupBloodNotAllowed}
                 setIsAddedSuccess={setIsAddedSuccess}
+                isLoading={isLoading}
               />
             </Card>
           ),

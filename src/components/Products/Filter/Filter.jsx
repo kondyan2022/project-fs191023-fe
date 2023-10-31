@@ -10,21 +10,19 @@ import {
   Wrap,
   CleanButton,
 } from './Filter.styled';
-import categories from '../../../../resources/productsCategories.json';
 import sprite from '../../../images/sprite.svg';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { indexof, slice } from 'stylis';
-// import { useGetGroupProductQuery } from '../../../redux/features/prodEndpoints';
+import { useGetGroupProductQuery } from '../../../redux/features/prodEndpoints';
 
 const Filter = ({ setCurrentCategory, currentRecomm, setCurrentRecomm }) => {
   const [isCatOpen, setIsCatOpen] = useState(false);
   const [isRecommOpen, setIsRecommOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  // const [isFulled, setIsFulled] = useState(false);
   const [value, setValue] = useState(searchParams.get('q') || '');
 
-  // const categories = useGetGroupProductQuery();
+  const {data} = useGetGroupProductQuery();
 
   const updatedStr = (str) => {
     const firstLatter = str[0].toUpperCase();
@@ -113,23 +111,23 @@ const Filter = ({ setCurrentCategory, currentRecomm, setCurrentRecomm }) => {
             {isCatOpen && (
               <CategoriesList height={['228px', '276px']}>
                 <ul>
-                  {categories.map((elem) => (
+                  {data.map(({ name }) => (
                     <li
-                      key={elem}
+                      key={name}
                       onClick={(e) => {
                         const text = e.target.textContent;
                         setIsCatOpen(!isCatOpen);
                         const params = Object.fromEntries([...searchParams]);
                         setSearchParams({
                           ...params,
-                          category: elem,
+                          category: name,
                         });
                         setCurrentCategory(
                           text.length > 16 ? text.slice(0, 10) + '...' : text,
                         );
                       }}
                     >
-                      <p>{updatedStr(elem)}</p>
+                      <p>{updatedStr(name)}</p>
                     </li>
                   ))}
                 </ul>
@@ -169,7 +167,7 @@ const Filter = ({ setCurrentCategory, currentRecomm, setCurrentRecomm }) => {
                           const params = Object.fromEntries([...searchParams]);
                           if (params.recommend) {
                             delete params.recommend;
-                            setSearchParams({...params})
+                            setSearchParams({ ...params });
                           }
                         }
                         if (item !== 'All') {
