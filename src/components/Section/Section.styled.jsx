@@ -15,7 +15,7 @@ export const SectionWrapper = styled.div`
     max-height: 812px;
     margin: 0 auto;
     background-image: url(${image1x});
-    background-size: auto;
+    background-size: inherit;
     background-repeat: no-repeat;
     background-position: 100% 100%;
     position: relative;
