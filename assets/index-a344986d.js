@@ -518,7 +518,7 @@ Error generating stack: `+a.message+`
     max-height: 812px;
     margin: 0 auto;
     background-image: url(${yq});
-    background-size: auto;
+    background-size: inherit;
     background-repeat: no-repeat;
     background-position: 100% 100%;
     position: relative;
@@ -637,7 +637,7 @@ attempted value: ${o}
   display: flex;
   flex-direction: column;
   gap: 25px; // 14px +11 on status svg
-  margin-bottom: 28px;
+  margin-bottom: 60px;
   @media(min-width: 768px) {
     max-width: 364px;
     margin-bottom: 64px;
@@ -970,7 +970,7 @@ attempted value: ${o}
   display: flex;
   flex-direction: column;
   gap: 25px; // 14px +11 on status svg
-  margin-bottom: 28px;
+  margin-bottom: 60px;
   @media(min-width: 768px) {
     max-width: 364px;
     gap: 31px; // 20px +11 on status svg
