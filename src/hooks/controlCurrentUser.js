@@ -43,7 +43,7 @@ function convertSecondsToFormat(time) {
 
 export const useTokenExpirationCheck = (ExtToken) => {
   if (!ExtToken) {
-    return;
+    return null;
   }
   // ********************************
   const decoded = jwtDecode(ExtToken);
@@ -51,12 +51,15 @@ export const useTokenExpirationCheck = (ExtToken) => {
   const { exp } = decoded;
   // ********************************
   const liveTimeToken = exp * 1000;
-  const restTime = liveTimeToken - timeNow;
+  const expiredTime = liveTimeToken - timeNow;
   // ****************************************************************
-  // if (ExtToken && restTime <= 0) {
-  // }
-  const stringData = convertSecondsToFormat(restTime);
-  console.log(stringData);
-  return restTime;
+
+  if (expiredTime > 0) {
+    const stringData = convertSecondsToFormat(expiredTime);
+    console.log(stringData);
+    return false;
+  }
+
+  return true;
 };
 // 79438668;

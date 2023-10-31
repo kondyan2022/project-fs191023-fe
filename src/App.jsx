@@ -31,16 +31,18 @@ function App() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(isLogin);
   const tokenInState = useSelector(selectToken); // токен
-  // ********************************
-  const decoded = jwtDecode(tokenInState);
-  const timeNow = Date.now();
-  const { exp } = decoded;
-  // ********************************
-  useEffect(() => {
-    return () => useTokenExpirationCheck(tokenInState);
-    // console.log('liveTimeToken', liveTimeToken);
-  }, []);
+  const [userLogut] = useUserLogOutMutation();
+  //
+  let isExpiredtokenAge;
+  const tokenObservation = setInterval(() => {
+    isExpiredtokenAge = useTokenExpirationCheck(tokenInState);
+  }, 60000);
 
+  if (tokenInState && isExpiredtokenAge) {
+    clearInterval(tokenObservation);
+    dispatch(logOut());
+    userLogut();
+  }
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
