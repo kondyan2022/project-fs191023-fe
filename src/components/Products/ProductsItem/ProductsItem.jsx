@@ -18,9 +18,12 @@ const ProductsItem = ({
   title,
   setExcessCalories,
   isRecom,
+  id,
+  groupBloodNotAllowed,
+  setIsAddedSuccess,
 }) => {
   const isRecommended = isRecom;
-  
+
   const wdt = window.innerWidth;
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
@@ -72,6 +75,11 @@ const ProductsItem = ({
           title={title.slice(0, 1).toUpperCase() + title.slice(1)}
           calories={calories}
           setExcessCalories={setExcessCalories}
+          id={id}
+          groupBloodNotAllowed={groupBloodNotAllowed}
+          category={category}
+          weight={weight}
+          setIsAddedSuccess={setIsAddedSuccess}
         />
       )}
       <ActionBlock>
