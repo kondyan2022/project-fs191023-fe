@@ -11,6 +11,7 @@ import {
   Span,
   Button,
 } from './ExerciseItem.styled';
+
 import ExerciseCard from '../../Exersize-card/ExerciseCard';
 
 export const ExerciseItem = ({ exerciseCard }) => {
@@ -46,7 +47,7 @@ export const ExerciseItem = ({ exerciseCard }) => {
           gifUrl={gifUrl}
           time={time}
           id={id}
-          calories={burnedCalories}
+          burnedCalories={burnedCalories}
           name={capitalizeFirstLeter(name)}
           setIsAddModalOpen={setIsAddModalOpen}
         />

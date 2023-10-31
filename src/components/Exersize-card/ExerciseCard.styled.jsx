@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 export const CardBack = styled.div`
   background-color: #10100f;
-
+  z-index: 11;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -72,6 +72,9 @@ export const CardListInfo = styled.ul`
     @media screen and (max-width: 768px) {
       width: 147px;
       height: 62px;
+      h5 {
+        font-size: 14px;
+      }
     }
   }
   @media screen and (max-width: 768px) {
