@@ -7,8 +7,9 @@ import { useState } from 'react';
 import { useGetAllProductsQuery, useGetProductByFilterQuery } from '../../redux/features/prodEndpoints';
 import { useSelector } from 'react-redux';
 import { isLogin } from '../../redux/selectors';
-// import { useGetCurrentUserQuery } from '../../redux/features/authEndpoints';
+import { useGetCurrentUserQuery } from '../../redux/features/authEndpoints';
 import { useSearchParams } from 'react-router-dom';
+import Loading from '../../components/Loading/Loading';
 // import { useMemo } from 'react';
 const ProductsPage = () => {
   const isLoadedUser = useSelector(isLogin);
@@ -17,25 +18,17 @@ const ProductsPage = () => {
   const [excessCalories, setExcessCalories] = useState(0);
   const [isAddedSuccess, setIsAddedSuccess] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const { data, isLoading, isFetching, error, isError } =
-    useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser });
+  // const { data, isFetching, error, isError } =
+  //   useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser });
 
-  // const filterData = useGetProductByFilterQuery(
-  //   Object.fromEntries([...searchParams]),
-  // );
+  const {data: filterData, isFetching: isFilterFetching, error, isError} = useGetProductByFilterQuery(
+    Object.fromEntries([...searchParams]),
+  );
+console.log(filterData)
 
-  // console.log(filterData.isFetching); //filterData.data - data
 
-  // const currentUser = useGetCurrentUserQuery();
-  // const blood = currentUser.data.profile.blood
-  const blood = '2';
-
-  // console.log(
-  //   data?.map((product) =>
-  //     product.title.toLowerCase().includes(searchParams?.get('query')),
-  //   ),
-  // );
-  // console.log(searchParams.size === 0)
+  const currentUser = useGetCurrentUserQuery();
+  const blood = currentUser?.data?.profile?.blood;
 
   // const { data, isLoading, isFetching, error, isError } =
   //   useGetAllProductsQuery(query, { skip: !isLoadedUser });
@@ -76,32 +69,34 @@ const ProductsPage = () => {
             setCurrentRecomm={setCurrentRecomm}
           />
         </Wrap>
-        {isFetching && <p>Loading...</p>}
+        {isFilterFetching && (
+          <Loading styles={{ position: 'absolute', top: '50%', left: "50%", width: "40px", height: "40px"}} />
+        )}
         {isError && (
           <p>
             {error.status}
             {error.data}
           </p>
         )}
-        {data && (
-          // (filterData().length === 0 ? (
-          //   <NotFound>
-          //     <p>
-          //       <span>Sorry, no results were found</span> for the product
-          //       filters you selected. You may want to consider other search
-          //       options to find the product you want. Our range is wide and you
-          //       have the opportunity to find more options that suit your needs.
-          //     </p>
-          //     <span>Try changing the search parameters.</span>
-          //   </NotFound>
-          // ) : (
-          <ProductsList
-            products={data}
-            setExcessCalories={setExcessCalories}
-            blood={blood}
-            setIsAddedSuccess={setIsAddedSuccess}
-          />
-        )}
+        {!isFilterFetching &&
+          (filterData?.results.length !== 0 ? (
+            <ProductsList
+              products={filterData.results}
+              setExcessCalories={setExcessCalories}
+              blood={blood}
+              setIsAddedSuccess={setIsAddedSuccess}
+            />
+          ) : (
+            <NotFound>
+              <p>
+                <span>Sorry, no results were found</span> for the product
+                filters you selected. You may want to consider other search
+                options to find the product you want. Our range is wide and you
+                have the opportunity to find more options that suit your needs.
+              </p>
+              <span>Try changing the search parameters.</span>
+            </NotFound>
+          ))}
       </Container>
     </Section>
   );
