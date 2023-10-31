@@ -19,9 +19,10 @@ export const SvgLogo = styled.svg`
   width: 126px;
   height: 13px;
   @media screen and (min-width: 768px) {
+    width: 151px;
+    height: 17px;
   }
-  width: 151px;
-  height: 17px;
+
   @media screen and (min-width: 1440px) {
   }
 `;

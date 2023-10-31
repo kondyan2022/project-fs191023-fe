@@ -34,7 +34,6 @@ const UserMenu = () => {
     dispatch(logOut());
   };
 
-  console.log(data?.avatarURL);
   const avatarUser = (
     <Photo src={data?.avatarURL} width="37" height="36" alt="Avatar" />
   );

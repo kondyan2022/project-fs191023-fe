@@ -10,7 +10,7 @@ export const Header = () => {
   const isLoggedIn = useSelector(isLogin);
 
   return (
-    <Container>    
+    <Container>
       {/* <Navigation>
         <StyledLink to="/signin">Sign In</StyledLink>
         <StyledLink to="/signup">Sign Up</StyledLink> 

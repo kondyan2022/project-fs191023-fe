@@ -22,6 +22,7 @@ import {
   useUserDataUpdateMutation,
 } from '../../redux/features/authEndpoints';
 import Button from '../Button/Button';
+import BirthdayDatepicker from '../Calendar/BirthdayDatepicker';
 
 // import StyledDatepicker from './../Calendar/StyledDatepicker';
 
@@ -99,11 +100,11 @@ const UserForm = () => {
     name: data?.name || '',
     height: data?.profile.height || '150',
     currentWeight: data?.profile.currentWeight || '35',
-    desiredWeight: data?.profile.defaultValue || '35',
+    desiredWeight: data?.profile.desiredWeight || '35',
     birthday: '12/20/2000',
-    blood: data?.profile.blood || '',
-    sex: data?.profile.sex || '',
-    levelActivity: data?.profile.levelActivity || '',
+    blood: data?.profile.blood || '1',
+    sex: data?.profile.sex || 'male',
+    levelActivity: data?.profile.levelActivity || '1',
   };
 
   const handleSubmit = (values, { resetForm }) => {
@@ -304,7 +305,7 @@ const UserForm = () => {
                   </StatusWrapper>
                 )}
               </WrappInput>
-              {/* <StyledDatepicker /> */}
+              <BirthdayDatepicker />
             </WrapperInputField>
             <SectionTitle>Blood</SectionTitle>
             <WrapperRadio>
