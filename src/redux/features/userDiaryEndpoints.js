@@ -2,8 +2,8 @@ import { userSplitApi } from './userApi/fitnesApi';
 
 const diaryEndpoints = userSplitApi.injectEndpoints({
   endpoints: (builder) => ({
-    getUserDiary: builder.query({
-      query: (dayData) => `users/diary/${dayData}`,
+    getDiary: builder.query({
+      query: (dayData) => `/diary/${dayData}`,
       providesTags: ['userAuth'],
     }),
     addDairyExercises: builder.mutation({
@@ -39,7 +39,7 @@ const diaryEndpoints = userSplitApi.injectEndpoints({
 });
 
 export const {
-  useGetUserDiaryQuery,
+  useGetDiaryQuery,
   useAddDairyExercisesMutation,
   useAddDiaryProductsMutation,
   useDeleteDiaryProductsMutation,

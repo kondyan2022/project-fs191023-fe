@@ -42,7 +42,7 @@ function convertSecondsToFormat(time) {
 }
 
 export const useTokenExpirationCheck = (ExtToken, checkInterval = 60000) => {
-  // const token = 'token';
+  // ********************************
   const decoded = jwtDecode(ExtToken);
   const timeNow = Date.now();
   const { exp, iat, id } = decoded;
@@ -52,7 +52,8 @@ export const useTokenExpirationCheck = (ExtToken, checkInterval = 60000) => {
 
   const restTime = liveTimeToken - timeNow;
   // ****************************************************************
-
+  if (ExtToken && restTime <= 0) {
+  }
   const stringData = convertSecondsToFormat(restTime);
   console.log('Time token: ', liveTimeToken);
   console.log(stringData);
