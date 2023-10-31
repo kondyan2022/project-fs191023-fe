@@ -41,21 +41,22 @@ function convertSecondsToFormat(time) {
   return formattedTime;
 }
 
-export const useTokenExpirationCheck = (ExtToken, checkInterval = 60000) => {
+export const useTokenExpirationCheck = (ExtToken) => {
+  if (!ExtToken) {
+    return;
+  }
   // ********************************
   const decoded = jwtDecode(ExtToken);
   const timeNow = Date.now();
-  const { exp, iat, id } = decoded;
+  const { exp } = decoded;
   // ********************************
-
   const liveTimeToken = exp * 1000;
-
   const restTime = liveTimeToken - timeNow;
   // ****************************************************************
-  if (ExtToken && restTime <= 0) {
-  }
+  // if (ExtToken && restTime <= 0) {
+  // }
   const stringData = convertSecondsToFormat(restTime);
-  console.log('Time token: ', liveTimeToken);
   console.log(stringData);
+  return restTime;
 };
 // 79438668;
