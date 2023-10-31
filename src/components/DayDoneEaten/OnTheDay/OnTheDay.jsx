@@ -8,7 +8,7 @@ import {DesktoVersionExercises} from '../DesktopVersion/DesktopVersionExercises'
 
 
 
- export const OnTheDay = ({oneProductTest, exercisesTest})=> {
+ export const OnTheDay = ({oneProductTest, exercisesTest,date})=> {
   const [size, setSize] = useState({});
 
   const ref = useRef();
@@ -39,8 +39,9 @@ window.removeEventListener("resize", resizeHandler);
     </BtnAdd>
     </Header>
 
-{oneProductTest.length > 0 ? size.clientWidth > 700? (<DesktopVersionProdukt oneProductTest={oneProductTest}/>)
-: (<Scroll> {oneProductTest.map(oneProduct => (<ProductEaten key={oneProduct._id.$oid} {...oneProduct} />))}</Scroll>)
+{oneProductTest.length > 0 ? size.clientWidth > 700? (<DesktopVersionProdukt oneProductTest={oneProductTest} date={date}/>)
+: (<Scroll> {oneProductTest.map(oneProduct =>(<ProductEaten key={oneProduct._id} {...oneProduct} date={date} />)
+  )}</Scroll>)
   
 : <NotFound>Not found products</NotFound>
 }
@@ -58,8 +59,8 @@ window.removeEventListener("resize", resizeHandler);
 </Header>
 
 {exercisesTest.length > 0 ? 
-size.clientWidth > 700? (<DesktoVersionExercises exercisesTest={exercisesTest}/>) :
-(<Scroll> {exercisesTest.map(oneExercise => (<ExercisesDone key={oneExercise._id.$oid} {...oneExercise}/>))}</Scroll>)
+size.clientWidth > 700? (<DesktoVersionExercises exercisesTest={exercisesTest} date={date}/>) :
+(<Scroll> {exercisesTest.map(oneExercise => (<ExercisesDone key={oneExercise._id} {...oneExercise} date={date}/>))}</Scroll>)
 : <NotFound>Not found exercises</NotFound>
 }
 

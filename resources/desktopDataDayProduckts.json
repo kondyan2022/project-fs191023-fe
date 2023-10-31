@@ -18,7 +18,7 @@
     "marginDesktop": "69px",
     "width": "90px",
     "widthDesktop":"105px",
-    "key":"calories"},
+    "key":"consumeCalories"},
     
     {"titel":"Weight",
     "marginTablet": "60px",

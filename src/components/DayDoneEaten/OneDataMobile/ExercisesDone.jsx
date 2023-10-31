@@ -1,19 +1,24 @@
 import {TitleCategory,OtherData,AllData,NamOfCategory,Container,DivLeater } from "./Mobile.styled"
 import {BtnTrash} from '../btn/btn'
-
-
+import {useDeleteDairyExercisesMutation} from "../../../redux/features/userDiaryEndpoints";
+import { useDispatch } from "react-redux";
 
 export const ExercisesDone = (props) =>{
-
-
 const {bodyPart,equipment,name,target,burnedCalories,time,
-    // _id:{$oid: id}
-} = props;
-// const toDelit = {
-//     id, 
-//     isProduct:false,
-//     //date:
-// }
+    _id: id, date} = props;
+const dispatch = useDispatch();
+const toDelit = {
+    id, 
+    date
+}
+const [deleteExercis] = useDeleteDairyExercisesMutation();
+const handleDeleteExercises = () => dispatch(deleteExercis(toDelit));
+// const DeleteEx = obj => {
+//     console.log(obj)
+//     deleteExercis(obj);
+//   };
+
+
 return <>
 
     <AllData>
@@ -47,7 +52,7 @@ return <>
         <div>{time}</div>
         </span>            
         </OtherData>
-        <BtnTrash />
+        <BtnTrash handleDeleteExercises={handleDeleteExercises}/>
         </Container>
 </AllData>
     </>
