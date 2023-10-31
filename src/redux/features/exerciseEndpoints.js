@@ -12,7 +12,7 @@ const exercisesApiEndpoints = userSplitApi.injectEndpoints({
     }),
     getExercisesByFilter: builder.query({
       query: (params) => ({
-        url: `products/search`,
+        url: `exercises/search`,
         method: 'GET',
         params,
       }),

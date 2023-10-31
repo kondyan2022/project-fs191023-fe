@@ -30,11 +30,32 @@ import { jwtDecode } from 'jwt-decode';
 //   }, [checkInterval, userLogOut, dispatch]);
 // };
 
-export const useTokenExpirationCheck = (ExtToken, checkInterval = 60000) => {
-  const token = 'token';
-  const decoded = jwtDecode(ExtToken);
-  const { exp, iat, id } = decoded;
-  console.log('Deecoded token: ', decoded);
+function convertSecondsToUserFriendlyFormat(milliseconds) {
+  const totalSeconds = Math.floor(milliseconds / 1000);
+  const seconds = totalSeconds % 60;
+  const totalMinutes = Math.floor(totalSeconds / 60);
+  const minutes = totalMinutes % 60;
+  const hours = Math.floor(totalMinutes / 60);
 
+  const formattedTime = `${hours} годин ${minutes} хвилин ${seconds} секунд`;
+  return formattedTime;
+}
+
+export const useTokenExpirationCheck = (ExtToken, checkInterval = 60000) => {
+  // const token = 'token';
+  const decoded = jwtDecode(ExtToken);
+  const timeNow = Date.now();
+  const { exp, iat, id } = decoded;
+  // ********************************
+
+  const liveTimeToken = exp / 1000;
+
+  const restTime = liveTimeToken - timeNow;
+
+  // const formattedTime = `${hours} годин ${minutes} хвилин ${remainingSeconds} секунд`;
+  console.log('Time token: ', liveTimeToken);
+  const liveToken = convertSecondsToUserFriendlyFormat(exp);
+  console.log('Time token: ', liveToken);
+  console.log('Diferences: ', restTime);
   console.log('Deecoded token: ', exp, iat, id);
 };
