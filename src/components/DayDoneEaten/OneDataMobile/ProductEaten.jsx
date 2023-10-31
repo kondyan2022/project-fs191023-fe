@@ -3,12 +3,28 @@ import {Recommend} from '../operations/DayDoneOperations'
 import {BtnTrash} from '../btn/btn'
 import {Circle} from '../Circle/Circle'
 
+// import { deleteDiaryProducts } from "../../../redux/features/userDiaryEndpoints";
+
 
 export const ProductEaten = (props) =>{
 
+   
 
-const {title,calories,weight,groupBloodNotAllowed,category} = props;
+const {title,calories,weight,groupBloodNotAllowed,category, 
+    _id:{$oid: id} 
+} = props;
+
 const isRecommended = (Recommend(3,groupBloodNotAllowed));
+// const toDelit = {
+//     id, 
+//     isProduct:true,
+//     //date:
+// }
+
+const toDelete = id => {
+    (console.log(id));
+  };
+
  
  return <>
 
@@ -38,7 +54,8 @@ const isRecommended = (Recommend(3,groupBloodNotAllowed));
         <RecommendDiv>{isRecommended? (<><Circle isRecommended={isRecommended}></Circle>Yes</>) : (<><Circle isRecommended={isRecommended}></Circle>No</>)}</RecommendDiv>
         </span>            
         </OtherData>
-        <BtnTrash/>
+        <button onClick={() => toDelete(id)}></button>
+       <BtnTrash/>
         </Container>
 </AllData>
     </>

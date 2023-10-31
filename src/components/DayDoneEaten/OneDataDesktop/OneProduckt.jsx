@@ -6,9 +6,17 @@ import desktopDataDayProduckts from '../../../../resources/desktopDataDayProduck
 
 
 export const OneProduktDesktop = (props) => {
-  
-const {groupBloodNotAllowed} = props;
+   // const {recommend} = props;
+const {groupBloodNotAllowed,
+   // _id:{$oid: id}
+} = props;
 const isRecommended = (Recommend(3,groupBloodNotAllowed));
+
+// const toDelit = {
+//    id, 
+//    isProduct:true,
+//    //date:
+// }
 
 
     return     <ProduktsDesktop>
@@ -16,7 +24,8 @@ const isRecommended = (Recommend(3,groupBloodNotAllowed));
     {desktopDataDayProduckts.map((style,id) => 
        <OneData key={id} styles={style}>{props[style.key]}</OneData>
        )}
-    <RecommendDesk>{isRecommended? (<><Circle isRecommended={isRecommended}></Circle>Yes</>) : (<><Circle isRecommended={isRecommended}></Circle>No</>)}</RecommendDesk>
-    <BtnTrash/>
+    {/* <RecommendDesk>{recommend? (<><Circle isRecommended={recommend}></Circle>Yes</>) : (<><Circle isRecommended={recommend}></Circle>No</>)}</RecommendDesk> */}
+         <RecommendDesk>{isRecommended? (<><Circle isRecommended={isRecommended}></Circle>Yes</>) : (<><Circle isRecommended={isRecommended}></Circle>No</>)}</RecommendDesk>
+    <BtnTrash  />
    </ProduktsDesktop>
 }
