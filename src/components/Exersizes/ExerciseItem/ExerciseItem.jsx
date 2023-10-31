@@ -11,14 +11,39 @@ import {
   Span,
   Button,
 } from './ExerciseItem.styled';
-import ExercisesCard from '../../Exersize-card/ExerciseCard';
+import { useState } from 'react';
+import ExerciseCard from '../../Exersize-card/ExerciseCard';
+// import diary from '../../../../resources/exercises.json';
 
 export const ExerciseItem = ({ exerciseCard }) => {
-  const { target, bodyPart, burnedCalories, name } = exerciseCard;
+  const {
+    target,
+    bodyPart,
+    burnedCalories,
+    name,
+    id,
+    // date,
+    equipment,
+    gifUrl,
+    time,
+  } = exerciseCard;
+
   const capitalizeFirstLeter = (string) => {
     const newString = string.slice(0, 1).toUpperCase() + string.slice(1);
     return newString;
   };
+
+  // const diary = {
+  //   name: 'name',
+  //   target: 'Strength',
+  //   bodyPart: 'Legs',
+  //   equipment: 'Dumbbells',
+  //   gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0009.gif',
+  //   time: 1,
+  //   date: '2023/10/24',
+  //   id: '64f2458d6f67bc34bae4f7f7',
+  //   burnedCalories: 300,
+  // };
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
@@ -29,8 +54,16 @@ export const ExerciseItem = ({ exerciseCard }) => {
   return (
     <>
       {isAddModalOpen && (
-        <ExercisesCard
-          // {...diary}
+
+        <ExerciseCard
+          target={capitalizeFirstLeter(target)}
+          bodyPart={capitalizeFirstLeter(bodyPart)}
+          equipment={capitalizeFirstLeter(equipment)}
+          gifUrl={gifUrl}
+          time={time}
+          id={id}
+          calories={burnedCalories}
+          name={capitalizeFirstLeter(name)}
           setIsAddModalOpen={setIsAddModalOpen}
         />
       )}
