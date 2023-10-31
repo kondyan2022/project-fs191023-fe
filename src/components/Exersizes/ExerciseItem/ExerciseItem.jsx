@@ -52,7 +52,7 @@ export const ExerciseItem = ({ exerciseCard }) => {
   };
 
   return (
-    <ListItem>
+    <>
       {isAddModalOpen && (
         <ExerciseCard
           target={capitalizeFirstLeter(target)}
@@ -66,40 +66,42 @@ export const ExerciseItem = ({ exerciseCard }) => {
           setIsAddModalOpen={setIsAddModalOpen}
         />
       )}
-      <Workout>WORKOUT</Workout>
-      <TitleBlock>
-        <IconWraper>
-          <svg
-            width="24"
-            height="24"
-            style={{
-              fill: '#EFEDE8',
-              zIndex: 10,
-            }}
-          >
-            <use href={sprite + '#icon-run-man'} />
-          </svg>
-        </IconWraper>
+      <ListItem>
+        <Workout>WORKOUT</Workout>
+        <TitleBlock>
+          <IconWraper>
+            <svg
+              width="24"
+              height="24"
+              style={{
+                fill: '#EFEDE8',
+                zIndex: 10,
+              }}
+            >
+              <use href={sprite + '#icon-run-man'} />
+            </svg>
+          </IconWraper>
 
-        <Title>{capitalizeFirstLeter(name)}</Title>
-      </TitleBlock>
-      <Statistics>
-        <StatData>
-          Burned calories: <Span>{burnedCalories}</Span>
-        </StatData>
-        <StatData>
-          Body part: <Span>{bodyPart}</Span>
-        </StatData>
-        <StatData>
-          Target: <Span>{target}</Span>
-        </StatData>
-      </Statistics>
-      <Button type="button" onClick={openModal}>
-        Start
-        <svg style={{ verticalAlign: 'top', stroke: '#E6533C' }}>
-          <use href={sprite + '#icon-arrow'} />
-        </svg>
-      </Button>
-    </ListItem>
+          <Title>{capitalizeFirstLeter(name)}</Title>
+        </TitleBlock>
+        <Statistics>
+          <StatData>
+            Burned calories: <Span>{burnedCalories}</Span>
+          </StatData>
+          <StatData>
+            Body part: <Span>{bodyPart}</Span>
+          </StatData>
+          <StatData>
+            Target: <Span>{target}</Span>
+          </StatData>
+        </Statistics>
+        <Button type="button" onClick={openModal}>
+          Start
+          <svg style={{ verticalAlign: 'top', stroke: '#E6533C' }}>
+            <use href={sprite + '#icon-arrow'} />
+          </svg>
+        </Button>
+      </ListItem>
+    </>
   );
 };
