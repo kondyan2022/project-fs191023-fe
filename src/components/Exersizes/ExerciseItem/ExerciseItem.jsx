@@ -11,7 +11,7 @@ import {
   Span,
   Button,
 } from './ExerciseItem.styled';
-import { useState } from 'react';
+
 import ExerciseCard from '../../Exersize-card/ExerciseCard';
 // import diary from '../../../../resources/exercises.json';
 
@@ -52,9 +52,8 @@ export const ExerciseItem = ({ exerciseCard }) => {
   };
 
   return (
-    <>
+    <ListItem>
       {isAddModalOpen && (
-
         <ExerciseCard
           target={capitalizeFirstLeter(target)}
           bodyPart={capitalizeFirstLeter(bodyPart)}
@@ -62,47 +61,45 @@ export const ExerciseItem = ({ exerciseCard }) => {
           gifUrl={gifUrl}
           time={time}
           id={id}
-          calories={burnedCalories}
+          burnedCalories={burnedCalories}
           name={capitalizeFirstLeter(name)}
           setIsAddModalOpen={setIsAddModalOpen}
         />
       )}
-      <ListItem>
-        <Workout>WORKOUT</Workout>
-        <TitleBlock>
-          <IconWraper>
-            <svg
-              width="24"
-              height="24"
-              style={{
-                fill: '#EFEDE8',
-                zIndex: 10,
-              }}
-            >
-              <use href={sprite + '#icon-run-man'} />
-            </svg>
-          </IconWraper>
-
-          <Title>{capitalizeFirstLeter(name)}</Title>
-        </TitleBlock>
-        <Statistics>
-          <StatData>
-            Burned calories: <Span>{burnedCalories}</Span>
-          </StatData>
-          <StatData>
-            Body part: <Span>{bodyPart}</Span>
-          </StatData>
-          <StatData>
-            Target: <Span>{target}</Span>
-          </StatData>
-        </Statistics>
-        <Button type="button" onClick={openModal}>
-          Start
-          <svg style={{ verticalAlign: 'top', stroke: '#E6533C' }}>
-            <use href={sprite + '#icon-arrow'} />
+      <Workout>WORKOUT</Workout>
+      <TitleBlock>
+        <IconWraper>
+          <svg
+            width="24"
+            height="24"
+            style={{
+              fill: '#EFEDE8',
+              zIndex: 10,
+            }}
+          >
+            <use href={sprite + '#icon-run-man'} />
           </svg>
-        </Button>
-      </ListItem>
-    </>
+        </IconWraper>
+
+        <Title>{capitalizeFirstLeter(name)}</Title>
+      </TitleBlock>
+      <Statistics>
+        <StatData>
+          Burned calories: <Span>{burnedCalories}</Span>
+        </StatData>
+        <StatData>
+          Body part: <Span>{bodyPart}</Span>
+        </StatData>
+        <StatData>
+          Target: <Span>{target}</Span>
+        </StatData>
+      </Statistics>
+      <Button type="button" onClick={openModal}>
+        Start
+        <svg style={{ verticalAlign: 'top', stroke: '#E6533C' }}>
+          <use href={sprite + '#icon-arrow'} />
+        </svg>
+      </Button>
+    </ListItem>
   );
 };
