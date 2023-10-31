@@ -10,14 +10,26 @@ import {
   Span,
   Button,
 } from './ExerciseItem.styled';
+import 
+
 export const ExerciseItem = ({ exerciseCard }) => {
   const { target, bodyPart, burnedCalories, name } = exerciseCard;
   const capitalizeFirstLeter = (string) => {
     const newString = string.slice(0, 1).toUpperCase() + string.slice(1);
     return newString;
   };
+
+     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+     const openModal = () => {
+       setIsAddModalOpen(true);
+     };
+
   return (
     <>
+      {isAddModalOpen && (
+        <ExerciseCard {...diary} setIsAddModalOpen={setIsAddModalOpen} />
+      )}
       <ListItem>
         <Workout>WORKOUT</Workout>
         <TitleBlock>
@@ -47,7 +59,7 @@ export const ExerciseItem = ({ exerciseCard }) => {
             Target: <Span>{target}</Span>
           </StatData>
         </Statistics>
-        <Button type="button">
+        <Button type="button" onClick={openModal}>
           Start
           <svg style={{ verticalAlign: 'top', stroke: '#E6533C' }}>
             <use href={sprite + '#icon-arrow'} />
