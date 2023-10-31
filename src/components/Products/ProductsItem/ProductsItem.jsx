@@ -52,15 +52,7 @@ const ProductsItem = ({
   const updatedTitle = () => {
     const firstLetter = title.slice(0, 1).toUpperCase();
     const newTitle = firstLetter + title.slice(1);
-    if (wdt < 375 && title.length > 17) {
-      return newTitle.slice(0, 18) + '...';
-    }
-    if (wdt < 768 && wdt >= 375 && title.length > 24) {
-      // return title.slice(0, 25) + '...';
-      return newTitle.slice(0, 18) + '...';
-    }
-    if (wdt >= 768 && title.length > 22) {
-      // return title.slice(0, 20) + '...';
+    if (title.length > 17) {
       return newTitle.slice(0, 18) + '...';
     }
     return newTitle;
