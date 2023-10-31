@@ -14,7 +14,6 @@ import {
   WrappInput,
   Status,
   StatusWrapper,
-  BirthdayWrapper,
 } from './UserForm.styled';
 import RadioOption from '../RadioOption/RadioOption';
 import spriteSvG from '../../images/sprite.svg';
@@ -24,7 +23,6 @@ import {
 } from '../../redux/features/authEndpoints';
 import Button from '../Button/Button';
 import StyledDatepicker from '../Calendar/StyledDatepicker';
-import { clearConfigCache } from 'prettier';
 
 // import StyledDatepicker from './../Calendar/StyledDatepicker';
 
@@ -100,13 +98,13 @@ const UserForm = () => {
 
   const initialValues = {
     name: data?.name || '',
-    height: data?.profile.height || 150,
-    currentWeight: data?.profile.currentWeight || 35,
-    desiredWeight: data?.profile.defaultValue || 35,
-    birthday: data?.profile.birthday || new Date('2000-12-20T00:00:00.000Z'),
-    blood: data?.profile.blood || 1,
-    sex: data?.profile.sex || 'male',
-    levelActivity: data?.profile.levelActivity || 1,
+    height: data?.profile?.height || 150,
+    currentWeight: data?.profile?.currentWeight || 35,
+    desiredWeight: data?.profile?.defaultValue || 35,
+    birthday: data?.profile?.birthday || new Date('2000-12-20T00:00:00.000Z'),
+    blood: data?.profile?.blood || 1,
+    sex: data?.profile?.sex || 'male',
+    levelActivity: data?.profile?.levelActivity || 1,
   };
 
   const handleSubmit = (values, { resetForm }) => {
@@ -126,8 +124,7 @@ const UserForm = () => {
     console.log(values);
 
     userFormUpdate(data);
-    console.log('values>>>>', values);
-    // console.log(isError);
+
     resetForm();
   };
 
