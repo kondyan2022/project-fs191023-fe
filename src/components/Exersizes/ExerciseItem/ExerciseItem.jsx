@@ -10,7 +10,6 @@ import {
   Span,
   Button,
 } from './ExerciseItem.styled';
-import 
 
 export const ExerciseItem = ({ exerciseCard }) => {
   const { target, bodyPart, burnedCalories, name } = exerciseCard;
@@ -19,11 +18,11 @@ export const ExerciseItem = ({ exerciseCard }) => {
     return newString;
   };
 
-     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
-     const openModal = () => {
-       setIsAddModalOpen(true);
-     };
+  const openModal = () => {
+    setIsAddModalOpen(true);
+  };
 
   return (
     <>
