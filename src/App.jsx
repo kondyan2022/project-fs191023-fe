@@ -21,10 +21,18 @@ import { selectToken } from './redux/selectors';
 import { useTokenExpirationCheck } from './hooks/controlCurrentUser';
 
 function App() {
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector(isLogin);
   const tokenInState = useSelector(selectToken); // токен
-
-  tokenInState && useTokenExpirationCheck(tokenInState, 3000);
+  // ********************************
+  const decoded = jwtDecode(tokenInState);
+  const timeNow = Date.now();
+  const { exp } = decoded;
+  // ********************************
+  useEffect(() => {
+    return () => useTokenExpirationCheck(tokenInState);
+    // console.log('liveTimeToken', liveTimeToken);
+  }, []);
 
   return (
     <Routes>
