@@ -45,7 +45,7 @@ const ExerciseCard = ({
   const closeModal = () => {
     setIsAddModalOpen(false);
   };
-
+  //ABOBA
   return (
     <CardBack>
       <ListFlex>
