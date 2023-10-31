@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import sprite from '../../../images/sprite.svg';
 import {
   ListItem,
@@ -53,6 +54,7 @@ export const ExerciseItem = ({ exerciseCard }) => {
   return (
     <>
       {isAddModalOpen && (
+
         <ExerciseCard
           target={capitalizeFirstLeter(target)}
           bodyPart={capitalizeFirstLeter(bodyPart)}
