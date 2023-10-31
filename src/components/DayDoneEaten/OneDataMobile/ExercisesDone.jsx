@@ -6,8 +6,14 @@ import {BtnTrash} from '../btn/btn'
 export const ExercisesDone = (props) =>{
 
 
-const {bodyPart,equipment,name,target,burnedCalories,time} = props;
-
+const {bodyPart,equipment,name,target,burnedCalories,time,
+    // _id:{$oid: id}
+} = props;
+// const toDelit = {
+//     id, 
+//     isProduct:false,
+//     //date:
+// }
 return <>
 
     <AllData>
@@ -41,7 +47,7 @@ return <>
         <div>{time}</div>
         </span>            
         </OtherData>
-        <BtnTrash/>
+        <BtnTrash />
         </Container>
 </AllData>
     </>

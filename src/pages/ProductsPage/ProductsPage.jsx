@@ -1,4 +1,4 @@
-// import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import Container from '../../components/Container/Container';
 import Filter from '../../components/Products/Filter/Filter';
 import { Section, Title, Wrap, NotFound } from './ProductsPage.styled';
@@ -8,16 +8,19 @@ import { useGetAllProductsQuery } from '../../redux/features/prodEndpoints';
 import { useSelector } from 'react-redux';
 import { isLogin } from '../../redux/selectors';
 // import { useGetCurrentUserQuery } from '../../redux/features/authEndpoints';
-// import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 // import { useMemo } from 'react';
 const ProductsPage = () => {
   const isLoadedUser = useSelector(isLogin);
   const [currentCategory, setCurrentCategory] = useState();
   const [currentRecomm, setCurrentRecomm] = useState();
   const [excessCalories, setExcessCalories] = useState(0);
+  const [isAddedSuccess, setIsAddedSuccess] = useState(false);
   // const [query, setQuery] = useState();
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const query = useMemo(() => searchParams.get('query'), [searchParams]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = useMemo(() => searchParams.get('q'), [searchParams]);
+  const category = searchParams.get('category');
+  const recommend = searchParams.get('recommend');
   // const [products, setProducts] = useState([]);
   // const [addModalOpen, setAddModalOpen] = useState(false);
   const { data, isLoading, isFetching, error, isError } =
@@ -26,6 +29,11 @@ const ProductsPage = () => {
   // const currentUser = useGetCurrentUserQuery();
   // const blood = currentUser.data.profile.blood
   const blood = '2';
+  // console.log(searchParams);
+
+  useEffect(() => {
+    
+  }, []);
 
   // console.log(
   //   data?.map((product) =>
@@ -103,6 +111,7 @@ const ProductsPage = () => {
               products={data}
               setExcessCalories={setExcessCalories}
               blood={blood}
+              setIsAddedSuccess={setIsAddedSuccess}
             />
           )
           // ))

@@ -12,7 +12,10 @@ import {
 } from './ExerciseItem.styled';
 export const ExerciseItem = ({ exerciseCard }) => {
   const { target, bodyPart, burnedCalories, name } = exerciseCard;
-
+  const capitalizeFirstLeter = (string) => {
+    const newString = string.slice(0, 1).toUpperCase() + string.slice(1);
+    return newString;
+  };
   return (
     <>
       <ListItem>
@@ -31,7 +34,7 @@ export const ExerciseItem = ({ exerciseCard }) => {
             </svg>
           </IconWraper>
 
-          <Title>{name}</Title>
+          <Title>{capitalizeFirstLeter(name)}</Title>
         </TitleBlock>
         <Statistics>
           <StatData>
