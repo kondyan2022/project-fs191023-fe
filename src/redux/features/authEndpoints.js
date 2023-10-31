@@ -37,6 +37,14 @@ const authApiSlice = userSplitApi.injectEndpoints({
       }),
       invalidatesTags: ['userAuth'],
     }),
+    userGoogleSignIn: builder.mutation({
+      query: (credential) => ({
+        url: `users/googlelogin`,
+        method: 'POST',
+        body: credential,
+      }),
+      invalidatesTags: ['userAuth'],
+    }),
     userDataUpdate: builder.mutation({
       query: (updateData) => ({
         url: `users`,
@@ -61,4 +69,5 @@ export const {
   useUserSignInMutation,
   useUserDataUpdateMutation,
   useUserLogOutMutation,
+  useUserGoogleSignInMutation,
 } = authApiSlice;

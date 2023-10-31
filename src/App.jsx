@@ -16,15 +16,16 @@ import { ExerciseList } from './components/Exersizes/ExerciseList/ExerciseList';
 import { BodyPartsBoard } from './components/Exersizes/ExercisesBoard/BodyPartsBoard';
 import { MusclesBoard } from './components/Exersizes/ExercisesBoard/MusclesBoard';
 import { EquipmentBoard } from './components/Exersizes/ExercisesBoard/EquipmentBoard';
+import GoogleLoginPage from './pages/GoogleLoginPage/GoogleLoginPage';
 //
-import { selectToken } from './redux/selectors';
-import { useTokenExpirationCheck } from './hooks/controlCurrentUser';
+// import { selectToken } from './redux/selectors';
+// import { useTokenExpirationCheck } from './hooks/controlCurrentUser';
 
 function App() {
   const isLoggedIn = useSelector(isLogin);
-  const tokenInState = useSelector(selectToken); // токен
+  // const tokenInState = useSelector(selectToken); // токен.
 
-  tokenInState && useTokenExpirationCheck(tokenInState, 3000);
+  // tokenInState && useTokenExpirationCheck(tokenInState, 3000);
 
   return (
     <Routes>
@@ -58,6 +59,14 @@ function App() {
           element={
             <PublicRoute restricted isLoggedIn={isLoggedIn}>
               <SignInPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/googlelogin"
+          element={
+            <PublicRoute restricted isLoggedIn={isLoggedIn}>
+              <GoogleLoginPage />
             </PublicRoute>
           }
         />
