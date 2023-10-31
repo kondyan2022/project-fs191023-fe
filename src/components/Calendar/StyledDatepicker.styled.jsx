@@ -19,7 +19,6 @@ export const DataBtn = styled.div`
 export const CalendarGlobalStyles = createGlobalStyle`
   .react-datepicker__wrapper {
     position: relative;
-
   }
   .react-datepicker {
     position: relative;
@@ -35,6 +34,20 @@ export const CalendarGlobalStyles = createGlobalStyle`
     background-color: var(--color-orange-one);
     font-family: Roboto;
     border-radius: 8px;
+  }
+  
+  .react-datepicker__tab-loop{
+    position: absolute;
+    top:0px;
+    left:-200px;
+    @media screen and (min-width: 768px) {
+      top:-30px;
+      left:-300px;
+    }
+    @media screen and (min-width: 1440px) {
+      top:-50px;
+      left:-400px;
+    }
   }
   .react-datepicker__month-container {
     float: inherit;
@@ -53,8 +66,8 @@ export const CalendarGlobalStyles = createGlobalStyle`
     justify-content: space-between;
     align-items: center;
     padding: 1px 1px;
-    color:rgba(255, 255, 255, 0.5);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    color:rgba(239, 237, 232, 0.50);
+    border-top: 1px solid var(--accent-color-border);
   }
   .react-datepicker__header:not(.react-datepicker__header--has-time-select) {
     border-bottom: 0px;
@@ -68,15 +81,17 @@ export const CalendarGlobalStyles = createGlobalStyle`
     font-family: Roboto;
     font-size: 16px;
     font-style: normal;
-    font-weight: 400;
-    line-height: 16px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    ${'' /* line-height: 16px; */}
     text-align: center;
     color: var(--color-white);
     padding-bottom: 10px;
     display: inline-flex;
   }
   .react-datepicker__day-name {
-    margin: 0;
+    margin-top: 14px;
     padding: 1px 1px;
     font-family: Roboto;
     font-size: 14px;
@@ -109,7 +124,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     color: var(--color-white);
   }
   .react-datepicker__navigation-icon::before:hover:focus {
-    border-color: rgba(239, 237, 232, 0.6);
+    border-color: rgba(239, 237, 230, 0.4);
     /*background-image: url('public/calendar-icon.svg#icon-arrow-left')*/
     fill:rgba(239, 237, 232, 0.6);
   } 
@@ -124,18 +139,19 @@ export const CalendarGlobalStyles = createGlobalStyle`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     flex-shrink: 0;
     margin: 0;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
-    color: white;
+    color: var(--color-white);
     font-family: Roboto;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 18px;
+    line-height: 18px; /* 128.571% */
+    letter-spacing: -0.28px;
     text-align: center;
   }
   .react-datepicker__month {
@@ -165,9 +181,9 @@ export const CalendarGlobalStyles = createGlobalStyle`
     background-color:var( --color-black);
     color: var(--color-white);
   }
-  .react-datepicker__day--weekend {
+  ${'' /* .react-datepicker__day--weekend {
     opacity: 50%;
-  }
+  } */}
 .react-datepicker__day--outside-month {
     background-color: transparent;
     pointer-events: none;
