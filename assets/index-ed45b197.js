@@ -1124,7 +1124,7 @@ margin-top: 12px;
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
-`,wM=()=>c.jsx(vp,{children:c.jsx(Ni,{children:c.jsxs(bM,{children:[c.jsx("h2",{children:"Sign In"}),c.jsx(hM,{children:"Welcome! Please enter your credentials to login to the platform:"}),c.jsx(mM,{}),c.jsxs(yM,{children:["Don`t have an account? ",c.jsx(vM,{to:"/signup",children:"Sign Up"})]}),c.jsx("a",{href:"https://power-plus-service.onrender.com",children:"Google"}),c.jsx(ty,{}),c.jsx(ry,{})]})})}),xM=K.div`
+`,wM=()=>c.jsx(vp,{children:c.jsx(Ni,{children:c.jsxs(bM,{children:[c.jsx("h2",{children:"Sign In"}),c.jsx(hM,{children:"Welcome! Please enter your credentials to login to the platform:"}),c.jsx(mM,{}),c.jsxs(yM,{children:["Don`t have an account? ",c.jsx(vM,{to:"/signup",children:"Sign Up"})]}),c.jsx("a",{href:"https://power-plus-service.onrender.com/users/google",children:"Google"}),c.jsx(ty,{}),c.jsx(ry,{})]})})}),xM=K.div`
   display: flex;
   justify-content: center;
   align-items: center;
