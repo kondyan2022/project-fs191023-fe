@@ -20,10 +20,6 @@ const StyledDatepicker = ({
   const [selectedDate, setSelectedDate] = useState(setFormData || Date.now());
   // const isBirthdayPicker = true;
 
-  console.log(selectedDate);
-  console.log('minDate', minDate);
-  console.log('maxDate', maxDate);
-
   const CustomInput = ({ onClick }) => {
     return calendarType === 'birthday' ? (
       <BirthdayCalendarWrapper>

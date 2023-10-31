@@ -20,7 +20,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
   .react-datepicker__wrapper {
     display: flex;
     position: relative;
-   
+   padding-left: 14px;
   }
   .react-datepicker {
     ${'' /* position: relative; */}
