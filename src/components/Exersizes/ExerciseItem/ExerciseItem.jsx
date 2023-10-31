@@ -74,10 +74,10 @@ export const ExerciseItem = ({ exerciseCard }) => {
             Burned calories: <Span>{burnedCalories}</Span>
           </StatData>
           <StatData>
-            Body part: <Span>{bodyPart}</Span>
+            Body part: <Span>{capitalizeFirstLeter(bodyPart)}</Span>
           </StatData>
           <StatData>
-            Target: <Span>{target}</Span>
+            Target: <Span>{capitalizeFirstLeter(target)}</Span>
           </StatData>
         </Statistics>
         <Button type="button" onClick={openModal}>
