@@ -1,8 +1,5 @@
 import CircleCountDown from '../CircleCountDown/CircleCountDown';
-import {
-  StyledAddButton,
-  StyledCancelButton,
-} from '../Products/AddModal/AddModal.styled';
+import { StyledAddButton } from '../Products/AddModal/AddModal.styled';
 import { useState } from 'react';
 import {
   AddButtonPos,
@@ -36,8 +33,7 @@ const ExerciseCard = ({
 }) => {
   const [calories, setCalories] = useState(0);
   const timeS = time * 60;
-  const [addDairyExercise, { isSuccess, isError }] =
-    useAddDairyExercisesMutation();
+  const [addDairyExercise] = useAddDairyExercisesMutation();
   const [isRunning, setIsRunning] = useState(false);
   const handleAddToDiary = () => {
     addDairyExercise({ exercise: id, date, time, calories });
