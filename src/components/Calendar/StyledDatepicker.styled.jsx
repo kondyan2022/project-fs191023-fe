@@ -18,12 +18,18 @@ export const DataBtn = styled.div`
 `;
 export const CalendarGlobalStyles = createGlobalStyle`
   .react-datepicker__wrapper {
+    display: flex;
     position: relative;
+   
   }
   .react-datepicker {
-    position: relative;
-    left: 50%;
-    top: 50%;
+    ${'' /* position: relative; */}
+    
+     ${
+       '' /* left: 50%;
+    top: 50%; */
+     }
+  
    /* transform: translate(-1%, 0%); */
     display: flex;
     flex-direction: column;
@@ -39,14 +45,16 @@ export const CalendarGlobalStyles = createGlobalStyle`
   .react-datepicker__tab-loop{
     position: absolute;
     top:0px;
-    left:-200px;
+    left:0px;
     @media screen and (min-width: 768px) {
-      top:-30px;
-      left:-300px;
+      top:0px;
+      left:0px;
     }
     @media screen and (min-width: 1440px) {
-      top:-50px;
-      left:-400px;
+      ${
+        '' /* top:-50px;
+      left:-400px; */
+      }
     }
   }
   .react-datepicker__month-container {
@@ -181,9 +189,11 @@ export const CalendarGlobalStyles = createGlobalStyle`
     background-color:var( --color-black);
     color: var(--color-white);
   }
-  ${'' /* .react-datepicker__day--weekend {
+  ${
+    '' /* .react-datepicker__day--weekend {
     opacity: 50%;
-  } */}
+  } */
+  }
 .react-datepicker__day--outside-month {
     background-color: transparent;
     pointer-events: none;
@@ -255,7 +265,6 @@ export const TitleWrapper = styled.button`
   }
 `;
 export const BirthdayCalendarWrapper = styled(TitleWrapper)`
-    
   width: 100%;
   color: var(--color-white);
   background: transparent;
@@ -271,16 +280,11 @@ export const BirthdayCalendarWrapper = styled(TitleWrapper)`
   align-content: center;
   text-align: center;
 
-  
   .react-datepicker__calendar-icon {
-    --color1: var(--color-white);     
+    --color1: var(--color-white);
     width: 18px;
     height: 18px;
     padding: 0px;
     position: initial;
-
   }
- 
-
-
 `;
