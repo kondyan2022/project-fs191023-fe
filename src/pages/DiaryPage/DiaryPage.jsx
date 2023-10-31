@@ -17,7 +17,7 @@ const DiaryPage = () => {
       <div>
         <HederOfPage>
         <PageName>Diary</PageName>
-        <StyledDatepicker/>
+        <StyledDatepicker />
         </HederOfPage>
         <DescktopStyle>
 
