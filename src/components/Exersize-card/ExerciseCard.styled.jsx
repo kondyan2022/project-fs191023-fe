@@ -105,6 +105,40 @@ export const AddButtonPos = styled.div`
     bottom: 16px;
   }
 `;
+export const CloseButton = styled.svg`
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 16px;
+  height: 16px;
+  fill: #efede8;
+`;
+export const StyledDisableButton = styled.button`
+  width: 100%;
+  height: 42px;
+  margin: 0;
+  text-align: center;
+  padding: 12px auto;
+  border-radius: 12px;
+  background: grey;
+  opacity: 1;
+  border: none;
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  cursor: default;
+  @media screen and (min-width: 768px) {
+    width: 151px;
+    height: 52px;
+    line-height: 24px;
+  }
+`;
+
 export const ListImgTimer = styled.ul`
   display: flex;
   align-items: center;

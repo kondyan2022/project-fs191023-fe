@@ -7,10 +7,11 @@ const CircleCountDown = ({
   strokeWidth,
   tipWidth,
   children,
+  isRunning,
+  setIsRunning,
 }) => {
   const startTime = timeInSecond * 1000;
   const [countDown, setCountDown] = useState(startTime);
-  const [isRunning, setIsRunning] = useState(false);
 
   const radius = size / 2;
 

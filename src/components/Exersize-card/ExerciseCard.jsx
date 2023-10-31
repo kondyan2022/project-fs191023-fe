@@ -1,5 +1,9 @@
 import CircleCountDown from '../CircleCountDown/CircleCountDown';
-import { StyledAddButton } from '../Products/AddModal/AddModal.styled';
+import {
+  StyledAddButton,
+  StyledCancelButton,
+} from '../Products/AddModal/AddModal.styled';
+import { useState } from 'react';
 import {
   AddButtonPos,
   BurnedPshka,
@@ -7,15 +11,20 @@ import {
   CardBack,
   CardImg,
   CardListInfo,
+  CloseButton,
   ImagePos,
   ListFlex,
   ListImgTimer,
   Pshka,
+  StyledDisableButton,
 } from './ExerciseCard.styled';
+import iconSvg from '../../images/sprite.svg';
 
 import { useAddDairyExercisesMutation } from '../../redux/features/userDiaryEndpoints';
 
 const ExerciseCard = ({
+  id,
+  date,
   name,
   target,
   bodyPart,
@@ -23,22 +32,20 @@ const ExerciseCard = ({
   gifUrl,
   time,
   burnedCalories,
+  setIsAddModalOpen,
 }) => {
+  const [calories, setCalories] = useState(0);
   const timeS = time * 60;
   const [addDairyExercise, { isSuccess, isError }] =
     useAddDairyExercisesMutation();
-
+  const [isRunning, setIsRunning] = useState(false);
   const handleAddToDiary = () => {
-    addDairyExercise(
-      name,
-      target,
-      bodyPart,
-      equipment,
-      gifUrl,
-      time,
-      burnedCalories,
-    );
+    addDairyExercise({ exercise: id, date, time, calories });
   };
+  const closeModal = () => {
+    setIsAddModalOpen(false);
+  };
+
   return (
     <CardBack>
       <ListFlex>
@@ -58,10 +65,16 @@ const ExerciseCard = ({
                 strokeBgColor={'#4d4d4d'}
                 strokeWidth={4}
                 tipWidth={7}
-              />
+                isRunning={isRunning}
+                setIsRunning={setIsRunning}
+              >
+                {(e) => {
+                  setCalories(Math.round(burnedCalories * (1 - -e)));
+                }}
+              </CircleCountDown>
               <BurnedPshka>
                 Burned calories:
-                <BurnedPshkaCost>{burnedCalories}</BurnedPshkaCost>
+                <BurnedPshkaCost>{calories}</BurnedPshkaCost>
               </BurnedPshka>
             </li>
           </ListImgTimer>
@@ -88,10 +101,17 @@ const ExerciseCard = ({
         </li>
       </ListFlex>
       <AddButtonPos>
-        <StyledAddButton onClick={handleAddToDiary}>
-          Add to diary
-        </StyledAddButton>
+        {isRunning ? (
+          <StyledDisableButton>Add to diary</StyledDisableButton>
+        ) : (
+          <StyledAddButton onClick={handleAddToDiary}>
+            Add to diary
+          </StyledAddButton>
+        )}
       </AddButtonPos>
+      <CloseButton onClick={closeModal}>
+        <use href={`${iconSvg}#icon-close`} />
+      </CloseButton>
     </CardBack>
   );
 };
