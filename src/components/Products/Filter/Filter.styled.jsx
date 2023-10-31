@@ -27,6 +27,10 @@ export const List = styled.ul`
   gap: 16px;
   max-width: 335px;
 
+  form {
+    height: 100%;
+  }
+
   & > li:first-of-type {
     width: 100%;
     position: relative;
@@ -88,9 +92,6 @@ export const Input = styled.input`
     line-height: 24px;
     height: calc(100%);
   }
-  /* @media screen and (min-width: 1440px) {
-    height: calc(100%);
-  } */
 `;
 
 export const CategoriesSelect = styled.div`
@@ -233,8 +234,9 @@ export const SearchButton = styled.button`
   padding: 0;
   width: 18px;
   height: 18px;
-
+  
   svg {
+    transition: all 100ms linear;
     stroke: var(--color-white);
     width: 18px;
     height: 18px;
@@ -242,9 +244,8 @@ export const SearchButton = styled.button`
 
   &:hover,
   &:focus {
-    [Input] {
-      outline: none;
-      border-color: var(--color-orange);
+    svg {
+      stroke: var(--color-orange);
     }
   }
 
