@@ -1,45 +1,4 @@
-import { useDispatch } from 'react-redux';
-import { logOut } from '../redux/features/userToken'; // очищення глобального стейту
-import { useUserLogOutMutation } from '../redux/features/authEndpoints';
-import { useJwt } from 'react-jwt';
-import { useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
-
-// export const useTokenExpirationCheck = (token, checkInterval = 60000) => {
-//   const dispatch = useDispatch();
-//   const [userLogOut] = useUserLogOutMutation(); // хук логаута користувача
-//   const { isExpired } = useJwt(() => {});
-
-//   const checkTokenExpiration = () => {
-//     if (token) {
-//       console.log('IS EXPIRED TOKEN', ':', isExpired);
-//       if (isExpired) {
-//         // Токен протух, викликаємо функцію для виходу
-//         userLogOut();
-//         dispatch(logOut());
-//       }
-//     }
-//   };
-
-//   useEffect(() => {
-//     checkTokenExpiration();
-//     // Почати періодичну перевірку стану токену
-//     const intervalId = setInterval(checkTokenExpiration, checkInterval);
-//     // Зупинити перевірку при виході з компонента
-//     return () => clearInterval(intervalId);
-//   }, [checkInterval, userLogOut, dispatch]);
-// };
-
-function convertSecondsToFormat(time) {
-  const totalSeconds = Math.floor(time / 1000);
-  const seconds = totalSeconds % 60;
-  const totalMinutes = Math.floor(totalSeconds / 60);
-  const minutes = totalMinutes % 60;
-  const hours = Math.floor(totalMinutes / 60);
-
-  const formattedTime = `${hours} годин ${minutes} хвилин ${seconds} секунд`;
-  return formattedTime;
-}
 
 export const useTokenExpirationCheck = (ExtToken) => {
   if (!ExtToken) {
@@ -55,11 +14,8 @@ export const useTokenExpirationCheck = (ExtToken) => {
   // ****************************************************************
 
   if (expiredTime > 0) {
-    const stringData = convertSecondsToFormat(expiredTime);
-    console.log(stringData);
     return false;
   }
 
   return true;
 };
-// 79438668;
