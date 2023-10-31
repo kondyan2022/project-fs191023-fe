@@ -243,7 +243,7 @@ Error generating stack: `+a.message+`
   :focus {
     border: 1px solid var(--color-white);
   }
-`,Te="/project-fs191023-fe/assets/sprite-e3ab7255.svg",Zq=me.div`
+`,Te="/project-fs191023-fe/assets/sprite-ef648e10.svg",Zq=me.div`
   width: inherit;
 `,Jq=me(Ja)`
   display: flex;
