@@ -13,7 +13,7 @@ const diaryEndpoints = userSplitApi.injectEndpoints({
         body: exercise,
       }),
     }),
-    delteDairyExercises: builder.mutation({}),
+    deleteDairyExercises: builder.mutation({}),
     addDiaryProducts: builder.mutation({
       query: (product) => ({
         url: `diary/product`,
@@ -31,4 +31,10 @@ const diaryEndpoints = userSplitApi.injectEndpoints({
   }),
 });
 
-export const { useGetUserDiaryQuery } = diaryEndpoints;
+export const {
+  useGetUserDiaryQuery,
+  useAddDairyExercisesMutation,
+  useAddDiaryProductsMutation,
+  useDeleteDiaryProductsMutation,
+  useDeleteDairyExercisesMutation,
+} = diaryEndpoints;
