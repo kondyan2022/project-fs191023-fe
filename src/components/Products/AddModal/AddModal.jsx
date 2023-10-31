@@ -16,8 +16,9 @@ import { inputSchema } from './AddModalSchema';
 import { useEffect } from 'react';
 import sprite from '../../../images/sprite.svg';
 import { useAddDiaryProductsMutation } from '../../../redux/features/userDiaryEndpoints';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { createPortal } from 'react-dom';
+import Loading from '../../Loading/Loading';
 
 const AddModal = ({
   closeModal,
@@ -32,6 +33,7 @@ const AddModal = ({
   };
 
   const [submitProduct, res] = useAddDiaryProductsMutation();
+  // console.log(res)
 
   useEffect(() => {
     const closeESC = (e) => {
@@ -85,8 +87,8 @@ const AddModal = ({
     if (res.isUninitialized) {
       toast('Something was wrong. Please, try again.');
     }
-    console.log(productData);
-    console.log(res);
+    // console.log(productData);
+    // console.log(res);
     if (res.isSuccess) {
       setIsAddedSuccess(true);
       closeModal();
@@ -122,11 +124,18 @@ const AddModal = ({
                     <StyledAddButton
                       type="submit"
                       disabled={
-                        formik.values.grams.trim() === '' || formik.errors.grams
+                        formik.values.grams.trim() === '' ||
+                        formik.errors.grams ||
+                        res.isLoading
                       }
                     >
                       Add to diary
                     </StyledAddButton>
+                    {res.isLoading && (
+                      <Loading
+                        styles={{ position: 'absolute', top: '-40px', border: 'none', padding: "0" }}
+                      />
+                    )}
                   </li>
                   <li>
                     <StyledCancelButton onClick={closeModal} type="button">
