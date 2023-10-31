@@ -18,7 +18,9 @@ const SignInPage = () => {
           <Redirect>
             Don`t have an account? <LinkTo to="/signup">Sign Up</LinkTo>
           </Redirect>
-          <a href="https://power-plus-service.onrender.com">Google</a>
+          <a href="https://power-plus-service.onrender.com/users/google">
+            Google
+          </a>
           <CardInfoVideo />
           <CardInfoCalories />
         </Wrapper>
