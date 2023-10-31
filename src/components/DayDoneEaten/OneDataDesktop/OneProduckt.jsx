@@ -1,22 +1,31 @@
 import {ProduktsDesktop,RecommendDesk,OneData} from "./Desktop.styled"
-import {Recommend} from '../operations/DayDoneOperations'
+// import {Recommend} from '../operations/DayDoneOperations'
 import {BtnTrash} from '../btn/btn'
 import { Circle } from "../Circle/Circle"
 import desktopDataDayProduckts from '../../../../resources/desktopDataDayProduckts.json'
-
+import { useDeleteDiaryProductsMutation } from "../../../redux/features/userDiaryEndpoints";
 
 export const OneProduktDesktop = (props) => {
-   // const {recommend} = props;
-const {groupBloodNotAllowed,
-   // _id:{$oid: id}
-} = props;
-const isRecommended = (Recommend(3,groupBloodNotAllowed));
+   const {recommend, _id : id, date} = props;
 
-// const toDelit = {
-//    id, 
-//    isProduct:true,
-//    //date:
-// }
+   const toDelit = {
+      id, 
+      date
+   }
+   
+   const [deleteProduct] = useDeleteDiaryProductsMutation()   
+
+    const Delete = obj => {
+      console.log(obj)
+      deleteProduct(obj);
+    };
+// const {groupBloodNotAllowed,
+//    // _id:{$oid: id}
+// } = props;
+// const recommend = (Recommend(3,groupBloodNotAllowed));
+
+
+
 
 
     return     <ProduktsDesktop>
@@ -25,7 +34,7 @@ const isRecommended = (Recommend(3,groupBloodNotAllowed));
        <OneData key={id} styles={style}>{props[style.key]}</OneData>
        )}
     {/* <RecommendDesk>{recommend? (<><Circle isRecommended={recommend}></Circle>Yes</>) : (<><Circle isRecommended={recommend}></Circle>No</>)}</RecommendDesk> */}
-         <RecommendDesk>{isRecommended? (<><Circle isRecommended={isRecommended}></Circle>Yes</>) : (<><Circle isRecommended={isRecommended}></Circle>No</>)}</RecommendDesk>
-    <BtnTrash  />
+         <RecommendDesk>{recommend? (<><Circle isRecommended={recommend}></Circle>Yes</>) : (<><Circle isRecommended={recommend}></Circle>No</>)}</RecommendDesk>
+    <BtnTrash onClick={() => Delete(toDelit)} />
    </ProduktsDesktop>
 }

@@ -2,23 +2,28 @@ import {ProduktsDesktop,OneData} from "./Desktop.styled"
 
 import {BtnTrash} from '../btn/btn'
 import desktopExercises from '../../../../resources/desktopExercises.json'
-
+import {useDelteDairyExercisesMutation} from "../../../redux/features/userDiaryEndpoints";
 
 export const OneExercisDesktop = (props) => {
-   
-// const {_id:{$oid: id}} = props;
+const { _id : id, date} = props;
 
-// const toDelit = {
-//     id, 
-//     isProduct:false,
-//     //date:
-// }
+const toDelit = {
+    id,
+    date
+}
 
+
+const [deleteExercis] = useDelteDairyExercisesMutation();
+
+const DeleteEx = obj => {
+    console.log(obj)
+    deleteExercis(obj);
+  };
 
     return     <ProduktsDesktop>
     {desktopExercises.map((style,id) => 
     <OneData key={id} styles={style}>{props[style.key]}</OneData>
     )}
-    <BtnTrash />
+    <BtnTrash onClickEx={() => DeleteEx(toDelit)}/>
    </ProduktsDesktop>
 }

@@ -1,19 +1,25 @@
 import {TitleCategory,OtherData,AllData,NamOfCategory,Container,DivLeater } from "./Mobile.styled"
 import {BtnTrash} from '../btn/btn'
-
+import {useDelteDairyExercisesMutation} from "../../../redux/features/userDiaryEndpoints";
 
 
 export const ExercisesDone = (props) =>{
-
-
 const {bodyPart,equipment,name,target,burnedCalories,time,
-    // _id:{$oid: id}
-} = props;
-// const toDelit = {
-//     id, 
-//     isProduct:false,
-//     //date:
-// }
+    _id: id, date} = props;
+
+const toDelit = {
+    id, 
+    date
+}
+
+const [deleteExercis] = useDelteDairyExercisesMutation();
+
+const DeleteEx = obj => {
+    console.log(obj)
+    deleteExercis(obj);
+  };
+
+
 return <>
 
     <AllData>
@@ -47,7 +53,7 @@ return <>
         <div>{time}</div>
         </span>            
         </OtherData>
-        <BtnTrash />
+        <BtnTrash onClickEx={() => DeleteEx(toDelit)}/>
         </Container>
 </AllData>
     </>

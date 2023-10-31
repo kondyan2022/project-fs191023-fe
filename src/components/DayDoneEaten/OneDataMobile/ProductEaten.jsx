@@ -1,29 +1,29 @@
 import {TitleCategory,OtherData,AllData,NamOfCategory,RecommendDiv,Container } from "./Mobile.styled"
-import {Recommend} from '../operations/DayDoneOperations'
+
 import {BtnTrash} from '../btn/btn'
 import {Circle} from '../Circle/Circle'
+import { useDispatch } from "react-redux";
 
-// import { deleteDiaryProducts } from "../../../redux/features/userDiaryEndpoints";
+import { useDeleteDiaryProductsMutation } from "../../../redux/features/userDiaryEndpoints";
 
 
 export const ProductEaten = (props) =>{
+const {title,consumeCalories,weight,recommended,category, _id: id, date} = props;
+const dispatch = useDispatch();
+const toDelit = {
+    id, 
+    date
+}
 
-   
+const [deleteProduct] = useDeleteDiaryProductsMutation()
+const handleDelete = () => dispatch(deleteProduct(toDelit));
 
-const {title,calories,weight,groupBloodNotAllowed,category, 
-    _id:{$oid: id} 
-} = props;
 
-const isRecommended = (Recommend(3,groupBloodNotAllowed));
-// const toDelit = {
-//     id, 
-//     isProduct:true,
-//     //date:
-// }
 
-const toDelete = id => {
-    (console.log(id));
-  };
+// const Delete = obj => {
+//     console.log(obj)
+//     deleteProduct(obj);
+//   };
 
  
  return <>
@@ -43,7 +43,7 @@ const toDelete = id => {
         <OtherData>
         <span>
         <NamOfCategory>Calories</NamOfCategory>
-        <div>{calories}</div>
+        <div>{consumeCalories}</div>
         </span>
         <span>
         <NamOfCategory>Weight</NamOfCategory>
@@ -51,11 +51,12 @@ const toDelete = id => {
         </span> 
         <span>
         <NamOfCategory>Recommend</NamOfCategory>
-        <RecommendDiv>{isRecommended? (<><Circle isRecommended={isRecommended}></Circle>Yes</>) : (<><Circle isRecommended={isRecommended}></Circle>No</>)}</RecommendDiv>
+        <RecommendDiv>{recommended? (<><Circle isRecommended={recommended}></Circle>Yes</>) : (<><Circle isRecommended={recommended}></Circle>No</>)}</RecommendDiv>
         </span>            
         </OtherData>
-        <button onClick={() => toDelete(id)}></button>
-       <BtnTrash/>
+       <BtnTrash onClick={handleDelete}  />
+    {/* //    {() => Delete(toDelit)} */}
+     
         </Container>
 </AllData>
     </>

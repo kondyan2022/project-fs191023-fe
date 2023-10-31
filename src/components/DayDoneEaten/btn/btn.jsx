@@ -4,7 +4,8 @@ import { ReactComponent as IconTrash } from '../../../images/trash.svg';
 
 
 
-export const BtnTrash = () =>{
+export const BtnTrash = (props) =>{
+
 
     // const dispatch = useDispatch();
     //const handleDelete = (obj) =>{
@@ -15,5 +16,5 @@ export const BtnTrash = () =>{
     // dispatch(deleteDiaryProducts(id));
     // onClick={handleDelete(id)}
     //onClick={()=>console.log(id)}
-    return <TrashBtn ><IconTrash></IconTrash></TrashBtn>
+    return <TrashBtn onClick={props.onClick}><IconTrash></IconTrash></TrashBtn>
 }
