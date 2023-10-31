@@ -1,83 +1,61 @@
-import { check } from 'prettier';
-import { useGetCurrentUserQuery } from '../redux/features/authEndpoints';
-import { selectToken } from '../redux/selectors';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logOut } from '../redux/features/userToken'; // очищення глобального стейту
 import { useUserLogOutMutation } from '../redux/features/authEndpoints';
-import { useEffect, useState } from 'react';
-import React from 'react';
 import { useJwt } from 'react-jwt';
-const token = 'Your JWT';
+import { useEffect } from 'react';
+import { jwtDecode } from 'jwt-decode';
 
-// export const getCurrentUserHook = (queryKey, queryFn, options = {}) => {
-//   const isToken = useSelector(selectToken);
+// export const useTokenExpirationCheck = (token, checkInterval = 60000) => {
+//   const dispatch = useDispatch();
+//   const [userLogOut] = useUserLogOutMutation(); // хук логаута користувача
+//   const { isExpired } = useJwt(() => {});
 
-//   const { data, error, ...args } = useGetCurrentUserQuery(
-//     queryKey,
-//     () => {
-//       if (!isToken) {
-//         // перевірити чи є токен
-//         throw new Error('No token available');
+//   const checkTokenExpiration = () => {
+//     if (token) {
+//       console.log('IS EXPIRED TOKEN', ':', isExpired);
+//       if (isExpired) {
+//         // Токен протух, викликаємо функцію для виходу
+//         userLogOut();
+//         dispatch(logOut());
 //       }
-//       return queryFn();
-//     },
-//     { ...options, retry: false },
-//   );
-
-//   const isLoading = args.status === 'loading';
-//   const isSuccess = args.status === 'success';
-//   const isError = args.status === 'error';
-//   console.log('Inside custom hook');
-
-//   return { ...args };
-//   //   return {
-//   //     data,
-//   //     error,
-//   //     isLoading,
-//   //     isSuccess,
-//   //     isError,
-//   //   };
-// };
-
-const ExpirationControl = ({ children }) => {
-  const dispatch = useDispatch();
-  const tokenInState = useSelector(selectToken); // токен
-  const [userLogOut] = useUserLogOutMutation(); // хук логаута користувача
-  const { decodedToken, isExpired } = useJwt(tokenInState);
-  //
-  if (isExpired) {
-    userLogOut(tokenInState);
-    dispatch(logOut());
-  }
-
-  // const isValidToken = isExpired(tokenInState);
-  console.log('Decoded token: ', decodedToken);
-  console.log('Token is Expired: ', isExpired);
-
-  return children;
-};
-
-// import { useState, useEffect } from 'react';
-// import { useLogout } from './useLogout'; // Припустимо, що у вас є окремий хук для виходу
-
-// const useTokenExpirationCheck = (token, checkInterval = 60000) => {
-//   // const logout = useLogout(); // Отримати функцію для виходу користувача
+//     }
+//   };
 
 //   useEffect(() => {
-//     let intervalId;
-//     const checkTokenExpiration = () => {
-//       // Перевірити тут стан токену, наприклад, час його закінчення
-//       if (token && token.expiresAt <= Date.now()) {
-//         // Токен протух, викликаємо функцію для виходу
-//         // logout();
-//       }
-//     };
+//     checkTokenExpiration();
 //     // Почати періодичну перевірку стану токену
-//     intervalId = setInterval(checkTokenExpiration, checkInterval);
-
+//     const intervalId = setInterval(checkTokenExpiration, checkInterval);
 //     // Зупинити перевірку при виході з компонента
 //     return () => clearInterval(intervalId);
-//   }, [token, checkInterval, logout]);
+//   }, [checkInterval, userLogOut, dispatch]);
 // };
 
-export default ExpirationControl;
+function convertSecondsToUserFriendlyFormat(milliseconds) {
+  const totalSeconds = Math.floor(milliseconds / 1000);
+  const seconds = totalSeconds % 60;
+  const totalMinutes = Math.floor(totalSeconds / 60);
+  const minutes = totalMinutes % 60;
+  const hours = Math.floor(totalMinutes / 60);
+
+  const formattedTime = `${hours} годин ${minutes} хвилин ${seconds} секунд`;
+  return formattedTime;
+}
+
+export const useTokenExpirationCheck = (ExtToken, checkInterval = 60000) => {
+  // const token = 'token';
+  const decoded = jwtDecode(ExtToken);
+  const timeNow = Date.now();
+  const { exp, iat, id } = decoded;
+  // ********************************
+
+  const liveTimeToken = exp / 1000;
+
+  const restTime = liveTimeToken - timeNow;
+
+  // const formattedTime = `${hours} годин ${minutes} хвилин ${remainingSeconds} секунд`;
+  console.log('Time token: ', liveTimeToken);
+  const liveToken = convertSecondsToUserFriendlyFormat(exp);
+  console.log('Time token: ', liveToken);
+  console.log('Diferences: ', restTime);
+  console.log('Deecoded token: ', exp, iat, id);
+};
