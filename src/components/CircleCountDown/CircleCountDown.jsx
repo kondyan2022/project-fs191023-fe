@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 const CircleCountDown = ({
   timeInSecond,
   size,
@@ -8,10 +7,11 @@ const CircleCountDown = ({
   strokeWidth,
   tipWidth,
   children,
+  isRunning,
+  setIsRunning,
 }) => {
   const startTime = timeInSecond * 1000;
   const [countDown, setCountDown] = useState(startTime);
-  const [isRunning, setIsRunning] = useState(false);
 
   const radius = size / 2;
 
@@ -25,7 +25,7 @@ const CircleCountDown = ({
     let interval = null;
     if (isRunning) {
       interval = setInterval(() => {
-        setCountDown(countDown => (countDown > 0 ? countDown - 10 : 0));
+        setCountDown((countDown) => (countDown > 0 ? countDown - 10 : 0));
       }, 10);
     } else {
       clearInterval(interval);
@@ -47,33 +47,29 @@ const CircleCountDown = ({
   };
 
   const textStyles = {
-    color: strokeColor,
-    fontSize: size * 0.3,
+    color: '#EFEDE8',
+    fontSize: 16,
+  };
+  const flexDirectionColumn = {
+    flexDirection: 'column',
+    gap: 14,
   };
 
   const timeLeft = (countDown / 1000).toFixed();
 
   return (
-    <div>
-      <div>
-        <button
-          style={styles.button}
-          onClick={() => {
-            setIsRunning(!isRunning);
-          }}
-        >
-          {isRunning ? 'PAUSE' : 'START'}
-        </button>
-      </div>
+    <div
+      style={Object.assign({}, styles.countdownContainer, flexDirectionColumn)}
+    >
       <div
         style={Object.assign(
           {},
           styles.countdownContainer,
-          countdownSizeStyles
+          countdownSizeStyles,
         )}
       >
         <p style={textStyles}>{`${Math.floor(timeLeft / 60)}:${String(
-          timeLeft % 60
+          timeLeft % 60,
         ).padStart(2, '0')} `}</p>
         <svg style={styles.svg}>
           <circle
@@ -88,7 +84,8 @@ const CircleCountDown = ({
         <svg style={styles.svg}>
           <circle
             strokeDasharray={circumference}
-            strokeDashoffset={true ? -strokeDashoffset : 0}
+            // strokeDashoffset={true ? -strokeDashoffset : 0}
+            strokeDashoffset={-strokeDashoffset}
             r={radius}
             cx={radius}
             cy={radius}
@@ -115,12 +112,18 @@ const CircleCountDown = ({
             />
           )}
         </svg>
-      </div>
-      {typeof children === 'function' ? (
-        <div>{children({ angleRotation })}</div>
-      ) : (
-        children
-      )}
+      </div>{' '}
+      <button
+        style={styles.button}
+        onClick={() => {
+          setIsRunning(!isRunning);
+        }}
+      >
+        {isRunning ? '||' : 's'}
+      </button>
+      {typeof children === 'function'
+        ? children(angleRotation / 360)
+        : children}
     </div>
   );
 };
@@ -146,14 +149,11 @@ const styles = {
   },
 
   button: {
-    fontSize: 16,
-    padding: '15px 40px',
-    margin: '10px auto 30px',
-    display: 'block',
-    backgroundColor: '#4d4d4d',
-    color: 'lightgray',
-    border: 'none',
+    width: 24,
+    height: 24,
+    backgroundColor: '#E6533C',
+    color: '#EFEDE8',
     cursor: 'pointer',
-    outline: 0,
+    border: 1,
   },
 };

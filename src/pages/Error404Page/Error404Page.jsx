@@ -23,7 +23,7 @@ const Error404Page = () => {
             </p>
 
             <Button
-              primary={true}
+              home={true}
               onClick={handleButton}
             >
               Go Home
