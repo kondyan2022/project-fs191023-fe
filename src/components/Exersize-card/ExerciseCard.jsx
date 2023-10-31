@@ -21,7 +21,6 @@ import { useAddDairyExercisesMutation } from '../../redux/features/userDiaryEndp
 
 const ExerciseCard = ({
   id,
-  date,
   name,
   target,
   bodyPart,
@@ -31,6 +30,13 @@ const ExerciseCard = ({
   burnedCalories,
   setIsAddModalOpen,
 }) => {
+  const date = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return year + '/' + month + '/' + day;
+  };
   const [calories, setCalories] = useState(0);
   const timeS = time * 60;
   const [addDairyExercise] = useAddDairyExercisesMutation();

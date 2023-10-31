@@ -8,7 +8,7 @@ export const FormBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 25px; // 14px +11 on status svg
-  margin-bottom: 28px;
+  margin-bottom: 60px;
   @media(min-width: 768px) {
     max-width: 364px;
     margin-bottom: 64px;

@@ -13,7 +13,6 @@ import {
 } from './ExerciseItem.styled';
 
 import ExerciseCard from '../../Exersize-card/ExerciseCard';
-// import diary from '../../../../resources/exercises.json';
 
 export const ExerciseItem = ({ exerciseCard }) => {
   const {
@@ -22,7 +21,6 @@ export const ExerciseItem = ({ exerciseCard }) => {
     burnedCalories,
     name,
     id,
-    // date,
     equipment,
     gifUrl,
     time,
@@ -32,18 +30,6 @@ export const ExerciseItem = ({ exerciseCard }) => {
     const newString = string.slice(0, 1).toUpperCase() + string.slice(1);
     return newString;
   };
-
-  // const diary = {
-  //   name: 'name',
-  //   target: 'Strength',
-  //   bodyPart: 'Legs',
-  //   equipment: 'Dumbbells',
-  //   gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0009.gif',
-  //   time: 1,
-  //   date: '2023/10/24',
-  //   id: '64f2458d6f67bc34bae4f7f7',
-  //   burnedCalories: 300,
-  // };
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
@@ -89,10 +75,10 @@ export const ExerciseItem = ({ exerciseCard }) => {
             Burned calories: <Span>{burnedCalories}</Span>
           </StatData>
           <StatData>
-            Body part: <Span>{bodyPart}</Span>
+            Body part: <Span>{capitalizeFirstLeter(bodyPart)}</Span>
           </StatData>
           <StatData>
-            Target: <Span>{target}</Span>
+            Target: <Span>{capitalizeFirstLeter(target)}</Span>
           </StatData>
         </Statistics>
         <Button type="button" onClick={openModal}>

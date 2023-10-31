@@ -1,10 +1,10 @@
-import { useEffect, useMemo } from 'react';
+// import { useEffect, useMemo } from 'react';
 import Container from '../../components/Container/Container';
 import Filter from '../../components/Products/Filter/Filter';
 import { Section, Title, Wrap, NotFound } from './ProductsPage.styled';
 import ProductsList from '../../components/Products/ProductsList/ProductsList';
 import { useState } from 'react';
-import { useGetAllProductsQuery } from '../../redux/features/prodEndpoints';
+import { useGetAllProductsQuery, useGetProductByFilterQuery } from '../../redux/features/prodEndpoints';
 import { useSelector } from 'react-redux';
 import { isLogin } from '../../redux/selectors';
 // import { useGetCurrentUserQuery } from '../../redux/features/authEndpoints';
@@ -16,24 +16,19 @@ const ProductsPage = () => {
   const [currentRecomm, setCurrentRecomm] = useState();
   const [excessCalories, setExcessCalories] = useState(0);
   const [isAddedSuccess, setIsAddedSuccess] = useState(false);
-  // const [query, setQuery] = useState();
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = useMemo(() => searchParams.get('q'), [searchParams]);
-  const category = searchParams.get('category');
-  const recommend = searchParams.get('recommend');
-  // const [products, setProducts] = useState([]);
-  // const [addModalOpen, setAddModalOpen] = useState(false);
   const { data, isLoading, isFetching, error, isError } =
     useGetAllProductsQuery(isLoadedUser, { skip: !isLoadedUser });
+
+  // const filterData = useGetProductByFilterQuery(
+  //   Object.fromEntries([...searchParams]),
+  // );
+
+  // console.log(filterData.isFetching); //filterData.data - data
 
   // const currentUser = useGetCurrentUserQuery();
   // const blood = currentUser.data.profile.blood
   const blood = '2';
-  // console.log(searchParams);
-
-  useEffect(() => {
-    
-  }, []);
 
   // console.log(
   //   data?.map((product) =>
@@ -67,11 +62,6 @@ const ProductsPage = () => {
   // isSuccess - якщо запит успішний = true
   // Всі дані при першому запиту зберігаються у кеш, тому наступні запити вже не йдуть до бекенду а йдуть в кеш, якщо дані не змінювались
   // console.log('DATA: ', data);
-  // {
-  //   q: "apple",
-  //   category: "fruits",
-  //   recomendation: "true",
-  // }
 
   return (
     <Section>
@@ -84,7 +74,6 @@ const ProductsPage = () => {
             setCurrentCategory={setCurrentCategory}
             currentRecomm={currentRecomm}
             setCurrentRecomm={setCurrentRecomm}
-            // setSearchParams={setSearchParams}
           />
         </Wrap>
         {isFetching && <p>Loading...</p>}
@@ -94,34 +83,25 @@ const ProductsPage = () => {
             {error.data}
           </p>
         )}
-        {
-          data && (
-            // (filterData().length === 0 ? (
-            //   <NotFound>
-            //     <p>
-            //       <span>Sorry, no results were found</span> for the product
-            //       filters you selected. You may want to consider other search
-            //       options to find the product you want. Our range is wide and you
-            //       have the opportunity to find more options that suit your needs.
-            //     </p>
-            //     <span>Try changing the search parameters.</span>
-            //   </NotFound>
-            // ) : (
-            <ProductsList
-              products={data}
-              setExcessCalories={setExcessCalories}
-              blood={blood}
-              setIsAddedSuccess={setIsAddedSuccess}
-            />
-          )
-          // ))
-        }
-        {/* {data && (
+        {data && (
+          // (filterData().length === 0 ? (
+          //   <NotFound>
+          //     <p>
+          //       <span>Sorry, no results were found</span> for the product
+          //       filters you selected. You may want to consider other search
+          //       options to find the product you want. Our range is wide and you
+          //       have the opportunity to find more options that suit your needs.
+          //     </p>
+          //     <span>Try changing the search parameters.</span>
+          //   </NotFound>
+          // ) : (
           <ProductsList
-            products={filterData()}
+            products={data}
             setExcessCalories={setExcessCalories}
+            blood={blood}
+            setIsAddedSuccess={setIsAddedSuccess}
           />
-        )} */}
+        )}
       </Container>
     </Section>
   );

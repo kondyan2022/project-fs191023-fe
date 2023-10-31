@@ -19,7 +19,6 @@ const ProductsItem = ({
   setExcessCalories,
   isRecom,
   id,
-  groupBloodNotAllowed,
   setIsAddedSuccess,
 }) => {
   const isRecommended = isRecom;
@@ -76,9 +75,6 @@ const ProductsItem = ({
           calories={calories}
           setExcessCalories={setExcessCalories}
           id={id}
-          groupBloodNotAllowed={groupBloodNotAllowed}
-          category={category}
-          weight={weight}
           setIsAddedSuccess={setIsAddedSuccess}
         />
       )}
