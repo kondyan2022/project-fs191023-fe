@@ -3384,7 +3384,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 `,Wm=me.span`
   color: #efede8;
   margin-left: 3px;
-`,UQ=({exerciseCard:e})=>{const{target:t,bodyPart:r,burnedCalories:i,name:n}=e;return m.jsx(m.Fragment,{children:m.jsxs(DQ,{children:[m.jsx(_Q,{children:"WORKOUT"}),m.jsxs(PQ,{children:[m.jsx($Q,{children:m.jsx("svg",{width:"24",height:"24",style:{fill:"#EFEDE8",zIndex:10},children:m.jsx("use",{href:Te+"#icon-run-man"})})}),m.jsx(kQ,{children:n})]}),m.jsxs(SQ,{children:[m.jsxs(Bm,{children:["Burned calories: ",m.jsx(Wm,{children:i})]}),m.jsxs(Bm,{children:["Body part: ",m.jsx(Wm,{children:r})]}),m.jsxs(Bm,{children:["Target: ",m.jsx(Wm,{children:t})]})]}),m.jsxs(EQ,{type:"button",children:["Start",m.jsx("svg",{style:{verticalAlign:"top",stroke:"#E6533C"},children:m.jsx("use",{href:Te+"#icon-arrow"})})]})]})})},OQ=me.ul`
+`,UQ=({exerciseCard:e})=>{const{target:t,bodyPart:r,burnedCalories:i,name:n}=e,a=o=>o.slice(0,1).toUpperCase()+o.slice(1);return m.jsx(m.Fragment,{children:m.jsxs(DQ,{children:[m.jsx(_Q,{children:"WORKOUT"}),m.jsxs(PQ,{children:[m.jsx($Q,{children:m.jsx("svg",{width:"24",height:"24",style:{fill:"#EFEDE8",zIndex:10},children:m.jsx("use",{href:Te+"#icon-run-man"})})}),m.jsx(kQ,{children:a(n)})]}),m.jsxs(SQ,{children:[m.jsxs(Bm,{children:["Burned calories: ",m.jsx(Wm,{children:i})]}),m.jsxs(Bm,{children:["Body part: ",m.jsx(Wm,{children:r})]}),m.jsxs(Bm,{children:["Target: ",m.jsx(Wm,{children:t})]})]}),m.jsxs(EQ,{type:"button",children:["Start",m.jsx("svg",{style:{verticalAlign:"top",stroke:"#E6533C"},children:m.jsx("use",{href:Te+"#icon-arrow"})})]})]})})},OQ=me.ul`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
