@@ -31,7 +31,7 @@ import Loading from '../Loading/Loading';
 
 const UserForm = () => {
   const [userFormUpdate] = useUserDataUpdateMutation();
-  const { data} = useGetCurrentUserQuery();
+  const { data } = useGetCurrentUserQuery();
 
 
   const initialValues = { 
@@ -60,8 +60,6 @@ const UserForm = () => {
     };
 
     userFormUpdate(data);
-
-    resetForm();
   };
 
   return (
