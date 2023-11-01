@@ -3,6 +3,7 @@ import {
   useGetCurrentUserQuery,
   useUserLogOutMutation,
 } from '../redux/features/authEndpoints';
+import { jwtDecode } from 'jwt-decode';
 import { logOut } from '../redux/features/userToken';
 import { selectToken } from '../redux/selectors';
 import { useTokenExpirationCheck } from './controlCurrentUser';
@@ -18,11 +19,13 @@ export const handleCurrentUser = () => {
     refetchOnMountOrArgChange: true, // time ? 600 - 1000
   });
 
-  if (!isTokenExist) {
-    return { data: null };
-  }
   if (isTokenExist) {
-    const isTokenExpired = useTokenExpirationCheck(isTokenExist);
+    const decoded = jwtDecode(isTokenExist);
+    const timeNow = Date.now();
+    const { exp, iat, id } = decoded;
+    const liveTimeToken = exp * 1000;
+    const isTokenExpired = liveTimeToken - timeNow <= 0 ? true : false;
+
     if (isTokenExpired || error) {
       routeLogout(isTokenExist);
       dispatch(logOut());
