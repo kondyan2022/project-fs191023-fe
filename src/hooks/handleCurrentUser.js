@@ -5,7 +5,8 @@ import {
 } from '../redux/features/authEndpoints';
 import { logOut } from '../redux/features/userToken';
 import { selectToken } from '../redux/selectors';
-
+import { useTokenExpirationCheck } from './controlCurrentUser';
+// custom Hook
 export const handleCurrentUser = () => {
   const dispatch = useDispatch();
   const [routeLogout] = useUserLogOutMutation();
@@ -20,10 +21,14 @@ export const handleCurrentUser = () => {
   if (!isTokenExist) {
     return { data: null };
   }
-  if (error) {
-    routeLogout(isTokenExist);
-    dispatch(logOut());
+  if (isTokenExist) {
+    const isTokenExpired = useTokenExpirationCheck(isTokenExist);
+    if (isTokenExpired || error) {
+      routeLogout(isTokenExist);
+      dispatch(logOut());
+    }
   }
+
   // ----------------------------------------------------------------
   const isLoading = rest.status === 'loading';
   const isSuccess = rest.status === 'success';
@@ -32,3 +37,5 @@ export const handleCurrentUser = () => {
 
   return { data, error, isSuccess, isLoading, isError, isFetching };
 };
+
+// #########################################################################################
