@@ -16,7 +16,10 @@ import {
 } from './AddProductSuccess.styled';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Backdrop, CloseButton } from '../Products/AddModal/AddModal.styled';
+import {
+  Backdrop,
+  CloseButton,
+} from '../Products/AddModal/AddModal.styled.jsx';
 
 const AddProductSuccess = ({ excessCalories, closeModal }) => {
   useEffect(() => {

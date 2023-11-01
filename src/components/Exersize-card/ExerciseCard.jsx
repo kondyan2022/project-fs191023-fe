@@ -39,9 +39,9 @@ const ExerciseCard = ({
     return year + '/' + month + '/' + day;
   };
   const data = date();
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(true);
   const closeModalForAdd = () => {
-    setIsAddModalOpen(true);
+    setIsAddModalOpen(false);
   };
   const [calories, setCalories] = useState(0);
   const timeS = time * 60;
@@ -50,14 +50,12 @@ const ExerciseCard = ({
   const [isRunning, setIsRunning] = useState(false);
 
   const handleAddToDiary = () => {
-    console.log(`Exercises: ${(id, data, time, calories)}`);
     addDairyExercise({
       exercise: id,
       date: data,
       time,
       calories,
     });
-    console.log(isSuccess);
   };
 
   const closeModal = () => {
@@ -65,13 +63,15 @@ const ExerciseCard = ({
   };
 
   return isSuccess ? (
-    <AddExercisesSuccess
-      burnedCalories={burnedCalories}
-      time={time}
-      closeModal={closeModalForAdd}
-      isAddModalOpen={isAddModalOpen}
-      calories={calories}
-    />
+    isAddModalOpen && (
+      <AddExercisesSuccess
+        burnedCalories={burnedCalories}
+        time={time}
+        closeModal={closeModalForAdd}
+        isAddModalOpen={isAddModalOpen}
+        calories={calories}
+      />
+    )
   ) : (
     <CardBack>
       <ListFlex>
