@@ -53,6 +53,7 @@ const ExerciseCard = ({
       time,
       calories,
     });
+    console.log(isSuccess);
   };
 
   const closeModal = () => {

@@ -14,7 +14,7 @@ import {
   ModalWindowTitle,
   ModalWindowWrap,
   ModalWindowWrapImg,
-} from './ModalProductDone.styled';
+} from './AddProductSuccess.styled';
 
 const AddExercisesSuccess = ({ burnedCalories, time }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);

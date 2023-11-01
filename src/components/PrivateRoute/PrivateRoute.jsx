@@ -13,13 +13,5 @@ export const PrivateRoute = ({
 }) => {
   console.log('private route--->>>>>>', profileFilled);
 
-  return isLoggedIn ? (
-    selfCall || profileFilled ? (
-      children
-    ) : (
-      <Navigate to="/profile" />
-    )
-  ) : (
-    <Navigate to="/welcome" />
-  );
+  return isLoggedIn ? children : <Navigate to="/welcome" />;
 };
