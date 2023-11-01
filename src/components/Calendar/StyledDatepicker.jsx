@@ -97,7 +97,7 @@ const StyledDatepicker = ({
             return;
           }
           setSelectedDate(date);
-          getData(selectedDate);
+          getData(date);
         }}
         customInput={<CustomInput />}
         dateFormat={'dd MM yyyy'}
