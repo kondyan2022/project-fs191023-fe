@@ -1,15 +1,26 @@
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import { hasProfile } from '../../redux/selectors';
+
 // import { getIsLoggedIn } from 'redux/authSlice';
-// import PropTypes from 'prop-types';
 
-export const PublicRoute = ({
-  children,
-  restricted = false,
+// const PROFILE_FILLED = true;
+
+export const PrivateRoute = ({
   isLoggedIn = false,
+  selfCall = false,
+  children,
 }) => {
-  //   const isLoggedIn = useSelector(getIsLoggedIn);
-  return isLoggedIn && restricted ? <Navigate to="/" /> : children;
-};
+  const profileFilled = useSelector(hasProfile);
+  console.log('private route--->>>>>>', profileFilled);
 
-// PublicRoute.propTypes = { restricted: PropTypes.bool };
+  return isLoggedIn ? (
+    selfCall || profileFilled ? (
+      children
+    ) : (
+      <Navigate to="/profile" />
+    )
+  ) : (
+    <Navigate to="/welcome" />
+  );
+};
