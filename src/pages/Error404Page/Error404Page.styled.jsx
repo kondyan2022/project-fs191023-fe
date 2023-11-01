@@ -1,15 +1,15 @@
 import styled from 'styled-components'
 
 export const WrappParent = styled.div`
-width: 100%;
-height:  812px;
-position: relative;
-    @media (min-width: 768px) {
-        height: 1024px;
-    }
-    @media (min-width: 1440px) {
-        height: 800px;
-    }
+    width: 100%;
+    height:  812px;
+    position: relative;
+        @media (min-width: 768px) {
+            height: 1024px;
+        }
+        @media (min-width: 1440px) {
+            height: 800px;
+        }
 `
 
 export const Wrapper = styled.div`
