@@ -10,6 +10,7 @@ export const CardCalories = styled.div`
     position: absolute;
     right: 20px;
     bottom: 40px;
+    transition: transform 0.5s ease;
     @media (min-width: 768px) {
         width: 180px;
         height: 110px;
@@ -20,6 +21,13 @@ export const CardCalories = styled.div`
     @media (min-width: 1440px) {
         bottom: 163px;
     }
+    /* &.active {
+        transform: translateX(0);
+}
+
+    &.hidden {
+        transform: translateX(100%);
+} */
 `;
 
 export const Circle = styled.div`
