@@ -16,7 +16,6 @@ import { inputSchema } from './AddModalSchema';
 import { useEffect } from 'react';
 import sprite from '../../../images/sprite.svg';
 import { useAddDiaryProductsMutation } from '../../../redux/features/userDiaryEndpoints';
-import toast from 'react-hot-toast';
 import { createPortal } from 'react-dom';
 import Loading from '../../Loading/Loading';
 
@@ -32,8 +31,15 @@ const AddModal = ({
     grams: '100',
   };
 
-  const [submitProduct, res] = useAddDiaryProductsMutation();
-  // console.log(res)
+  const [submitProduct, { isLoading, isSuccess }] =
+    useAddDiaryProductsMutation();
+
+  if (isSuccess) {
+    setIsAddedSuccess(true);
+    closeModal();
+  }
+
+  // document.body.style.overflow = 'hidden';
 
   useEffect(() => {
     const closeESC = (e) => {
@@ -84,16 +90,6 @@ const AddModal = ({
       calories: countedCalories,
     };
     submitProduct(productData);
-    if (res.isUninitialized) {
-      toast('Something was wrong. Please, try again.');
-    }
-    // console.log(productData);
-    // console.log(res);
-    if (res.isSuccess) {
-      setIsAddedSuccess(true);
-      closeModal();
-    }
-    // console.log({ ...value, calories: countedCalories });
   };
 
   return createPortal(
@@ -126,14 +122,19 @@ const AddModal = ({
                       disabled={
                         formik.values.grams.trim() === '' ||
                         formik.errors.grams ||
-                        res.isLoading
+                        isLoading
                       }
                     >
                       Add to diary
                     </StyledAddButton>
-                    {res.isLoading && (
+                    {isLoading && (
                       <Loading
-                        styles={{ position: 'absolute', top: '-40px', border: 'none', padding: "0" }}
+                        styles={{
+                          position: 'absolute',
+                          top: '-40px',
+                          border: 'none',
+                          padding: '0',
+                        }}
                       />
                     )}
                   </li>

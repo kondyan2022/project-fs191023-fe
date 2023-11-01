@@ -10,7 +10,7 @@ import {
   Wrap,
 } from './ProductsItem.styled';
 import AddModal from '../AddModal/AddModal';
-// icon-search icon-run-man
+
 const ProductsItem = ({
   weight,
   calories,
@@ -23,7 +23,6 @@ const ProductsItem = ({
 }) => {
   const isRecommended = isRecom;
 
-  const wdt = window.innerWidth;
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const openModal = () => {
@@ -35,15 +34,7 @@ const ProductsItem = ({
   };
 
   const updatedCategory = () => {
-    if (wdt < 375 && category.length > 6) {
-      return category.slice(0, 3) + '...';
-    }
-    if (wdt < 768 && wdt >= 375 && category.length > 11) {
-      // return category.slice(0, 10) + '...';
-      return category.slice(0, 3) + '...';
-    }
-    if (wdt >= 768 && category.length > 11) {
-      // return category.slice(0, 10) + '...';
+    if (category.length > 6) {
       return category.slice(0, 3) + '...';
     }
     return category;

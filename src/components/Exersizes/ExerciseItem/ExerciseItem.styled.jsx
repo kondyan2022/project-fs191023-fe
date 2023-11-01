@@ -50,9 +50,13 @@ export const Title = styled.p`
   font-family: 'Roboto';
   font-size: 20px;
   line-height: 'calc(24px / 20px)';
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   @media screen and (min-width: 768px) {
     font-size: 24px;
     line-height: calc(32px / 24px);
+    max-width: 300px;
   }
 `;
 export const IconWraper = styled.span`
