@@ -72,7 +72,7 @@ export const Input = styled.input`
   border: 1px solid rgba(239, 237, 232, 0.3);
   background-color: transparent;
   color: var(--color-white);
-  font-size: 14;
+  font-size: 12;
 
   &.success {
     border: 1px solid #3cbf61;
@@ -83,6 +83,7 @@ export const Input = styled.input`
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     width: 341px;
+    font-size: 14px;
   }
   &:focus {
     outline: none;
@@ -97,9 +98,12 @@ export const WrapperInputField = styled.div`
   align-items: center;
   justify-content: center;
   gap: 14px;
-  width: 50%;
+  width: 100%;
+  font-size: 12px;
   @media screen and (min-width: 768px) {
     padding: 9px;
+    width: 50%;
+    font-size: 14px;
   }
 `;
 
@@ -115,14 +119,16 @@ export const WrapperDatepicker = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  width: 50%;
+  width: 100%;
+  padding: 11px;
   margin-left: 14px;
-  /* border-radius: 12px;
+  border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
-  background-color: transparent; */
+  background-color: transparent;
   color: var(--color-white);
   @media screen and (min-width: 768px) {
-    padding: 9px;
+    padding: 6px;
+    width: 50%;
   }
 `;
 
@@ -136,7 +142,7 @@ export const InputField = styled.input`
   width: 100%;
   padding: 14px;
   align-items: center;
-  gap: 20px;
+  gap: 14px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
   background-color: transparent;
