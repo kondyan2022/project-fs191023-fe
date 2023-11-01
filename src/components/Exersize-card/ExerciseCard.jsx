@@ -45,7 +45,13 @@ const ExerciseCard = ({
   const [isRunning, setIsRunning] = useState(false);
   const handleAddToDiary = () => {
     console.log({ exercise: id, data, time, calories });
-    addDairyExercise({ exercise: id, data, time, calories });
+    addDairyExercise({
+      exercise: id,
+      date: data,
+      time,
+      consumeCalories: calories,
+      calories,
+    });
   };
   const closeModal = () => {
     setIsAddModalOpen(false);
