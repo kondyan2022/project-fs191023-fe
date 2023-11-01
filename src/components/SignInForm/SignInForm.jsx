@@ -42,7 +42,10 @@ const SignInForm = () => {
 
   useEffect(() => {
     if (singInResult && singInResult.token) {
-      dispatch(setToken(singInResult.token));
+      const { token, user } = singInResult;
+      const isProfile = user.profile ? true : false;
+      const action = { token, isProfile };
+      dispatch(setToken(action));
     }
   }, [singInResult, dispatch]);
 

@@ -27,27 +27,13 @@ import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
 function App() {
   const isLoggedIn = useSelector(isLogin);
 
-  // const { data: userData } = useGetCurrentUserQuery();
-  // console.log('Route>>>>>>>>', userData);
-  const userData = { profile: false };
-  const profileFilled = userData?.profile ? true : false;
-  console.log({ profileFilled });
-
-  // const tokenInState = useSelector(selectToken); // токен.
-
-  // tokenInState && useTokenExpirationCheck(tokenInState, 3000);
-
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route
           index
           element={
-            <PrivateRoute
-              redirectTo="/welcome"
-              isLoggedIn={isLoggedIn}
-              profileFilled={profileFilled}
-            >
+            <PrivateRoute redirectTo="/welcome" isLoggedIn={isLoggedIn}>
               <DiaryPage />
             </PrivateRoute>
           }
@@ -87,12 +73,7 @@ function App() {
         <Route
           path="/profile"
           element={
-            <PrivateRoute
-              redirectTo="/signin"
-              selfCall
-              isLoggedIn={isLoggedIn}
-              profileFilled={profileFilled}
-            >
+            <PrivateRoute redirectTo="/signin" selfCall isLoggedIn={isLoggedIn}>
               <ProfilePage />
             </PrivateRoute>
           }
@@ -101,11 +82,7 @@ function App() {
         <Route
           path="/products"
           element={
-            <PrivateRoute
-              redirectTo="/signin"
-              isLoggedIn={isLoggedIn}
-              profileFilled={profileFilled}
-            >
+            <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
               <ProductsPage />
             </PrivateRoute>
           }
@@ -113,11 +90,7 @@ function App() {
         <Route
           path="/exercises"
           element={
-            <PrivateRoute
-              redirectTo="/signin"
-              isLoggedIn={isLoggedIn}
-              profileFilled={profileFilled}
-            >
+            <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
               <ExercisesPage />
             </PrivateRoute>
           }
