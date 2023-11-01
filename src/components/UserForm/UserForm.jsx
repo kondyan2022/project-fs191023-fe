@@ -33,7 +33,8 @@ const UserForm = () => {
   const [userFormUpdate] = useUserDataUpdateMutation();
   const { data } = useGetCurrentUserQuery();
 
-  const initialValues = {
+
+  const initialValues = { 
     name: data?.name || '',
     height: data?.profile?.height || 150,
     currentWeight: data?.profile?.currentWeight || 35,

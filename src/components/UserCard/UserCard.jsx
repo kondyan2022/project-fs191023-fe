@@ -13,8 +13,8 @@ import {
 import sprite from '../../images/sprite.svg';
 import { useUploadUserAvatarMutation } from '../../redux/features/authEndpoints';
 
-const UserCard = ({ avatar, name }) => {
-  const [newAvatar, setNewAvatar] = useState(avatar);
+const UserCard = ({ avatarURL, name }) => {
+  const [newAvatar, setNewAvatar] = useState(avatarURL);
 
   const uploadAvatar = useUploadUserAvatarMutation();
 
@@ -30,14 +30,14 @@ const UserCard = ({ avatar, name }) => {
         formData.append('avatar', newAvatar);
 
         const updatedUser = await uploadAvatar.mutateAsync(formData);
-        avatar = updatedUser.avatarURL;
+        setNewAvatar(updatedUser.avatarURL);
       } catch (error) {
         console.error('Error updating avatar', error);
       }
     }
   };
 
-  const avatarUser = <Photo src={avatar} width="100%" alt="Avatar" />;
+  const avatarUser = <Photo src={newAvatar} width="100%" alt="Avatar" />;
   const avatarLogo = (
     <SvgLogoUser fill="var( --accent-color-user-ava)" width="62" height="62">
       <use href={`${sprite}#icon-user`}></use>
@@ -46,7 +46,7 @@ const UserCard = ({ avatar, name }) => {
 
   return (
     <Wrapper>
-      <Avatar>{avatar ? avatarUser : avatarLogo}</Avatar>
+      <Avatar>{newAvatar ? avatarUser : avatarLogo}</Avatar>
       <form id="upload-form">
         <input
           type="file"
