@@ -29,9 +29,9 @@ function App() {
 
   // const { data: userData } = useGetCurrentUserQuery();
   // console.log('Route>>>>>>>>', userData);
-  const userData = { profile: false };
-  const profileFilled = userData?.profile ? true : false;
-  console.log({ profileFilled });
+  // const userData = { profile: false };
+  const profileFilled = true;
+  // console.log({ profileFilled });
 
   // const tokenInState = useSelector(selectToken); // токен.
 

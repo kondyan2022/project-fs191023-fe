@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 //
-const REACT_APP_API_URL = 'https://power-plus-service.onrender.com';
+// const REACT_APP_API_URL = 'https://power-plus-service.onrender.com';
+const REACT_APP_API_URL = 'http://localhost:3000';
 //
 export const userSplitApi = createApi({
   reducerPath: 'fitnesApi',
