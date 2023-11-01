@@ -16,13 +16,22 @@ import { ExerciseList } from './components/Exersizes/ExerciseList/ExerciseList';
 import { BodyPartsBoard } from './components/Exersizes/ExercisesBoard/BodyPartsBoard';
 import { MusclesBoard } from './components/Exersizes/ExercisesBoard/MusclesBoard';
 import { EquipmentBoard } from './components/Exersizes/ExercisesBoard/EquipmentBoard';
+
 import GoogleLoginPage from './pages/GoogleLoginPage/GoogleLoginPage';
+import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
+// import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
 //
 // import { selectToken } from './redux/selectors';
 // import { useTokenExpirationCheck } from './hooks/controlCurrentUser';
 
 function App() {
   const isLoggedIn = useSelector(isLogin);
+
+  const { data: userData } = useGetCurrentUserQuery();
+  console.log('Route>>>>>>>>', userData);
+  const profileFilled = userData?.profile ? true : false;
+  console.log({ profileFilled });
+
   // const tokenInState = useSelector(selectToken); // токен.
 
   // tokenInState && useTokenExpirationCheck(tokenInState, 3000);
@@ -33,7 +42,11 @@ function App() {
         <Route
           index
           element={
-            <PrivateRoute redirectTo="/welcome" isLoggedIn={isLoggedIn}>
+            <PrivateRoute
+              redirectTo="/welcome"
+              isLoggedIn={isLoggedIn}
+              profileFilled={profileFilled}
+            >
               <DiaryPage />
             </PrivateRoute>
           }
@@ -73,7 +86,12 @@ function App() {
         <Route
           path="/profile"
           element={
-            <PrivateRoute redirectTo="/signin" selfCall isLoggedIn={isLoggedIn}>
+            <PrivateRoute
+              redirectTo="/signin"
+              selfCall
+              isLoggedIn={isLoggedIn}
+              profileFilled={profileFilled}
+            >
               <ProfilePage />
             </PrivateRoute>
           }
@@ -82,7 +100,11 @@ function App() {
         <Route
           path="/products"
           element={
-            <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
+            <PrivateRoute
+              redirectTo="/signin"
+              isLoggedIn={isLoggedIn}
+              profileFilled={profileFilled}
+            >
               <ProductsPage />
             </PrivateRoute>
           }
@@ -90,7 +112,11 @@ function App() {
         <Route
           path="/exercises"
           element={
-            <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
+            <PrivateRoute
+              redirectTo="/signin"
+              isLoggedIn={isLoggedIn}
+              profileFilled={profileFilled}
+            >
               <ExercisesPage />
             </PrivateRoute>
           }
