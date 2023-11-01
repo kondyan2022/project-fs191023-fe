@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Avatar,
   Button,
@@ -8,11 +9,33 @@ import {
   TitleName,
   Wrapper,
 } from './UserCard.styled';
-import { useState } from 'react';
-import sprite from '../../images/sprite.svg';
 
-const UserCard = (user) => {
-  const [avatar, setAvatar] = useState(user.avatarURL);
+import sprite from '../../images/sprite.svg';
+import { useUploadUserAvatarMutation } from '../../redux/features/authEndpoints';
+
+const UserCard = ({ avatar, name }) => {
+  const [newAvatar, setNewAvatar] = useState(avatar);
+
+  const uploadAvatar = useUploadUserAvatarMutation();
+
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    setNewAvatar(file);
+  };
+
+  const handleUpdateAvatar = async () => {
+    if (newAvatar) {
+      try {
+        const formData = new FormData();
+        formData.append('avatar', newAvatar);
+
+        const updatedUser = await uploadAvatar.mutateAsync(formData);
+        avatar = updatedUser.avatarURL;
+      } catch (error) {
+        console.error('Error updating avatar', error);
+      }
+    }
+  };
 
   const avatarUser = <Photo src={avatar} width="100%" alt="Avatar" />;
   const avatarLogo = (
@@ -24,12 +47,23 @@ const UserCard = (user) => {
   return (
     <Wrapper>
       <Avatar>{avatar ? avatarUser : avatarLogo}</Avatar>
-      <Button>
-        <IconBtn>
-          <use href={`${sprite}#icon-plus`}></use>
-        </IconBtn>
-      </Button>
-      <TitleName>{user.name}</TitleName>
+      <form id="upload-form">
+        <input
+          type="file"
+          id="file-input"
+          name="file"
+          style={{ display: 'none' }}
+          onChange={handleAvatarChange}
+        />
+        <label htmlFor="file-input">
+          <Button onClick={handleUpdateAvatar}>
+            <IconBtn>
+              <use href={`${sprite}#icon-plus`}></use>
+            </IconBtn>
+          </Button>
+        </label>
+      </form>
+      <TitleName>{name}</TitleName>
       <Subtitle>User</Subtitle>
     </Wrapper>
   );
