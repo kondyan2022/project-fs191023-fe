@@ -12,11 +12,10 @@ export const handleCurrentUser = () => {
   const dispatch = useDispatch();
   const [routeLogout] = useUserLogOutMutation();
   const isTokenExist = useSelector(selectToken);
-  //
-  const { data, error, ...rest } = useGetCurrentUserQuery({
+  const { data, error, ...rest } = useGetCurrentUserQuery(isTokenExist, {
     skip: !isTokenExist,
     refetchOnReconnect: true,
-    refetchOnMountOrArgChange: true, // time ? 600 - 1000
+    refetchOnMountOrArgChange: true,
   });
 
   if (isTokenExist) {
@@ -40,5 +39,3 @@ export const handleCurrentUser = () => {
 
   return { data, error, isSuccess, isLoading, isError, isFetching };
 };
-
-// #########################################################################################
