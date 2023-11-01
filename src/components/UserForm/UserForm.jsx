@@ -23,6 +23,7 @@ import {
 } from '../../redux/features/authEndpoints';
 import Button from '../Button/Button';
 import StyledDatepicker from '../Calendar/StyledDatepicker';
+import { handleCurrentUser } from '../../hooks/handleCurrentUser';
 
 // import StyledDatepicker from './../Calendar/StyledDatepicker';
 
@@ -93,7 +94,8 @@ const levelOptions = [
 
 const UserForm = () => {
   const [userFormUpdate] = useUserDataUpdateMutation();
-  const { data } = useGetCurrentUserQuery();
+  // const { data } = useGetCurrentUserQuery();
+  const { data } = handleCurrentUser();
   console.log(data?.profile);
 
   const initialValues = {
