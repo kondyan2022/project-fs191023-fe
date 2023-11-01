@@ -16,13 +16,12 @@ import {
   ModalWindowWrapImg,
 } from './AddProductSuccess.styled';
 
-const AddExercisesSuccess = ({ burnedCalories, time }) => {
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-
-  const closeModal = () => {
-    setIsAddModalOpen(true);
-  };
-
+const AddExercisesSuccess = ({
+  burnedCalories,
+  time,
+  closeModal,
+  isAddModalOpen,
+}) => {
   return (
     <>
       {isAddModalOpen && (

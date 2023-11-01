@@ -23,16 +23,16 @@ export const ExerciseItem = ({ exerciseCard }) => {
     return newString;
   };
 
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
     console.log(exerciseCard._id.$oid);
-    setIsAddModalOpen(true);
+    setIsModalOpen(true);
   };
 
   return (
     <>
-      {isAddModalOpen && (
+      {isModalOpen && (
         <ExerciseCard
           target={capitalizeFirstLeter(target)}
           bodyPart={capitalizeFirstLeter(bodyPart)}
@@ -42,7 +42,7 @@ export const ExerciseItem = ({ exerciseCard }) => {
           id={exerciseCard._id.$oid}
           burnedCalories={burnedCalories}
           name={capitalizeFirstLeter(name)}
-          setIsAddModalOpen={setIsAddModalOpen}
+          setIsModalOpen={setIsModalOpen}
         />
       )}
       <ListItem>

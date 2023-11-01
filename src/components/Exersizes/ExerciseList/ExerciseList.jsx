@@ -23,7 +23,7 @@ export const ExerciseList = ({
     <>
       <ExList>
         {allExercises.map((exercise) => (
-          <li key={exercise._id}>
+          <li key={exercise._id.$oid}>
             <ExerciseItem exerciseCard={exercise} />
           </li>
         ))}

@@ -1,6 +1,7 @@
+import { useState } from 'react';
+import iconSvg from '../../images/sprite.svg';
 import CircleCountDown from '../CircleCountDown/CircleCountDown';
 import { StyledAddButton } from '../Products/AddModal/AddModal.styled';
-import { useState } from 'react';
 import {
   AddButtonPos,
   BurnedPshka,
@@ -15,7 +16,6 @@ import {
   Pshka,
   StyledDisableButton,
 } from './ExerciseCard.styled';
-import iconSvg from '../../images/sprite.svg';
 
 import { useAddDairyExercisesMutation } from '../../redux/features/userDiaryEndpoints';
 import AddExercisesSuccess from '../BasicModalWindow/AddExercisesSuccess';
@@ -29,7 +29,7 @@ const ExerciseCard = ({
   gifUrl,
   time,
   burnedCalories,
-  setIsAddModalOpen,
+  setIsModalOpen,
 }) => {
   const date = () => {
     const today = new Date();
@@ -39,12 +39,16 @@ const ExerciseCard = ({
     return year + '/' + month + '/' + day;
   };
   const data = date();
-
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const closeModalForAdd = () => {
+    setIsAddModalOpen(true);
+  };
   const [calories, setCalories] = useState(0);
   const timeS = time * 60;
   const [addDairyExercise, { isSuccess, isError }] =
     useAddDairyExercisesMutation();
   const [isRunning, setIsRunning] = useState(false);
+
   const handleAddToDiary = () => {
     console.log(`Exercises: ${(id, data, time, calories)}`);
     addDairyExercise({
@@ -57,11 +61,17 @@ const ExerciseCard = ({
   };
 
   const closeModal = () => {
-    setIsAddModalOpen(false);
+    setIsModalOpen(false);
   };
 
   return isSuccess ? (
-    <AddExercisesSuccess />
+    <AddExercisesSuccess
+      burnedCalories={burnedCalories}
+      time={time}
+      closeModal={closeModalForAdd}
+      isAddModalOpen={isAddModalOpen}
+      calories={calories}
+    />
   ) : (
     <CardBack>
       <ListFlex>
