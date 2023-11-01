@@ -15,16 +15,8 @@ import {
 import ExerciseCard from '../../Exersize-card/ExerciseCard';
 
 export const ExerciseItem = ({ exerciseCard }) => {
-  const {
-    target,
-    bodyPart,
-    burnedCalories,
-    name,
-    id,
-    equipment,
-    gifUrl,
-    time,
-  } = exerciseCard;
+  const { target, bodyPart, burnedCalories, name, equipment, gifUrl, time } =
+    exerciseCard;
 
   const capitalizeFirstLeter = (string) => {
     const newString = string.slice(0, 1).toUpperCase() + string.slice(1);

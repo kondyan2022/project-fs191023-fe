@@ -44,12 +44,11 @@ const ExerciseCard = ({
   const [addDairyExercise] = useAddDairyExercisesMutation();
   const [isRunning, setIsRunning] = useState(false);
   const handleAddToDiary = () => {
-    console.log({ exercise: id, data, time, calories });
+    console.log(`Exercises: ${(id, data, time, calories)}`);
     addDairyExercise({
       exercise: id,
       date: data,
       time,
-      consumeCalories: calories,
       calories,
     });
   };
