@@ -41,11 +41,6 @@ export const CloseButton = styled.button`
   right: 14px;
   padding: 0;
 
-  @media screen and (min-width: 768px) {
-    width: 26px;
-    height: 26px;
-  }
-
   svg {
     width: 20px;
     height: 20px;
@@ -56,6 +51,16 @@ export const CloseButton = styled.button`
     &:hover,
     &:focus {
       stroke: var(--color-orange);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 26px;
+    height: 26px;
+
+    svg {
+      width: 26px;
+      height: 26px;
     }
   }
 `;
