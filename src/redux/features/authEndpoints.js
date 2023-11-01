@@ -13,11 +13,7 @@ const authApiSlice = userSplitApi.injectEndpoints({
         body: file,
         headers: { 'content-type': 'multipart/form-data' },
       }),
-      // onFormatData: (data) => {
-      //   const formData = new FormData();
-      //   formData.append('avatar', file);
-      //   return { file: formData };
-      // },
+      invalidatesTags: ['userAuth'],
     }),
     userSignUp: builder.mutation({
       query: (newCredential) => ({

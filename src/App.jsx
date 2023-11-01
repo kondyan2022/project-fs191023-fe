@@ -27,8 +27,9 @@ import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
 function App() {
   const isLoggedIn = useSelector(isLogin);
 
-  const { data: userData } = useGetCurrentUserQuery();
-  console.log('Route>>>>>>>>', userData);
+  // const { data: userData } = useGetCurrentUserQuery();
+  // console.log('Route>>>>>>>>', userData);
+  const userData = { profile: false };
   const profileFilled = userData?.profile ? true : false;
   console.log({ profileFilled });
 
