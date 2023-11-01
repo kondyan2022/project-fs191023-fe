@@ -18,6 +18,7 @@ import {
 import iconSvg from '../../images/sprite.svg';
 
 import { useAddDairyExercisesMutation } from '../../redux/features/userDiaryEndpoints';
+import AddExercisesSuccess from '../BasicModalWindow/AddExercisesSuccess';
 
 const ExerciseCard = ({
   id,
@@ -41,7 +42,8 @@ const ExerciseCard = ({
 
   const [calories, setCalories] = useState(0);
   const timeS = time * 60;
-  const [addDairyExercise] = useAddDairyExercisesMutation();
+  const [addDairyExercise, { isSuccess, isError }] =
+    useAddDairyExercisesMutation();
   const [isRunning, setIsRunning] = useState(false);
   const handleAddToDiary = () => {
     console.log(`Exercises: ${(id, data, time, calories)}`);
@@ -52,11 +54,14 @@ const ExerciseCard = ({
       calories,
     });
   };
+
   const closeModal = () => {
     setIsAddModalOpen(false);
   };
 
-  return (
+  return isSuccess ? (
+    <AddExercisesSuccess />
+  ) : (
     <CardBack>
       <ListFlex>
         <li>
