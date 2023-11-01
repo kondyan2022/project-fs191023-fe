@@ -5,6 +5,7 @@ import { Redirect, LinkTo, Wrapper, Text } from './SignUpPage.styled'
 
 import CardInfoVideo from '../../components/CardInfoVideo/CardInfoVideo'
 import CardInfoCalories from '../../components/CardInfoCalories/CardInfoCalories'
+import ButtonGoogle from '../../components/ButtonGoogle/ButtonGoogle'
 
 
 const SignUpPage = () => {
@@ -14,8 +15,10 @@ const SignUpPage = () => {
         <Wrapper>
           <h2>Create account</h2>
           <Text>Thank you for your interest in our platform.
-            To complete the registration process, please provide us with the following information.</Text>
+            To complete the registration process, please provide us with the following
+            information.</Text>
           <SignUpForm />
+          <ButtonGoogle />
           <Redirect>Already have account? <LinkTo to='/signin'> Sign In</LinkTo></Redirect>
 
           <CardInfoVideo />
