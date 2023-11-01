@@ -8,15 +8,16 @@ const exercisesApiEndpoints = userSplitApi.injectEndpoints({
     }),
     getGroupExercises: builder.query({
       query: () => `exercises/exercisegroups`,
-      providesTags: ['exercises'],
+      providesTags: ['groups'],
     }),
     getExercisesByFilter: builder.query({
       query: (params) => ({
         url: `exercises/search`,
         method: 'GET',
         params,
-        providesTags: ['exercises'],
       }),
+      providesTags: ['exercises'],
+      invalidatesTags: ['exercises'],
     }),
   }),
 });

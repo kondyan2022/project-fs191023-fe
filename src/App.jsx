@@ -27,10 +27,10 @@ import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
 function App() {
   const isLoggedIn = useSelector(isLogin);
 
-  const { data: userData } = useGetCurrentUserQuery();
-  console.log('Route>>>>>>>>', userData);
-  const profileFilled = userData?.profile ? true : false;
-  console.log({ profileFilled });
+  // const { data: userData } = useGetCurrentUserQuery();
+  // console.log('Route>>>>>>>>', userData);
+  // const profileFilled = userData?.profile ? true : false;
+  // console.log({ profileFilled });
 
   // const tokenInState = useSelector(selectToken); // токен.
 
