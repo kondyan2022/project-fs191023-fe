@@ -26,6 +26,7 @@ export const ExerciseItem = ({ exerciseCard }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
+
     setIsModalOpen(true);
   };
 
