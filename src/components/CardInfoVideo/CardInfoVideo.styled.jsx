@@ -7,7 +7,7 @@ export const CardVideo = styled.div`
   border-radius: 12px;
   padding: 14px 14px 14px 18px;
   position: absolute;
-  right: 82px;
+  right: 43px;
   bottom: 186px;
   display: flex;
   align-items: center;

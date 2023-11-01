@@ -34,6 +34,7 @@ export const ExerciseItem = ({ exerciseCard }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const openModal = () => {
+    console.log(exerciseCard._id.$oid);
     setIsAddModalOpen(true);
   };
 
@@ -46,7 +47,7 @@ export const ExerciseItem = ({ exerciseCard }) => {
           equipment={capitalizeFirstLeter(equipment)}
           gifUrl={gifUrl}
           time={time}
-          id={id}
+          id={exerciseCard._id.$oid}
           burnedCalories={burnedCalories}
           name={capitalizeFirstLeter(name)}
           setIsAddModalOpen={setIsAddModalOpen}

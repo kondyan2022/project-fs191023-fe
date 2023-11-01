@@ -4,9 +4,9 @@ const statsApiEndpoints = userSplitApi.injectEndpoints({
   endpoints: (builder) => ({
     getStats: builder.query({
       query: () => `stats`,
-      providesTags: ['diary'],
     }),
+    providesTags: ['diary'],
   }),
 });
 
-export const { useGetStatsQuery } = statsApiEndpoints.useGetStatsQuery;
+export const { useGetStatsQuery } = statsApiEndpoints;

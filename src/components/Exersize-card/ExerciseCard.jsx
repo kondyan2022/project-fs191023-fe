@@ -37,12 +37,21 @@ const ExerciseCard = ({
     const day = String(today.getDate()).padStart(2, '0');
     return year + '/' + month + '/' + day;
   };
+  const data = date();
+
   const [calories, setCalories] = useState(0);
   const timeS = time * 60;
   const [addDairyExercise] = useAddDairyExercisesMutation();
   const [isRunning, setIsRunning] = useState(false);
   const handleAddToDiary = () => {
-    addDairyExercise({ exercise: id, date, time, calories });
+    console.log({ exercise: id, data, time, calories });
+    addDairyExercise({
+      exercise: id,
+      date: data,
+      time,
+      consumeCalories: calories,
+      calories,
+    });
   };
   const closeModal = () => {
     setIsAddModalOpen(false);

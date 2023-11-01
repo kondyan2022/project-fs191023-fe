@@ -1,17 +1,18 @@
 // import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+
 // import { getIsLoggedIn } from 'redux/authSlice';
 
-const PROFILE_FILLED = true;
+// const PROFILE_FILLED = true;
 
 export const PrivateRoute = ({
   isLoggedIn = false,
   selfCall = false,
   children,
+  profileFilled = false,
 }) => {
-  // const isLoggedIn = useSelector(getIsLoggedIn);
+  console.log('private route--->>>>>>', profileFilled);
 
-  const profileFilled = PROFILE_FILLED;
   return isLoggedIn ? (
     selfCall || profileFilled ? (
       children
