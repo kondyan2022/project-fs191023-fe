@@ -19,25 +19,25 @@ import { createPortal } from 'react-dom';
 import { Backdrop, CloseButton } from '../Products/AddModal/AddModal.styled';
 
 const AddProductSuccess = ({ excessCalories, closeModal }) => {
-    useEffect(() => {
-      const closeESC = (e) => {
-        if (e.code === 'Escape') {
-          closeModal();
-        }
-      };
-      document.addEventListener('keydown', closeESC);
-
-      return () => {
-        document.removeEventListener('keydown', closeESC);
-      };
-    }, [closeModal]);
-  
-    const handleClickBackground = (e) => {
-      if (e.currentTarget === e.target) {
+  useEffect(() => {
+    const closeESC = (e) => {
+      if (e.code === 'Escape') {
         closeModal();
       }
+    };
+    document.addEventListener('keydown', closeESC);
+
+    return () => {
+      document.removeEventListener('keydown', closeESC);
+    };
+  }, [closeModal]);
+
+  const handleClickBackground = (e) => {
+    if (e.currentTarget === e.target) {
+      closeModal();
+    }
   };
-  
+
   return createPortal(
     <Backdrop onClick={handleClickBackground}>
       <ModalWindow>
