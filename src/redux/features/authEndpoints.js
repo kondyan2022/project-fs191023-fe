@@ -18,8 +18,6 @@ const authApiSlice = userSplitApi.injectEndpoints({
       //   formData.append('avatar', file);
       //   return { file: formData };
       // },
-
-      invalidatesTags: ['userAuth'],
     }),
     userSignUp: builder.mutation({
       query: (newCredential) => ({
@@ -27,7 +25,7 @@ const authApiSlice = userSplitApi.injectEndpoints({
         method: 'POST',
         body: newCredential,
       }),
-      invalidatesTags: ['userAuth'],
+      invalidatesTags: ['userAuth', 'diary'],
     }),
     userSignIn: builder.mutation({
       query: (credential) => ({
@@ -35,7 +33,7 @@ const authApiSlice = userSplitApi.injectEndpoints({
         method: 'POST',
         body: credential,
       }),
-      invalidatesTags: ['userAuth'],
+      invalidatesTags: ['userAuth', 'products', 'diary'],
     }),
     userGoogleSignIn: builder.mutation({
       query: (credential) => ({
@@ -43,7 +41,7 @@ const authApiSlice = userSplitApi.injectEndpoints({
         method: 'POST',
         body: credential,
       }),
-      invalidatesTags: ['userAuth'],
+      invalidatesTags: ['userAuth', 'products', 'diary'],
     }),
     userDataUpdate: builder.mutation({
       query: (updateData) => ({
@@ -51,13 +49,14 @@ const authApiSlice = userSplitApi.injectEndpoints({
         method: 'PUT',
         body: updateData,
       }),
+      invalidatesTags: ['userAuth', 'products', 'diary'],
     }),
     userLogOut: builder.mutation({
       query: () => ({
         url: `users/logout/`,
         method: 'POST',
       }),
-      invalidatesTags: ['userAuth', 'exercises', 'products'],
+      invalidatesTags: ['userAuth', 'exercises', 'products', 'diary'],
     }),
   }),
 });

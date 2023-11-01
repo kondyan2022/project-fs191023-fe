@@ -8,13 +8,14 @@ const productsApiEndpoints = userSplitApi.injectEndpoints({
     }),
     getGroupProduct: builder.query({
       query: () => `products/categories`,
-      providesTags: ['groups'],
+      providesTags: ['products'],
     }),
     getProductByFilter: builder.query({
       query: (params) => ({
         url: `products/search`,
         method: 'GET',
         params,
+        providesTags: ['products'],
       }),
     }),
   }),
