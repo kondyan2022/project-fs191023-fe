@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import like from '../../images/like-2x.png';
 import sprite from '../../images/sprite.svg';
 
@@ -16,11 +16,11 @@ import {
   ModalWindowWrapImg,
 } from './AddProductSuccess.styled';
 
+import { createPortal } from 'react-dom';
 import {
   Backdrop,
   CloseButton,
 } from '../../components/Products/AddModal/AddModal.styled.jsx';
-import { createPortal } from 'react-dom';
 
 const AddExercisesSuccess = ({ burnedCalories, time, closeModal }) => {
   useEffect(() => {
