@@ -1,6 +1,6 @@
 import {DayProductsComponent,Products,Header,BtnAdd,NotFound,Scroll} from './OnTheDay.styled'
-import {ProductEaten} from '../OneDataMobile/ProductEaten'
-import {ExercisesDone} from '../OneDataMobile/ExercisesDone'
+import {OneProductMobile} from '../OneDataMobile/OneProductMobile'
+import {OneExerciseMobile} from '../OneDataMobile/OneExerciseMobile'
 import  {useState,useEffect,useRef } from "react";
 import {DesktopVersionProdukt} from '../DesktopVersion/DesktopVersionProdukt'
 import {DesktoVersionExercises} from '../DesktopVersion/DesktopVersionExercises'
@@ -40,8 +40,8 @@ window.removeEventListener("resize", resizeHandler);
     </Header>
 
 {oneProductTest.length > 0 ? size.clientWidth > 700? (<DesktopVersionProdukt oneProductTest={oneProductTest} date={date}/>)
-: (<Scroll> {oneProductTest.map(oneProduct =>(<ProductEaten key={oneProduct._id} {...oneProduct} date={date} />)
-  )}</Scroll>)
+:(<Scroll>{( oneProductTest.map(oneProduct =>(<OneProductMobile key={oneProduct._id} {...oneProduct} date={date} />)))}</Scroll>)
+
   
 : <NotFound>Not found products</NotFound>
 }
@@ -60,7 +60,7 @@ window.removeEventListener("resize", resizeHandler);
 
 {exercisesTest.length > 0 ? 
 size.clientWidth > 700? (<DesktoVersionExercises exercisesTest={exercisesTest} date={date}/>) :
-(<Scroll> {exercisesTest.map(oneExercise => (<ExercisesDone key={oneExercise._id} {...oneExercise} date={date}/>))}</Scroll>)
+ (<Scroll>{exercisesTest.map(oneExercise => (<OneExerciseMobile key={oneExercise._id} {...oneExercise} date={date}/>))}</Scroll>)
 : <NotFound>Not found exercises</NotFound>
 }
 

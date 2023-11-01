@@ -7,9 +7,6 @@ import {DayDashboard} from '../../components/DayDashboard/DayDashboard'
 import {PageName,DescktopStyle,HederOfPage} from './DiaryPage.styled'
 import {useEffect} from 'react'
 import dayStatistics from '../../../resources/dayStatistics.json';
-import oneProductTest from '../../../resources/oneProductTest.json';
-import exercisesTest from '../../../resources/exercisesTest.json';
-import DayInformation from '../../../resources/DayInformation.json';
 import StyledDatepicker from '../../components/Calendar/StyledDatepicker';
 
 const DiaryPage = () => {
@@ -20,14 +17,13 @@ const DiaryPage = () => {
   const year = currentDate.getFullYear();
   const date = `${year}${month}${day}`
 
- 
- 
- const {data} = useGetDiaryQuery(date, {skip: !date});
+//  console.log(useGetDiaryQuery(20231031))
+  
+ const {data} = useGetDiaryQuery(date, {skip: !date, refetchOnMountOrArgChange:true});
  useEffect(()=>{
   if(!data){return}
   console.log(data)
  },[data])
-
 
 
 

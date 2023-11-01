@@ -13,12 +13,35 @@ export const NamOfCategory = styled.p`
     
     overflow: hidden;
     white-space: nowrap;
-    width:80px;
+    max-width:80px;
     text-overflow: ellipsis;
+
     
 p::first-letter {
   text-transform: uppercase;
 }
+`
+
+export const NamOfCategoryBurned = styled.p`
+    color:var( --color-orange-one);
+    font-size:12px;
+    line-height:1.5;
+    margin-bottom:8px;
+    
+    overflow: hidden;
+    white-space: nowrap;
+    max-width:60px;
+    text-overflow: ellipsis;
+
+
+    
+p::first-letter {
+  text-transform: uppercase;
+}
+@media screen and (min-width: 375px){
+  max-width:80px;
+}
+
 `
  
 
@@ -44,6 +67,10 @@ border-color:rgba(239, 237, 232, 0.3);
 font-size:14px;
 line-height:1.3;
 color:var(--color-white);
+
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
 
 @media screen and (min-width: 375px){
   width: 297px;
@@ -86,7 +113,7 @@ export const RecommendDiv = styled.div`
 display:flex;
 text-align:center;
 align-items:center;
-width: 81px;
+max-width: 81px;
 height:38px;
 padding: 10px 14px;
 border-radius: 12px;
@@ -102,7 +129,7 @@ color:var(--color-white);
 export const DivLeater = styled.div`
     overflow: hidden;
     white-space: nowrap;
-    width:80px;
+    max-width:80px;
     text-overflow: ellipsis;
 ::first-letter {
   text-transform: uppercase;
