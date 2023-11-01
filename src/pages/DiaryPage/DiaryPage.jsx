@@ -6,7 +6,7 @@ import { DayDashboard } from '../../components/DayDashboard/DayDashboard';
 import { PageName, DescktopStyle, HederOfPage } from './DiaryPage.styled';
 import { useEffect } from 'react';
 import dayStatistics from '../../../resources/dayStatistics.json';
-// import StyledDatepicker from '../../components/Calendar/StyledDatepicker';
+import StyledDatepicker from '../../components/Calendar/StyledDatepicker';
 
 const DiaryPage = () => {
   const currentDate = new Date();
@@ -34,7 +34,7 @@ const DiaryPage = () => {
       <div>
         <HederOfPage>
           <PageName>Diary</PageName>
-          {/* <StyledDatepicker /> */}
+          <StyledDatepicker />
         </HederOfPage>
         <DescktopStyle>
           {data && (
