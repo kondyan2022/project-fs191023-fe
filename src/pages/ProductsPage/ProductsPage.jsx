@@ -21,8 +21,10 @@ const ProductsPage = () => {
     isFetching: isFilterFetching,
     error,
     isError,
-  } = useGetProductByFilterQuery(Object.fromEntries([...searchParams]));
-
+  } = useGetProductByFilterQuery(
+    Object.fromEntries([...searchParams, ['limit', 3000]]),
+  );
+  console.log([...searchParams]);
   const currentUser = useGetCurrentUserQuery();
   const blood = currentUser?.data?.profile?.blood;
 

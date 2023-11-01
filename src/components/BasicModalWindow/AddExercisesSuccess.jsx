@@ -1,5 +1,5 @@
 import { PropTypes } from 'prop-types';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import like from '../../images/like-2x.png';
 import sprite from '../../images/sprite.svg';

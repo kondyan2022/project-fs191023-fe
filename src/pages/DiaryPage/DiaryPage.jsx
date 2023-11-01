@@ -6,10 +6,10 @@ import { DayDashboard } from '../../components/DayDashboard/DayDashboard';
 import { PageName, DescktopStyle, HederOfPage } from './DiaryPage.styled';
 import { useEffect } from 'react';
 import dayStatistics from '../../../resources/dayStatistics.json';
-import oneProductTest from '../../../resources/oneProductTest.json';
-import exercisesTest from '../../../resources/exercisesTest.json';
-import DayInformation from '../../../resources/DayInformation.json';
-import StyledDatepicker from '../../components/Calendar/StyledDatepicker';
+// import oneProductTest from '../../../resources/oneProductTest.json';
+// import exercisesTest from '../../../resources/exercisesTest.json';
+// import DayInformation from '../../../resources/DayInformation.json';
+// import StyledDatepicker from '../../components/Calendar/StyledDatepicker';
 
 const DiaryPage = () => {
   const currentDate = new Date();
