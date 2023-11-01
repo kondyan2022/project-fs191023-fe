@@ -21,7 +21,10 @@ const GoogleLoginPage = () => {
 
   useEffect(() => {
     if (data && data.token) {
-      dispatch(setToken(data.token));
+      const { token, user } = data;
+      const isProfile = user.profile ? true : false;
+      const action = { token, isProfile };
+      dispatch(setToken(action));
     }
   }, [data, dispatch]);
 

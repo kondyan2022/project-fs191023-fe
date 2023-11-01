@@ -29,12 +29,10 @@ const UserMenu = () => {
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
-    // console.log(userLogOut);
     userLogOut();
     dispatch(logOut());
   };
 
-  console.log(data?.avatarURL);
   const avatarUser = (
     <Photo src={data?.avatarURL} width="37" height="36" alt="Avatar" />
   );
@@ -58,9 +56,9 @@ const UserMenu = () => {
         {showMenu && <MobileMenu onClose={toggleMenu} />}
         <Navigat>
           <Ul>
-            <li>
+            {/* <li>
               <LinkMenu to="/profile">Profile</LinkMenu>
-            </li>
+            </li> */}
             <li>
               <LinkMenu to="/">Diary</LinkMenu>{' '}
             </li>

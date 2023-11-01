@@ -29,13 +29,15 @@ export const MenuWrapper = styled.div`
   div {
     position: absolute;
     bottom: 26px;
-    left: -220px;
-  }
-  svg {
-    fill: rgba(239, 237, 232, 1);
+    left: 35px;
+    display: flex;
+    width: 100%;
+    svg {
+      stroke: rgba(239, 237, 232, 1);
+    }
   }
   @media screen and (min-width: 768px) {
-    width: 350px;
+    /* width: 350px; */
     padding: 26px 32px 32px 32px;
   }
 
