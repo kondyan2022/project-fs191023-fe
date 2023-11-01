@@ -15,6 +15,49 @@ import {
   ModalWindowWrap,
   ModalWindowWrapImg,
 } from './AddProductSuccess.styled';
+// <<<<<<< exercise-card-fix
+
+// const AddExercisesSuccess = ({
+//   burnedCalories,
+//   time,
+//   closeModal,
+//   isAddModalOpen,
+// }) => {
+//   return (
+//     <>
+//       {isAddModalOpen && (
+//         <ModalWindow>
+//           <ModalWindowWrap>
+//             <ModalWindowWrapImg>
+//               <ModalWindowImg src={like} alt="like" />
+//               <ModalWindowTitle>Well done</ModalWindowTitle>
+//               <ModalWindowText>
+//                 Your time:{' '}
+//                 <ModalWindowSpan>{time ? time : 0} minutes</ModalWindowSpan>
+//               </ModalWindowText>
+//               <ModalWindowText>
+//                 Burned calories::{' '}
+//                 <ModalWindowSpan>
+//                   {burnedCalories ? burnedCalories : 0}
+//                 </ModalWindowSpan>
+//               </ModalWindowText>
+//             </ModalWindowWrapImg>
+//             <Link to="/exercises" onClick={closeModal}>
+//               <ModalWindowBtn>Next exercise</ModalWindowBtn>
+//             </Link>
+//             <Link to="/diary" onClick={closeModal}>
+//               <ModalWindowText>
+//                 To the diary
+//                 <ArrowRightIcon>
+//                   <use href={`${sprite}#icon-arrow-right`}> </use>
+//                 </ArrowRightIcon>
+//               </ModalWindowText>
+//             </Link>
+//           </ModalWindowWrap>
+//         </ModalWindow>
+//       )}
+//     </>
+// =======
 
 import { Backdrop, CloseButton } from '../../components/Products/AddModal';
 import { createPortal } from 'react-dom';
@@ -77,6 +120,7 @@ const AddExercisesSuccess = ({ burnedCalories, time, closeModal }) => {
       </ModalWindow>
     </Backdrop>,
     document.querySelector('#modal-root'),
+
   );
 };
 
