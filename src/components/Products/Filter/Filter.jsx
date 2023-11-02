@@ -13,10 +13,9 @@ import {
 import sprite from '../../../images/sprite.svg';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { indexof, slice } from 'stylis';
 import { useGetGroupProductQuery } from '../../../redux/features/prodEndpoints';
 
-const Filter = ({ setCurrentCategory, currentRecomm, setCurrentRecomm }) => {
+const Filter = ({ setCurrentCategory, setCurrentRecomm }) => {
   const [isCatOpen, setIsCatOpen] = useState(false);
   const [isRecommOpen, setIsRecommOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -119,6 +118,16 @@ const Filter = ({ setCurrentCategory, currentRecomm, setCurrentRecomm }) => {
             {isCatOpen && (
               <CategoriesList height={['228px', '276px']}>
                 <ul>
+                  <li key={'Categories'} onClick={() => {
+                    const params = Object.fromEntries([...searchParams]);
+                    if (params.category) {
+                      delete params.category;
+                      setSearchParams({ ...params });
+                    }
+                    setIsCatOpen(!isCatOpen);
+                  }}>
+                    <p>Categories</p>
+                  </li>
                   {data.map(({ name }) => (
                     <li
                       key={name}
