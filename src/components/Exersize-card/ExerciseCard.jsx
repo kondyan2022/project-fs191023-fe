@@ -47,6 +47,7 @@ const ExerciseCard = ({
   const closeModalForAdd = () => {
     setIsAddModalOpen(false);
   };
+  const [caloriesAtSecond, setCaloriesAtSecond] = useState(0);
   const [calories, setCalories] = useState(0);
   const timeS = time * 60;
   const [addDairyExercise, { isSuccess, isError }] =
@@ -99,9 +100,13 @@ const ExerciseCard = ({
                   tipWidth={7}
                   isRunning={isRunning}
                   setIsRunning={setIsRunning}
+                  setCaloriesAtSecond={setCaloriesAtSecond}
+                  calories={calories}
                 >
                   {(e) => {
-                    setCalories(Math.round(burnedCalories * (1 - -e)));
+                    setCalories(
+                      caloriesAtSecond + Math.round(burnedCalories * (1 - -e)),
+                    );
                   }}
                 </CircleCountDown>
                 <BurnedPshka>
