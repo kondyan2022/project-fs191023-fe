@@ -36,6 +36,12 @@ const ProductsPage = () => {
     }
   }, [searchParams]);
 
+  useEffect(() => {
+    if (isAddedSuccess) {
+      document.body.style.overflow = 'hidden';
+    }
+  }, [isAddedSuccess]);
+
   const handleScroll = () => {
     const listElement = listRef.current;
     if (listElement) {
@@ -125,6 +131,7 @@ const ProductsPage = () => {
         <AddProductSuccess
           excessCalories={excessCalories}
           closeModal={() => {
+            document.body.style.overflow = 'auto';
             setIsAddedSuccess(false);
             setExcessCalories(0);
           }}
