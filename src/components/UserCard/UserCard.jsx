@@ -14,6 +14,7 @@ import { useRef } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { selectToken } from '../../redux/selectors';
+import { useGetCurrentUserQuery } from '../../redux/features/authEndpoints';
 
 axios.defaults.baseURL = 'https://power-plus-service.onrender.com';
 
@@ -23,8 +24,9 @@ const UserCard = () => {
   const [newAvatar, setNewAvatar] = useState(null);
   const token = useSelector(selectToken);
   const [loadedAvatar, setLoadedAvatar] = useState(null);
+  const { data } = useGetCurrentUserQuery();
 
-  const setToken = token => {
+  const setToken = (token) => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   };
 
@@ -41,7 +43,7 @@ const UserCard = () => {
           formData.append('avatar', newAvatar);
           setToken(token);
           const { data } = await axios.patch('/users/avatars', formData, {
-            headers: { 'content-type': 'multipart/form-data' }
+            headers: { 'content-type': 'multipart/form-data' },
           });
 
           setLoadedAvatar(data.avatarURL);
@@ -50,24 +52,29 @@ const UserCard = () => {
         }
       }
     };
-    handleUpdateAvatar()
-  }, [newAvatar, token])
-
+    handleUpdateAvatar();
+  }, [newAvatar, token]);
 
   const openFileInput = () => {
     fileInputRef.current.click();
   };
 
-  const avatarUser = <Photo src={loadedAvatar} width="100%" alt="Avatar" />;
-  const avatarLogo = (
-    <SvgLogoUser fill="var(--accent-color-user-ava)" width="62" height="62">
-      <use href={`${sprite}#icon-user`}></use>
-    </SvgLogoUser>
+  const avatarUser = (
+    <Photo
+      src={loadedAvatar ? loadedAvatar : data?.avatarURL}
+      width="100%"
+      alt="Avatar"
+    />
   );
+  // const avatarLogo = (
+  //   <SvgLogoUser fill="var(--accent-color-user-ava)" width="62" height="62">
+  //     <use href={`${sprite}#icon-user`}></use>
+  //   </SvgLogoUser>
+  // );
 
   return (
     <Wrapper>
-      <Avatar>{loadedAvatar ? avatarUser : avatarLogo}</Avatar>
+      <Avatar>{avatarUser}</Avatar>
       <form id="upload-form">
         <input
           type="file"
