@@ -28,12 +28,11 @@ const DiaryPage = () => {
   
   useEffect(()=>{
   if(!data){return}
-  console.log(data)
  
  },[data])
 
 const createdAtDiary = new Date(dateOfCreated);
-createdAtDiary&&console.log(createdAtDiary)
+
 
 
 

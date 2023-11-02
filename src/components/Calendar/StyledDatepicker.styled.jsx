@@ -133,9 +133,9 @@ export const CalendarGlobalStyles = createGlobalStyle`
   }
   .react-datepicker__navigation-icon::before:hover:focus {
     border-color: rgba(239, 237, 230, 0.4);
-    /*background-image: url('public/calendar-icon.svg#icon-arrow-left')*/
+    /* background-image: url('public/calendar-icon.svg#icon-arrow-left') */
     fill:rgba(239, 237, 232, 0.6);
-  } 
+  }  
   .react-datepicker__week {
     display: flex;
     align-items: center;
@@ -237,6 +237,34 @@ export const CalendarGlobalStyles = createGlobalStyle`
 }
 `;
 
+export const IconBtn = styled.span`
+ :hover{
+  background-color:rgb(206, 146, 122, 50%);
+  border-radius: 10px;
+  
+  use{
+    --color2:#f54529;
+    transform: scale(1);
+  }
+ }
+
+`
+
+export const IconBtnLeft = styled.span`
+  svg{opacity:0.2;}
+  :hover{
+  background-color:rgb(206, 146, 122, 50%);
+  border-radius: 10px;
+  opacity:1;
+  use{
+    --color2:#f54529;
+    transform: scale(1);
+    opacity: 1;
+  }
+ }
+`
+
+
 export const TitleWrapper = styled.button`
   height: 20px;
   width: 183px;
@@ -292,7 +320,7 @@ export const TitleWrapper = styled.button`
   .react-datepicker__navigation-title-day--previous {
     --color2: var(--color-white);
     width: 16px;
-    height: 16px;    
+    height: 16px;  
   }
 `;
 export const BirthdayCalendarWrapper = styled(TitleWrapper)`
