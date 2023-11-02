@@ -36,7 +36,7 @@ const AddExercisesSuccess = ({
                 <ModalWindowSpan>{time ? time : 0} minutes</ModalWindowSpan>
               </ModalWindowText>
               <ModalWindowText>
-                Burned calories::{' '}
+                Burned calories:{' '}
                 <ModalWindowSpan>
                   {burnedCalories ? burnedCalories : 0}
                 </ModalWindowSpan>
