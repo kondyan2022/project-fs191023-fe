@@ -81,3 +81,16 @@ export const OrangCardProfile = styled(OrangCard)`
     margin: 0;
   }
 `;
+
+export const Span = styled.span`
+  color: var(--color-white);
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20px; 
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 32px; 
+  }
+`;

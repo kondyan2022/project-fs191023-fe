@@ -18,7 +18,7 @@ import { useGetCurrentUserQuery } from '../../redux/features/authEndpoints';
 
 axios.defaults.baseURL = 'https://power-plus-service.onrender.com';
 
-const UserCard = () => {
+const UserCard = ({ name }) => {
   const fileInputRef = useRef(null);
 
   const [newAvatar, setNewAvatar] = useState(null);
