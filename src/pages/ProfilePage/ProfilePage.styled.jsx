@@ -17,10 +17,15 @@ export const Title = styled.h2`
 `;
 
 export const WrapperContent = styled.div`
+  padding-bottom: 66px;
+  @media(min-width: 768px) {
+    padding-bottom: 54px;
+  }
   @media screen and (min-width: 1440px) {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
+    padding-bottom: 44px;
   }
 `;
 
@@ -74,5 +79,18 @@ export const OrangCardProfile = styled(OrangCard)`
     line-height: 1.8;
     color: rgba(239, 237, 232, 0.8);
     margin: 0;
+  }
+`;
+
+export const Span = styled.span`
+  color: var(--color-white);
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20px; 
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 32px; 
   }
 `;
