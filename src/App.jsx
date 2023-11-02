@@ -95,10 +95,38 @@ function App() {
             </PrivateRoute>
           }
         >
-          <Route path="bodyparts" element={<BodyPartsBoard />} />
-          <Route path="muscles" element={<MusclesBoard />} />
-          <Route path="equipment" element={<EquipmentBoard />} />
-          <Route path="groups/:groupId" element={<ExerciseList />} />
+          <Route
+            path="bodyparts"
+            element={
+              <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
+                <BodyPartsBoard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="muscles"
+            element={
+              <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
+                <MusclesBoard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="equipment"
+            element={
+              <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
+                <EquipmentBoard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="groups/:groupId"
+            element={
+              <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
+                <ExerciseList />
+              </PrivateRoute>
+            }
+          />
           {/* може роути тут */}
         </Route>
         <Route path="*" element={<Error404Page />} />
