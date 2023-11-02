@@ -21,13 +21,6 @@ export const CardCalories = styled.div`
     @media (min-width: 1440px) {
         bottom: 163px;
     }
-    /* &.active {
-        transform: translateX(0);
-}
-
-    &.hidden {
-        transform: translateX(100%);
-} */
 `;
 
 export const Circle = styled.div`

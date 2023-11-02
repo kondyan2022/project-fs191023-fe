@@ -12,6 +12,7 @@ export const CardVideo = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+
   @media (min-width: 768px) {
     width: 206px;
     height: 96px;

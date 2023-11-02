@@ -4,6 +4,7 @@ import { useGetStatsQuery } from '../../redux/features/statsEndpoint'
 
 const CardInfoCalories = () => {
     const { data } = useGetStatsQuery();
+
     return (
         <>
             <CardCalories className="active">
@@ -13,22 +14,22 @@ const CardInfoCalories = () => {
                     </IconRunMenStyled>
                 </Circle>
                 <FlexParent>
-                    <span>{data.totalBurnedCalories}</span>
+                    <span>{data?.totalBurnedCalories}</span>
                     <p>cal</p>
                 </FlexParent>
             </CardCalories>
 
-            <CardCalories className="hidden">
+            {/* <CardCalories className="hidden">
                 <Circle>
                     <IconRunMenStyled>
                         <use href={`${iconSvg}#icon-run-man`} />
                     </IconRunMenStyled>
                 </Circle>
                 <FlexParent>
-                    <span>{data.countOfExercises}</span>
+                    <span>{data?.countOfExercises && '150'}</span>
                     <p>exrs</p>
                 </FlexParent>
-            </CardCalories>
+            </CardCalories> */}
         </>
     )
 }

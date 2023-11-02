@@ -21,22 +21,22 @@ const WelcomeInfoVideo = () => {
                     </IconPlayVideoStyled>
                 </Circle>
                 <Wrapper>
-                    <span>{data.videoGuides}</span>
+                    <span>{data?.videoGuides}</span>
                     <p>Video tutorial</p>
                 </Wrapper>
             </CardVideo>
 
-            <CardVideo className="hidden">
+            {/* <CardVideo className="hidden">
                 <Circle>
                     <IconPlayVideoStyled>
                         <use href={`${iconSvg}#icon-play`} />
                     </IconPlayVideoStyled>
                 </Circle>
                 <Wrapper>
-                    <span>{data.userCount}</span>
+                    <span>{data?.userCount && '127'}</span>
                     <p>Users</p>
                 </Wrapper>
-            </CardVideo>
+            </CardVideo> */}
         </>
     )
 }
