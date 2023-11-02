@@ -82,6 +82,7 @@ const Filter = ({ setCurrentCategory, setCurrentRecomm }) => {
               name="search"
               value={value}
               onChange={(e) => setValue(e.target.value)}
+              autoComplete='off'
             />
             {value !== '' && (
               <CleanButton type="button" onClick={onCleanInputContent}>
