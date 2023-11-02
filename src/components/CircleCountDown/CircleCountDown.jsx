@@ -9,6 +9,8 @@ const CircleCountDown = ({
   children,
   isRunning,
   setIsRunning,
+  setCaloriesAtSecond,
+  calories,
 }) => {
   const startTime = timeInSecond * 1000;
   const [countDown, setCountDown] = useState(startTime);
@@ -36,6 +38,7 @@ const CircleCountDown = ({
 
   useEffect(() => {
     if (countDown === 0 && isRunning) {
+      setCaloriesAtSecond(calories);
       setIsRunning(false);
       setCountDown(startTime);
     }

@@ -4,7 +4,7 @@ import desktop2x from '../../../images/side-gym-desktop-tab-2x.jpg';
 export const ExList = styled.ul`
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow-y: ${(props) => (props.noScroll === true ? 'hidden' : 'auto')};
   flex-wrap: wrap;
   gap: 20px;
   width: 100%;
@@ -12,7 +12,7 @@ export const ExList = styled.ul`
   @media screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
-    overflow-y: auto;
+
     gap: 32px 16px;
     max-width: 100%;
     max-height: 726px;
@@ -34,7 +34,6 @@ export const ExList = styled.ul`
   }
 
   @media screen and (min-width: 1440px) {
-    overflow-y: auto;
     max-height: 487px;
     padding-right: 16px;
     width: 850px;
@@ -42,13 +41,13 @@ export const ExList = styled.ul`
 `;
 export const BackgroundImage = styled.div`
   display: none;
+
   @media screen and (min-width: 1440px) {
     display: block;
     z-index: -20;
     border: none;
     outline: none;
     position: absolute;
-    /* transform: translateX(130%); */
     top: 80px;
     right: -120px;
     width: 670px;
@@ -61,16 +60,14 @@ export const BackgroundImage = styled.div`
       url(${desktop1x});
     background-repeat: no-repeat;
     background-position: 100% 0;
-    @media (min-device-pixel-ratio: 2) {
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-        background-image: linear-gradient(
-            80deg,
-            #040404 -2.45%,
-            rgba(4, 4, 4, 0) 68.17%
-          ),
-          url(${desktop2x});
-      }
+
+    @media (min-resolution: 2dppx), (min-resolution: 192dpi) {
+      background-image: linear-gradient(
+          80deg,
+          #040404 -2.45%,
+          rgba(4, 4, 4, 0) 68.17%
+        ),
+        url(${desktop2x});
     }
   }
 `;
