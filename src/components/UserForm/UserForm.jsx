@@ -28,11 +28,14 @@ import validationSchemaUserForm from './../../utils/validationSchemaUserForm';
 import { bloodOptions, levelOptions, sexOptions } from './../../utils/options';
 import Loading from '../Loading/Loading';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setIsProfile } from '../../redux/features/userToken';
 
 const UserForm = () => {
   const [userFormUpdate] = useUserDataUpdateMutation();
   const { data } = useGetCurrentUserQuery();
   const [calendarSelected, setCalendarSelected] = useState(false);
+  const dispatch = useDispatch();
 
   const initialValues = {
     name: data?.name || '',
@@ -60,6 +63,8 @@ const UserForm = () => {
     };
 
     userFormUpdate(data);
+    const action = { isProfile: true };
+    dispatch(setIsProfile(action));
   };
 
   return (
@@ -81,7 +86,8 @@ const UserForm = () => {
                     type="text"
                     placeholder="Your name"
                     as={Input}
-                    className={`${formik.touched.name && !formik.errors.name && 'success'}
+                    className={`${formik.touched.name && !formik.errors.name && 'success'
+                      }
                                 ${formik.touched.name &&
                       formik.errors.name &&
                       'error'
@@ -129,7 +135,8 @@ const UserForm = () => {
                       as={InputField}
                       className={`${formik.touched.height &&
                         !formik.errors.height &&
-                        'success'}
+                        'success'
+                        }
                                 ${formik.touched.height &&
                         formik.errors.height &&
                         'error'
@@ -305,10 +312,11 @@ const UserForm = () => {
               <Button
                 primary={true}
                 type="submit"
-                isLoading={!calendarSelected && formik.isSubmitting}
+                isLoading={(!calendarSelected && formik.isSubmitting) || !formik.dirty}
               >
                 Save
               </Button>
+              {formik.isSubmitting && <Loading styles={{ position: 'absolute', top: "-40px" }} />}
             </Form>
           )}
         </Formik>

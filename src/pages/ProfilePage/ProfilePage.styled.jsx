@@ -17,10 +17,15 @@ export const Title = styled.h2`
 `;
 
 export const WrapperContent = styled.div`
+  padding-bottom: 66px;
+  @media(min-width: 768px) {
+    padding-bottom: 54px;
+  }
   @media screen and (min-width: 1440px) {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
+    padding-bottom: 44px;
   }
 `;
 
