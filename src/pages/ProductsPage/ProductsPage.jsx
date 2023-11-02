@@ -2,7 +2,7 @@ import Container from '../../components/Container/Container';
 import Filter from '../../components/Products/Filter/Filter';
 import { Section, Title, Wrap, NotFound } from './ProductsPage.styled';
 import ProductsList from '../../components/Products/ProductsList/ProductsList';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useGetProductByFilterQuery } from '../../redux/features/prodEndpoints';
 import { useSearchParams } from 'react-router-dom';
 import AddProductSuccess from '../../components/BasicModalWindow/AddProductSuccess';
@@ -14,8 +14,9 @@ const ProductsPage = () => {
   const [currentRecomm, setCurrentRecomm] = useState();
   const [excessCalories, setExcessCalories] = useState(0);
   const [isAddedSuccess, setIsAddedSuccess] = useState(false);
-  // const [updatedData, setUpdatedData] = useState([]);
   const [searchParams] = useSearchParams();
+  const [page, setPage] = useState(1);
+  const listRef = useRef();
 
   const {
     data: filterData,
@@ -24,10 +25,41 @@ const ProductsPage = () => {
     isError,
   } = useGetProductByFilterQuery(
     Object.fromEntries([...searchParams, ['limit', 3000]]),
-    );
-  
+  );
+
   const currentUser = handleCurrentUser();
   const blood = currentUser?.data?.profile?.blood;
+
+  useEffect(() => {
+    if (searchParams) {
+      setPage(1);
+    }
+  }, [searchParams]);
+
+  const handleScroll = () => {
+    const listElement = listRef.current;
+    if (listElement) {
+      const isAtBottom =
+        listElement.scrollTop + listElement.clientHeight >=
+        listElement.scrollHeight - 200;
+      if (isAtBottom) {
+        setPage((prev) => prev + 1);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (filterData?.results) {
+      const listElement = listRef.current;
+      if (listElement) {
+        listElement.addEventListener('scroll', handleScroll);
+
+        return () => {
+          listElement.removeEventListener('scroll', handleScroll);
+        };
+      }
+    }
+  }, [filterData?.results]);
 
   return (
     <Section>
@@ -68,12 +100,15 @@ const ProductsPage = () => {
         )}
         {!isFilterFetching &&
           (filterData?.results.length !== 0 ? (
-            <ProductsList
-              products={filterData.results}
-              setExcessCalories={setExcessCalories}
-              blood={blood}
-              setIsAddedSuccess={setIsAddedSuccess}
-            />
+            page && (
+              <ProductsList
+                currenrRef={listRef}
+                products={filterData.results.slice(0, page * 20)}
+                setExcessCalories={setExcessCalories}
+                blood={blood}
+                setIsAddedSuccess={setIsAddedSuccess}
+              />
+            )
           ) : (
             <NotFound>
               <p>
