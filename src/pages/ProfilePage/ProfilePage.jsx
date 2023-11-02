@@ -11,7 +11,6 @@ import Logout from '../../components/Logout/Logout';
 import Nottice from '../../components/Nottice/Nottice';
 import { WrapperDaily } from '../../components/UserCard/UserCard.styled';
 import sprite from '../../images/sprite.svg';
-// import { TestAvatar } from '../../components/TestSignIn/TestAvatar';
 
 const ProfilePage = () => {
   return (
@@ -39,11 +38,10 @@ const ProfilePage = () => {
             </OrangCardProfile>
           </WrapperDaily>
           <Nottice />
-          {/* <TestAvatar /> */}
           <Logout />
         </div>
         <WrapperForm>
-          <UserForm />          
+          <UserForm />
         </WrapperForm>
       </WrapperContent>
     </Container>
