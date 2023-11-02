@@ -251,6 +251,7 @@ export const IconBtn = styled.span`
 `
 
 export const IconBtnLeft = styled.span`
+
   svg{opacity:0.2;}
   :hover{
   background-color:rgb(206, 146, 122, 50%);
