@@ -190,3 +190,11 @@ export const ListFlex = styled.ul`
     flex-direction: column;
   }
 `;
+export const BackgroundImage = styled.svg`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: #efede8;
+  width: 16px;
+  height: 16px;
+`;
