@@ -1,4 +1,4 @@
-import { OneExercisDesktop } from '../OneDataDesktop/OneExercis'
+import { OneExercisDesktop } from '../OneDataDesktop/OneExercisDesktop'
 import desktopExercises from '../../../../resources/desktopExercises.json'
 import {ScrollContainer,DesktopStyled,NamOfCategoryDesk} from './DesktopVersion.styled'
 
@@ -13,7 +13,7 @@ return <>
 )}
 </DesktopStyled>
 <ScrollContainer>
-{exercisesTest.map(oneExercis => (<OneExercisDesktop key={oneExercis._id.$oid} {...oneExercis} date={date}/>))}
+{exercisesTest.map(oneExercis => (<OneExercisDesktop key={oneExercis._id} {...oneExercis} date={date}/>))}
 </ScrollContainer>
 </>
 } 

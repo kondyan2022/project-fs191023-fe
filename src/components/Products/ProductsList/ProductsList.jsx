@@ -7,10 +7,11 @@ const ProductsList = ({
   blood,
   setIsAddedSuccess,
   isLoading,
+  currenrRef,
 }) => {
   return (
     <>
-      <List>
+      <List ref={currenrRef}>
         {products.map(
           ({
             _id,
@@ -37,17 +38,6 @@ const ProductsList = ({
           ),
         )}
       </List>
-      {/* {!isLoading && !isError && !products && (
-        <>
-          <p>
-            Sorry, no results were found for the product filters you selected.
-            You may want to consider other search options to find the product
-            you want. Our range is wide and you have the opportunity to find
-            more options that suit your needs.
-          </p>
-          <p>Try changing the search parameters.</p>
-        </>
-      )} */}
     </>
   );
 };

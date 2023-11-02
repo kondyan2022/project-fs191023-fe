@@ -5,7 +5,7 @@
       "isNorm": true,
       "id": 1812,
       "isTime": false,
-      "onTheDay": "DSN"
+      "onTheDay": "BMR"
     },
     {
       "svg": "../src/images/sprite.svg#icon-apple",
@@ -13,7 +13,7 @@
       "isNorm": false,
       "id": 1213,
       "isTime": false,
-      "onTheDay": "burnedCalories"
+      "onTheDay": "consumedCalories"
     },
     {
       "svg": "../src/images/sprite.svg#icon-bubble",
@@ -29,7 +29,7 @@
       "isNorm": true,
       "id": 1137,
       "isTime": true,
-      "onTheDay": "BMR"
+      "onTheDay":"DSN"
     },
 
     {
@@ -37,7 +37,7 @@
       "name": "Сalories burned",
       "isNorm": false,
       "id": 1714,
-      "onTheDay": "consumedCalories",
+      "onTheDay": "burnedCalories",
       "isTime": false
     },
     {

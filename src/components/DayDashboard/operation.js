@@ -1,14 +1,13 @@
 
- export const colorFnc = (norm, done) => {
-   
+ export const colorFnc = (isSport, done) => {
+  
    const border = "rgba(239, 237, 232, 0.2)";
-
-    
-   if (norm > done){
-    return  "rgba(233, 16, 29, 1)";
+  
+   if (!isSport){
+   return 0 > done? "rgba(233, 16, 29, 1)":border
    }
-   if (norm < done){
-    return "rgba(60, 191, 97, 1)";
+   if (isSport){
+    return  0 > done? "rgba(60, 191, 97, 1)":border
    }
 
    return border

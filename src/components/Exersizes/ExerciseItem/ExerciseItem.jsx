@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import sprite from '../../../images/sprite.svg';
 import {
   ListItem,
@@ -14,7 +14,7 @@ import {
 
 import ExerciseCard from '../../Exersize-card/ExerciseCard';
 
-export const ExerciseItem = ({ exerciseCard }) => {
+export const ExerciseItem = ({ exerciseCard, setNoScroll }) => {
   const { target, bodyPart, burnedCalories, name, equipment, gifUrl, time } =
     exerciseCard;
 
@@ -24,11 +24,25 @@ export const ExerciseItem = ({ exerciseCard }) => {
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+      setNoScroll(true);
+      console.log(document.body.style.overflow);
+    }
 
+    console.log(document.body.style.overflow);
+  }, [isModalOpen]);
   const openModal = () => {
-
     setIsModalOpen(true);
   };
+  useEffect(() => {
+    if (!isModalOpen) {
+      document.body.style.overflow = 'scroll';
+      setNoScroll(false);
+      console.log(document.body.style.overflow);
+    }
+  }, [isModalOpen]);
 
   return (
     <>

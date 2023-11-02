@@ -1,28 +1,46 @@
-import {TitleCategory,OtherData,AllData,NamOfCategory,Container,DivLeater } from "./Mobile.styled"
+import {TitleCategory,OtherData,AllData,NamOfCategory,Container,DivLeater,NamOfCategoryBurned } from "./OneDataMobile.styled"
 import {BtnTrash} from '../btn/btn'
 import {useDeleteDairyExercisesMutation} from "../../../redux/features/userDiaryEndpoints";
-import { useDispatch } from "react-redux";
+import {useEffect} from 'react'
+import toast, { Toaster } from 'react-hot-toast';
 
-export const ExercisesDone = (props) =>{
+// {"exercise": "64f2458d6f67bc34bae4f8f2",
+//     "date": "01/11/2023",
+//     "time":"100",
+//     "calories":"100"
+// }
+
+export const OneExerciseMobile = (props) =>{
 const {bodyPart,equipment,name,target,burnedCalories,time,
-    _id: id, date} = props;
-const dispatch = useDispatch();
-const toDelit = {
-    id, 
+    _id:itemid, date} = props;
+
+    const toDelit = {
+    itemid, 
     date
 }
-const [deleteExercis] = useDeleteDairyExercisesMutation();
-const handleDeleteExercises = () => dispatch(deleteExercis(toDelit));
-// const DeleteEx = obj => {
-//     console.log(obj)
-//     deleteExercis(obj);
-//   };
+
+const [deleteExercis,{isSuccess,isError}] = useDeleteDairyExercisesMutation()
+
+const handleDeleteExercises = async () => {
+   await deleteExercis(toDelit);}
+
+   useEffect(() => {
+    if(isSuccess){
+        console.log("Exercis has been deleted")
+    }
+    if(isError){
+        toast.error(`Exercis cannot delete!`)
+    }
+   },[deleteExercis,isSuccess,isError])
+
+
+
 
 
 return <>
 
     <AllData>
-        
+    <Toaster/>
     <TitleCategory>
         <NamOfCategory>Body Part</NamOfCategory>
         <div>{bodyPart}</div>
@@ -44,7 +62,7 @@ return <>
         <DivLeater>{target}</DivLeater>
         </span>
         <span>
-        <NamOfCategory>Burned Calories</NamOfCategory>
+        <NamOfCategoryBurned>Burned Calories</NamOfCategoryBurned>
         <div>{burnedCalories}</div>
         </span> 
         <span>
