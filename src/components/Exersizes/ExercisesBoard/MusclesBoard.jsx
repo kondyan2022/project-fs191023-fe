@@ -46,7 +46,7 @@ export const MusclesBoard = ({ handleBoardClick, handleExNameClick }) => {
             <ExBoardList>
                 {currentItems.map(card => (
                     <ExBoardItem
-                        key={card._id}>
+                        key={card._id.$oid}>
                         <ExercisesCard
                             exercisesCard={card}
                             handleBoardClick={handleBoardClick}
