@@ -45,7 +45,7 @@ const AddExercisesSuccess = ({
             <Link to="/exercises" onClick={closeModal}>
               <ModalWindowBtn>Next exercise</ModalWindowBtn>
             </Link>
-            <Link to="/diary" onClick={closeModal}>
+            <Link to="/" onClick={closeModal}>
               <ModalWindowText>
                 To the diary
                 <ArrowRightIcon>
