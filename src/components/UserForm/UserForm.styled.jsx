@@ -110,6 +110,7 @@ export const WrapperInputField = styled.div`
 export const DivInputField = styled.div`
   display: flex;
   flex-direction: column;
+  /* gap: 14px; */
   @media screen and (min-width: 768px) {
     flex-direction: row;
   }
@@ -119,9 +120,10 @@ export const WrapperDatepicker = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  width: 100%;
+  width: 161px;
   padding: 11px;
-  margin-left: 14px;
+  /* margin-bottom: 8px; */
+  /* margin-left: 14px; */
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
   background-color: transparent;
@@ -132,17 +134,10 @@ export const WrapperDatepicker = styled.div`
   }
 `;
 
-export const Wrapper = styled.div`
-  @media screen and (min-width: 768px) {
-    margin-right: 14px;
-  }
-`;
-
 export const InputField = styled.input`
   width: 100%;
   padding: 14px;
   align-items: center;
-  gap: 14px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
   background-color: transparent;
@@ -159,7 +154,7 @@ export const InputField = styled.input`
     border-color: var(--color-orange);
   }
   @media screen and (min-width: 768px) {
-    width: 140px;
+    width: 100%;
   }
   @media screen and(max-width: 1439px) {
   }
@@ -273,7 +268,8 @@ export const WrappInput = styled.div`
   height: 100px;
   /* width: 100%; */
   margin-top: 14px;
-  gap: 14px;
+  padding: 0px;
+  /* gap: 14px; */
 
   label {
     margin-bottom: 4px;

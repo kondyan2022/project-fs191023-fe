@@ -9,7 +9,6 @@ import {
   WrapperInputField,
   InputField,
   WrapperRadio,
-  Wrapper,
   WrapperLevel,
   WrappInput,
   Status,
@@ -71,7 +70,7 @@ const UserForm = () => {
           onSubmit={handleSubmit}
         >
           {(formik) => (
-            <Form utocomplete="off">
+            <Form autoComplete="off">
               <FormContainer>
                 <div>
                   <SectionTitle>Basic info</SectionTitle>
@@ -160,47 +159,46 @@ const UserForm = () => {
                       </StatusWrapper>
                     )}
                   </WrappInput>
-                  <Wrapper>
-                    <WrappInput>
-                      <label htmlFor="currentWeight">Current Weight</label>
-                      <Field
-                        type="number"
-                        name="currentWeight"
-                        id="currentWeight"
-                        placeholder="Enter weight"
-                        as={InputField}
-                        className={`${
-                          formik.touched.currentWeight &&
-                          !formik.errors.currentWeight &&
-                          'success'
-                        }
+
+                  <WrappInput>
+                    <label htmlFor="currentWeight">Current Weight</label>
+                    <Field
+                      type="number"
+                      name="currentWeight"
+                      id="currentWeight"
+                      placeholder="Enter weight"
+                      as={InputField}
+                      className={`${
+                        formik.touched.currentWeight &&
+                        !formik.errors.currentWeight &&
+                        'success'
+                      }
                                 ${
                                   formik.touched.currentWeight &&
                                   formik.errors.currentWeight &&
                                   'error'
                                 }`}
-                      />
-                      {formik.touched.currentWeight && (
-                        <StatusWrapper>
-                          <svg
-                            className={
-                              formik.touched.currentWeight &&
-                              !formik.errors.currentWeight
-                                ? `${'success'}`
-                                : `${'error'}`
-                            }
-                          >
-                            <use href={`${spriteSvG}#icon-circle-fill`} />
-                          </svg>
-                          {formik.errors.nacurrentWeightme ? (
-                            <ErrorMessage name="currentWeight" component="p" />
-                          ) : (
-                            <p>Success!</p>
-                          )}
-                        </StatusWrapper>
-                      )}
-                    </WrappInput>
-                  </Wrapper>
+                    />
+                    {formik.touched.currentWeight && (
+                      <StatusWrapper>
+                        <svg
+                          className={
+                            formik.touched.currentWeight &&
+                            !formik.errors.currentWeight
+                              ? `${'success'}`
+                              : `${'error'}`
+                          }
+                        >
+                          <use href={`${spriteSvG}#icon-circle-fill`} />
+                        </svg>
+                        {formik.errors.currentWeight ? (
+                          <ErrorMessage name="currentWeight" component="p" />
+                        ) : (
+                          <p>Success!</p>
+                        )}
+                      </StatusWrapper>
+                    )}
+                  </WrappInput>
                 </WrapperInputField>
                 <WrapperInputField>
                   <WrappInput>
