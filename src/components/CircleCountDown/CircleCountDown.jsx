@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import iconSvg from '../../images/sprite.svg';
+import { BackgroundImage } from '../Exersize-card/ExerciseCard.styled';
 const CircleCountDown = ({
   timeInSecond,
   size,
@@ -122,7 +124,13 @@ const CircleCountDown = ({
           setIsRunning(!isRunning);
         }}
       >
-        {isRunning ? '||' : 's'}
+        {isRunning ? (
+          '||'
+        ) : (
+          <BackgroundImage>
+            <use href={`${iconSvg}#icon-play`} />
+          </BackgroundImage>
+        )}
       </button>
       {typeof children === 'function'
         ? children(angleRotation / 360)
@@ -141,6 +149,7 @@ const styles = {
     position: 'relative',
     margin: 'auto',
   },
+
   svg: {
     position: 'absolute',
     top: 0,
