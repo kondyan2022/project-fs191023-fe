@@ -27,16 +27,21 @@ import StyledDatepicker from '../Calendar/StyledDatepicker';
 import validationSchemaUserForm from './../../utils/validationSchemaUserForm';
 import { bloodOptions, levelOptions, sexOptions } from './../../utils/options';
 import Loading from '../Loading/Loading';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setIsProfile } from '../../redux/features/userToken';
 
 const UserForm = () => {
   const [userFormUpdate] = useUserDataUpdateMutation();
   const { data } = useGetCurrentUserQuery();
+  const [calendarSelected, setCalendarSelected] = useState(false);
+  const dispatch = useDispatch();
 
   const initialValues = {
     name: data?.name || '',
     height: data?.profile?.height || 150,
     currentWeight: data?.profile?.currentWeight || 35,
-    desiredWeight: data?.profile?.defaultValue || 35,
+    desiredWeight: data?.profile?.desiredWeight || 35,
     birthday: data?.profile?.birthday || new Date('2000-12-20T00:00:00.000Z'),
     blood: data?.profile?.blood || 1,
     sex: data?.profile?.sex || 'male',
@@ -58,6 +63,8 @@ const UserForm = () => {
     };
 
     userFormUpdate(data);
+    const action = { isProfile: true };
+    dispatch(setIsProfile(action));
   };
 
   return (
@@ -248,6 +255,7 @@ const UserForm = () => {
                       setFormData={new Date(formik.values.birthday)}
                       getData={(date) => {
                         formik.setFieldValue('birthday', date);
+                        setCalendarSelected(true);
                       }}
                     />
                   </WrapperDatepicker>
@@ -312,7 +320,7 @@ const UserForm = () => {
               <Button
                 primary={true}
                 type="submit"
-                isLoading={formik.isSubmitting}
+                isLoading={!calendarSelected && formik.isSubmitting}
               >
                 Save
               </Button>

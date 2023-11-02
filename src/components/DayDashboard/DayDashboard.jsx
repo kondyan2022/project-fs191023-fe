@@ -5,15 +5,19 @@ import {colorFnc} from './operation'
 
 
 export const DayDashboard = ({dayStatistics, dayInformation}) => {
-const {DSN, leftCalories,BMR,leftExercisesTime} = dayInformation;
+const { leftCalories,leftExercisesTime} = dayInformation;
+
+const isSport = true;
+
 const borderColor = {
-  "calory":colorFnc(DSN,leftCalories),
-  "sport": colorFnc(BMR,leftExercisesTime),
+  "calory":colorFnc(false,leftCalories),
+  "sport": colorFnc(true,leftExercisesTime),
 }
+
 const caloryes = dayStatistics.slice(0, 3);
 const sport = dayStatistics.slice(3, 6);
 
-const isSport = true;
+
 
 
 

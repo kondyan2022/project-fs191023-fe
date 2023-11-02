@@ -24,13 +24,15 @@ const ProductsItem = ({
   const isRecommended = isRecom;
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-
+  
   const openModal = () => {
     setIsAddModalOpen(true);
+    document.body.style.overflow = 'hidden';
   };
-
+  
   const closeModal = () => {
     setIsAddModalOpen(false);
+    document.body.style.overflow = 'auto';
   };
 
   const updatedCategory = () => {

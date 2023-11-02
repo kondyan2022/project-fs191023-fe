@@ -205,6 +205,36 @@ export const CalendarGlobalStyles = createGlobalStyle`
   .react-datepicker__triangle {
     visibility: hidden;
   }
+  .react-datepicker__year-read-view{
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.32px;   
+    color: var(--color-white);   
+    display: flex;
+    
+  }
+  .react-datepicker__year-option{
+    background: var(--color-beige);
+    color: var(--color-white);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+  }
+  .react-datepicker__year-dropdown.react-datepicker__year-dropdown--scrollable { 
+  overflow-y: scroll; 
+  
+  &::-webkit-scrollbar {
+    width: 5px; 
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color:var(--color-orange-one); 
+    border-radius: 4px; 
+    
+}
 `;
 
 export const TitleWrapper = styled.button`
@@ -254,14 +284,15 @@ export const TitleWrapper = styled.button`
   }
 
   .react-datepicker__navigation-title-day--next {
+    --color2: var(--color-white);
     width: 16px;
     height: 16px;
-    --color2: var(--color-white);
+    
   }
   .react-datepicker__navigation-title-day--previous {
-    width: 16px;
-    height: 16px;
     --color2: var(--color-white);
+    width: 16px;
+    height: 16px;    
   }
 `;
 export const BirthdayCalendarWrapper = styled(TitleWrapper)`

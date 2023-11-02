@@ -32,7 +32,7 @@ export const Section = styled.section`
       position: absolute;
       top: 0;
       right: 2px;
-      background: linear-gradient(89deg, #040404 1.1%, rgba(4, 4, 4, 0) 141.60%);
+      background: linear-gradient(89deg, #040404 1.1%, rgba(4, 4, 4, 0) 141.6%);
       height: 100%;
       width: 428px;
       background-position-x: 100%;
