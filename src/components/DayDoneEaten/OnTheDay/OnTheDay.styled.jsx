@@ -47,6 +47,7 @@ padding: 16px;
 export const Scroll = styled.div`
   max-height: 755px;
   overflow-y: scroll;
+  overflow-x: hidden;
     &::-webkit-scrollbar-thumb {
       background: rgba(239, 237, 232, 0.1);
       border-radius: 12px;
