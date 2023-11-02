@@ -46,11 +46,6 @@ const ExerciseCard = ({
   const [isAddModalOpen, setIsAddModalOpen] = useState(true);
   const closeModalForAdd = () => {
     setIsAddModalOpen(false);
-    // =======
-    //   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-    //   const closeModalForAdd = () => {
-    //     setIsAddModalOpen(true);
-    // >>>>>>> main
   };
   const [calories, setCalories] = useState(0);
   const timeS = time * 60;
@@ -83,15 +78,6 @@ const ExerciseCard = ({
       />
     )
   ) : (
-    // =======
-    //     <AddExercisesSuccess
-    //       burnedCalories={burnedCalories}
-    //       time={time}
-    //       closeModal={closeModalForAdd}
-    //       isAddModalOpen={isAddModalOpen}
-    //       calories={calories}
-    //     />
-    // >>>>>>> main
     <Backdrop>
       <CardBack>
         <ListFlex>
