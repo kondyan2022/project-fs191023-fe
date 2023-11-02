@@ -9,7 +9,7 @@ const authApiSlice = userSplitApi.injectEndpoints({
     uploadUserAvatar: builder.mutation({
       query: (file) => ({
         url: `/users/avatars`,
-        method: 'POST',
+        method: 'PATCH',
         body: file,
         headers: { 'content-type': 'multipart/form-data' },
       }),

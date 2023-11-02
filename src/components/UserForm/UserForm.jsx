@@ -320,10 +320,11 @@ const UserForm = () => {
               <Button
                 primary={true}
                 type="submit"
-                isLoading={!calendarSelected && formik.isSubmitting}
+                isLoading={(!calendarSelected && formik.isSubmitting) || !formik.dirty}
               >
                 Save
               </Button>
+              {formik.isSubmitting && <Loading styles={{ position: 'absolute', top: "-40px" }} />}
             </Form>
           )}
         </Formik>
