@@ -9,9 +9,7 @@ background-color: transparent;
 
  :hover{
   svg{
-    fill:aqua;
-    stroke: slateblue;
-    /* rgba(230, 83, 60, 1); */
+    --color2:#ec4a31;
   }
  }
 

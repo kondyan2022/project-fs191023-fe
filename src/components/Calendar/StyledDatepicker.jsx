@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import {
   CalendarGlobalStyles,
   TitleWrapper,
-  BirthdayCalendarWrapper,
+  BirthdayCalendarWrapper,IconBtn,IconBtnLeft
 } from './StyledDatepicker.styled';
 import 'react-datepicker/dist/react-datepicker.css';
 import sprite from '../../images/sprite.svg';
@@ -48,22 +48,22 @@ const StyledDatepicker = ({
         </div>
 
         <div className="react-datepicker__navigation-title-day">
-          <span
+          <IconBtnLeft
             onClick={handlePrevDay}
             className="react-datepicker__navigation-title-day--previous"
           >
             <svg width="16" height="16">
               <use href={sprite + '#icon-chevron-left'} />
             </svg>
-          </span>
-          <span
+          </IconBtnLeft>
+          <IconBtn
             onClick={handleNextDay}
             className="react-datepicker__navigation-title-day--next"
           >
             <svg width="16" height="16">
               <use href={sprite + '#icon-chevron-right'} />
             </svg>
-          </span>
+          </IconBtn>
         </div>
       </TitleWrapper>
     );
