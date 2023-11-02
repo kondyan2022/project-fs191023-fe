@@ -4,7 +4,7 @@ import desktop2x from '../../../images/side-gym-desktop-tab-2x.jpg';
 export const ExList = styled.ul`
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  overflow-y: ${(props) => (props.noScroll === true ? 'hidden' : 'auto')};
   flex-wrap: wrap;
   gap: 20px;
   width: 100%;
