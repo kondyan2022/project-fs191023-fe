@@ -85,6 +85,9 @@ const StyledDatepicker = ({
     setSelectedDate(nextDay);
   };
 
+const [minYear, setMinYear] = useState(1950);
+const maxYear = new Date().getFullYear(); 
+
   return (
     <>
       <DatePicker
@@ -104,6 +107,11 @@ const StyledDatepicker = ({
         calendarStartDay={1}
         formatWeekDay={(day) => day.substr(0, 2)}
         excludeDates={disabledDates}
+        showYearDropdown={calendarType === 'birthday'}
+        scrollableYearDropdown
+        yearDropdownItemNumber={maxYear - minYear + 1}
+        minDate={new Date(minYear, 0, 1)} 
+        maxDate={new Date(maxYear, 11, 31)}
       />
       <CalendarGlobalStyles />
     </>
