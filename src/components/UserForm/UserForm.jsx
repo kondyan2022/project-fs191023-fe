@@ -28,11 +28,14 @@ import validationSchemaUserForm from './../../utils/validationSchemaUserForm';
 import { bloodOptions, levelOptions, sexOptions } from './../../utils/options';
 import Loading from '../Loading/Loading';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setIsProfile } from '../../redux/features/userToken';
 
 const UserForm = () => {
   const [userFormUpdate] = useUserDataUpdateMutation();
   const { data } = useGetCurrentUserQuery();
   const [calendarSelected, setCalendarSelected] = useState(false);
+  const dispatch = useDispatch();
 
   const initialValues = {
     name: data?.name || '',
@@ -60,6 +63,8 @@ const UserForm = () => {
     };
 
     userFormUpdate(data);
+    const action = { isProfile: true };
+    dispatch(setIsProfile(action));
   };
 
   return (
@@ -81,11 +86,14 @@ const UserForm = () => {
                     type="text"
                     placeholder="Your name"
                     as={Input}
-                    className={`${formik.touched.name && !formik.errors.name && 'success'}
-                                ${formik.touched.name &&
-                      formik.errors.name &&
-                      'error'
-                      }`}
+                    className={`${
+                      formik.touched.name && !formik.errors.name && 'success'
+                    }
+                                ${
+                                  formik.touched.name &&
+                                  formik.errors.name &&
+                                  'error'
+                                }`}
                   />
                   {formik.touched.name && (
                     <Status>
@@ -127,13 +135,16 @@ const UserForm = () => {
                       id="height"
                       placeholder="Enter height"
                       as={InputField}
-                      className={`${formik.touched.height &&
+                      className={`${
+                        formik.touched.height &&
                         !formik.errors.height &&
-                        'success'}
-                                ${formik.touched.height &&
-                        formik.errors.height &&
-                        'error'
-                        }`}
+                        'success'
+                      }
+                                ${
+                                  formik.touched.height &&
+                                  formik.errors.height &&
+                                  'error'
+                                }`}
                     />
 
                     {formik.touched.height && (
@@ -164,21 +175,23 @@ const UserForm = () => {
                       id="currentWeight"
                       placeholder="Enter weight"
                       as={InputField}
-                      className={`${formik.touched.currentWeight &&
+                      className={`${
+                        formik.touched.currentWeight &&
                         !formik.errors.currentWeight &&
                         'success'
-                        }
-                                ${formik.touched.currentWeight &&
-                        formik.errors.currentWeight &&
-                        'error'
-                        }`}
+                      }
+                                ${
+                                  formik.touched.currentWeight &&
+                                  formik.errors.currentWeight &&
+                                  'error'
+                                }`}
                     />
                     {formik.touched.currentWeight && (
                       <StatusWrapper>
                         <svg
                           className={
                             formik.touched.currentWeight &&
-                              !formik.errors.currentWeight
+                            !formik.errors.currentWeight
                               ? `${'success'}`
                               : `${'error'}`
                           }
@@ -205,21 +218,23 @@ const UserForm = () => {
                       as={InputField}
                       required
                       pattern="[35]"
-                      className={`${formik.touched.desiredWeight &&
+                      className={`${
+                        formik.touched.desiredWeight &&
                         !formik.errors.desiredWeight &&
                         'success'
-                        }
-                                ${formik.touched.desiredWeight &&
-                        formik.errors.desiredWeight &&
-                        'error'
-                        }`}
+                      }
+                                ${
+                                  formik.touched.desiredWeight &&
+                                  formik.errors.desiredWeight &&
+                                  'error'
+                                }`}
                     />
                     {formik.touched.desiredWeight && (
                       <StatusWrapper>
                         <svg
                           className={
                             formik.touched.desiredWeight &&
-                              !formik.errors.desiredWeight
+                            !formik.errors.desiredWeight
                               ? `${'success'}`
                               : `${'error'}`
                           }
