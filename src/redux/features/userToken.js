@@ -15,6 +15,9 @@ export const tokenReducer = createSlice({
       state.isProfile = action.payload.isProfile;
       state.isLogin = true;
     },
+    setIsProfile: (state, action) => {
+      state.isProfile = action.payload.isProfile;
+    },
     logOut: (state) => {
       state.token = null;
       state.isProfile = false;
@@ -23,4 +26,4 @@ export const tokenReducer = createSlice({
   },
 });
 
-export const { setToken, logOut } = tokenReducer.actions;
+export const { setToken, setIsProfile, logOut } = tokenReducer.actions;
