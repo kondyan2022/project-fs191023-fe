@@ -17,7 +17,7 @@ import { selectToken } from '../../redux/selectors';
 
 axios.defaults.baseURL = 'https://power-plus-service.onrender.com';
 
-const UserCard = () => {
+const UserCard = ({ name }) => {
   const fileInputRef = useRef(null);
 
   const [newAvatar, setNewAvatar] = useState(null);
