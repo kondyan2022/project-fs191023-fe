@@ -7,7 +7,7 @@ import { useGetProductByFilterQuery } from '../../redux/features/prodEndpoints';
 import { useSearchParams } from 'react-router-dom';
 import AddProductSuccess from '../../components/BasicModalWindow/AddProductSuccess';
 import { handleCurrentUser } from '../../hooks/handleCurrentUser';
-import { FallingLines } from 'react-loader-spinner';
+import { Oval } from 'react-loader-spinner';
 
 const ProductsPage = () => {
   const [currentCategory, setCurrentCategory] = useState();
@@ -90,11 +90,14 @@ const ProductsPage = () => {
               height: '100px',
             }}
           >
-            <FallingLines
+            <Oval
               color="#e6533c"
               width="100"
               visible={true}
-              ariaLabel="falling-lines-loading"
+              ariaLabel="oval-loading"
+              secondaryColor="#ef89649c"
+              strokeWidth={4}
+              strokeWidthSecondary={4}
             />
           </div>
         )}
