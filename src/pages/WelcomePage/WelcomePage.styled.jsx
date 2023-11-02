@@ -45,7 +45,7 @@ export const WrapperFlex = styled.div`
 `;
 
 export const IconCircleDecorStyled = styled.svg`
-    z-index: -1;
+    /* z-index: ; */
     stroke-width: 2px;
     stroke: var(--color-orange-one);
     fill: transparent;

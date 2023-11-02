@@ -1,6 +1,7 @@
+import { useState } from 'react';
+import iconSvg from '../../images/sprite.svg';
 import CircleCountDown from '../CircleCountDown/CircleCountDown';
 import { StyledAddButton } from '../Products/AddModal/AddModal.styled';
-import { useState } from 'react';
 import {
   AddButtonPos,
   BurnedPshka,
@@ -15,9 +16,9 @@ import {
   Pshka,
   StyledDisableButton,
 } from './ExerciseCard.styled';
-import iconSvg from '../../images/sprite.svg';
 
 import { useAddDairyExercisesMutation } from '../../redux/features/userDiaryEndpoints';
+import AddExercisesSuccess from '../BasicModalWindow/AddExercisesSuccess';
 
 const ExerciseCard = ({
   id,
@@ -28,7 +29,7 @@ const ExerciseCard = ({
   gifUrl,
   time,
   burnedCalories,
-  setIsAddModalOpen,
+  setIsModalOpen,
 }) => {
   const date = () => {
     const today = new Date();
@@ -39,25 +40,56 @@ const ExerciseCard = ({
   };
   const data = date();
 
+  const [isAddModalOpen, setIsAddModalOpen] = useState(true);
+  const closeModalForAdd = () => {
+    setIsAddModalOpen(false);
+// =======
+//   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+//   const closeModalForAdd = () => {
+//     setIsAddModalOpen(true);
+// >>>>>>> main
+  };
   const [calories, setCalories] = useState(0);
   const timeS = time * 60;
-  const [addDairyExercise] = useAddDairyExercisesMutation();
+  const [addDairyExercise, { isSuccess, isError }] =
+    useAddDairyExercisesMutation();
   const [isRunning, setIsRunning] = useState(false);
+
   const handleAddToDiary = () => {
-    console.log({ exercise: id, data, time, calories });
     addDairyExercise({
       exercise: id,
       date: data,
       time,
-      consumeCalories: calories,
       calories,
     });
-  };
-  const closeModal = () => {
-    setIsAddModalOpen(false);
+    console.log(isSuccess);
   };
 
-  return (
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return isSuccess ? (
+
+    isAddModalOpen && (
+      <AddExercisesSuccess
+        burnedCalories={burnedCalories}
+        time={time}
+        closeModal={closeModalForAdd}
+        isAddModalOpen={isAddModalOpen}
+        calories={calories}
+      />
+    )
+// =======
+//     <AddExercisesSuccess
+//       burnedCalories={burnedCalories}
+//       time={time}
+//       closeModal={closeModalForAdd}
+//       isAddModalOpen={isAddModalOpen}
+//       calories={calories}
+//     />
+// >>>>>>> main
+  ) : (
     <CardBack>
       <ListFlex>
         <li>

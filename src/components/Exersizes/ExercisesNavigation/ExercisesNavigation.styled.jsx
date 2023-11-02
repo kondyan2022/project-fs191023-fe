@@ -11,7 +11,6 @@ export const ExercisesNav = styled.nav`
   }
 `;
 
-
 export const ExerciseNavLink = styled(Link)`
   color: rgba(239, 237, 232, 0.4);
   font-size: 14px;
@@ -19,7 +18,6 @@ export const ExerciseNavLink = styled(Link)`
   line-height: 1.28;
   cursor: pointer;
   position: relative;
-
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -41,7 +39,7 @@ export const ExerciseNavLink = styled(Link)`
     border-radius: 2px;
     background-color: var(--color-orange-one);
     @media screen and (max-width: 767.99px) {
-        bottom: -8px;
+      bottom: -8px;
     }
   }
 `;

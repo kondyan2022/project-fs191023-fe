@@ -6,7 +6,9 @@ import { DayDashboard } from '../../components/DayDashboard/DayDashboard';
 import { PageName, DescktopStyle, HederOfPage } from './DiaryPage.styled';
 import { useEffect,useState } from 'react';
 import dayStatistics from '../../../resources/dayStatistics.json';
+
 import StyledDatepicker from '../../components/Calendar/StyledDatepicker';
+
 
 const DiaryPage = () => {
   const [date, setData] = useState(new Date());
@@ -66,12 +68,14 @@ const DiaryPage = () => {
       <div>
         <HederOfPage>
           <PageName>Diary</PageName>
+
           <StyledDatepicker 
           // setFormData={new Date(currentDate)}
           //           getData={(date) => {
           //             PreviousDate(date)
           setFormData={new Date(date)}
           getData={(date) => setData(date)} />
+
         </HederOfPage>
         <DescktopStyle>
           {data && (
