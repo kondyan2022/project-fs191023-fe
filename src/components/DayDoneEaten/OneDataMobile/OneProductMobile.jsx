@@ -1,28 +1,43 @@
-import {TitleCategory,OtherData,AllData,NamOfCategory,RecommendDiv,Container } from "./Mobile.styled"
-
+import {TitleCategory,OtherData,AllData,NamOfCategory,RecommendDiv,Container } from "./OneDataMobile.styled"
 import {BtnTrash} from '../btn/btn'
 import {Circle} from '../Circle/Circle'
-import { useDispatch } from "react-redux";
-
+import {useEffect} from 'react'
 import { useDeleteDiaryProductsMutation } from "../../../redux/features/userDiaryEndpoints";
+import toast, { Toaster } from 'react-hot-toast';
+// { "product":"5d51694902b2373622ff578e",
+// "date":"01/11/2023",
+// "amount":"100",
+// "calories":"150"
+// }
 
+export const OneProductMobile = (props) =>{
+const {title,consumeCalories,weight,recommended,category, _id: itemid, date} = props;
 
-export const ProductEaten = (props) =>{
-const {title,consumeCalories,weight,recommended,category, _id: id, date} = props;
-const dispatch = useDispatch();
 const toDelit = {
-    id, 
+    itemid, 
     date
 }
 
-const [deleteProduct] = useDeleteDiaryProductsMutation()
-const handleDeleteProduct = () => dispatch(deleteProduct(toDelit));
+const [deleteProduct,{isSuccess,isError}] = useDeleteDiaryProductsMutation()
+const handleDeleteProduct = async () => {await deleteProduct(toDelit);}
+
+   useEffect(() => {
+    if(isSuccess){
+        console.log("Product has been deleted")
+        
+    }
+    if(isError){
+        toast.error(`Product cannot delete!`)
+    }
+   },[deleteProduct,isSuccess,isError])
+
+
 
  return <>
 
-    <AllData>
-        
-    <TitleCategory>
+<AllData>
+        <Toaster />
+        <TitleCategory>
         <NamOfCategory>Title</NamOfCategory>
         <div>{title}</div>
         </TitleCategory>
@@ -46,11 +61,8 @@ const handleDeleteProduct = () => dispatch(deleteProduct(toDelit));
         <RecommendDiv>{recommended? (<><Circle isRecommended={recommended}></Circle>Yes</>) : (<><Circle isRecommended={recommended}></Circle>No</>)}</RecommendDiv>
         </span>            
         </OtherData>
-        {/* <button onClick={{handleDeleteProduct}}></button> */}
        <BtnTrash handleDeleteProduct={handleDeleteProduct}  />
-   
-     
-        </Container>
+       </Container>
 </AllData>
     </>
 

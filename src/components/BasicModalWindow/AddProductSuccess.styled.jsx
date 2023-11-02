@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ModalWindow = styled.div`
+  z-index: 11;
   display: flex;
   flex-direction: column;
   align-items: center;

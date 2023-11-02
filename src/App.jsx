@@ -18,7 +18,8 @@ import { MusclesBoard } from './components/Exersizes/ExercisesBoard/MusclesBoard
 import { EquipmentBoard } from './components/Exersizes/ExercisesBoard/EquipmentBoard';
 
 import GoogleLoginPage from './pages/GoogleLoginPage/GoogleLoginPage';
-import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
+import { useEffect, useState } from 'react';
+// import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
 // import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
 //
 // import { selectToken } from './redux/selectors';
@@ -26,8 +27,19 @@ import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
 
 function App() {
   const isLoggedIn = useSelector(isLogin);
+  const [loading, setLoading] = useState(true);
 
-  return (
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 100);
+  }, []);
+  // Имитируем задержку загрузки
+
+  loading;
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route

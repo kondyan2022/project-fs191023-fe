@@ -1,38 +1,57 @@
 import Container from '../../components/Container/Container';
 import { OnTheDay } from '../../components/DayDoneEaten/OnTheDay/OnTheDay';
-
+import {handleCurrentUser} from '../../hooks/handleCurrentUser'
 import { useGetDiaryQuery } from '../../redux/features/userDiaryEndpoints';
 import { DayDashboard } from '../../components/DayDashboard/DayDashboard';
 import { PageName, DescktopStyle, HederOfPage } from './DiaryPage.styled';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import dayStatistics from '../../../resources/dayStatistics.json';
-// import oneProductTest from '../../../resources/oneProductTest.json';
-// import exercisesTest from '../../../resources/exercisesTest.json';
-// import DayInformation from '../../../resources/DayInformation.json';
-// import StyledDatepicker from '../../components/Calendar/StyledDatepicker';
+
+import StyledDatepicker from '../../components/Calendar/StyledDatepicker';
+
 
 const DiaryPage = () => {
-  const currentDate = new Date();
+  const [date, setData] = useState(new Date());
+  
 
-  const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-  const day = String(currentDate.getDate()).padStart(2, '0');
-  const year = currentDate.getFullYear();
-  const date = `${year}${month}${day}`;
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const year = date.getFullYear();
+  const dateForFunction = `${year}${month}${day}`;
 
-  const { data } = useGetDiaryQuery(date, { skip: !date });
-  useEffect(() => {
-    if (!data) {
-      return;
-    }
-    console.log(data);
-  }, [data]);
+ 
+  const currentUser  = handleCurrentUser()
+  const dateOfCreated = currentUser?.data?.createdAt;
+  const {data} = useGetDiaryQuery(dateForFunction, {skip: !date, refetchOnMountOrArgChange:true});
+  
+
+  
+  useEffect(()=>{
+  if(!data){return}
+  console.log(data)
+ 
+ },[data])
+
+const createdAtDiary = new Date(dateOfCreated);
+createdAtDiary&&console.log(createdAtDiary)
+
+
+
+
+
 
   return (
     <Container>
       <div>
         <HederOfPage>
           <PageName>Diary</PageName>
-          {/* <StyledDatepicker/> */}
+
+         {dateOfCreated&&(<StyledDatepicker 
+          minDate={createdAtDiary}
+          setFormData={new Date(date)}
+          getData={(date) => setData(date)}/>)
+          }
+
         </HederOfPage>
         <DescktopStyle>
           {data && (
@@ -40,12 +59,9 @@ const DiaryPage = () => {
               <DayDashboard
                 dayStatistics={dayStatistics}
                 dayInformation={data}
-                // dayInformation={DayInformation}
               ></DayDashboard>
               <div>
                 <OnTheDay
-                  // oneProductTest={oneProductTest}
-                  // exercisesTest={exercisesTest}
                   date={data.date}
                   oneProductTest={data.products}
                   exercisesTest={data.exercises}
