@@ -70,11 +70,12 @@ const StyledDatepicker = ({
   };
 
   const handlePrevDay = () => {
-    const prevDay = subDays(selectedDate, 1);
+    const prevDay = subDays(selectedDate, 1); 
     if (minDate && prevDay < minDate) {
       return;
     }
     setSelectedDate(prevDay);
+    getData(prevDay);
   };
 
   const handleNextDay = () => {
@@ -83,20 +84,22 @@ const StyledDatepicker = ({
       return;
     }
     setSelectedDate(nextDay);
+    getData(nextDay);
   };
+
 
   return (
     <>
       <DatePicker
         selected={setFormData && selectedDate}
-        onChange={(date) => {
-          if (minDate && date < minDate) {
+        onChange={(date) => { 
+          if (minDate && date > minDate) { 
             return;
           }
           if (maxDate && date > maxDate) {
             return;
           }
-          setSelectedDate(date);
+         setSelectedDate(date)
           getData(date);
         }}
         customInput={<CustomInput />}
