@@ -70,18 +70,22 @@ const StyledDatepicker = ({
   };
 
   const handlePrevDay = () => {
-    const prevDay = subDays(selectedDate, 1); 
+    const prevDay = subDays(selectedDate, 1);
     if (minDate && prevDay < minDate) {
       return;
     }
-    setSelectedDate(prevDay);
-    getData(prevDay);
+  setSelectedDate(prevDay);
+  getData(prevDay);
   };
+ 
+  
+
+ 
 
   const handleNextDay = () => {
     const nextDay = addDays(selectedDate, 1);
     if (maxDate && nextDay > maxDate) {
-      return;
+      return ;
     }
     setSelectedDate(nextDay);
     getData(nextDay);

@@ -167,5 +167,6 @@ const styles = {
     color: '#EFEDE8',
     cursor: 'pointer',
     border: 1,
+    borderRadius: 5,
   },
 };

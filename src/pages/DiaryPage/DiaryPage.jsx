@@ -31,10 +31,11 @@ const DiaryPage = () => {
  
  },[data])
 
+
+
 const createdAtDiary = new Date(dateOfCreated);
 
-
-
+createdAtDiary.setDate(createdAtDiary.getDate() - 1);
 
 
 
