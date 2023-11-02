@@ -3449,6 +3449,7 @@ line-height: 1.3;
     width: 405px;
   }
 `,TY=({products:e,setExcessCalories:t,blood:r,setIsAddedSuccess:i,isLoading:n})=>c.jsx(c.Fragment,{children:c.jsx(qY,{children:e.map(({_id:a,weight:o,calories:s,category:l,title:u,groupBloodNotAllowed:d})=>c.jsx(OY,{children:c.jsx(UY,{weight:o,calories:s,category:l,title:u,id:a,setExcessCalories:t,isRecom:!d[r],groupBloodNotAllowed:d,setIsAddedSuccess:i,isLoading:n})},a))})}),DY="/project-fs191023-fe/assets/avocado-2x-1cf208a8.png",N_=H.div`
+  z-index: 11;
   display: flex;
   flex-direction: column;
   align-items: center;
