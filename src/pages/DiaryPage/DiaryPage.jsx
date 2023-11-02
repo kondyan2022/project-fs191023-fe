@@ -36,8 +36,7 @@ const DiaryPage = () => {
 const createdAtDiary = new Date(dateOfCreated);
 
 createdAtDiary.setDate(createdAtDiary.getDate() - 1);
-
-
+console.log(createdAtDiary)
 
 
 
