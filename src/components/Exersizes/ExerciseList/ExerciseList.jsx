@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import exercises from '../../../../resources/exercises.json';
 import { ExerciseItem } from '../ExerciseItem/ExerciseItem';
-import { ExList, BackgroundImage } from './ExerciseList.styled';
+import { BackgroundImage, ExList } from './ExerciseList.styled';
 
 export const ExerciseList = ({
   exerciseName,
