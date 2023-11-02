@@ -34,8 +34,6 @@ const UserForm = () => {
   const { data } = useGetCurrentUserQuery();
   const [calendarSelected, setCalendarSelected] = useState(false);
 
-  console.log(data);
-
   const initialValues = {
     name: data?.name || '',
     height: data?.profile?.height || 150,
