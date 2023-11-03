@@ -1,5 +1,14 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
+const fadeOut = keyframes`
+    from { opacity: 1; }
+    to { opacity: 0; }
+`;
+
+const fadeIn = keyframes`
+    from { opacity: 0; }
+    to { opacity: 1;}
+`;
 
 export const CardCalories = styled.div`
     background: #ef8964;
@@ -20,6 +29,12 @@ export const CardCalories = styled.div`
     }
     @media (min-width: 1440px) {
         bottom: 163px;
+    }
+    &.first {
+        animation: ${fadeOut} 15s infinite; 
+    }
+    &.second {
+        animation: ${fadeIn}  15s infinite;
     }
 `;
 

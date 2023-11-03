@@ -1,11 +1,12 @@
 import { CardVideo, Circle, IconPlayVideoStyled, Wrapper } from "./CardInfoVideo.styled"
 import iconSvg from '../../images/sprite.svg'
 import { useGetStatsQuery } from '../../redux/features/statsEndpoint'
+import Loading from "../Loading/Loading";
 
 const WelcomeInfoVideo = () => {
     const { data } = useGetStatsQuery();
 
-    console.log(data)
+    // console.log(data)
     // countOfExercises: 129
     // totalBurnedCalories: 8932
     // totalExercisesTime: 104
@@ -14,29 +15,29 @@ const WelcomeInfoVideo = () => {
 
     return (
         <>
-            <CardVideo className="active">
+            <CardVideo className="first">
                 <Circle>
                     <IconPlayVideoStyled>
                         <use href={`${iconSvg}#icon-play`} />
                     </IconPlayVideoStyled>
                 </Circle>
                 <Wrapper>
-                    <span>{data?.videoGuides}</span>
+                    <span>{data?.videoGuides || <Loading />}</span>
                     <p>Video tutorial</p>
                 </Wrapper>
             </CardVideo>
 
-            {/* <CardVideo className="hidden">
+            <CardVideo className="second">
                 <Circle>
                     <IconPlayVideoStyled>
-                        <use href={`${iconSvg}#icon-play`} />
+                        <use href={`${iconSvg}#icon-user`} />
                     </IconPlayVideoStyled>
                 </Circle>
                 <Wrapper>
-                    <span>{data?.userCount && '127'}</span>
+                    <span>{data?.userCount || <Loading />}</span>
                     <p>Users</p>
                 </Wrapper>
-            </CardVideo> */}
+            </CardVideo>
         </>
     )
 }

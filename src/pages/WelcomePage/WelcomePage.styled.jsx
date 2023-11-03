@@ -1,4 +1,10 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const pulse = keyframes`
+    0% { transform: scale(1.1);}
+    50% { transform: scale(1);}
+    100% {transform: scale(1.1);}
+`;
 
 export const Wrapper = styled.div`
     padding-top: 127px;
@@ -45,7 +51,6 @@ export const WrapperFlex = styled.div`
 `;
 
 export const IconCircleDecorStyled = styled.svg`
-    /* z-index: ; */
     stroke-width: 2px;
     stroke: var(--color-orange-one);
     fill: transparent;
@@ -54,6 +59,7 @@ export const IconCircleDecorStyled = styled.svg`
     position: absolute;
     top: 43px;
     left: -8px;
+    animation: ${pulse} 4s infinite;
     @media(min-width: 768px) {
         width: 185px;
         height: 67px;

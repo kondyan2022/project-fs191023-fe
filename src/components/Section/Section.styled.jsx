@@ -11,14 +11,16 @@ import imageTab2x from '../../images/side-gym-tablet-2x.jpg'
 export const SectionWrapper = styled.div`
     width: 100%;
     max-width: 375px;
-    height: 812px;
+    height: 100%;
+    /* max-height: 812px; */
     margin: 0 auto;
     background-image: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0.00) 19.15%),
                 linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0.00) 66.68%),
                 url(${image1x});
     /* background-size: contain; */
     background-repeat: no-repeat;
-    background-position: 107px 240px;
+    /* background-position: 107px 240px; */
+    background-position: right bottom;
     position: relative;
     
     @media (min-device-pixel-ratio: 2),
@@ -32,11 +34,11 @@ export const SectionWrapper = styled.div`
 
     @media (min-width: 768px) {
         max-width: 768px;
-        height: 1024px; 
+        /* max-height: 1024px;  */
         background-image: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0.00) 19.15%),
                     linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0.00) 66.68%),
                     url(${imageTab1x});
-        background-position: 326px 131px;
+        /* background-position: 326px 131px; */
     }
 
     @media (min-width: 768px) and (min-device-pixel-ratio: 2),
@@ -50,9 +52,9 @@ export const SectionWrapper = styled.div`
 
     @media (min-width: 1440px) {
         max-width: 1440px;
-        height: 800px;
+        /* max-height: 800px; */
         background-image: url(${imageLarge1x});
-        background-position: 760px 0;
+        /* background-position: 760px 0; */
     }
 
     @media (min-width: 1440px) and (min-device-pixel-ratio: 2),

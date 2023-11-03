@@ -1,4 +1,14 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const fadeOut = keyframes`
+  from { opacity: 1; }
+  to { opacity: 0; }
+`;
+
+const fadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1;}
+`;
 
 export const CardVideo = styled.div`
   background: #303030;
@@ -24,6 +34,12 @@ export const CardVideo = styled.div`
     right: 464px;
     bottom: 321px;
   }
+    &.first {
+    animation: ${fadeOut} 15s infinite; 
+    }
+    &.second {
+        animation: ${fadeIn}  15s infinite;
+    }
 `;
 
 export const Circle = styled.div`
