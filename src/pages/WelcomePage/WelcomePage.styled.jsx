@@ -1,9 +1,9 @@
 import styled, { keyframes } from 'styled-components'
 
 const pulse = keyframes`
-    0% { transform: scale(1.1);}
+    0% { transform: scale(1.05);}
     50% { transform: scale(1);}
-    100% {transform: scale(1.1);}
+    100% {transform: scale(1.05);}
 `;
 
 export const Wrapper = styled.div`
@@ -59,7 +59,7 @@ export const IconCircleDecorStyled = styled.svg`
     position: absolute;
     top: 43px;
     left: -8px;
-    animation: ${pulse} 4s infinite;
+    animation: ${pulse} 5s infinite;
     @media(min-width: 768px) {
         width: 185px;
         height: 67px;
