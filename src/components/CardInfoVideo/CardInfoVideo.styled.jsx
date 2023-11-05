@@ -93,5 +93,18 @@ export const IconPlayVideoStyled = styled.svg`
     bottom: 9.5px;
     left: 12px;
   }
+
+  &.user-icon {
+    width: 12px;
+    height: 12px;
+    bottom: 9px;
+    left: 8.5px;
+    @media(min-width: 768px) {
+      width: 20px;
+      height: 20px;
+      bottom: 9.5px;
+      left: 10px;
+    }
+  }
 `;
 
