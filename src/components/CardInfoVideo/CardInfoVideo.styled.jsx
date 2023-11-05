@@ -18,7 +18,7 @@ export const CardVideo = styled.div`
   padding: 14px 14px 14px 18px;
   position: absolute;
   right: 15px;
-  bottom: 200px;
+  bottom: 150px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -26,13 +26,13 @@ export const CardVideo = styled.div`
   @media (min-width: 768px) {
     width: 206px;
     height: 96px;
-    right: 231px;
-    bottom: 214px;
+    right: 240px;
+    bottom: 290px;
     padding: 20px 36px 20px 23px;
   }
   @media (min-width: 1440px) {
-    right: 464px;
-    bottom: 321px;
+    right: 445px;
+    bottom: 330px;
   }
     &.first {
     animation: ${fadeOut} 15s infinite; 
@@ -92,6 +92,19 @@ export const IconPlayVideoStyled = styled.svg`
     height: 20px;
     bottom: 9.5px;
     left: 12px;
+  }
+
+  &.user-icon {
+    width: 12px;
+    height: 12px;
+    bottom: 9px;
+    left: 8.5px;
+    @media(min-width: 768px) {
+      width: 20px;
+      height: 20px;
+      bottom: 9.5px;
+      left: 10px;
+    }
   }
 `;
 

@@ -99,6 +99,7 @@ export const BtnShowPassword = styled.button`
 
 export const SvgEye = styled.svg`
   stroke: var(--color-white);
+  fill: transparent;
 `
 
 export const SubmitParent = styled.div`

@@ -2,18 +2,17 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
+    height: 100%;
     padding-top: 127px;
-    padding-bottom: 373px;
-
-    /* position: relative; */
+    padding-bottom: 313px;
 
     @media(min-width: 768px) {
         padding-top: 189px;
-        padding-bottom: 445px;
+        padding-bottom: 369px;
     }
     @media(min-width: 1440px){
         padding-top: 200px;
-        padding-bottom: 210px;
+        padding-bottom: 134px;
     }
     h2 {
         color: var(--color-white);
