@@ -22,7 +22,8 @@ const WelcomeInfoVideo = () => {
                     </IconPlayVideoStyled>
                 </Circle>
                 <Wrapper>
-                    <span>{data?.videoGuides || <Loading />}</span>
+                    <span>{
+                        data?.videoGuides || <Loading />}</span>
                     <p>Video tutorial</p>
                 </Wrapper>
             </CardVideo>

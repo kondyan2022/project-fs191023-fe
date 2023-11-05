@@ -29,7 +29,7 @@ export const Button = styled.div`
         gap: 4px;
         align-items: center;
         justify-content: center;
-          @media (min-width: 768px) {
+        @media (min-width: 768px) {
             padding: 16px 10px;
         }
         svg {
