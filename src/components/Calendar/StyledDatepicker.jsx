@@ -77,10 +77,6 @@ const StyledDatepicker = ({
   setSelectedDate(prevDay);
   getData(prevDay);
   };
- 
-  
-
- 
 
   const handleNextDay = () => {
     const nextDay = addDays(selectedDate, 1);
@@ -107,7 +103,7 @@ const maxYear = new Date().getFullYear();
           if (maxDate && date > maxDate) {
             return;
           }
-         setSelectedDate(date)
+          setSelectedDate(date)
           getData(date);
         }}
         customInput={<CustomInput />}
