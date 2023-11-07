@@ -79,11 +79,29 @@ Additionally, if the authentication functionality is implemented on the server,
 a request to the server for user information is made when the page is loaded,
 and this information is stored in the Redux Store.
 
+### Команди:
+
 # How to Run
 
 1. Clone the repository to your computer.
 2. Install dependencies using the `npm install` command.
 3. Start the project with the `npm run dev` command.
+
+# Available Scripts
+
+- `npm start` &mdash; start the project using Vite.
+- `npm run dev` &mdash; start the development server using Vite.
+- `npm run build` &mdash; build the project for production using Vite.
+- `npm run lint` &mdash; lint the project using ESLint with custom
+  configurations.
+- `npm run preview` &mdash; preview the production build using Vite.
+- `npm run format` &mdash; format the source code using Prettier.
+
+# Backend
+
+This application is backed by a backend. Detailed information about the API
+documentation is available at:
+[API Documentation](https://power-plus-service.onrender.com/api-docs/).
 
 More information and instructions can be found in the project repository.
 
