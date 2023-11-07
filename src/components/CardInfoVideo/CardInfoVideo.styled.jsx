@@ -1,13 +1,12 @@
 import styled, { keyframes } from 'styled-components'
 
-const fadeOut = keyframes`
-  from { opacity: 1; }
-  to { opacity: 0; }
-`;
-
-const fadeIn = keyframes`
-  from { opacity: 0; }
-  to { opacity: 1;}
+const fadeInOut = keyframes`
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 `;
 
 export const CardVideo = styled.div`
@@ -23,6 +22,9 @@ export const CardVideo = styled.div`
   align-items: center;
   gap: 8px;
 
+  animation: ${fadeInOut} 20s ease-in-out infinite;
+  opacity: 0;
+
   @media (min-width: 768px) {
     width: 206px;
     height: 96px;
@@ -34,12 +36,10 @@ export const CardVideo = styled.div`
     right: 445px;
     bottom: 330px;
   }
-    &.first {
-    animation: ${fadeOut} 15s infinite; 
-    }
-    &.second {
-        animation: ${fadeIn}  15s infinite;
-    }
+
+  &:nth-child(odd) {
+    animation-delay: 10s;
+  }
 `;
 
 export const Circle = styled.div`

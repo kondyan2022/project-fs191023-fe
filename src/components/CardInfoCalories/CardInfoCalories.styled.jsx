@@ -1,13 +1,12 @@
 import styled, { keyframes } from 'styled-components'
 
-const fadeOut = keyframes`
-    from { opacity: 1; }
-    to { opacity: 0; }
-`;
-
-const fadeIn = keyframes`
-    from { opacity: 0; }
-    to { opacity: 1;}
+const fadeInOut = keyframes`
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
 `;
 
 export const CardCalories = styled.div`
@@ -19,7 +18,9 @@ export const CardCalories = styled.div`
     position: absolute;
     right: 20px;
     bottom: 40px;
-    transition: transform 0.5s ease;
+    animation: ${fadeInOut} 20s ease-in-out infinite;
+    opacity: 0;
+
     @media (min-width: 768px) {
         width: 180px;
         height: 110px;
@@ -30,11 +31,9 @@ export const CardCalories = styled.div`
     @media (min-width: 1440px) {
         bottom: 163px;
     }
-    &.first {
-        animation: ${fadeOut} 15s infinite; 
-    }
-    &.second {
-        animation: ${fadeIn}  15s infinite;
+
+    &:nth-child(odd) {
+        animation-delay: 10s;
     }
 `;
 
@@ -94,4 +93,7 @@ export const IconRunMenStyled = styled.svg`
             width: 16px;
             height: 16px;
         }
+    &.fire-icon {
+        --color3: var(--color-white);
+    }
 `;

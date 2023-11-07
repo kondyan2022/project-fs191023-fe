@@ -15,8 +15,7 @@ const WelcomeInfoVideo = () => {
                     </IconPlayVideoStyled>
                 </Circle>
                 <Wrapper>
-                    <span>{
-                        data?.videoGuides || <Loading />}</span>
+                    <span>{data?.videoGuides || <Loading styles={{ width: '28' }} />}</span>
                     <p>Video tutorial</p>
                 </Wrapper>
             </CardVideo>
@@ -28,7 +27,7 @@ const WelcomeInfoVideo = () => {
                     </IconPlayVideoStyled>
                 </Circle>
                 <Wrapper>
-                    <span>{data?.userCount || <Loading />}</span>
+                    <span>{data?.userCount || <Loading styles={{ width: '28' }} />}</span>
                     <p>Users</p>
                 </Wrapper>
             </CardVideo>
