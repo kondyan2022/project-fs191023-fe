@@ -16,8 +16,8 @@ const CardInfoCalories = () => {
         <>
             <CardCalories className="first">
                 <Circle>
-                    <IconRunMenStyled>
-                        <use href={`${iconSvg}#icon-run-man`} />
+                    <IconRunMenStyled className="fire-icon">
+                        <use href={`${iconSvg}#icon-fire`} />
                     </IconRunMenStyled>
                 </Circle>
                 <FlexParent>

@@ -93,4 +93,7 @@ export const IconRunMenStyled = styled.svg`
             width: 16px;
             height: 16px;
         }
+    &.fire-icon {
+        --color3: var(--color-white);
+    }
 `;
