@@ -57,9 +57,15 @@ export const FlexParent = styled.div`
     display: flex;
     align-items: baseline;
     gap: 8px;
+    position: relative;
     @media (min-width: 768px) {
         gap: 11px;
     }
+    /* @media(max-width: 767px) {
+        position: absolute;
+        top: -12px;
+        right: 38px;
+    } */
     span {
         color: var(--color-white);
         font-family: 'Roboto', sans-serif;
@@ -97,3 +103,12 @@ export const IconRunMenStyled = styled.svg`
         --color3: var(--color-white);
     }
 `;
+
+export const Span = styled.span`
+    @media(max-width: 767px) {
+        position: absolute;
+        top: -12px;
+        right: 38px;
+    }
+
+`

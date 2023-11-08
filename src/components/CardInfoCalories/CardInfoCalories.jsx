@@ -1,4 +1,4 @@
-import { CardCalories, Circle, FlexParent, IconRunMenStyled } from "./CardInfoCalories.styled"
+import { CardCalories, Circle, FlexParent, IconRunMenStyled, Span } from "./CardInfoCalories.styled"
 import iconSvg from '../../images/sprite.svg'
 import { useGetStatsQuery } from '../../redux/features/statsEndpoint'
 import Loading from "../Loading/Loading";
@@ -21,13 +21,14 @@ const CardInfoCalories = () => {
                     </IconRunMenStyled>
                 </Circle>
                 <FlexParent>
-                    <span>
-                        {(isReachedGoal
-                            ? (data?.totalBurnedCalories.toString().substring(0, 2) + 'k')
-                            : data?.totalBurnedCalories)
-                            || (<Loading styles={{ width: '28' }} />)}
-                    </span>
-                    <p>cal</p>
+                    {data
+                        ? (<><span>{isReachedGoal
+                            ? data?.totalBurnedCalories.toString().substring(0, 2) + 'k'
+                            : data?.totalBurnedCalories
+                        }
+                        </span>
+                            <p>cal</p></>
+                        ) : (<Span><Loading /></Span>)}
                 </FlexParent>
             </CardCalories>
 
@@ -38,8 +39,12 @@ const CardInfoCalories = () => {
                     </IconRunMenStyled>
                 </Circle>
                 <FlexParent>
-                    <span>{data?.countOfExercises || <Loading styles={{ width: '28' }} />}</span>
-                    <p>exrs</p>
+                    {data
+                        ? (<>
+                            <span>{data?.countOfExercises}</span>
+                            <p>exrs</p></>
+                        ) : (<Span><Loading /></Span>)
+                    }
                 </FlexParent>
             </CardCalories>
         </>

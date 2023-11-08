@@ -62,4 +62,7 @@ export const LinkTo = styled(NavLink)`
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
+    @media(max-width: 767px) {
+        display: flex;
+    }
 `

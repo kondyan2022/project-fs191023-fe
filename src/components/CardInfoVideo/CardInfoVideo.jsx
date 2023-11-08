@@ -1,4 +1,4 @@
-import { CardVideo, Circle, IconPlayVideoStyled, Wrapper } from "./CardInfoVideo.styled"
+import { CardVideo, Circle, IconPlayVideoStyled, Span, Wrapper } from "./CardInfoVideo.styled"
 import iconSvg from '../../images/sprite.svg'
 import { useGetStatsQuery } from '../../redux/features/statsEndpoint'
 import Loading from "../Loading/Loading";
@@ -15,8 +15,12 @@ const WelcomeInfoVideo = () => {
                     </IconPlayVideoStyled>
                 </Circle>
                 <Wrapper>
-                    <span>{data?.videoGuides || <Loading styles={{ width: '28' }} />}</span>
-                    <p>Video tutorial</p>
+                    {data
+                        ? (<>
+                            <span>{data?.videoGuides}</span>
+                            <p>Video tutorial</p></>
+                        ) : (<Span><Loading /></Span>)
+                    }
                 </Wrapper>
             </CardVideo>
 
@@ -27,8 +31,12 @@ const WelcomeInfoVideo = () => {
                     </IconPlayVideoStyled>
                 </Circle>
                 <Wrapper>
-                    <span>{data?.userCount || <Loading styles={{ width: '28' }} />}</span>
-                    <p>Users</p>
+                    {data
+                        ? (<>
+                            <span>{data?.userCount}</span>
+                            <p>Users</p></>
+                        ) : (<Span><Loading /></Span>)
+                    }
                 </Wrapper>
             </CardVideo>
         </>
