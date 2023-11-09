@@ -8,11 +8,11 @@ import sprite from '../../../images/sprite.svg'
 
 
 
- export const OnTheDay = ({oneProductTest, exercisesTest,date})=> {
+ export const OnTheDay = ({oneProductTest, exercisesTest,date })=> {
   const [size, setSize] = useState({});
 
   const ref = useRef();
-
+ 
 
 const resizeHandler = () => {
 const { clientHeight, clientWidth } = ref.current || {};

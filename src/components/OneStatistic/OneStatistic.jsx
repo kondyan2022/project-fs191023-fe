@@ -6,7 +6,7 @@ export  const OneStatistic = (props) => {
   const {svg,name, isNorm,isTime,value,borderColor,isSport} = props;
 
   return isNorm?<OrangCard>
-  <div><svg><use href={svg}></use></svg><p>{name}</p></div>
+  <div><svg><use href={`${sprite}${svg}`}></use></svg><p>{name}</p></div>
   <Number>{isTime? `${value} min`: value}</Number>
   </OrangCard>:
   <GreyCard normDone={borderColor} isSport={isSport}>
