@@ -25,7 +25,7 @@ const DiaryPage = () => {
   const {data} = useGetDiaryQuery(dateForFunction, {skip: !date, refetchOnMountOrArgChange:true});
   
 
-  
+
   useEffect(()=>{
   if(!data){return}
  
@@ -34,8 +34,7 @@ const DiaryPage = () => {
 
 
 const createdAtDiary = new Date(dateOfCreated);
-
-createdAtDiary.setDate(createdAtDiary.getDate() - 1);
+const minDateDary = createdAtDiary.setDate(createdAtDiary.getDate() - 1);
 
 
 
@@ -47,7 +46,7 @@ createdAtDiary.setDate(createdAtDiary.getDate() - 1);
           <PageName>Diary</PageName>
 
          {dateOfCreated&&(<StyledDatepicker 
-          minDate={createdAtDiary}
+          minDate={minDateDary}
           setFormData={new Date(date)}
           getData={(date) => setData(date)}/>)
           }

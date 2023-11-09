@@ -88,7 +88,7 @@ const StyledDatepicker = ({
   };
 
 
-const [minYear, setMinYear] = useState(1950);
+const [minYear] = useState(1950);
 const maxYear = new Date().getFullYear(); 
 
 
@@ -97,7 +97,7 @@ const maxYear = new Date().getFullYear();
       <DatePicker
         selected={setFormData && selectedDate}
         onChange={(date) => { 
-          if (minDate && date > minDate) { 
+          if (minDate && date < minDate) { 
             return;
           }
           if (maxDate && date > maxDate) {

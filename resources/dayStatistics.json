@@ -1,6 +1,6 @@
 [
     {
-      "svg": "../src/images/sprite.svg#icon-fork-knife",
+      "svg": "#icon-fork-knife",
       "name": "Daily calorie intake",
       "isNorm": true,
       "id": 1812,
@@ -8,7 +8,7 @@
       "onTheDay": "BMR"
     },
     {
-      "svg": "../src/images/sprite.svg#icon-apple",
+      "svg": "#icon-apple",
       "name": "Сalories consumed",
       "isNorm": false,
       "id": 1213,
@@ -16,7 +16,7 @@
       "onTheDay": "consumedCalories"
     },
     {
-      "svg": "../src/images/sprite.svg#icon-bubble",
+      "svg": "#icon-bubble",
       "name": "The rest of the calories",
       "isNorm": false,
       "id": 1284,
@@ -24,7 +24,7 @@
       "onTheDay": "leftCalories"
     },
     {
-      "svg": "../src/images/sprite.svg#icon-daily-dumbbell",
+      "svg": "#icon-daily-dumbbell",
       "name": "Daily norm of sports",
       "isNorm": true,
       "id": 1137,
@@ -33,7 +33,7 @@
     },
 
     {
-      "svg": "../src/images/sprite.svg#icon-fire",
+      "svg": "#icon-fire",
       "name": "Сalories burned",
       "isNorm": false,
       "id": 1714,
@@ -41,7 +41,7 @@
       "isTime": false
     },
     {
-        "svg": "../src/images/sprite.svg#icon-run-man",
+        "svg": "#icon-run-man",
         "name": "The rest of sports",
         "isNorm": false,
         "id": 1286,

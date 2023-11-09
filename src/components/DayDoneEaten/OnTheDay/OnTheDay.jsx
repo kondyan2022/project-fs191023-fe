@@ -4,15 +4,15 @@ import {OneExerciseMobile} from '../OneDataMobile/OneExerciseMobile'
 import  {useState,useEffect,useRef } from "react";
 import {DesktopVersionProdukt} from '../DesktopVersion/DesktopVersionProdukt'
 import {DesktoVersionExercises} from '../DesktopVersion/DesktopVersionExercises'
+import sprite from '../../../images/sprite.svg'
 
 
 
-
- export const OnTheDay = ({oneProductTest, exercisesTest,date})=> {
+ export const OnTheDay = ({oneProductTest, exercisesTest,date })=> {
   const [size, setSize] = useState({});
 
   const ref = useRef();
-
+ 
 
 const resizeHandler = () => {
 const { clientHeight, clientWidth } = ref.current || {};
@@ -34,7 +34,7 @@ window.removeEventListener("resize", resizeHandler);
     <Products>Products</Products>
     <BtnAdd to="/products">Add product
     <svg>
-    <use href="../src/images/sprite.svg#icon-arrow-right"></use>
+    <use href={`${sprite}#icon-arrow-right`}></use>
    </svg>
     </BtnAdd>
     </Header>
@@ -53,7 +53,7 @@ window.removeEventListener("resize", resizeHandler);
 <Products>Exercises</Products>
 <BtnAdd to="/exercises">Add exercise
 <svg>
-<use href="../src/images/sprite.svg#icon-arrow-right"></use>
+<use href={`${sprite}#icon-arrow-right`}></use>
 </svg>
 </BtnAdd>
 </Header>
