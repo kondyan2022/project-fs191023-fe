@@ -28,7 +28,7 @@ const UserCard = ({ name }) => {
     const file = e.target.files[0];
 
     if (file) {
-      const urlAvatar = URL.createObjectURL(file);
+      const urlAvatar = URL.createObjectURL(file); // зіставляє урл адресу з поточної машини, хоч то сервер хоч локальна машина
 
       setUploadOnRender(urlAvatar);
       loadAvatar(file);
