@@ -34,7 +34,6 @@ const DiaryPage = () => {
 
 
 const createdAtDiary = new Date(dateOfCreated);
-
 const minDateDary = createdAtDiary.setDate(createdAtDiary.getDate() - 1);
 
 
