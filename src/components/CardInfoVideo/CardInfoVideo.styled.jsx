@@ -57,6 +57,7 @@ export const Circle = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
   span {
     color: var(--color-white);
     font-family: 'Roboto', sans-serif;
@@ -68,6 +69,11 @@ export const Wrapper = styled.div`
       line-height: 1;
       margin-bottom: 8px;
     }
+    /* @media(max-width: 767px) {
+      position: absolute;
+      top: -20px;
+      left: -7px;
+    } */
   }
   p {
     color: rgba(239, 237, 232, 0.65);
@@ -108,3 +114,11 @@ export const IconPlayVideoStyled = styled.svg`
   }
 `;
 
+export const Span = styled.span`
+  @media(max-width: 767px) {
+    position: absolute;
+    top: -20px;
+    left: -7px;
+  }
+
+`

@@ -31,14 +31,12 @@ const SignUpForm = () => {
 
     useEffect(() => {
         if (createdUser && createdUser.token) {
-      const { token, user } = createdUser;
-      const isProfile = user.profile ? true : false;
-      const action = { token, isProfile };
-      dispatch(setToken(action));
+            const { token, user } = createdUser;
+            const isProfile = user.profile ? true : false;
+            const action = { token, isProfile };
+            dispatch(setToken(action));
         }
     }, [createdUser, dispatch]);
-
-    
 
     const initialValues = {
         name: '',

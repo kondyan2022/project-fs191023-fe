@@ -47,15 +47,16 @@ export const Text = styled.p`
 `
 
 export const Redirect = styled.div`
-color: rgba(239, 237, 232, 0.60);
-font-feature-settings: 'clig' off, 'liga' off;
-font-family: 'Roboto', sans-serif;
-font-size: 12px;
-font-weight: 400;
-line-height: 18px;
-text-decoration-line: none;
-margin-top: 12px;
+    color: rgba(239, 237, 232, 0.60);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    text-decoration-line: none;
+    margin-top: 12px;
 `;
+
 export const LinkTo = styled(NavLink)`
     text-decoration-line: underline;
     color: var(--color-white);
