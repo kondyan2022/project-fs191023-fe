@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   Avatar,
   Button,
@@ -11,8 +11,6 @@ import {
 } from './UserCard.styled';
 import sprite from '../../images/sprite.svg';
 import { useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { selectToken } from '../../redux/selectors';
 import {
   useGetCurrentUserQuery,
   useUploadUserAvatarMutation,
@@ -21,25 +19,21 @@ import {
 const UserCard = ({ name }) => {
   const fileInputRef = useRef(null);
 
-  const [newAvatar, setNewAvatar] = useState(null);
-  const token = useSelector(selectToken);
-  const [loadedAvatar, setLoadedAvatar] = useState(null);
+  const [uploadOnRender, setUploadOnRender] = useState(null); // my fix
   const { data } = useGetCurrentUserQuery();
-  const [loadAvatart, { isSuccess, isError, error }] =
+  const [loadAvatar, { isSuccess, isError, error }] =
     useUploadUserAvatarMutation();
 
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
-    setNewAvatar(file);
-  };
 
-  useEffect(() => {
-    console.log(newAvatar);
-    if (newAvatar) {
-      loadAvatart(newAvatar);
-      isSuccess && setLoadedAvatar(data.avatarURL);
+    if (file) {
+      const urlAvatar = URL.createObjectURL(file); // зіставляє урл адресу з поточної машини, хоч то сервер хоч локальна машина
+
+      setUploadOnRender(urlAvatar);
+      loadAvatar(file);
     }
-  }, [newAvatar, token]);
+  };
 
   const openFileInput = () => {
     fileInputRef.current.click();
@@ -47,7 +41,7 @@ const UserCard = ({ name }) => {
 
   const avatarUser = (
     <Photo
-      src={loadedAvatar ? loadedAvatar : data?.avatarURL}
+      src={uploadOnRender ? uploadOnRender : data?.avatarURL}
       width="100%"
       alt="Avatar"
     />
@@ -61,6 +55,7 @@ const UserCard = ({ name }) => {
   return (
     <Wrapper>
       {isError && <p>{error.data.message}</p>}
+
       <Avatar>{avatarUser}</Avatar>
       <form id="upload-form">
         <input
