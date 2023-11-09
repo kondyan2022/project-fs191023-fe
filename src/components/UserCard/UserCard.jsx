@@ -11,12 +11,12 @@ import {
 } from './UserCard.styled';
 import sprite from '../../images/sprite.svg';
 import { useRef } from 'react';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { selectToken } from '../../redux/selectors';
-import { useGetCurrentUserQuery } from '../../redux/features/authEndpoints';
-
-axios.defaults.baseURL = 'https://power-plus-service.onrender.com';
+import {
+  useGetCurrentUserQuery,
+  useUploadUserAvatarMutation,
+} from '../../redux/features/authEndpoints';
 
 const UserCard = ({ name }) => {
   const fileInputRef = useRef(null);
@@ -25,10 +25,8 @@ const UserCard = ({ name }) => {
   const token = useSelector(selectToken);
   const [loadedAvatar, setLoadedAvatar] = useState(null);
   const { data } = useGetCurrentUserQuery();
-
-  const setToken = (token) => {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  };
+  const [loadAvatart, { isSuccess, isError, error }] =
+    useUploadUserAvatarMutation();
 
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
@@ -36,23 +34,11 @@ const UserCard = ({ name }) => {
   };
 
   useEffect(() => {
-    const handleUpdateAvatar = async () => {
-      if (newAvatar) {
-        try {
-          const formData = new FormData();
-          formData.append('avatar', newAvatar);
-          setToken(token);
-          const { data } = await axios.patch('/users/avatars', formData, {
-            headers: { 'content-type': 'multipart/form-data' },
-          });
-
-          setLoadedAvatar(data.avatarURL);
-        } catch (error) {
-          console.error('Error updating avatar', error);
-        }
-      }
-    };
-    handleUpdateAvatar();
+    console.log(newAvatar);
+    if (newAvatar) {
+      loadAvatart(newAvatar);
+      isSuccess && setLoadedAvatar(data.avatarURL);
+    }
   }, [newAvatar, token]);
 
   const openFileInput = () => {
@@ -74,6 +60,7 @@ const UserCard = ({ name }) => {
 
   return (
     <Wrapper>
+      {isError && <p>{error.data.message}</p>}
       <Avatar>{avatarUser}</Avatar>
       <form id="upload-form">
         <input

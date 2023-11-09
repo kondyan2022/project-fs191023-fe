@@ -7,12 +7,17 @@ const authApiSlice = userSplitApi.injectEndpoints({
       providesTags: ['userAuth'],
     }),
     uploadUserAvatar: builder.mutation({
-      query: (file) => ({
-        url: `/users/avatars`,
-        method: 'PATCH',
-        body: file,
-        headers: { 'content-type': 'multipart/form-data' },
-      }),
+      query: (file) => {
+        console.log(file);
+        const avatarFormData = new FormData();
+        avatarFormData.append('avatar', file);
+        return {
+          url: `/users/avatars`,
+          method: 'PATCH',
+          body: avatarFormData,
+          formData: true,
+        };
+      },
       invalidatesTags: ['userAuth'],
     }),
     userSignUp: builder.mutation({
