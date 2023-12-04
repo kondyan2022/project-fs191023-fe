@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 export const ExCard = styled(Link)`
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   position: relative;
@@ -15,7 +15,7 @@ export const ExCardImage = styled.img`
   border-radius: 12px;
   filter: brightness(40%);
   overflow: hidden;
-  width: 100%;
+  width: 335px;
   height: auto;
 
   @media screen and (min-width: 768px) {

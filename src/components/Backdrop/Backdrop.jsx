@@ -1,20 +1,45 @@
-import React from 'react';
+import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
+import { ModalOverlay } from './Backdrop.styled';
+import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
-const Backdrop = ({ onClick }) => {
-return (
-    <div
-    style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)', 
-        zIndex: 100, 
-    }}
-    onClick={onClick}
-    />
-);
+const Backdrop = ({
+  closeOnClick = true,
+  closeOnEscape = true,
+  closeModal,
+  children,
+}) => {
+  const modalRoot = useRef(document.querySelector('#modal-root'));
+  useEffect(() => {
+    const handleKeyDown = (evt) => {
+      if (evt.code === 'Escape' && closeOnClick) {
+        closeModal();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    disablePageScroll();
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      enablePageScroll();
+    };
+  }, [closeModal, closeOnClick]);
+
+  useEffect(() => {}, []);
+
+  return createPortal(
+    <ModalOverlay
+      onClick={(e) => {
+        if (e.target === e.currentTarget && closeOnEscape) {
+          closeModal();
+        }
+      }}
+    >
+      {children}
+    </ModalOverlay>,
+    modalRoot.current,
+  );
 };
 
 export default Backdrop;
