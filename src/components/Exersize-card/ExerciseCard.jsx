@@ -22,6 +22,7 @@ import {
 
 import { useAddDairyExercisesMutation } from '../../redux/features/userDiaryEndpoints';
 import AddExercisesSuccess from '../BasicModalWindow/AddExercisesSuccess';
+// import Backdrop from '../Backdrop/Backdrop';
 
 const ExerciseCard = ({
   id,
@@ -46,12 +47,12 @@ const ExerciseCard = ({
   const [isAddModalOpen, setIsAddModalOpen] = useState(true);
   const closeModalForAdd = () => {
     setIsAddModalOpen(false);
+    setIsModalOpen(false);
   };
   const [caloriesAtSecond, setCaloriesAtSecond] = useState(0);
   const [calories, setCalories] = useState(0);
   const timeS = time * 60;
-  const [addDairyExercise, { isSuccess, isError }] =
-    useAddDairyExercisesMutation();
+  const [addDairyExercise, { isSuccess }] = useAddDairyExercisesMutation();
   const [isRunning, setIsRunning] = useState(false);
 
   const handleAddToDiary = () => {
@@ -61,7 +62,6 @@ const ExerciseCard = ({
       time,
       calories,
     });
-    console.log(isSuccess);
   };
 
   const closeModal = () => {

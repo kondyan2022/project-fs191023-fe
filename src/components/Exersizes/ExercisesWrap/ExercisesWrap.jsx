@@ -10,7 +10,7 @@ import {
 } from './ExercisesWrap.styled';
 import { ExerciseList } from '../ExerciseList/ExerciseList';
 
-export const ExersizeWrap = () => {
+export const ExerciseWrap = () => {
   const [activeBoard, setActiveBoard] = useState('Body parts');
   const [exerciseName, setExerciseName] = useState('');
 
@@ -46,7 +46,7 @@ export const ExersizeWrap = () => {
     }
   }, []);
 
-  const capitalizeFirstLeter = (string) => {
+  const capitalizeFirstLetter = (string) => {
     const newString = string.slice(0, 1).toUpperCase() + string.slice(1);
     return newString;
   };
@@ -55,7 +55,7 @@ export const ExersizeWrap = () => {
     <ExercisesPageWrap>
       <ExercisesBox>
         {exerciseName ? (
-          <ExercisesTitle>{capitalizeFirstLeter(exerciseName)}</ExercisesTitle>
+          <ExercisesTitle>{capitalizeFirstLetter(exerciseName)}</ExercisesTitle>
         ) : (
           <ExercisesTitle>Exercises</ExercisesTitle>
         )}

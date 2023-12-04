@@ -18,7 +18,7 @@ export const ExerciseItem = ({ exerciseCard, setNoScroll }) => {
   const { target, bodyPart, burnedCalories, name, equipment, gifUrl, time } =
     exerciseCard;
 
-  const capitalizeFirstLeter = (string) => {
+  const capitalizeFirstLetter = (string) => {
     const newString = string.slice(0, 1).toUpperCase() + string.slice(1);
     return newString;
   };
@@ -31,8 +31,8 @@ export const ExerciseItem = ({ exerciseCard, setNoScroll }) => {
       console.log(document.body.style.overflow);
     }
 
-    console.log(document.body.style.overflow);
-  }, [isModalOpen]);
+    // console.log(document.body.style.overflow);
+  }, [isModalOpen, setNoScroll]);
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -40,22 +40,22 @@ export const ExerciseItem = ({ exerciseCard, setNoScroll }) => {
     if (!isModalOpen) {
       document.body.style.overflow = 'scroll';
       setNoScroll(false);
-      console.log(document.body.style.overflow);
+      // console.log(document.body.style.overflow);
     }
-  }, [isModalOpen]);
+  }, [isModalOpen, setNoScroll]);
 
   return (
     <>
       {isModalOpen && (
         <ExerciseCard
-          target={capitalizeFirstLeter(target)}
-          bodyPart={capitalizeFirstLeter(bodyPart)}
-          equipment={capitalizeFirstLeter(equipment)}
+          target={capitalizeFirstLetter(target)}
+          bodyPart={capitalizeFirstLetter(bodyPart)}
+          equipment={capitalizeFirstLetter(equipment)}
           gifUrl={gifUrl}
           time={time}
-          id={exerciseCard._id.$oid}
+          id={exerciseCard._id}
           burnedCalories={burnedCalories}
-          name={capitalizeFirstLeter(name)}
+          name={capitalizeFirstLetter(name)}
           setIsModalOpen={setIsModalOpen}
         />
       )}
@@ -75,17 +75,17 @@ export const ExerciseItem = ({ exerciseCard, setNoScroll }) => {
             </svg>
           </IconWraper>
 
-          <Title>{capitalizeFirstLeter(name)}</Title>
+          <Title>{capitalizeFirstLetter(name)}</Title>
         </TitleBlock>
         <Statistics>
           <StatData>
             Burned calories: <Span>{burnedCalories}</Span>
           </StatData>
           <StatData>
-            Body part: <Span>{capitalizeFirstLeter(bodyPart)}</Span>
+            Body part: <Span>{capitalizeFirstLetter(bodyPart)}</Span>
           </StatData>
           <StatData>
-            Target: <Span>{capitalizeFirstLeter(target)}</Span>
+            Target: <Span>{capitalizeFirstLetter(target)}</Span>
           </StatData>
         </Statistics>
         <Button type="button" onClick={openModal}>

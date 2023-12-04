@@ -6,6 +6,11 @@ import {
   ExCardTitle,
 } from './ExercisesCard.styled';
 
+const capitalizeFirstLetter = (string) => {
+  const newString = string.slice(0, 1).toUpperCase() + string.slice(1);
+  return newString;
+};
+
 export const ExercisesCard = ({
   exercisesCard,
   handleBoardClick,
@@ -18,19 +23,11 @@ export const ExercisesCard = ({
     handleExNameClick(name);
   };
 
-  const capitalizeFirstLeter = (string) => {
-    const newString = string.slice(0, 1).toUpperCase() + string.slice(1);
-    return newString;
-  };
-
   return (
-    <ExCard
-      to={`groups/${exercisesCard._id.$oid}`}
-      onClick={() => onClick(name)}
-    >
-      <ExCardImage src={imgURL} alt={name} />
+    <ExCard to={`groups/${exercisesCard._id}`} onClick={() => onClick(name)}>
+      <ExCardImage src={imgURL} alt={name} width={402} height={387} />
       <ExCardData>
-        <ExCardTitle>{capitalizeFirstLeter(name)}</ExCardTitle>
+        <ExCardTitle>{capitalizeFirstLetter(name)}</ExCardTitle>
         <ExCardText>{filter}</ExCardText>
       </ExCardData>
     </ExCard>
