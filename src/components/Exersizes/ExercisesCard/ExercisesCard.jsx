@@ -1,3 +1,4 @@
+import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter';
 import {
   ExCard,
   ExCardData,
@@ -6,25 +7,11 @@ import {
   ExCardTitle,
 } from './ExercisesCard.styled';
 
-const capitalizeFirstLetter = (string) => {
-  const newString = string.slice(0, 1).toUpperCase() + string.slice(1);
-  return newString;
-};
-
-export const ExercisesCard = ({
-  exercisesCard,
-  handleBoardClick,
-  handleExNameClick,
-}) => {
+export const ExercisesCard = ({ exercisesCard }) => {
   const { name, filter, imgURL } = exercisesCard;
 
-  const onClick = (name) => {
-    handleBoardClick(name);
-    handleExNameClick(name);
-  };
-
   return (
-    <ExCard to={`groups/${exercisesCard._id}`} onClick={() => onClick(name)}>
+    <ExCard to={`?value=${name}`}>
       <ExCardImage src={imgURL} alt={name} width={402} height={387} />
       <ExCardData>
         <ExCardTitle>{capitalizeFirstLetter(name)}</ExCardTitle>

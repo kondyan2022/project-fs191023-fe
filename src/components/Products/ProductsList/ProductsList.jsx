@@ -1,17 +1,14 @@
+import { forwardRef } from 'react';
 import ProductsItem from '../ProductsItem/ProductsItem';
 import { Card, List } from './ProductsList.styled';
 
-const ProductsList = ({
-  products,
-  setExcessCalories,
-  blood,
-  setIsAddedSuccess,
-  isLoading,
-  currenrRef,
-}) => {
+const ProductsList = forwardRef(function ProductsList(
+  { products, setExcessCalories, blood, setIsAddedSuccess, isLoading },
+  ref,
+) {
   return (
     <>
-      <List ref={currenrRef}>
+      <List>
         {products.map(
           ({
             _id,
@@ -37,8 +34,9 @@ const ProductsList = ({
             </Card>
           ),
         )}
+        <li ref={ref} style={{ width: 50, height: 20 }} />
       </List>
     </>
   );
-};
+});
 export default ProductsList;

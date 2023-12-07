@@ -1,7 +1,3 @@
-import { useEffect, useState } from 'react';
-import { BodyPartsBoard } from '../ExercisesBoard/BodyPartsBoard';
-import { EquipmentBoard } from '../ExercisesBoard/EquipmentBoard';
-import { MusclesBoard } from '../ExercisesBoard/MusclesBoard';
 import { ExercisesNavigation } from '../ExercisesNavigation/ExercisesNavigation';
 import {
   ExercisesBox,
@@ -9,91 +5,41 @@ import {
   ExercisesTitle,
 } from './ExercisesWrap.styled';
 import { ExerciseList } from '../ExerciseList/ExerciseList';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { ExerciseBoards } from '../ExercisesBoard/ErerciseBoards';
+import { useEffect, useState } from 'react';
+import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter';
+
+const exerciseGroups = {
+  bodyPart: 'Body parts',
+  equipment: 'Equipment',
+  target: 'Muscles',
+};
 
 export const ExerciseWrap = () => {
-  const [activeBoard, setActiveBoard] = useState('Body parts');
-  const [exerciseName, setExerciseName] = useState('');
-
-  const handleBoardClick = (filter) => {
-    setActiveBoard(filter);
-
-    const url = new URL(window.location);
-    url.searchParams.set('activeBoard', filter);
-    window.history.pushState({}, '', url.toString());
-  };
-
-  const handleExNameClick = (name) => {
-    setExerciseName(name);
-
-    const url = new URL(window.location);
-    url.searchParams.set('exerciseName', name);
-    window.history.pushState({}, '', url.toString());
-  };
+  const [title, setTitle] = useState('Exercises');
+  const { board } = useParams();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    const url = new URL(window.location);
-    const activeBoardParam = url.searchParams.get('activeBoard');
-    if (activeBoardParam) {
-      setActiveBoard(activeBoardParam);
+    const value = searchParams.get('value');
+    if (value) {
+      setTitle(capitalizeFirstLetter(value));
+    } else {
+      setTitle('Exercises');
     }
-  }, []);
-
-  useEffect(() => {
-    const url2 = new URL(window.location);
-    const exerciseNameParam = url2.searchParams.get('exerciseName');
-    if (exerciseNameParam) {
-      setExerciseName(exerciseNameParam);
-    }
-  }, []);
-
-  const capitalizeFirstLetter = (string) => {
-    const newString = string.slice(0, 1).toUpperCase() + string.slice(1);
-    return newString;
-  };
+  }, [board, searchParams]);
 
   return (
     <ExercisesPageWrap>
       <ExercisesBox>
-        {exerciseName ? (
-          <ExercisesTitle>{capitalizeFirstLetter(exerciseName)}</ExercisesTitle>
-        ) : (
-          <ExercisesTitle>Exercises</ExercisesTitle>
-        )}
-        <ExercisesNavigation
-          exerciseName={exerciseName}
-          setExerciseName={setExerciseName}
-          activeBoard={activeBoard}
-          handleBoardClick={handleBoardClick}
-        />
+        <ExercisesTitle>{title}</ExercisesTitle>
+        <ExercisesNavigation />
       </ExercisesBox>
-
-      {activeBoard === 'Body parts' && (
-        <BodyPartsBoard
-          handleBoardClick={handleBoardClick}
-          handleExNameClick={handleExNameClick}
-        />
-      )}
-
-      {activeBoard === 'Muscles' && (
-        <MusclesBoard
-          handleBoardClick={handleBoardClick}
-          handleExNameClick={handleExNameClick}
-        />
-      )}
-
-      {activeBoard === 'Equipment' && (
-        <EquipmentBoard
-          handleBoardClick={handleBoardClick}
-          handleExNameClick={handleExNameClick}
-        />
-      )}
-
-      {activeBoard === exerciseName && (
-        <ExerciseList
-          exerciseName={exerciseName}
-          handleBoardClick={handleBoardClick}
-          handleExNameClick={handleExNameClick}
-        />
+      {searchParams.get('value') ? (
+        <ExerciseList filter={exerciseGroups[board]} />
+      ) : (
+        <ExerciseBoards filter={exerciseGroups[board]} />
       )}
     </ExercisesPageWrap>
   );
