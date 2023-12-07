@@ -98,13 +98,11 @@ const UserMenu = () => {
           </LogoutLink>
         </WrapperLogout>
         {/* <Logout /> */}
-        {isProfile && (
-          <Button type="button" onClick={openMenu}>
-            <svg width="24" height="24">
-              <use href={`${spriteSvG}#icon-menu`} />
-            </svg>
-          </Button>
-        )}
+        <Button type="button" onClick={openMenu}>
+          <svg width="24" height="24">
+            <use href={`${spriteSvG}#icon-menu`} />
+          </svg>
+        </Button>
       </WrapperMenu>
     </>
   );
