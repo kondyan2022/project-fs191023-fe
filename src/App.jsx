@@ -1,4 +1,4 @@
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import SharedLayout from './components/SharedLayout/SharedLayout';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';

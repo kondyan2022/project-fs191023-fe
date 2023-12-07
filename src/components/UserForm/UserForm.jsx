@@ -1,5 +1,3 @@
-// import RadioOption from '../RadioOption/RadioOption';
-
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 
 import {
@@ -65,6 +63,7 @@ const UserForm = () => {
     userFormUpdate(data);
     const action = { isProfile: true };
     dispatch(setIsProfile(action));
+    setCalendarSelected(false);
   };
 
   return (
@@ -84,9 +83,14 @@ const UserForm = () => {
               if (formik.values.name != data.name) {
                 return true;
               }
+              if (Date(formik.values.birthday) != Date(data.profile.birthday)) {
+                return true;
+              }
+
               for (let key in data.profile) {
+                // console.log({ [key]: [data.profile[key], formik.values[key]] });
                 if (
-                  !['DSN', 'BMR'].includes(key) &&
+                  !['DSN', 'BMR', 'birthday'].includes(key) &&
                   data.profile[key] !== formik.values[key]
                 ) {
                   return true;
@@ -340,7 +344,11 @@ const UserForm = () => {
                   primary={true}
                   type={'submit'}
                   isFetching={isFetching}
-                  isLoading={isFetching || !isDataChanged() || !formik.isValid}
+                  isLoading={
+                    isFetching ||
+                    !(isDataChanged() || calendarSelected) ||
+                    !formik.isValid
+                  }
                 >
                   Save
                 </Button>

@@ -25,7 +25,7 @@ const StyledDatepicker = ({
   const CustomInput = forwardRef(function CustomInput({ onClick }, ref) {
     return calendarType === 'birthday' ? (
       <BirthdayCalendarWrapper>
-        <div onClick={onClick}>
+        <div ref={ref} onClick={onClick}>
           {format(selectedDate, 'dd.MM.yyyy')}
           <svg
             width="24"

@@ -8,7 +8,6 @@ const authApiSlice = userSplitApi.injectEndpoints({
     }),
     uploadUserAvatar: builder.mutation({
       query: (file) => {
-        console.log(file);
         const avatarFormData = new FormData();
         avatarFormData.append('avatar', file);
         return {

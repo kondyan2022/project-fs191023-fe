@@ -19,21 +19,32 @@ import {
   useGetCurrentUserQuery,
   useUserLogOutMutation,
 } from '../../redux/features/authEndpoints';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../redux/features/userToken';
+import { hasProfile } from '../../redux/selectors';
+import { RotatingLines } from 'react-loader-spinner';
 
 const UserMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const { data } = useGetCurrentUserQuery();
+  const { data, isFetching } = useGetCurrentUserQuery();
   const [userLogOut] = useUserLogOutMutation();
   const dispatch = useDispatch();
+  const isProfile = useSelector(hasProfile);
 
   const handleLogOut = () => {
     userLogOut();
     dispatch(logOut());
   };
 
-  const avatarUser = (
+  const avatarUser = isFetching ? (
+    <RotatingLines
+      strokeColor="#e6533c"
+      strokeWidth="5"
+      animationDuration="0.75"
+      width="18"
+      visible={true}
+    />
+  ) : (
     <Photo src={data?.avatarURL} width="37" height="36" alt="Avatar" />
   );
 
@@ -54,22 +65,24 @@ const UserMenu = () => {
     <>
       <WrapperMenu>
         {showMenu && <MobileMenu onClose={toggleMenu} />}
-        <Navigat>
-          <Ul>
-            {/* <li>
+        {isProfile && (
+          <Navigat>
+            <Ul>
+              {/* <li>
               <LinkMenu to="/profile">Profile</LinkMenu>
             </li> */}
-            <li>
-              <LinkMenu to="/">Diary</LinkMenu>{' '}
-            </li>
-            <li>
-              <LinkMenu to="/products">Products</LinkMenu>
-            </li>
-            <li>
-              <LinkMenu to="/exercises">Exercises</LinkMenu>{' '}
-            </li>
-          </Ul>
-        </Navigat>
+              <li>
+                <LinkMenu to="/">Diary</LinkMenu>{' '}
+              </li>
+              <li>
+                <LinkMenu to="/products">Products</LinkMenu>
+              </li>
+              <li>
+                <LinkMenu to="/exercises">Exercises</LinkMenu>{' '}
+              </li>
+            </Ul>
+          </Navigat>
+        )}
         <LinkSvg to="/profile">
           <svg width="24" height="24">
             <use href={`${spriteSvG}#icon-settings`} />
@@ -85,11 +98,13 @@ const UserMenu = () => {
           </LogoutLink>
         </WrapperLogout>
         {/* <Logout /> */}
-        <Button type="button" onClick={openMenu}>
-          <svg width="24" height="24">
-            <use href={`${spriteSvG}#icon-menu`} />
-          </svg>
-        </Button>
+        {isProfile && (
+          <Button type="button" onClick={openMenu}>
+            <svg width="24" height="24">
+              <use href={`${spriteSvG}#icon-menu`} />
+            </svg>
+          </Button>
+        )}
       </WrapperMenu>
     </>
   );
