@@ -13,6 +13,7 @@ export const ExList = styled.ul`
   @media screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
+    align-content: flex-start;
 
     gap: 32px 16px;
     max-width: 100%;
