@@ -1,6 +1,6 @@
 import { userSplitApi } from './userApi/fitnesApi';
 
-const productsApiEndpoints = userSplitApi.injectEndpoints({
+export const productsApiEndpoints = userSplitApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllProducts: builder.query({
       query: () => `products`,
@@ -16,8 +16,20 @@ const productsApiEndpoints = userSplitApi.injectEndpoints({
         method: 'GET',
         params,
       }),
+      serializeQueryArgs: ({ endpointName }) => {
+        return endpointName;
+      },
+
+      merge: (currentCache, newItems, { arg }) => {
+        currentCache.results =
+          arg.page === 0
+            ? [...newItems.results]
+            : [...currentCache.results, ...newItems.results];
+      },
+      forceRefetch({ currentArg, previousArg }) {
+        return JSON.stringify(currentArg) !== JSON.stringify(previousArg);
+      },
       providesTags: ['products'],
-      invalidatesTags: ['products'],
     }),
   }),
 });

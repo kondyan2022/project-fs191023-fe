@@ -12,7 +12,6 @@ export const PrivateRoute = ({
   children,
 }) => {
   const profileFilled = useSelector(hasProfile);
-  console.log('private route--->>>>>>', profileFilled);
 
   return isLoggedIn ? (
     selfCall || profileFilled ? (

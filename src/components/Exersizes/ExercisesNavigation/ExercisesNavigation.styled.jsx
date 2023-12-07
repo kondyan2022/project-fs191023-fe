@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const ExercisesNav = styled.nav`
   display: flex;
@@ -11,7 +11,7 @@ export const ExercisesNav = styled.nav`
   }
 `;
 
-export const ExerciseNavLink = styled(Link)`
+export const ExerciseNavLink = styled(NavLink)`
   color: rgba(239, 237, 232, 0.4);
   font-size: 14px;
   /* font-weight: 400; */

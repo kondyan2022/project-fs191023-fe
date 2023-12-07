@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import SharedLayout from './components/SharedLayout/SharedLayout';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
@@ -12,13 +12,10 @@ import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { PublicRoute } from './components/PublicRoute/PublicRoute';
 import { useSelector } from 'react-redux';
 import { isLogin } from './redux/selectors';
-import { ExerciseList } from './components/Exersizes/ExerciseList/ExerciseList';
-import { BodyPartsBoard } from './components/Exersizes/ExercisesBoard/BodyPartsBoard';
-import { MusclesBoard } from './components/Exersizes/ExercisesBoard/MusclesBoard';
-import { EquipmentBoard } from './components/Exersizes/ExercisesBoard/EquipmentBoard';
 
 import GoogleLoginPage from './pages/GoogleLoginPage/GoogleLoginPage';
 import { useEffect, useState } from 'react';
+
 // import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
 // import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
 //
@@ -102,45 +99,22 @@ function App() {
         <Route
           path="/exercises"
           element={
+            // <div>Exercises</div>
+            // <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
+            <>
+              <Navigate to="bodyPart" />
+            </>
+            // {/* </PrivateRoute> */}
+          }
+        />
+        <Route
+          path="/exercises/:board"
+          element={
             <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
               <ExercisesPage />
             </PrivateRoute>
           }
-        >
-          <Route
-            path="bodyparts"
-            element={
-              <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
-                <BodyPartsBoard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="muscles"
-            element={
-              <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
-                <MusclesBoard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="equipment"
-            element={
-              <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
-                <EquipmentBoard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="groups/:groupId"
-            element={
-              <PrivateRoute redirectTo="/signin" isLoggedIn={isLoggedIn}>
-                <ExerciseList />
-              </PrivateRoute>
-            }
-          />
-          {/* може роути тут */}
-        </Route>
+        ></Route>
         <Route path="*" element={<Error404Page />} />
       </Route>
     </Routes>

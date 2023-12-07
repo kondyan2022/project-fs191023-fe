@@ -2,12 +2,14 @@ import Container from '../../components/Container/Container';
 import Filter from '../../components/Products/Filter/Filter';
 import { Section, Title, Wrap, NotFound } from './ProductsPage.styled';
 import ProductsList from '../../components/Products/ProductsList/ProductsList';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useGetProductByFilterQuery } from '../../redux/features/prodEndpoints';
 import { useSearchParams } from 'react-router-dom';
 import AddProductSuccess from '../../components/BasicModalWindow/AddProductSuccess';
 import { handleCurrentUser } from '../../hooks/handleCurrentUser';
-import { Oval } from 'react-loader-spinner';
+import { RotatingLines } from 'react-loader-spinner';
+import Backdrop from '../../components/Backdrop/Backdrop';
+import { useInView } from 'react-intersection-observer';
 
 const ProductsPage = () => {
   const [currentCategory, setCurrentCategory] = useState();
@@ -15,25 +17,34 @@ const ProductsPage = () => {
   const [excessCalories, setExcessCalories] = useState(0);
   const [isAddedSuccess, setIsAddedSuccess] = useState(false);
   const [searchParams] = useSearchParams();
-  const [page, setPage] = useState(1);
-  const listRef = useRef();
+  const [queryParams, setQueryParams] = useState({
+    ...Object.fromEntries([...searchParams]),
+    limit: 20,
+    page: 0,
+  });
 
   const {
     data: filterData,
     isFetching: isFilterFetching,
+    isLoading,
     error,
     isError,
-  } = useGetProductByFilterQuery(
-    Object.fromEntries([...searchParams, ['limit', 3000]]),
-  );
+  } = useGetProductByFilterQuery(queryParams);
+
+  const { ref, inView } = useInView({
+    threshold: 0,
+    rootMargin: '100px',
+  });
 
   const currentUser = handleCurrentUser();
   const blood = currentUser?.data?.profile?.blood;
 
   useEffect(() => {
-    if (searchParams) {
-      setPage(1);
-    }
+    setQueryParams({
+      ...Object.fromEntries([...searchParams]),
+      limit: 20,
+      page: 0,
+    });
   }, [searchParams]);
 
   useEffect(() => {
@@ -42,30 +53,16 @@ const ProductsPage = () => {
     }
   }, [isAddedSuccess]);
 
-  const handleScroll = () => {
-    const listElement = listRef.current;
-    if (listElement) {
-      const isAtBottom =
-        listElement.scrollTop + listElement.clientHeight >=
-        listElement.scrollHeight - 200;
-      if (isAtBottom) {
-        setPage((prev) => prev + 1);
-      }
-    }
-  };
-
   useEffect(() => {
-    if (filterData?.results) {
-      const listElement = listRef.current;
-      if (listElement) {
-        listElement.addEventListener('scroll', handleScroll);
-
-        return () => {
-          listElement.removeEventListener('scroll', handleScroll);
-        };
-      }
+    if (inView) {
+      // console.log({ page: filterData?.totalPage });
+      setQueryParams((prev) => ({
+        ...prev,
+        page:
+          filterData.totalPage - 1 === prev.page ? prev.page : prev.page + 1,
+      }));
     }
-  }, [filterData?.results]);
+  }, [filterData?.totalPage, inView, ref]);
 
   return (
     <Section>
@@ -81,25 +78,15 @@ const ProductsPage = () => {
           />
         </Wrap>
         {isFilterFetching && (
-          <div
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              width: '100px',
-              height: '100px',
-            }}
-          >
-            <Oval
-              color="#e6533c"
-              width="100"
+          <Backdrop closeOnClick={false} closeOnEscape={false}>
+            <RotatingLines
+              strokeColor="#e6533c"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="96"
               visible={true}
-              ariaLabel="oval-loading"
-              secondaryColor="#ef89649c"
-              strokeWidth={4}
-              strokeWidthSecondary={4}
             />
-          </div>
+          </Backdrop>
         )}
         {isError && (
           <p>
@@ -107,17 +94,15 @@ const ProductsPage = () => {
             {error.data}
           </p>
         )}
-        {!isFilterFetching &&
+        {!isLoading &&
           (filterData?.results.length !== 0 ? (
-            page && (
-              <ProductsList
-                currenrRef={listRef}
-                products={filterData.results.slice(0, page * 20)}
-                setExcessCalories={setExcessCalories}
-                blood={blood}
-                setIsAddedSuccess={setIsAddedSuccess}
-              />
-            )
+            <ProductsList
+              ref={ref}
+              products={filterData.results}
+              setExcessCalories={setExcessCalories}
+              blood={blood}
+              setIsAddedSuccess={setIsAddedSuccess}
+            />
           ) : (
             <NotFound>
               <p>

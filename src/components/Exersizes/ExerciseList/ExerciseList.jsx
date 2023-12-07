@@ -1,41 +1,30 @@
 import { useMemo, useState } from 'react';
-// import exercises from '../../../../resources/exercises.json';
 import { ExerciseItem } from '../ExerciseItem/ExerciseItem';
 import { BackgroundImage, ExList } from './ExerciseList.styled';
 import { useGetAllExercisesQuery } from '../../../redux/features/exerciseEndpoints';
 import Backdrop from '../../Backdrop/Backdrop';
 import { RotatingLines } from 'react-loader-spinner';
+import { useParams, useSearchParams } from 'react-router-dom';
 
-export const ExerciseList = ({
-  exerciseName,
-  handleBoardClick,
-  handleExNameClick,
-}) => {
+export const ExerciseList = () => {
   const {
     data: exercises,
     isFetching,
     // error,
     // isError,
   } = useGetAllExercisesQuery();
+  const { board } = useParams();
+  const [searchParams] = useSearchParams();
 
-  if (exerciseName) {
-    handleBoardClick(exerciseName);
-    handleExNameClick(exerciseName);
-  }
   const [noScroll, setNoScroll] = useState(false);
 
-  const allExercises = useMemo(
-    () =>
-      exercises
-        ? exercises.filter(
-            (exercise) =>
-              exercise.bodyPart === exerciseName ||
-              exercise.target === exerciseName ||
-              exercise.equipment === exerciseName,
-          )
-        : [],
-    [exercises, exerciseName],
-  );
+  const allExercises = useMemo(() => {
+    return exercises
+      ? exercises.filter(
+          (exercise) => exercise[board] === searchParams.get('value'),
+        )
+      : [];
+  }, [exercises, searchParams, board]);
 
   return (
     <>
