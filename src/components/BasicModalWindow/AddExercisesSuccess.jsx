@@ -42,15 +42,14 @@ const AddExercisesSuccess = ({
                 </ModalWindowSpan>
               </ModalWindowText>
             </ModalWindowWrapImg>
-            <Link
-              to="/exercises"
+            <div
               onClick={() => {
                 closeModal();
                 document.body.style.overflow = 'scroll';
               }}
             >
               <ModalWindowBtn>Next exercise</ModalWindowBtn>
-            </Link>
+            </div>
             <Link
               to="/"
               onClick={() => {

@@ -34,7 +34,6 @@ const ProfilePage = () => {
                 <p>Daily calorie intake</p>
               </div>
               <Span>{countedBMR ? countedBMR : '-'}</Span>
-
             </OrangCardProfile>
             <OrangCardProfile>
               <div>

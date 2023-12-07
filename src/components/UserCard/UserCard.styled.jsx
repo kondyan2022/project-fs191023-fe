@@ -20,6 +20,7 @@ export const Avatar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   @media screen and (min-width: 768px) {
     width: 150px;

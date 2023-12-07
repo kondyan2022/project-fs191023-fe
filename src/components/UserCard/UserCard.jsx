@@ -5,7 +5,6 @@ import {
   IconBtn,
   Photo,
   Subtitle,
-  SvgLogoUser,
   TitleName,
   Wrapper,
 } from './UserCard.styled';
@@ -15,23 +14,31 @@ import {
   useGetCurrentUserQuery,
   useUploadUserAvatarMutation,
 } from '../../redux/features/authEndpoints';
+import { RotatingLines } from 'react-loader-spinner';
 
 const UserCard = ({ name }) => {
   const fileInputRef = useRef(null);
 
-  const [uploadOnRender, setUploadOnRender] = useState(null); // my fix
-  const { data } = useGetCurrentUserQuery();
-  const [loadAvatar, { isSuccess, isError, error }] =
-    useUploadUserAvatarMutation();
+  // const [uploadOnRender, setUploadOnRender] = useState(null); // my fix
+  const [isPhotoFetching, setIsPhotoFetching] = useState(null);
+
+  const { data, isFetching } = useGetCurrentUserQuery();
+  const [loadAvatar, { isError, error }] = useUploadUserAvatarMutation();
 
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
 
     if (file) {
-      const urlAvatar = URL.createObjectURL(file); // зіставляє урл адресу з поточної машини, хоч то сервер хоч локальна машина
-
-      setUploadOnRender(urlAvatar);
-      loadAvatar(file);
+      // const urlAvatar = URL.createObjectURL(file); // зіставляє урл адресу з поточної машини, хоч то сервер хоч локальна машина
+      setIsPhotoFetching(true);
+      // setUploadOnRender(urlAvatar);
+      loadAvatar(file)
+        .unwrap()
+        .then()
+        .catch()
+        .finally(() => {
+          setIsPhotoFetching(false);
+        });
     }
   };
 
@@ -39,24 +46,25 @@ const UserCard = ({ name }) => {
     fileInputRef.current.click();
   };
 
-  const avatarUser = (
-    <Photo
-      src={uploadOnRender ? uploadOnRender : data?.avatarURL}
-      width="100%"
-      alt="Avatar"
-    />
-  );
-  // const avatarLogo = (
-  //   <SvgLogoUser fill="var(--accent-color-user-ava)" width="62" height="62">
-  //     <use href={`${sprite}#icon-user`}></use>
-  //   </SvgLogoUser>
-  // );
+  const avatarUser = <Photo src={data?.avatarURL} width="100%" alt="Avatar" />;
 
   return (
     <Wrapper>
       {isError && <p>{error.data.message}</p>}
 
-      <Avatar>{avatarUser}</Avatar>
+      <Avatar>
+        {isPhotoFetching || isFetching ? (
+          <RotatingLines
+            strokeColor="#e6533c"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="50"
+            visible={true}
+          />
+        ) : (
+          avatarUser
+        )}
+      </Avatar>
       <form id="upload-form">
         <input
           type="file"

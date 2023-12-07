@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 import { format, addDays, subDays } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import {
   CalendarGlobalStyles,
   TitleWrapper,
-  BirthdayCalendarWrapper,IconBtn,IconBtnLeft
+  BirthdayCalendarWrapper,
+  IconBtn,
+  IconBtnLeft,
 } from './StyledDatepicker.styled';
 import 'react-datepicker/dist/react-datepicker.css';
 import sprite from '../../images/sprite.svg';
@@ -20,7 +22,7 @@ const StyledDatepicker = ({
   const [selectedDate, setSelectedDate] = useState(setFormData || Date.now());
   // const isBirthdayPicker = true;
 
-  const CustomInput = ({ onClick }) => {
+  const CustomInput = forwardRef(function CustomInput({ onClick }, ref) {
     return calendarType === 'birthday' ? (
       <BirthdayCalendarWrapper>
         <div onClick={onClick}>
@@ -67,43 +69,41 @@ const StyledDatepicker = ({
         </div>
       </TitleWrapper>
     );
-  };
+  });
 
   const handlePrevDay = () => {
     const prevDay = subDays(selectedDate, 1);
     if (minDate && prevDay < minDate) {
       return;
     }
-  setSelectedDate(prevDay);
-  getData(prevDay);
+    setSelectedDate(prevDay);
+    getData(prevDay);
   };
 
   const handleNextDay = () => {
     const nextDay = addDays(selectedDate, 1);
     if (maxDate && nextDay > maxDate) {
-      return ;
+      return;
     }
     setSelectedDate(nextDay);
     getData(nextDay);
   };
 
-
-const [minYear] = useState(1950);
-const maxYear = new Date().getFullYear(); 
-
+  const [minYear] = useState(1950);
+  const maxYear = new Date().getFullYear();
 
   return (
     <>
       <DatePicker
         selected={setFormData && selectedDate}
-        onChange={(date) => { 
-          if (minDate && date < minDate) { 
+        onChange={(date) => {
+          if (minDate && date < minDate) {
             return;
           }
           if (maxDate && date > maxDate) {
             return;
           }
-          setSelectedDate(date)
+          setSelectedDate(date);
           getData(date);
         }}
         customInput={<CustomInput />}
@@ -114,7 +114,7 @@ const maxYear = new Date().getFullYear();
         showYearDropdown={calendarType === 'birthday'}
         scrollableYearDropdown
         yearDropdownItemNumber={maxYear - minYear + 1}
-        minDate={new Date(minYear, 0, 1)} 
+        minDate={new Date(minYear, 0, 1)}
         maxDate={new Date(maxYear, 11, 31)}
       />
       <CalendarGlobalStyles />

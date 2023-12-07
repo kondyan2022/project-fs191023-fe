@@ -54,9 +54,9 @@ const AddProductSuccess = ({ excessCalories, closeModal }) => {
               Calories: <ModalWindowSpan>{excessCalories}</ModalWindowSpan>
             </ModalWindowText>
           </ModalWindowWrapImg>
-          <Link to="/products" onClick={closeModal}>
+          <div onClick={closeModal}>
             <ModalWindowBtn>Next product</ModalWindowBtn>
-          </Link>
+          </div>
           <Link to="/" onClick={closeModal}>
             <ModalWindowText>
               To the diary

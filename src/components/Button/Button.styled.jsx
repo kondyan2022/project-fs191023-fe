@@ -1,10 +1,9 @@
-
 import styled from '@emotion/styled';
 
 export const buttonStyles = {
   common: {
     color: 'var(--color-white)',
-    borderRadius: '12px',    
+    borderRadius: '12px',
     fontFamily: 'Roboto',
     fontWeight: 500,
     letterSpacing: '0em',
@@ -32,22 +31,22 @@ export const buttonStyles = {
     background: 'transparent',
     border: '1px solid var(--accent-color-grey)',
     '&:hover': {
-      background: 'var(--color-orange-one)',      
+      background: 'var(--color-orange-one)',
     },
-    width: '147px'
+    width: '147px',
   },
-
 };
 
 export const StyledButton = styled.button`
+  position: relative;
   ${() => buttonStyles.common};
   ${(props) =>
     props.primary
       ? buttonStyles.primaryButtonStyles
       : props.home
-        ? buttonStyles.homeButtonStyles
-        : buttonStyles.secondaryButtonStyles}
-      
+      ? buttonStyles.homeButtonStyles
+      : buttonStyles.secondaryButtonStyles}
+
   &.disabled {
     background-color: var(--color-beige);
   }
@@ -60,12 +59,16 @@ export const StyledButton = styled.button`
   }
 
   @media (min-width: 769px) {
-  width: ${(props) => (props.primary || !props.home ? '190px' : '204px')};
-  font-size: 20px;
-  line-height: 24px;
-  padding: 16px 60px;
-}
-`
+    width: ${(props) => (props.primary || !props.home ? '190px' : '204px')};
+    font-size: 20px;
+    line-height: 24px;
+    padding: 16px 60px;
+  }
+`;
 
-
-
+export const SpinnerWrap = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 13px;
+  transform: translateY(-50%);
+`;
