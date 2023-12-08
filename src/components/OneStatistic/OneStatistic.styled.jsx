@@ -50,7 +50,7 @@ export const GreyCard = styled.li`
 
   width: 100%;
   height: 96px;
-  padding: 14px 10px;
+  padding: 14px;
   background-color: rgba(239, 237, 232, 0.05);
 
   border-radius: 12px;
