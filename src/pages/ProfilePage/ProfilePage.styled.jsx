@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { OrangCard } from '../../components/OneStatistic/OneStatistic.styled';
 
 export const Title = styled.h2`
   color: #efede8;
@@ -18,7 +17,7 @@ export const Title = styled.h2`
 
 export const WrapperContent = styled.div`
   padding-bottom: 66px;
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     padding-bottom: 54px;
   }
   @media screen and (min-width: 1440px) {
@@ -36,7 +35,21 @@ export const WrapperForm = styled.div`
   }
 `;
 
-export const OrangCardProfile = styled(OrangCard)`
+export const WrapperCard = styled.ul`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 40px;
+
+  @media screen and (max-width: 320px) {
+    display: grid;
+    grid-template-columns: 157px 165px;
+    justify-content: flex-start;
+  }
+`;
+
+export const OrangCardProfile = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,23 +57,20 @@ export const OrangCardProfile = styled(OrangCard)`
   width: 100%;
   height: 96px;
   padding: 14px;
-  gap: 32px;
   background-color: var(--color-orange);
 
   border-radius: 12px;
   border: 1px solid;
-  border-color: var(--accent-color-border);
+  border-color: rgba(239, 237, 232, 0.2);
 
   @media screen and (min-width: 375px) {
-    width: 129px;
-    height: 80px;
-    padding: 14px 18px;
+    width: 159px;
   }
 
   @media screen and (min-width: 768px) {
-    width: 214px;
-    height: 108px;
-    padding: 14px 18px;
+    width: 187px;
+    height: 116px;
+    padding: 18px;
   }
 
   div {
@@ -76,7 +86,7 @@ export const OrangCardProfile = styled(OrangCard)`
 
   p {
     font-size: 12px;
-    line-height: 1.8;
+    line-height: 1.3;
     color: rgba(239, 237, 232, 0.8);
     margin: 0;
   }
@@ -85,12 +95,13 @@ export const OrangCardProfile = styled(OrangCard)`
 export const Span = styled.span`
   color: var(--color-white);
   font-family: 'Roboto', sans-serif;
+
   font-size: 18px;
   font-weight: 700;
-  line-height: 20px; 
+  line-height: 20px;
 
   @media screen and (min-width: 768px) {
     font-size: 24px;
-    line-height: 32px; 
+    line-height: 32px;
   }
 `;
