@@ -29,11 +29,21 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setIsProfile } from '../../redux/features/userToken';
 
+
+import {ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
+import { css } from '@emotion/css'
+
+
+
+
+
 const UserForm = () => {
   const [userFormUpdate, { isLoading }] = useUserDataUpdateMutation();
   const { data, isFetching } = useGetCurrentUserQuery();
   const [calendarSelected, setCalendarSelected] = useState(false);
   const dispatch = useDispatch();
+
 
   const initialValues = {
     name: data?.name || '',
@@ -46,6 +56,25 @@ const UserForm = () => {
     levelActivity: data?.profile?.levelActivity || 1,
   };
 
+  const toastStyles = css`
+  background-color: #e6533c;
+  color: #fff;
+`;
+
+
+
+
+  const notify = () => toast.success("The information is saved. Go to the diary",{
+    className: toastStyles,
+    bodyClassName: toastStyles,
+autoClose: 3000,
+hideProgressBar: true,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+ });
+  
   const handleSubmit = (values) => {
     const data = {
       name: values.name,
@@ -64,6 +93,8 @@ const UserForm = () => {
     const action = { isProfile: true };
     dispatch(setIsProfile(action));
     setCalendarSelected(false);
+     notify();
+  
   };
 
   return (
@@ -340,6 +371,7 @@ const UserForm = () => {
                     ))}
                   </WrapperLevel>
                 </WrapperRadio>
+                
                 <Button
                   primary={true}
                   type={'submit'}
@@ -352,7 +384,9 @@ const UserForm = () => {
                 >
                   Save
                 </Button>
-                {isLoading && (
+ 
+                <ToastContainer/>
+              {isLoading && (
                   <Loading styles={{ position: 'absolute', top: '-40px' }} />
                 )}
               </Form>
