@@ -317,3 +317,4 @@ export const StatusWrapper = styled.div`
 `;
 
 export const BirthdayWrapper = styled.div``;
+
