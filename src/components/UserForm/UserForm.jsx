@@ -29,21 +29,15 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setIsProfile } from '../../redux/features/userToken';
 
-
-import {ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; 
-import { css } from '@emotion/css'
-
-
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { css } from '@emotion/css';
 
 const UserForm = () => {
   const [userFormUpdate, { isLoading }] = useUserDataUpdateMutation();
   const { data, isFetching } = useGetCurrentUserQuery();
   const [calendarSelected, setCalendarSelected] = useState(false);
   const dispatch = useDispatch();
-
 
   const initialValues = {
     name: data?.name || '',
@@ -57,24 +51,23 @@ const UserForm = () => {
   };
 
   const toastStyles = css`
-  background-color: #e6533c;
-  color: #fff;
-`;
+    background-color: #e6533c;
+    color: #fff;
+  `;
 
+  const notify = () =>
+    toast.success('The information is saved. Go to the diary', {
+      // className: toastStyles,
+      // bodyClassName: toastStyles,
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+    });
 
-
-
-  const notify = () => toast.success("The information is saved. Go to the diary",{
-    className: toastStyles,
-    bodyClassName: toastStyles,
-autoClose: 3000,
-hideProgressBar: true,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
- });
-  
   const handleSubmit = (values) => {
     const data = {
       name: values.name,
@@ -93,8 +86,7 @@ progress: undefined,
     const action = { isProfile: true };
     dispatch(setIsProfile(action));
     setCalendarSelected(false);
-     notify();
-  
+    notify();
   };
 
   return (
@@ -371,7 +363,7 @@ progress: undefined,
                     ))}
                   </WrapperLevel>
                 </WrapperRadio>
-                
+
                 <Button
                   primary={true}
                   type={'submit'}
@@ -384,9 +376,9 @@ progress: undefined,
                 >
                   Save
                 </Button>
- 
-                <ToastContainer/>
-              {isLoading && (
+
+                <ToastContainer />
+                {isLoading && (
                   <Loading styles={{ position: 'absolute', top: '-40px' }} />
                 )}
               </Form>
