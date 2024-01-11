@@ -16,12 +16,6 @@ import { isLogin } from './redux/selectors';
 import GoogleLoginPage from './pages/GoogleLoginPage/GoogleLoginPage';
 import { useEffect, useState } from 'react';
 
-// import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
-// import { useGetCurrentUserQuery } from './redux/features/authEndpoints';
-//
-// import { selectToken } from './redux/selectors';
-// import { useTokenExpirationCheck } from './hooks/controlCurrentUser';
-
 function App() {
   const isLoggedIn = useSelector(isLogin);
   const [loading, setLoading] = useState(true);
@@ -31,7 +25,6 @@ function App() {
       setLoading(false);
     }, 100);
   }, []);
-  // Имитируем задержку загрузки
 
   loading;
   return loading ? (

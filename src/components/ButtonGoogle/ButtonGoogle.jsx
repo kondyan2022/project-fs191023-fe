@@ -1,17 +1,17 @@
-import { Button } from "./ButtonGoogle.styled"
-import spriteSvg from '../../images/sprite.svg'
+import { Button } from './ButtonGoogle.styled';
+import spriteSvg from '../../images/sprite.svg';
 
 const ButtonGoogle = () => {
-    return (
-        <Button>
-            <a href="https://power-plus-service.onrender.com/users/google">
-                <svg>
-                    <use href={`${spriteSvg}#icon-google`} />
-                </svg>
-                <span>Sign in with Google</span>
-            </a>
-        </Button>
-    )
-}
+  return (
+    <Button>
+      <a href={`${import.meta.env.VITE_BACKEND_URL}/users/google`}>
+        <svg>
+          <use href={`${spriteSvg}#icon-google`} />
+        </svg>
+        <span>Sign in with Google</span>
+      </a>
+    </Button>
+  );
+};
 
-export default ButtonGoogle
+export default ButtonGoogle;
