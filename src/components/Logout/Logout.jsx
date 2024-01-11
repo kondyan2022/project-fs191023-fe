@@ -9,7 +9,6 @@ const Logout = () => {
   const [userLogOut] = useUserLogOutMutation();
 
   const handleLogOut = () => {
-    // console.log(userLogOut);
     userLogOut();
     dispatch(logOut());
   };
